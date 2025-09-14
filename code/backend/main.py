@@ -20,7 +20,7 @@ logger = logging.getLogger(__name__)
 app = FastAPI(
     title="Vietnamese-to-SQL Translation Thesis Experiment",
     description="Experimental app comparing two pipelines for Vietnamese to SQL translation (Colab-only)",
-    version="1.0.0"
+    version="1.0.1"
 )
 
 # CORS middleware
