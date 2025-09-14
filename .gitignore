@@ -1,0 +1,97 @@
+# Thesis-specific files
+*.aux
+*.bbl
+*.blg
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.synctex.gz
+*.toc
+*.lof
+*.lot
+*.idx
+*.ind
+*.ilg
+*.nav
+*.snm
+*.vrb
+
+# Data files (large datasets)
+data/raw/
+data/processed/*.csv
+data/processed/*.xlsx
+*.h5
+*.hdf5
+
+# Temporary files
+*.tmp
+*.temp
+*~
+.DS_Store
+Thumbs.db
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.env
+.venv
+
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.next/
+.nuxt/
+dist/
+
+# Model cache and large files
+code/backend/models/cache/
+*.bin
+*.safetensors
+*.onnx
+*.pt
+*.pth
+*.model
+
+# Database files
+*.db
+*.sqlite
+*.sqlite3
+
+# Large binary files
+*.dylib
+*.so
+*.dll
+
+# R
+.Rhistory
+.RData
+.Ruserdata
+
+# MATLAB
+*.asv
+*.m~
+
+# Backup files
+*.bak
+*.backup
+*_backup.*
+
+# Output directories
+output/
+results/
+build/
+dist/

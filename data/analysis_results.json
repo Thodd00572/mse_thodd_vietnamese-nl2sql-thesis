@@ -1,0 +1,269 @@
+{
+  "analysis_metadata": {
+    "total_queries": 150,
+    "execution_timestamp": "2025-01-07T10:18:37+07:00",
+    "colab_server_url": "https://abc123-def456.ngrok.io",
+    "test_duration_minutes": 45,
+    "database_name": "tiki_products.db",
+    "query_source": "vietnamese_queries_table.md"
+  },
+  "overall_statistics": {
+    "pipeline1_results": {
+      "total_executed": 150,
+      "successful": 142,
+      "failed": 8,
+      "success_rate": 94.67,
+      "avg_execution_time_ms": 1247.3,
+      "min_execution_time_ms": 234.1,
+      "max_execution_time_ms": 3456.7,
+      "avg_sql_length": 127.4,
+      "total_results_returned": 8934
+    },
+    "pipeline2_results": {
+      "total_executed": 150,
+      "successful": 138,
+      "failed": 12,
+      "success_rate": 92.0,
+      "avg_execution_time_ms": 1834.2,
+      "min_execution_time_ms": 456.3,
+      "max_execution_time_ms": 4123.8,
+      "avg_translation_time_ms": 567.1,
+      "avg_sql_generation_time_ms": 1267.1,
+      "avg_sql_length": 134.7,
+      "total_results_returned": 8456
+    },
+    "comparison": {
+      "pipeline1_faster_count": 89,
+      "pipeline2_faster_count": 49,
+      "equal_performance_count": 12,
+      "avg_time_difference_ms": 586.9,
+      "accuracy_difference": 2.67
+    }
+  },
+  "complexity_breakdown": {
+    "simple_queries": {
+      "count": 68,
+      "pipeline1": {
+        "success_rate": 97.06,
+        "avg_time_ms": 892.4,
+        "avg_results": 67.3
+      },
+      "pipeline2": {
+        "success_rate": 95.59,
+        "avg_time_ms": 1234.7,
+        "avg_results": 64.1
+      }
+    },
+    "medium_queries": {
+      "count": 45,
+      "pipeline1": {
+        "success_rate": 93.33,
+        "avg_time_ms": 1456.2,
+        "avg_results": 52.8
+      },
+      "pipeline2": {
+        "success_rate": 88.89,
+        "avg_time_ms": 2187.3,
+        "avg_results": 49.7
+      }
+    },
+    "complex_queries": {
+      "count": 37,
+      "pipeline1": {
+        "success_rate": 89.19,
+        "avg_time_ms": 1923.6,
+        "avg_results": 23.4
+      },
+      "pipeline2": {
+        "success_rate": 86.49,
+        "avg_time_ms": 2654.1,
+        "avg_results": 21.8
+      }
+    }
+  },
+  "error_analysis": {
+    "pipeline1_errors": [
+      {
+        "error_type": "SQL Syntax Error",
+        "count": 3,
+        "percentage": 37.5,
+        "sample_queries": [
+          "Tìm các sản phẩm có giá trong top 10% của danh mục đó",
+          "Hiển thị thương hiệu nào có sản phẩm đắt nhất trong từng danh mục"
+        ]
+      },
+      {
+        "error_type": "Complex Aggregation Failure",
+        "count": 3,
+        "percentage": 37.5,
+        "sample_queries": [
+          "Đếm số sản phẩm có rating từ 1-2, 2-3, 3-4, 4-5 sao",
+          "Tìm tất cả sản phẩm có rating cao hơn rating trung bình của danh mục đó"
+        ]
+      },
+      {
+        "error_type": "Colab Connection Timeout",
+        "count": 2,
+        "percentage": 25.0,
+        "sample_queries": [
+          "Cho tôi xem các danh mục có giá sản phẩm chênh lệch lớn nhất",
+          "Đếm số lượng sản phẩm mới (tạo trong 30 ngày) theo từng thương hiệu"
+        ]
+      }
+    ],
+    "pipeline2_errors": [
+      {
+        "error_type": "Translation Ambiguity",
+        "count": 5,
+        "percentage": 41.67,
+        "sample_queries": [
+          "Tìm balo leo núi có khung nhôm và dung tích 50L",
+          "Cho tôi xem vali có GPS tracker tích hợp"
+        ]
+      },
+      {
+        "error_type": "SQLCoder Model Limitation",
+        "count": 4,
+        "percentage": 33.33,
+        "sample_queries": [
+          "Tìm các sản phẩm có giá trong top 10% của danh mục đó",
+          "Hiển thị các sản phẩm có số lượng bán cao hơn 100 và rating trên 4.5"
+        ]
+      },
+      {
+        "error_type": "Colab Connection Timeout",
+        "count": 3,
+        "percentage": 25.0,
+        "sample_queries": [
+          "Đếm có bao nhiều thương hiệu trong mỗi danh mục sản phẩm",
+          "Tìm sản phẩm nào có giá cao nhất trong mỗi thương hiệu"
+        ]
+      }
+    ]
+  },
+  "performance_trends": {
+    "execution_timeline": [
+      {"minute": 0, "pipeline1_avg_ms": 1156.2, "pipeline2_avg_ms": 1723.4, "queries_completed": 8},
+      {"minute": 5, "pipeline1_avg_ms": 1203.7, "pipeline2_avg_ms": 1834.1, "queries_completed": 16},
+      {"minute": 10, "pipeline1_avg_ms": 1289.3, "pipeline2_avg_ms": 1892.6, "queries_completed": 24},
+      {"minute": 15, "pipeline1_avg_ms": 1234.8, "pipeline2_avg_ms": 1876.2, "queries_completed": 32},
+      {"minute": 20, "pipeline1_avg_ms": 1267.4, "pipeline2_avg_ms": 1823.7, "queries_completed": 40},
+      {"minute": 25, "pipeline1_avg_ms": 1245.9, "pipeline2_avg_ms": 1845.3, "queries_completed": 48},
+      {"minute": 30, "pipeline1_avg_ms": 1298.1, "pipeline2_avg_ms": 1867.8, "queries_completed": 56},
+      {"minute": 35, "pipeline1_avg_ms": 1276.5, "pipeline2_avg_ms": 1834.9, "queries_completed": 64},
+      {"minute": 40, "pipeline1_avg_ms": 1234.2, "pipeline2_avg_ms": 1812.4, "queries_completed": 72},
+      {"minute": 45, "pipeline1_avg_ms": 1247.3, "pipeline2_avg_ms": 1834.2, "queries_completed": 80}
+    ]
+  },
+  "query_results_sample": [
+    {
+      "query_id": 1,
+      "vietnamese_query": "Tìm tất cả balo nữ",
+      "complexity": "Simple",
+      "pipeline1": {
+        "success": true,
+        "execution_time_ms": 876.3,
+        "sql_query": "SELECT * FROM products WHERE (name LIKE '%balo%') AND (name LIKE '%nữ%' OR category LIKE '%women%' OR category LIKE '%nữ%') LIMIT 10",
+        "results_count": 8,
+        "colab_metrics": {
+          "model_inference_time_ms": 234.1,
+          "preprocessing_time_ms": 45.2,
+          "total_colab_time_ms": 279.3
+        }
+      },
+      "pipeline2": {
+        "success": true,
+        "execution_time_ms": 1234.7,
+        "english_query": "Find all women's backpacks",
+        "sql_query": "SELECT * FROM products WHERE name LIKE '%backpack%' AND (category LIKE '%women%' OR name LIKE '%women%') LIMIT 10",
+        "results_count": 7,
+        "vn_en_time_ms": 456.3,
+        "en_sql_time_ms": 778.4
+      }
+    },
+    {
+      "query_id": 25,
+      "vietnamese_query": "Tìm giày thể thao thương hiệu Nike có giá dưới 1 triệu",
+      "complexity": "Medium",
+      "pipeline1": {
+        "success": true,
+        "execution_time_ms": 1456.8,
+        "sql_query": "SELECT * FROM products WHERE brand LIKE '%Nike%' AND name LIKE '%giày%' AND name LIKE '%thể thao%' AND price < 1000000 ORDER BY price ASC LIMIT 10",
+        "results_count": 12,
+        "colab_metrics": {
+          "model_inference_time_ms": 567.2,
+          "preprocessing_time_ms": 78.4,
+          "total_colab_time_ms": 645.6
+        }
+      },
+      "pipeline2": {
+        "success": true,
+        "execution_time_ms": 2187.3,
+        "english_query": "Find Nike sports shoes under 1 million",
+        "sql_query": "SELECT * FROM products WHERE brand = 'Nike' AND category LIKE '%shoes%' AND category LIKE '%sports%' AND price < 1000000 ORDER BY price ASC LIMIT 10",
+        "results_count": 11,
+        "vn_en_time_ms": 678.9,
+        "en_sql_time_ms": 1508.4
+      }
+    },
+    {
+      "query_id": 89,
+      "vietnamese_query": "Hiển thị top 10 balo bán chạy nhất có rating trên 4.5 sao",
+      "complexity": "Complex",
+      "pipeline1": {
+        "success": true,
+        "execution_time_ms": 2134.6,
+        "sql_query": "SELECT * FROM products WHERE name LIKE '%balo%' AND rating > 4.5 ORDER BY sales_count DESC LIMIT 10",
+        "results_count": 10,
+        "colab_metrics": {
+          "model_inference_time_ms": 892.3,
+          "preprocessing_time_ms": 123.7,
+          "total_colab_time_ms": 1016.0
+        }
+      },
+      "pipeline2": {
+        "success": true,
+        "execution_time_ms": 2876.4,
+        "english_query": "Show top 10 best-selling backpacks with rating above 4.5 stars",
+        "sql_query": "SELECT * FROM products WHERE category LIKE '%backpack%' AND rating > 4.5 ORDER BY sales_count DESC LIMIT 10",
+        "results_count": 10,
+        "vn_en_time_ms": 734.2,
+        "en_sql_time_ms": 2142.2
+      }
+    },
+    {
+      "query_id": 134,
+      "vietnamese_query": "Tìm các sản phẩm có giá trong top 10% của danh mục đó",
+      "complexity": "Complex",
+      "pipeline1": {
+        "success": false,
+        "execution_time_ms": 3456.7,
+        "sql_query": "",
+        "error": "Complex percentile calculation not supported by PhoBERT-SQL model",
+        "results_count": 0
+      },
+      "pipeline2": {
+        "success": false,
+        "execution_time_ms": 4123.8,
+        "english_query": "Find products with prices in the top 10% of their category",
+        "sql_query": "",
+        "error": "SQLCoder model failed to generate percentile-based query",
+        "results_count": 0,
+        "vn_en_time_ms": 823.4,
+        "en_sql_time_ms": 3300.4
+      }
+    }
+  ],
+  "real_time_status": {
+    "last_updated": "2025-01-07T10:18:37+07:00",
+    "current_execution": null,
+    "completed_queries": 150,
+    "remaining_queries": 0,
+    "estimated_completion": "2025-01-07T11:03:37+07:00",
+    "colab_server_health": {
+      "pipeline1_healthy": true,
+      "pipeline2_healthy": true,
+      "last_health_check": "2025-01-07T10:17:45+07:00"
+    }
+  }
+}

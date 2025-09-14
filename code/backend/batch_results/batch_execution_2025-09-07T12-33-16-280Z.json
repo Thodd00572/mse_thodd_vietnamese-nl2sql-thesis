@@ -1,0 +1,769 @@
+{
+  "execution_timestamp": "2025-09-07T12:33:16.280Z",
+  "total_queries": 50,
+  "complexity_filter": "simple",
+  "results": [
+    {
+      "query_id": "simple_1",
+      "vietnamese_query": "Tìm áo thun",
+      "english_query": "Find T-shirt",
+      "complexity": "simple",
+      "pipeline1_result": {
+        "success": false,
+        "error": "Unknown error"
+      },
+      "pipeline2_result": {
+        "success": false,
+        "error": "Unknown error"
+      },
+      "execution_time": "2025-09-07T12:33:16.280Z"
+    },
+    {
+      "query_id": "simple_2",
+      "vietnamese_query": "Hiển thị giày",
+      "english_query": "Show shoes",
+      "complexity": "simple",
+      "pipeline1_result": {
+        "success": false,
+        "error": "Unknown error"
+      },
+      "pipeline2_result": {
+        "success": false,
+        "error": "Unknown error"
+      },
+      "execution_time": "2025-09-07T12:33:16.843Z"
+    },
+    {
+      "query_id": "simple_3",
+      "vietnamese_query": "Cho tôi xem túi xách",
+      "english_query": "Show me handbags",
+      "complexity": "simple",
+      "pipeline1_result": {
+        "success": false,
+        "error": "Unknown error"
+      },
+      "pipeline2_result": {
+        "success": false,
+        "error": "Unknown error"
+      },
+      "execution_time": "2025-09-07T12:33:17.362Z"
+    },
+    {
+      "query_id": "simple_4",
+      "vietnamese_query": "Tìm điện thoại",
+      "english_query": "Find phones",
+      "complexity": "simple",
+      "pipeline1_result": {
+        "success": false,
+        "error": "Unknown error"
+      },
+      "pipeline2_result": {
+        "success": false,
+        "error": "Unknown error"
+      },
+      "execution_time": "2025-09-07T12:33:17.919Z"
+    },
+    {
+      "query_id": "simple_5",
+      "vietnamese_query": "Xem balo",
+      "english_query": "View backpacks",
+      "complexity": "simple",
+      "pipeline1_result": {
+        "success": false,
+        "error": "Unknown error"
+      },
+      "pipeline2_result": {
+        "success": false,
+        "error": "Unknown error"
+      },
+      "execution_time": "2025-09-07T12:33:18.444Z"
+    },
+    {
+      "query_id": "simple_6",
+      "vietnamese_query": "Hiển thị vali",
+      "english_query": "Show suitcases",
+      "complexity": "simple",
+      "pipeline1_result": {
+        "success": false,
+        "error": "Unknown error"
+      },
+      "pipeline2_result": {
+        "success": false,
+        "error": "Unknown error"
+      },
+      "execution_time": "2025-09-07T12:33:19.025Z"
+    },
+    {
+      "query_id": "simple_7",
+      "vietnamese_query": "Tìm ví",
+      "english_query": "Find wallets",
+      "complexity": "simple",
+      "pipeline1_result": {
+        "success": false,
+        "error": "Unknown error"
+      },
+      "pipeline2_result": {
+        "success": false,
+        "error": "Unknown error"
+      },
+      "execution_time": "2025-09-07T12:33:19.606Z"
+    },
+    {
+      "query_id": "simple_8",
+      "vietnamese_query": "Xem dép",
+      "english_query": "View sandals",
+      "complexity": "simple",
+      "pipeline1_result": {
+        "success": false,
+        "error": "Unknown error"
+      },
+      "pipeline2_result": {
+        "success": false,
+        "error": "Unknown error"
+      },
+      "execution_time": "2025-09-07T12:33:20.123Z"
+    },
+    {
+      "query_id": "simple_9",
+      "vietnamese_query": "Hiển thị nón",
+      "english_query": "Show hats",
+      "complexity": "simple",
+      "pipeline1_result": {
+        "success": false,
+        "error": "Unknown error"
+      },
+      "pipeline2_result": {
+        "success": false,
+        "error": "Unknown error"
+      },
+      "execution_time": "2025-09-07T12:33:20.640Z"
+    },
+    {
+      "query_id": "simple_10",
+      "vietnamese_query": "Tìm thắt lưng",
+      "english_query": "Find belts",
+      "complexity": "simple",
+      "pipeline1_result": {
+        "success": false,
+        "error": "Unknown error"
+      },
+      "pipeline2_result": {
+        "success": false,
+        "error": "Unknown error"
+      },
+      "execution_time": "2025-09-07T12:33:21.161Z"
+    },
+    {
+      "query_id": "simple_11",
+      "vietnamese_query": "Xem kính",
+      "english_query": "View glasses",
+      "complexity": "simple",
+      "pipeline1_result": {
+        "success": false,
+        "error": "Unknown error"
+      },
+      "pipeline2_result": {
+        "success": false,
+        "error": "Unknown error"
+      },
+      "execution_time": "2025-09-07T12:33:21.670Z"
+    },
+    {
+      "query_id": "simple_12",
+      "vietnamese_query": "Hiển thị đồng hồ",
+      "english_query": "Show watches",
+      "complexity": "simple",
+      "pipeline1_result": {
+        "success": false,
+        "error": "Unknown error"
+      },
+      "pipeline2_result": {
+        "success": false,
+        "error": "Unknown error"
+      },
+      "execution_time": "2025-09-07T12:33:22.229Z"
+    },
+    {
+      "query_id": "simple_13",
+      "vietnamese_query": "Tìm vớ",
+      "english_query": "Find socks",
+      "complexity": "simple",
+      "pipeline1_result": {
+        "success": false,
+        "error": "Unknown error"
+      },
+      "pipeline2_result": {
+        "success": false,
+        "error": "Unknown error"
+      },
+      "execution_time": "2025-09-07T12:33:22.741Z"
+    },
+    {
+      "query_id": "simple_14",
+      "vietnamese_query": "Xem khăn",
+      "english_query": "View scarves",
+      "complexity": "simple",
+      "pipeline1_result": {
+        "success": false,
+        "error": "Unknown error"
+      },
+      "pipeline2_result": {
+        "success": false,
+        "error": "Unknown error"
+      },
+      "execution_time": "2025-09-07T12:33:23.262Z"
+    },
+    {
+      "query_id": "simple_15",
+      "vietnamese_query": "Hiển thị găng tay",
+      "english_query": "Show gloves",
+      "complexity": "simple",
+      "pipeline1_result": {
+        "success": false,
+        "error": "Unknown error"
+      },
+      "pipeline2_result": {
+        "success": false,
+        "error": "Unknown error"
+      },
+      "execution_time": "2025-09-07T12:33:23.842Z"
+    },
+    {
+      "query_id": "simple_16",
+      "vietnamese_query": "Tìm áo khoác",
+      "english_query": "Find jackets",
+      "complexity": "simple",
+      "pipeline1_result": {
+        "success": false,
+        "error": "Unknown error"
+      },
+      "pipeline2_result": {
+        "success": false,
+        "error": "Unknown error"
+      },
+      "execution_time": "2025-09-07T12:33:24.365Z"
+    },
+    {
+      "query_id": "simple_17",
+      "vietnamese_query": "Xem quần",
+      "english_query": "View pants",
+      "complexity": "simple",
+      "pipeline1_result": {
+        "success": false,
+        "error": "Unknown error"
+      },
+      "pipeline2_result": {
+        "success": false,
+        "error": "Unknown error"
+      },
+      "execution_time": "2025-09-07T12:33:24.947Z"
+    },
+    {
+      "query_id": "simple_18",
+      "vietnamese_query": "Hiển thị váy",
+      "english_query": "Show dresses",
+      "complexity": "simple",
+      "pipeline1_result": {
+        "success": false,
+        "error": "Unknown error"
+      },
+      "pipeline2_result": {
+        "success": false,
+        "error": "Unknown error"
+      },
+      "execution_time": "2025-09-07T12:33:25.529Z"
+    },
+    {
+      "query_id": "simple_19",
+      "vietnamese_query": "Tìm áo sơ mi",
+      "english_query": "Find shirts",
+      "complexity": "simple",
+      "pipeline1_result": {
+        "success": false,
+        "error": "Unknown error"
+      },
+      "pipeline2_result": {
+        "success": false,
+        "error": "Unknown error"
+      },
+      "execution_time": "2025-09-07T12:33:26.051Z"
+    },
+    {
+      "query_id": "simple_20",
+      "vietnamese_query": "Xem giày thể thao",
+      "english_query": "View sneakers",
+      "complexity": "simple",
+      "pipeline1_result": {
+        "success": false,
+        "error": "Unknown error"
+      },
+      "pipeline2_result": {
+        "success": false,
+        "error": "Unknown error"
+      },
+      "execution_time": "2025-09-07T12:33:26.634Z"
+    },
+    {
+      "query_id": "simple_21",
+      "vietnamese_query": "Hiển thị giày cao gót",
+      "english_query": "Show high heels",
+      "complexity": "simple",
+      "pipeline1_result": {
+        "success": false,
+        "error": "Unknown error"
+      },
+      "pipeline2_result": {
+        "success": false,
+        "error": "Unknown error"
+      },
+      "execution_time": "2025-09-07T12:33:27.218Z"
+    },
+    {
+      "query_id": "simple_22",
+      "vietnamese_query": "Tìm giày boot",
+      "english_query": "Find boots",
+      "complexity": "simple",
+      "pipeline1_result": {
+        "success": false,
+        "error": "Unknown error"
+      },
+      "pipeline2_result": {
+        "success": false,
+        "error": "Unknown error"
+      },
+      "execution_time": "2025-09-07T12:33:27.803Z"
+    },
+    {
+      "query_id": "simple_23",
+      "vietnamese_query": "Xem túi đeo chéo",
+      "english_query": "View crossbody bags",
+      "complexity": "simple",
+      "pipeline1_result": {
+        "success": false,
+        "error": "Unknown error"
+      },
+      "pipeline2_result": {
+        "success": false,
+        "error": "Unknown error"
+      },
+      "execution_time": "2025-09-07T12:33:28.389Z"
+    },
+    {
+      "query_id": "simple_24",
+      "vietnamese_query": "Hiển thị cặp sách",
+      "english_query": "Show school bags",
+      "complexity": "simple",
+      "pipeline1_result": {
+        "success": false,
+        "error": "Unknown error"
+      },
+      "pipeline2_result": {
+        "success": false,
+        "error": "Unknown error"
+      },
+      "execution_time": "2025-09-07T12:33:28.976Z"
+    },
+    {
+      "query_id": "simple_25",
+      "vietnamese_query": "Tìm túi laptop",
+      "english_query": "Find laptop bags",
+      "complexity": "simple",
+      "pipeline1_result": {
+        "success": false,
+        "error": "Unknown error"
+      },
+      "pipeline2_result": {
+        "success": false,
+        "error": "Unknown error"
+      },
+      "execution_time": "2025-09-07T12:33:29.542Z"
+    },
+    {
+      "query_id": "simple_26",
+      "vietnamese_query": "Xem phụ kiện",
+      "english_query": "View accessories",
+      "complexity": "simple",
+      "pipeline1_result": {
+        "success": false,
+        "error": "Unknown error"
+      },
+      "pipeline2_result": {
+        "success": false,
+        "error": "Unknown error"
+      },
+      "execution_time": "2025-09-07T12:33:30.108Z"
+    },
+    {
+      "query_id": "simple_27",
+      "vietnamese_query": "Hiển thị trang sức",
+      "english_query": "Show jewelry",
+      "complexity": "simple",
+      "pipeline1_result": {
+        "success": false,
+        "error": "Unknown error"
+      },
+      "pipeline2_result": {
+        "success": false,
+        "error": "Unknown error"
+      },
+      "execution_time": "2025-09-07T12:33:30.694Z"
+    },
+    {
+      "query_id": "simple_28",
+      "vietnamese_query": "Tìm mũ lưỡi trai",
+      "english_query": "Find caps",
+      "complexity": "simple",
+      "pipeline1_result": {
+        "success": false,
+        "error": "Unknown error"
+      },
+      "pipeline2_result": {
+        "success": false,
+        "error": "Unknown error"
+      },
+      "execution_time": "2025-09-07T12:33:31.262Z"
+    },
+    {
+      "query_id": "simple_29",
+      "vietnamese_query": "Xem mũ beret",
+      "english_query": "View berets",
+      "complexity": "simple",
+      "pipeline1_result": {
+        "success": false,
+        "error": "Unknown error"
+      },
+      "pipeline2_result": {
+        "success": false,
+        "error": "Unknown error"
+      },
+      "execution_time": "2025-09-07T12:33:31.833Z"
+    },
+    {
+      "query_id": "simple_30",
+      "vietnamese_query": "Hiển thị áo len",
+      "english_query": "Show sweaters",
+      "complexity": "simple",
+      "pipeline1_result": {
+        "success": false,
+        "error": "Unknown error"
+      },
+      "pipeline2_result": {
+        "success": false,
+        "error": "Unknown error"
+      },
+      "execution_time": "2025-09-07T12:33:32.354Z"
+    },
+    {
+      "query_id": "simple_31",
+      "vietnamese_query": "Tìm áo hoodie",
+      "english_query": "Find hoodies",
+      "complexity": "simple",
+      "pipeline1_result": {
+        "success": false,
+        "error": "Unknown error"
+      },
+      "pipeline2_result": {
+        "success": false,
+        "error": "Unknown error"
+      },
+      "execution_time": "2025-09-07T12:33:32.926Z"
+    },
+    {
+      "query_id": "simple_32",
+      "vietnamese_query": "Xem quần jean",
+      "english_query": "View jeans",
+      "complexity": "simple",
+      "pipeline1_result": {
+        "success": false,
+        "error": "Unknown error"
+      },
+      "pipeline2_result": {
+        "success": false,
+        "error": "Unknown error"
+      },
+      "execution_time": "2025-09-07T12:33:33.517Z"
+    },
+    {
+      "query_id": "simple_33",
+      "vietnamese_query": "Hiển thị quần short",
+      "english_query": "Show shorts",
+      "complexity": "simple",
+      "pipeline1_result": {
+        "success": false,
+        "error": "Unknown error"
+      },
+      "pipeline2_result": {
+        "success": false,
+        "error": "Unknown error"
+      },
+      "execution_time": "2025-09-07T12:33:34.039Z"
+    },
+    {
+      "query_id": "simple_34",
+      "vietnamese_query": "Tìm áo polo",
+      "english_query": "Find polo shirts",
+      "complexity": "simple",
+      "pipeline1_result": {
+        "success": false,
+        "error": "Unknown error"
+      },
+      "pipeline2_result": {
+        "success": false,
+        "error": "Unknown error"
+      },
+      "execution_time": "2025-09-07T12:33:34.626Z"
+    },
+    {
+      "query_id": "simple_35",
+      "vietnamese_query": "Xem áo tank top",
+      "english_query": "View tank tops",
+      "complexity": "simple",
+      "pipeline1_result": {
+        "success": false,
+        "error": "Unknown error"
+      },
+      "pipeline2_result": {
+        "success": false,
+        "error": "Unknown error"
+      },
+      "execution_time": "2025-09-07T12:33:35.142Z"
+    },
+    {
+      "query_id": "simple_36",
+      "vietnamese_query": "Hiển thị đầm",
+      "english_query": "Show gowns",
+      "complexity": "simple",
+      "pipeline1_result": {
+        "success": false,
+        "error": "Unknown error"
+      },
+      "pipeline2_result": {
+        "success": false,
+        "error": "Unknown error"
+      },
+      "execution_time": "2025-09-07T12:33:35.731Z"
+    },
+    {
+      "query_id": "simple_37",
+      "vietnamese_query": "Tìm chân váy",
+      "english_query": "Find skirts",
+      "complexity": "simple",
+      "pipeline1_result": {
+        "success": false,
+        "error": "Unknown error"
+      },
+      "pipeline2_result": {
+        "success": false,
+        "error": "Unknown error"
+      },
+      "execution_time": "2025-09-07T12:33:36.301Z"
+    },
+    {
+      "query_id": "simple_38",
+      "vietnamese_query": "Xem áo blazer",
+      "english_query": "View blazers",
+      "complexity": "simple",
+      "pipeline1_result": {
+        "success": false,
+        "error": "Unknown error"
+      },
+      "pipeline2_result": {
+        "success": false,
+        "error": "Unknown error"
+      },
+      "execution_time": "2025-09-07T12:33:36.872Z"
+    },
+    {
+      "query_id": "simple_39",
+      "vietnamese_query": "Hiển thị áo vest",
+      "english_query": "Show vests",
+      "complexity": "simple",
+      "pipeline1_result": {
+        "success": false,
+        "error": "Unknown error"
+      },
+      "pipeline2_result": {
+        "success": false,
+        "error": "Unknown error"
+      },
+      "execution_time": "2025-09-07T12:33:37.463Z"
+    },
+    {
+      "query_id": "simple_40",
+      "vietnamese_query": "Tìm đồ lót",
+      "english_query": "Find underwear",
+      "complexity": "simple",
+      "pipeline1_result": {
+        "success": false,
+        "error": "Unknown error"
+      },
+      "pipeline2_result": {
+        "success": false,
+        "error": "Unknown error"
+      },
+      "execution_time": "2025-09-07T12:33:38.055Z"
+    },
+    {
+      "query_id": "simple_41",
+      "vietnamese_query": "Xem đồ ngủ",
+      "english_query": "View sleepwear",
+      "complexity": "simple",
+      "pipeline1_result": {
+        "success": false,
+        "error": "Unknown error"
+      },
+      "pipeline2_result": {
+        "success": false,
+        "error": "Unknown error"
+      },
+      "execution_time": "2025-09-07T12:33:38.578Z"
+    },
+    {
+      "query_id": "simple_42",
+      "vietnamese_query": "Hiển thị đồ bơi",
+      "english_query": "Show swimwear",
+      "complexity": "simple",
+      "pipeline1_result": {
+        "success": false,
+        "error": "Unknown error"
+      },
+      "pipeline2_result": {
+        "success": false,
+        "error": "Unknown error"
+      },
+      "execution_time": "2025-09-07T12:33:39.173Z"
+    },
+    {
+      "query_id": "simple_43",
+      "vietnamese_query": "Tìm đồ thể thao",
+      "english_query": "Find sportswear",
+      "complexity": "simple",
+      "pipeline1_result": {
+        "success": false,
+        "error": "Unknown error"
+      },
+      "pipeline2_result": {
+        "success": false,
+        "error": "Unknown error"
+      },
+      "execution_time": "2025-09-07T12:33:39.764Z"
+    },
+    {
+      "query_id": "simple_44",
+      "vietnamese_query": "Xem đồ yoga",
+      "english_query": "View yoga wear",
+      "complexity": "simple",
+      "pipeline1_result": {
+        "success": false,
+        "error": "Unknown error"
+      },
+      "pipeline2_result": {
+        "success": false,
+        "error": "Unknown error"
+      },
+      "execution_time": "2025-09-07T12:33:40.356Z"
+    },
+    {
+      "query_id": "simple_45",
+      "vietnamese_query": "Hiển thị đồ gym",
+      "english_query": "Show gym wear",
+      "complexity": "simple",
+      "pipeline1_result": {
+        "success": false,
+        "error": "Unknown error"
+      },
+      "pipeline2_result": {
+        "success": false,
+        "error": "Unknown error"
+      },
+      "execution_time": "2025-09-07T12:33:40.879Z"
+    },
+    {
+      "query_id": "simple_46",
+      "vietnamese_query": "Tìm đồ chạy bộ",
+      "english_query": "Find running wear",
+      "complexity": "simple",
+      "pipeline1_result": {
+        "success": false,
+        "error": "Unknown error"
+      },
+      "pipeline2_result": {
+        "success": false,
+        "error": "Unknown error"
+      },
+      "execution_time": "2025-09-07T12:33:41.472Z"
+    },
+    {
+      "query_id": "simple_47",
+      "vietnamese_query": "Xem giày chạy",
+      "english_query": "View running shoes",
+      "complexity": "simple",
+      "pipeline1_result": {
+        "success": false,
+        "error": "Unknown error"
+      },
+      "pipeline2_result": {
+        "success": false,
+        "error": "Unknown error"
+      },
+      "execution_time": "2025-09-07T12:33:41.995Z"
+    },
+    {
+      "query_id": "simple_48",
+      "vietnamese_query": "Hiển thị giày đá bóng",
+      "english_query": "Show football shoes",
+      "complexity": "simple",
+      "pipeline1_result": {
+        "success": false,
+        "error": "Unknown error"
+      },
+      "pipeline2_result": {
+        "success": false,
+        "error": "Unknown error"
+      },
+      "execution_time": "2025-09-07T12:33:42.588Z"
+    },
+    {
+      "query_id": "simple_49",
+      "vietnamese_query": "Tìm giày tennis",
+      "english_query": "Find tennis shoes",
+      "complexity": "simple",
+      "pipeline1_result": {
+        "success": false,
+        "error": "Unknown error"
+      },
+      "pipeline2_result": {
+        "success": false,
+        "error": "Unknown error"
+      },
+      "execution_time": "2025-09-07T12:33:43.164Z"
+    },
+    {
+      "query_id": "simple_50",
+      "vietnamese_query": "Xem sản phẩm",
+      "english_query": "View products",
+      "complexity": "simple",
+      "pipeline1_result": {
+        "success": false,
+        "error": "Unknown error"
+      },
+      "pipeline2_result": {
+        "success": false,
+        "error": "Unknown error"
+      },
+      "execution_time": "2025-09-07T12:33:43.758Z"
+    }
+  ],
+  "summary": {
+    "pipeline1": {
+      "success": 0,
+      "failed": 50,
+      "total_time": 0
+    },
+    "pipeline2": {
+      "success": 0,
+      "failed": 50,
+      "total_time": 0
+    }
+  }
+}
