@@ -48,7 +48,7 @@ async def execute_database_query(request: QueryRequest):
     """Execute custom SQL query"""
     try:
         # Database connection with timeout
-        db_path = "data/tiki_products.db"
+        db_path = "data/tiki_products_normalized.db"
         conn = sqlite3.connect(db_path, timeout=5)
         conn.row_factory = sqlite3.Row
         cursor = conn.cursor()
@@ -73,7 +73,7 @@ async def execute_database_query(request: QueryRequest):
 async def get_products(page: int = 1, limit: int = 50):
     """Get paginated product data"""
     try:
-        db_path = "data/tiki_products.db"
+        db_path = "data/tiki_products_normalized.db"
         conn = sqlite3.connect(db_path, timeout=5)
         conn.row_factory = sqlite3.Row
         cursor = conn.cursor()

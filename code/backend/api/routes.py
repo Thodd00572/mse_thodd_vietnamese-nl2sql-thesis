@@ -265,7 +265,7 @@ async def analyze_performance():
                 "execution_timestamp": datetime.now().isoformat(),
                 "colab_server_url": "http://localhost:8000",
                 "test_duration_minutes": 0,
-                "database_name": "tiki_products.db",
+                "database_name": "tiki_products_normalized.db",
                 "query_source": "No queries executed yet"
             },
             "overall_statistics": {
@@ -345,7 +345,7 @@ async def analyze_performance():
             "execution_timestamp": datetime.now().isoformat(),
             "colab_server_url": "http://localhost:8000",
             "test_duration_minutes": int((datetime.now() - datetime.fromisoformat(experiment_data["start_time"])).total_seconds() / 60),
-            "database_name": "tiki_products.db",
+            "database_name": "tiki_products_normalized.db",
             "query_source": "Live API Execution"
         },
         "overall_statistics": {
@@ -677,7 +677,7 @@ async def run_statistical_evaluation():
     try:
         from statistical_evaluation import StatisticalEvaluationFramework
         from colab_client import ColabClient
-        from database.db_manager import DatabaseManager
+        from database.db_manager_normalized import DatabaseManager
         
         # Initialize evaluation framework
         colab_client = ColabClient()

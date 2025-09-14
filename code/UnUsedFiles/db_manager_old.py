@@ -10,7 +10,7 @@ logger = logging.getLogger(__name__)
 class TikiDatabaseManager:
     """Manages SQLite database with Tiki product dataset"""
     
-    def __init__(self, db_path: str = "data/tiki_products.db"):
+    def __init__(self, db_path: str = "data/tiki_products_normalized.db"):
         self.db_path = db_path
         self.ensure_directory()
         self.init_database()
@@ -20,41 +20,30 @@ class TikiDatabaseManager:
         os.makedirs(os.path.dirname(self.db_path), exist_ok=True)
     
     def init_database(self):
-        """Initialize database with schema and sample data"""
+        """Initialize database with normalized schema - database should already exist from migration"""
+        # Check if normalized database exists
+        if not os.path.exists(self.db_path):
+            logger.warning(f"Normalized database not found at {self.db_path}")
+            logger.info("Run migration script to create normalized database")
+            return
+            
+        # Verify normalized schema exists
         conn = sqlite3.connect(self.db_path)
         cursor = conn.cursor()
         
-        # Create categories table
-        cursor.execute("""
-            CREATE TABLE IF NOT EXISTS categories (
-                id INTEGER PRIMARY KEY,
-                name TEXT NOT NULL,
-                parent_id INTEGER,
-                level INTEGER DEFAULT 1,
-                FOREIGN KEY (parent_id) REFERENCES categories (id)
-            )
-        """)
+        # Check for normalized tables
+        cursor.execute("SELECT name FROM sqlite_master WHERE type='table' ORDER BY name")
+        tables = [row[0] for row in cursor.fetchall()]
         
-        # Check if products table exists and has correct schema
-        cursor.execute("SELECT sql FROM sqlite_master WHERE name='products'")
-        existing_schema = cursor.fetchone()
+        expected_tables = ['brands', 'categories', 'products', 'product_pricing', 'product_reviews', 'sellers']
         
-        # Only recreate if schema doesn't match imported data structure
-        if not existing_schema or 'category TEXT' not in existing_schema[0]:
-            cursor.execute("DROP TABLE IF EXISTS products")
+        if not all(table in tables for table in expected_tables):
+            logger.error(f"Missing normalized tables. Found: {tables}")
+            logger.info("Run migration script to create normalized database")
+        else:
+            logger.info(f"Normalized database ready with tables: {tables}")
             
-            # Create products table matching imported CSV structure
-            cursor.execute("""
-                CREATE TABLE products (
-                    id INTEGER PRIMARY KEY,
-                    tiki_id INTEGER,
-                    name TEXT,
-                    description TEXT,
-                    original_price REAL,
-                    price REAL,
-                    fulfillment_type TEXT,
-                    brand TEXT,
-                    review_count INTEGER,
+        conn.close()
                     rating_average REAL,
                     favourite_count INTEGER,
                     pay_later BOOLEAN,

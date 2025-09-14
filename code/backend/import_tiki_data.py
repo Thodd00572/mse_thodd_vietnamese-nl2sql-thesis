@@ -12,7 +12,7 @@ def import_csv_to_database():
     """Import all CSV files from Sample_Tiki_dataset into the database"""
     
     # Database path
-    db_path = "/Users/thoduong/CascadeProjects/MSE_Thesis_2025/code/backend/data/tiki_products.db"
+    db_path = "/Users/thoduong/CascadeProjects/MSE_Thesis_2025/code/backend/data/tiki_products_normalized.db"
     csv_folder = "/Users/thoduong/CascadeProjects/MSE_Thesis_2025/data/Sample_Tiki_dataset"
     
     # Connect to database

@@ -74,7 +74,7 @@ experiment_data = {
 }
 
 class DatabaseManager:
-    def __init__(self, db_path: str = "data/tiki_products.db"):
+    def __init__(self, db_path: str = "data/tiki_products_normalized.db"):
         self.db_path = db_path
         self.init_database()
     

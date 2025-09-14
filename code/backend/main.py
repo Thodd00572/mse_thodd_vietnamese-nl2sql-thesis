@@ -8,7 +8,8 @@ import os
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 
 from api import routes, sample_query_routes
-from database.db_manager import db_manager
+from database.db_manager_normalized import DatabaseManager
+db_manager = DatabaseManager()
 from models.pipelines import pipeline1, pipeline2
 import json
 

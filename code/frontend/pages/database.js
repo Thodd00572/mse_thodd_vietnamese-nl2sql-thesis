@@ -12,9 +12,11 @@ import {
   Server,
   Eye,
   ChevronLeft,
-  ChevronRight
+  ChevronRight,
+  GitBranch
 } from 'lucide-react'
 import api from '../utils/api'
+import mermaid from 'mermaid'
 
 export default function DatabaseManagementPage() {
   // State management
@@ -27,6 +29,15 @@ export default function DatabaseManagementPage() {
   const [queryLoading, setQueryLoading] = useState(false)
   const [currentPage, setCurrentPage] = useState(1)
   const [itemsPerPage] = useState(50)
+
+  // Initialize Mermaid
+  useEffect(() => {
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: 'default',
+      securityLevel: 'loose',
+    })
+  }, [])
 
   // Fetch database statistics
   const fetchDatabaseStats = async () => {
@@ -479,30 +490,24 @@ export default function DatabaseManagementPage() {
           {activeTab === 'schema' && (
             <div className="bg-white rounded-lg shadow">
               <div className="px-6 py-4 border-b border-gray-200">
-                <h3 className="text-lg font-medium text-gray-900">Database Schema</h3>
+                <h3 className="text-lg font-medium text-gray-900">Normalized Database Schema</h3>
+                <p className="text-sm text-gray-600 mt-1">6-table normalized structure for complex JOIN queries</p>
               </div>
               <div className="p-6">
                 <div className="space-y-6">
+                  
+                  {/* Brands Table */}
                   <div className="border border-gray-200 rounded-lg">
-                    <div className="bg-gray-50 px-4 py-3 border-b border-gray-200">
-                      <h4 className="font-medium text-gray-900">products</h4>
-                      <p className="text-sm text-gray-600">Main table containing Vietnamese Tiki product data</p>
+                    <div className="bg-blue-50 px-4 py-3 border-b border-gray-200">
+                      <h4 className="font-medium text-gray-900">brands</h4>
+                      <p className="text-sm text-gray-600">Brand reference table (824 records)</p>
                     </div>
                     <div className="p-4">
                       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                         {[
-                          { name: 'id', type: 'INTEGER', desc: 'Primary key' },
-                          { name: 'tiki_id', type: 'INTEGER', desc: 'Original Tiki product ID' },
-                          { name: 'name', type: 'TEXT', desc: 'Product name' },
-                          { name: 'description', type: 'TEXT', desc: 'Product description' },
-                          { name: 'price', type: 'REAL', desc: 'Current price in VND' },
-                          { name: 'original_price', type: 'REAL', desc: 'Original price in VND' },
-                          { name: 'brand', type: 'TEXT', desc: 'Product brand' },
-                          { name: 'category', type: 'TEXT', desc: 'Product category' },
-                          { name: 'rating_average', type: 'REAL', desc: 'Average rating (0-5)' },
-                          { name: 'review_count', type: 'INTEGER', desc: 'Number of reviews' },
-                          { name: 'current_seller', type: 'TEXT', desc: 'Seller name' },
-                          { name: 'quantity_sold', type: 'INTEGER', desc: 'Units sold' }
+                          { name: 'brand_id', type: 'INTEGER', desc: 'Primary key' },
+                          { name: 'brand_name', type: 'TEXT', desc: 'Brand name (Nike, Adidas, etc.)' },
+                          { name: 'product_count', type: 'INTEGER', desc: 'Number of products' }
                         ].map((column, idx) => (
                           <div key={idx} className="p-3 bg-gray-50 rounded">
                             <div className="font-mono text-sm font-medium text-gray-900">{column.name}</div>
@@ -513,6 +518,218 @@ export default function DatabaseManagementPage() {
                       </div>
                     </div>
                   </div>
+
+                  {/* Categories Table */}
+                  <div className="border border-gray-200 rounded-lg">
+                    <div className="bg-green-50 px-4 py-3 border-b border-gray-200">
+                      <h4 className="font-medium text-gray-900">categories</h4>
+                      <p className="text-sm text-gray-600">Product category reference table (155 records)</p>
+                    </div>
+                    <div className="p-4">
+                      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                        {[
+                          { name: 'category_id', type: 'INTEGER', desc: 'Primary key' },
+                          { name: 'category_name', type: 'TEXT', desc: 'Category name (Balo nữ, Giày dép nam, etc.)' },
+                          { name: 'product_count', type: 'INTEGER', desc: 'Number of products' }
+                        ].map((column, idx) => (
+                          <div key={idx} className="p-3 bg-gray-50 rounded">
+                            <div className="font-mono text-sm font-medium text-gray-900">{column.name}</div>
+                            <div className="text-xs text-blue-600 mt-1">{column.type}</div>
+                            <div className="text-xs text-gray-600 mt-1">{column.desc}</div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Sellers Table */}
+                  <div className="border border-gray-200 rounded-lg">
+                    <div className="bg-purple-50 px-4 py-3 border-b border-gray-200">
+                      <h4 className="font-medium text-gray-900">sellers</h4>
+                      <p className="text-sm text-gray-600">Seller information and statistics (3,807 records)</p>
+                    </div>
+                    <div className="p-4">
+                      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                        {[
+                          { name: 'seller_id', type: 'INTEGER', desc: 'Primary key' },
+                          { name: 'seller_name', type: 'TEXT', desc: 'Seller name' },
+                          { name: 'product_count', type: 'INTEGER', desc: 'Number of products sold' },
+                          { name: 'total_quantity_sold', type: 'INTEGER', desc: 'Total units sold' },
+                          { name: 'avg_rating', type: 'REAL', desc: 'Average product rating' }
+                        ].map((column, idx) => (
+                          <div key={idx} className="p-3 bg-gray-50 rounded">
+                            <div className="font-mono text-sm font-medium text-gray-900">{column.name}</div>
+                            <div className="text-xs text-blue-600 mt-1">{column.type}</div>
+                            <div className="text-xs text-gray-600 mt-1">{column.desc}</div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Products Table */}
+                  <div className="border border-gray-200 rounded-lg">
+                    <div className="bg-yellow-50 px-4 py-3 border-b border-gray-200">
+                      <h4 className="font-medium text-gray-900">products</h4>
+                      <p className="text-sm text-gray-600">Core product information with foreign keys (41,576 records)</p>
+                    </div>
+                    <div className="p-4">
+                      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                        {[
+                          { name: 'product_id', type: 'INTEGER', desc: 'Primary key' },
+                          { name: 'tiki_id', type: 'INTEGER', desc: 'Original Tiki product ID' },
+                          { name: 'name', type: 'TEXT', desc: 'Product name' },
+                          { name: 'description', type: 'TEXT', desc: 'Product description' },
+                          { name: 'brand_id', type: 'INTEGER', desc: 'Foreign key → brands.brand_id' },
+                          { name: 'category_id', type: 'INTEGER', desc: 'Foreign key → categories.category_id' },
+                          { name: 'seller_id', type: 'INTEGER', desc: 'Foreign key → sellers.seller_id' },
+                          { name: 'date_created', type: 'INTEGER', desc: 'Creation timestamp' },
+                          { name: 'number_of_images', type: 'INTEGER', desc: 'Number of product images' }
+                        ].map((column, idx) => (
+                          <div key={idx} className="p-3 bg-gray-50 rounded">
+                            <div className="font-mono text-sm font-medium text-gray-900">{column.name}</div>
+                            <div className="text-xs text-blue-600 mt-1">{column.type}</div>
+                            <div className="text-xs text-gray-600 mt-1">{column.desc}</div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Product Pricing Table */}
+                  <div className="border border-gray-200 rounded-lg">
+                    <div className="bg-red-50 px-4 py-3 border-b border-gray-200">
+                      <h4 className="font-medium text-gray-900">product_pricing</h4>
+                      <p className="text-sm text-gray-600">Price and sales information (83,206 records)</p>
+                    </div>
+                    <div className="p-4">
+                      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                        {[
+                          { name: 'pricing_id', type: 'INTEGER', desc: 'Primary key' },
+                          { name: 'product_id', type: 'INTEGER', desc: 'Foreign key → products.product_id' },
+                          { name: 'price', type: 'REAL', desc: 'Current price in VND' },
+                          { name: 'original_price', type: 'REAL', desc: 'Original price in VND' },
+                          { name: 'discount_rate', type: 'REAL', desc: 'Discount percentage' },
+                          { name: 'quantity_sold', type: 'INTEGER', desc: 'Units sold' },
+                          { name: 'favourite_count', type: 'INTEGER', desc: 'Number of favorites' },
+                          { name: 'pay_later', type: 'BOOLEAN', desc: 'Pay later option available' },
+                          { name: 'vnd_cashback', type: 'INTEGER', desc: 'Cashback amount in VND' }
+                        ].map((column, idx) => (
+                          <div key={idx} className="p-3 bg-gray-50 rounded">
+                            <div className="font-mono text-sm font-medium text-gray-900">{column.name}</div>
+                            <div className="text-xs text-blue-600 mt-1">{column.type}</div>
+                            <div className="text-xs text-gray-600 mt-1">{column.desc}</div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Product Reviews Table */}
+                  <div className="border border-gray-200 rounded-lg">
+                    <div className="bg-indigo-50 px-4 py-3 border-b border-gray-200">
+                      <h4 className="font-medium text-gray-900">product_reviews</h4>
+                      <p className="text-sm text-gray-600">Review and rating information (83,206 records)</p>
+                    </div>
+                    <div className="p-4">
+                      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                        {[
+                          { name: 'review_id', type: 'INTEGER', desc: 'Primary key' },
+                          { name: 'product_id', type: 'INTEGER', desc: 'Foreign key → products.product_id' },
+                          { name: 'rating_average', type: 'REAL', desc: 'Average rating (0-5)' },
+                          { name: 'review_count', type: 'INTEGER', desc: 'Number of reviews' },
+                          { name: 'has_video', type: 'BOOLEAN', desc: 'Has video reviews' }
+                        ].map((column, idx) => (
+                          <div key={idx} className="p-3 bg-gray-50 rounded">
+                            <div className="font-mono text-sm font-medium text-gray-900">{column.name}</div>
+                            <div className="text-xs text-blue-600 mt-1">{column.type}</div>
+                            <div className="text-xs text-gray-600 mt-1">{column.desc}</div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Schema Relationships */}
+                  <div className="border border-gray-200 rounded-lg">
+                    <div className="bg-gray-100 px-4 py-3 border-b border-gray-200">
+                      <h4 className="font-medium text-gray-900">Table Relationships</h4>
+                      <p className="text-sm text-gray-600">Foreign key relationships for JOIN queries</p>
+                    </div>
+                    <div className="p-4">
+                      <div className="space-y-3 text-sm">
+                        <div className="flex items-center">
+                          <span className="font-mono bg-yellow-100 px-2 py-1 rounded">products.brand_id</span>
+                          <span className="mx-2">→</span>
+                          <span className="font-mono bg-blue-100 px-2 py-1 rounded">brands.brand_id</span>
+                        </div>
+                        <div className="flex items-center">
+                          <span className="font-mono bg-yellow-100 px-2 py-1 rounded">products.category_id</span>
+                          <span className="mx-2">→</span>
+                          <span className="font-mono bg-green-100 px-2 py-1 rounded">categories.category_id</span>
+                        </div>
+                        <div className="flex items-center">
+                          <span className="font-mono bg-yellow-100 px-2 py-1 rounded">products.seller_id</span>
+                          <span className="mx-2">→</span>
+                          <span className="font-mono bg-purple-100 px-2 py-1 rounded">sellers.seller_id</span>
+                        </div>
+                        <div className="flex items-center">
+                          <span className="font-mono bg-red-100 px-2 py-1 rounded">product_pricing.product_id</span>
+                          <span className="mx-2">→</span>
+                          <span className="font-mono bg-yellow-100 px-2 py-1 rounded">products.product_id</span>
+                        </div>
+                        <div className="flex items-center">
+                          <span className="font-mono bg-indigo-100 px-2 py-1 rounded">product_reviews.product_id</span>
+                          <span className="mx-2">→</span>
+                          <span className="font-mono bg-yellow-100 px-2 py-1 rounded">products.product_id</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Database Schema Diagram */}
+                  <div className="border border-gray-200 rounded-lg">
+                    <div className="bg-gradient-to-r from-blue-50 to-purple-50 px-4 py-3 border-b border-gray-200">
+                      <div className="flex items-center">
+                        <GitBranch className="w-5 h-5 text-blue-600 mr-2" />
+                        <h4 className="font-medium text-gray-900">Entity Relationship Diagram</h4>
+                      </div>
+                      <p className="text-sm text-gray-600 mt-1">Visual representation of normalized database schema</p>
+                    </div>
+                    <div className="p-6">
+                      <div className="bg-white border border-gray-100 rounded-lg p-4">
+                        <div className="flex justify-center">
+                          <img 
+                            src="/images/tiki_database_schema.png" 
+                            alt="Tiki Database Schema ERD"
+                            className="max-w-full h-auto rounded-lg shadow-sm"
+                            style={{ maxHeight: '600px' }}
+                          />
+                        </div>
+                      </div>
+                      <div className="mt-4 text-sm text-gray-600">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                          <div>
+                            <h5 className="font-medium text-gray-900 mb-2">Key Features:</h5>
+                            <ul className="space-y-1">
+                              <li>• 6-table normalized structure</li>
+                              <li>• Foreign key relationships</li>
+                              <li>• Complex JOIN query support</li>
+                            </ul>
+                          </div>
+                          <div>
+                            <h5 className="font-medium text-gray-900 mb-2">Record Counts:</h5>
+                            <ul className="space-y-1">
+                              <li>• 824 brands, 155 categories</li>
+                              <li>• 3,807 sellers, 41,576 products</li>
+                              <li>• 83,206 pricing & review records</li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
                 </div>
               </div>
             </div>

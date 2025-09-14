@@ -8,7 +8,7 @@ class Config:
     DEBUG = True
     
     # Database Configuration
-    DATABASE_PATH = "data/tiki_products.db"
+    DATABASE_PATH = "data/tiki_products_normalized.db"
     
     # Model Configuration
     MODELS = {

@@ -15,7 +15,7 @@ import uvicorn
 # Import existing modules
 from api.routes import router as api_router
 from api.database_routes import router as db_router
-from database.db_manager import DatabaseManager
+from database.db_manager_normalized import DatabaseManager
 
 # Configure logging
 logging.basicConfig(
