@@ -1,0 +1,969 @@
+{
+  "database_file": "/Users/thoduong/CascadeProjects/MSE_Thesis_2025/code/ColabNotebook/db/tiki.sqlite",
+  "extraction_timestamp": "2025-09-28T16:48:06.876469",
+  "tables": [
+    {
+      "name": "brands",
+      "columns": [
+        {
+          "column_id": 0,
+          "name": "brand_id",
+          "data_type": "INTEGER",
+          "not_null": false,
+          "default_value": null,
+          "primary_key": true
+        },
+        {
+          "column_id": 1,
+          "name": "brand_name",
+          "data_type": "TEXT",
+          "not_null": true,
+          "default_value": null,
+          "primary_key": false
+        },
+        {
+          "column_id": 2,
+          "name": "brand_type",
+          "data_type": "TEXT",
+          "not_null": false,
+          "default_value": "'OEM'",
+          "primary_key": false
+        },
+        {
+          "column_id": 3,
+          "name": "created_at",
+          "data_type": "TIMESTAMP",
+          "not_null": false,
+          "default_value": "CURRENT_TIMESTAMP",
+          "primary_key": false
+        }
+      ],
+      "foreign_keys": [],
+      "indexes": [
+        {
+          "sequence": 0,
+          "name": "sqlite_autoindex_brands_1",
+          "unique": true,
+          "origin": "u",
+          "partial": false,
+          "columns": [
+            {
+              "sequence": 0,
+              "column_id": 1,
+              "column_name": "brand_name"
+            }
+          ]
+        }
+      ],
+      "row_count": 825,
+      "sample_data": [
+        {
+          "brand_id": 1,
+          "brand_name": "No Brand",
+          "brand_type": "OEM",
+          "created_at": "2025-09-16 03:57:00"
+        },
+        {
+          "brand_id": 2,
+          "brand_name": "Unbranded",
+          "brand_type": "OEM",
+          "created_at": "2025-09-16 03:57:00"
+        },
+        {
+          "brand_id": 3,
+          "brand_name": "Generic",
+          "brand_type": "OEM",
+          "created_at": "2025-09-16 03:57:00"
+        },
+        {
+          "brand_id": 4,
+          "brand_name": "Midori",
+          "brand_type": "International",
+          "created_at": "2025-09-16 03:57:00"
+        },
+        {
+          "brand_id": 5,
+          "brand_name": "Private Label",
+          "brand_type": "OEM",
+          "created_at": "2025-09-16 03:57:00"
+        }
+      ]
+    },
+    {
+      "name": "categories",
+      "columns": [
+        {
+          "column_id": 0,
+          "name": "category_id",
+          "data_type": "INTEGER",
+          "not_null": false,
+          "default_value": null,
+          "primary_key": true
+        },
+        {
+          "column_id": 1,
+          "name": "category_name",
+          "data_type": "TEXT",
+          "not_null": true,
+          "default_value": null,
+          "primary_key": false
+        },
+        {
+          "column_id": 2,
+          "name": "parent_category",
+          "data_type": "TEXT",
+          "not_null": false,
+          "default_value": null,
+          "primary_key": false
+        },
+        {
+          "column_id": 3,
+          "name": "category_level",
+          "data_type": "INTEGER",
+          "not_null": false,
+          "default_value": "1",
+          "primary_key": false
+        },
+        {
+          "column_id": 4,
+          "name": "created_at",
+          "data_type": "TIMESTAMP",
+          "not_null": false,
+          "default_value": "CURRENT_TIMESTAMP",
+          "primary_key": false
+        }
+      ],
+      "foreign_keys": [],
+      "indexes": [
+        {
+          "sequence": 0,
+          "name": "sqlite_autoindex_categories_1",
+          "unique": true,
+          "origin": "u",
+          "partial": false,
+          "columns": [
+            {
+              "sequence": 0,
+              "column_id": 1,
+              "column_name": "category_name"
+            }
+          ]
+        }
+      ],
+      "row_count": 4,
+      "sample_data": [
+        {
+          "category_id": 1,
+          "category_name": "Balo & Vali",
+          "parent_category": null,
+          "category_level": 1,
+          "created_at": "2025-09-16 03:57:00"
+        },
+        {
+          "category_id": 2,
+          "category_name": "Phụ kiện thời trang",
+          "parent_category": null,
+          "category_level": 1,
+          "created_at": "2025-09-16 03:57:00"
+        },
+        {
+          "category_id": 3,
+          "category_name": "Giày dép nam",
+          "parent_category": null,
+          "category_level": 1,
+          "created_at": "2025-09-16 03:57:01"
+        },
+        {
+          "category_id": 4,
+          "category_name": "Túi nam",
+          "parent_category": null,
+          "category_level": 1,
+          "created_at": "2025-09-16 03:57:01"
+        }
+      ]
+    },
+    {
+      "name": "product_pricing",
+      "columns": [
+        {
+          "column_id": 0,
+          "name": "pricing_id",
+          "data_type": "INTEGER",
+          "not_null": false,
+          "default_value": null,
+          "primary_key": true
+        },
+        {
+          "column_id": 1,
+          "name": "product_id",
+          "data_type": "INTEGER",
+          "not_null": true,
+          "default_value": null,
+          "primary_key": false
+        },
+        {
+          "column_id": 2,
+          "name": "original_price",
+          "data_type": "INTEGER",
+          "not_null": false,
+          "default_value": null,
+          "primary_key": false
+        },
+        {
+          "column_id": 3,
+          "name": "current_price",
+          "data_type": "INTEGER",
+          "not_null": false,
+          "default_value": null,
+          "primary_key": false
+        },
+        {
+          "column_id": 4,
+          "name": "fulfillment_type",
+          "data_type": "TEXT",
+          "not_null": false,
+          "default_value": "'dropship'",
+          "primary_key": false
+        },
+        {
+          "column_id": 5,
+          "name": "pay_later",
+          "data_type": "BOOLEAN",
+          "not_null": false,
+          "default_value": "FALSE",
+          "primary_key": false
+        },
+        {
+          "column_id": 6,
+          "name": "vnd_cashback",
+          "data_type": "INTEGER",
+          "not_null": false,
+          "default_value": "0",
+          "primary_key": false
+        },
+        {
+          "column_id": 7,
+          "name": "quantity_sold",
+          "data_type": "INTEGER",
+          "not_null": false,
+          "default_value": "0",
+          "primary_key": false
+        },
+        {
+          "column_id": 8,
+          "name": "last_updated",
+          "data_type": "TIMESTAMP",
+          "not_null": false,
+          "default_value": "CURRENT_TIMESTAMP",
+          "primary_key": false
+        }
+      ],
+      "foreign_keys": [
+        {
+          "id": 0,
+          "sequence": 0,
+          "referenced_table": "products",
+          "from_column": "product_id",
+          "to_column": "product_id",
+          "on_update": "NO ACTION",
+          "on_delete": "NO ACTION",
+          "match": "NONE"
+        }
+      ],
+      "indexes": [],
+      "row_count": 41603,
+      "sample_data": [
+        {
+          "pricing_id": 1,
+          "product_id": 179731375,
+          "original_price": 14250,
+          "current_price": 14250,
+          "fulfillment_type": "dropship",
+          "pay_later": 0,
+          "vnd_cashback": 2120,
+          "quantity_sold": 232,
+          "last_updated": "2025-09-16 03:57:00"
+        },
+        {
+          "pricing_id": 2,
+          "product_id": 249221065,
+          "original_price": 10260,
+          "current_price": 10260,
+          "fulfillment_type": "dropship",
+          "pay_later": 0,
+          "vnd_cashback": 0,
+          "quantity_sold": 347,
+          "last_updated": "2025-09-16 03:57:00"
+        },
+        {
+          "pricing_id": 3,
+          "product_id": 102862196,
+          "original_price": 19999,
+          "current_price": 19999,
+          "fulfillment_type": "dropship",
+          "pay_later": 0,
+          "vnd_cashback": 2255,
+          "quantity_sold": 122,
+          "last_updated": "2025-09-16 03:57:00"
+        },
+        {
+          "pricing_id": 4,
+          "product_id": 115740385,
+          "original_price": 30000,
+          "current_price": 30000,
+          "fulfillment_type": "dropship",
+          "pay_later": 0,
+          "vnd_cashback": 0,
+          "quantity_sold": 98,
+          "last_updated": "2025-09-16 03:57:00"
+        },
+        {
+          "pricing_id": 5,
+          "product_id": 102862375,
+          "original_price": 29000,
+          "current_price": 29000,
+          "fulfillment_type": "dropship",
+          "pay_later": 0,
+          "vnd_cashback": 0,
+          "quantity_sold": 316,
+          "last_updated": "2025-09-16 03:57:00"
+        }
+      ]
+    },
+    {
+      "name": "product_reviews",
+      "columns": [
+        {
+          "column_id": 0,
+          "name": "review_id",
+          "data_type": "INTEGER",
+          "not_null": false,
+          "default_value": null,
+          "primary_key": true
+        },
+        {
+          "column_id": 1,
+          "name": "product_id",
+          "data_type": "INTEGER",
+          "not_null": true,
+          "default_value": null,
+          "primary_key": false
+        },
+        {
+          "column_id": 2,
+          "name": "review_count",
+          "data_type": "INTEGER",
+          "not_null": false,
+          "default_value": "0",
+          "primary_key": false
+        },
+        {
+          "column_id": 3,
+          "name": "rating_average",
+          "data_type": "REAL",
+          "not_null": false,
+          "default_value": "0.0",
+          "primary_key": false
+        },
+        {
+          "column_id": 4,
+          "name": "favourite_count",
+          "data_type": "INTEGER",
+          "not_null": false,
+          "default_value": "0",
+          "primary_key": false
+        },
+        {
+          "column_id": 5,
+          "name": "last_updated",
+          "data_type": "TIMESTAMP",
+          "not_null": false,
+          "default_value": "CURRENT_TIMESTAMP",
+          "primary_key": false
+        }
+      ],
+      "foreign_keys": [
+        {
+          "id": 0,
+          "sequence": 0,
+          "referenced_table": "products",
+          "from_column": "product_id",
+          "to_column": "product_id",
+          "on_update": "NO ACTION",
+          "on_delete": "NO ACTION",
+          "match": "NONE"
+        }
+      ],
+      "indexes": [],
+      "row_count": 41603,
+      "sample_data": [
+        {
+          "review_id": 1,
+          "product_id": 179731375,
+          "review_count": 122,
+          "rating_average": 4.0,
+          "favourite_count": 37,
+          "last_updated": "2025-09-16 03:57:00"
+        },
+        {
+          "review_id": 2,
+          "product_id": 249221065,
+          "review_count": 28,
+          "rating_average": 4.4,
+          "favourite_count": 4,
+          "last_updated": "2025-09-16 03:57:00"
+        },
+        {
+          "review_id": 3,
+          "product_id": 102862196,
+          "review_count": 0,
+          "rating_average": 0.0,
+          "favourite_count": 0,
+          "last_updated": "2025-09-16 03:57:00"
+        },
+        {
+          "review_id": 4,
+          "product_id": 115740385,
+          "review_count": 95,
+          "rating_average": 3.6,
+          "favourite_count": 39,
+          "last_updated": "2025-09-16 03:57:00"
+        },
+        {
+          "review_id": 5,
+          "product_id": 102862375,
+          "review_count": 3,
+          "rating_average": 4.8,
+          "favourite_count": 10,
+          "last_updated": "2025-09-16 03:57:00"
+        }
+      ]
+    },
+    {
+      "name": "products",
+      "columns": [
+        {
+          "column_id": 0,
+          "name": "product_id",
+          "data_type": "INTEGER",
+          "not_null": false,
+          "default_value": null,
+          "primary_key": true
+        },
+        {
+          "column_id": 1,
+          "name": "name",
+          "data_type": "TEXT",
+          "not_null": true,
+          "default_value": null,
+          "primary_key": false
+        },
+        {
+          "column_id": 2,
+          "name": "description",
+          "data_type": "TEXT",
+          "not_null": false,
+          "default_value": null,
+          "primary_key": false
+        },
+        {
+          "column_id": 3,
+          "name": "brand_id",
+          "data_type": "INTEGER",
+          "not_null": false,
+          "default_value": null,
+          "primary_key": false
+        },
+        {
+          "column_id": 4,
+          "name": "category_id",
+          "data_type": "INTEGER",
+          "not_null": false,
+          "default_value": null,
+          "primary_key": false
+        },
+        {
+          "column_id": 5,
+          "name": "seller_id",
+          "data_type": "INTEGER",
+          "not_null": false,
+          "default_value": null,
+          "primary_key": false
+        },
+        {
+          "column_id": 6,
+          "name": "date_created",
+          "data_type": "INTEGER",
+          "not_null": false,
+          "default_value": null,
+          "primary_key": false
+        },
+        {
+          "column_id": 7,
+          "name": "number_of_images",
+          "data_type": "INTEGER",
+          "not_null": false,
+          "default_value": "0",
+          "primary_key": false
+        },
+        {
+          "column_id": 8,
+          "name": "has_video",
+          "data_type": "BOOLEAN",
+          "not_null": false,
+          "default_value": "FALSE",
+          "primary_key": false
+        },
+        {
+          "column_id": 9,
+          "name": "source_file",
+          "data_type": "TEXT",
+          "not_null": true,
+          "default_value": null,
+          "primary_key": false
+        },
+        {
+          "column_id": 10,
+          "name": "created_at",
+          "data_type": "TIMESTAMP",
+          "not_null": false,
+          "default_value": "CURRENT_TIMESTAMP",
+          "primary_key": false
+        }
+      ],
+      "foreign_keys": [
+        {
+          "id": 0,
+          "sequence": 0,
+          "referenced_table": "sellers",
+          "from_column": "seller_id",
+          "to_column": "seller_id",
+          "on_update": "NO ACTION",
+          "on_delete": "NO ACTION",
+          "match": "NONE"
+        },
+        {
+          "id": 1,
+          "sequence": 0,
+          "referenced_table": "categories",
+          "from_column": "category_id",
+          "to_column": "category_id",
+          "on_update": "NO ACTION",
+          "on_delete": "NO ACTION",
+          "match": "NONE"
+        },
+        {
+          "id": 2,
+          "sequence": 0,
+          "referenced_table": "brands",
+          "from_column": "brand_id",
+          "to_column": "brand_id",
+          "on_update": "NO ACTION",
+          "on_delete": "NO ACTION",
+          "match": "NONE"
+        }
+      ],
+      "indexes": [],
+      "row_count": 41576,
+      "sample_data": [
+        {
+          "product_id": 159901,
+          "name": "Bộ Chăm Sóc Giày GoldCare (Bàn Chải + Tuýp Kem) - GC 1006",
+          "description": "Bộ Chăm Sóc Giày GoldCare (Bàn Chải+Tuýp Kem) - GC 1006Bộ Chăm Sóc Giày GoldCare (Bàn Chải+Tuýp Kem) - GC 1006 gồm có 1 tuýp Kem chăm sóc giày GoldCare - GC 1004 và 1 Bàn chải đánh bóng giày GoldCare...",
+          "brand_id": 368,
+          "category_id": 3,
+          "seller_id": 1487,
+          "date_created": 2889,
+          "number_of_images": 2,
+          "has_video": 0,
+          "source_file": "vietnamese_tiki_products_women_shoes.csv",
+          "created_at": "2025-09-16 03:57:03"
+        },
+        {
+          "product_id": 476608,
+          "name": "Cặp Đeo Laptop Mikkor Glamour Mac GM 13\" 004 - Hồng",
+          "description": "Cặp Đeo Laptop Mikkor Glamour Mac GM 13\" 004 - Hồng Cặp Đeo Laptop Mikkor Glamour Mac GM 13\" 004 - Hồng được thiết kế đẹp mắt, trang trí logo Mikkor tinh tế. Cặp có kích thước 22 x 28 x 5 cm với 1 ng...",
+          "brand_id": 105,
+          "category_id": 1,
+          "seller_id": 564,
+          "date_created": 2389,
+          "number_of_images": 9,
+          "has_video": 0,
+          "source_file": "vietnamese_tiki_products_backpacks_suitcases.csv",
+          "created_at": "2025-09-16 03:57:01"
+        },
+        {
+          "product_id": 476610,
+          "name": "Cặp Đeo Laptop Mikkor Glamour Mac GM 13\" 005 - Xanh Ngọc",
+          "description": "Cặp Đeo Laptop Mikkor Glamour Mac GM 13\" 005 - Xanh Ngọc Cặp Đeo Laptop Mikkor Glamour Mac GM 13\" 005 - Xanh Ngọc được thiết kế đẹp mắt với màu xanh ngọc nhẹ nhàng mang đến cho bạn phong cách trẻ tru...",
+          "brand_id": 105,
+          "category_id": 1,
+          "seller_id": 564,
+          "date_created": 738076,
+          "number_of_images": 8,
+          "has_video": 0,
+          "source_file": "vietnamese_tiki_products_backpacks_suitcases.csv",
+          "created_at": "2025-09-16 03:57:01"
+        },
+        {
+          "product_id": 481273,
+          "name": "Cặp Đeo Laptop Editor Briefcase Mikkor EB 002 - Xanh Lá Mạ ",
+          "description": "Cặp Đeo Laptop Editor Briefcase Mikkor EB 002 - Xanh Lá Mạ Cặp Đeo Laptop Editor Briefcase Mikkor EB 002 - Xanh Lá Mạ có màu xanh lá mạ độc đáo tô điểm vẻ cá tính và khác biệt cho phong cách của bạn....",
+          "brand_id": 105,
+          "category_id": 1,
+          "seller_id": 564,
+          "date_created": 2389,
+          "number_of_images": 5,
+          "has_video": 0,
+          "source_file": "vietnamese_tiki_products_backpacks_suitcases.csv",
+          "created_at": "2025-09-16 03:57:01"
+        },
+        {
+          "product_id": 481290,
+          "name": "Cặp Đeo Laptop Editor Briefcase Mikkor EB 008 - Hồng",
+          "description": "Cặp Đeo Laptop Editor Briefcase Mikkor EB 008 - Hồng  Cặp Đeo Laptop Editor Briefcase Mikkor EB 008 - Hồng có màu hồng tươi tắn sẽ khoác lên cho bạn gu thời trang cuốn hút, năng động hơn. Cặp có kích...",
+          "brand_id": 105,
+          "category_id": 1,
+          "seller_id": 564,
+          "date_created": 2389,
+          "number_of_images": 8,
+          "has_video": 0,
+          "source_file": "vietnamese_tiki_products_backpacks_suitcases.csv",
+          "created_at": "2025-09-16 03:57:01"
+        }
+      ]
+    },
+    {
+      "name": "sellers",
+      "columns": [
+        {
+          "column_id": 0,
+          "name": "seller_id",
+          "data_type": "INTEGER",
+          "not_null": false,
+          "default_value": null,
+          "primary_key": true
+        },
+        {
+          "column_id": 1,
+          "name": "seller_name",
+          "data_type": "TEXT",
+          "not_null": true,
+          "default_value": null,
+          "primary_key": false
+        },
+        {
+          "column_id": 2,
+          "name": "seller_type",
+          "data_type": "TEXT",
+          "not_null": false,
+          "default_value": "'dropship'",
+          "primary_key": false
+        },
+        {
+          "column_id": 3,
+          "name": "join_date",
+          "data_type": "TIMESTAMP",
+          "not_null": false,
+          "default_value": "CURRENT_TIMESTAMP",
+          "primary_key": false
+        },
+        {
+          "column_id": 4,
+          "name": "total_products",
+          "data_type": "INTEGER",
+          "not_null": false,
+          "default_value": "0",
+          "primary_key": false
+        }
+      ],
+      "foreign_keys": [],
+      "indexes": [
+        {
+          "sequence": 0,
+          "name": "sqlite_autoindex_sellers_1",
+          "unique": true,
+          "origin": "u",
+          "partial": false,
+          "columns": [
+            {
+              "sequence": 0,
+              "column_id": 1,
+              "column_name": "seller_name"
+            }
+          ]
+        }
+      ],
+      "row_count": 3807,
+      "sample_data": [
+        {
+          "seller_id": 1,
+          "seller_name": "Thiên Ân Balo",
+          "seller_type": "dropship",
+          "join_date": "2025-09-16 03:57:00",
+          "total_products": 77
+        },
+        {
+          "seller_id": 2,
+          "seller_name": "SHOP THỜI TRANG 2N",
+          "seller_type": "dropship",
+          "join_date": "2025-09-16 03:57:00",
+          "total_products": 1
+        },
+        {
+          "seller_id": 3,
+          "seller_name": "Xưởng may balo Đà Nẵng",
+          "seller_type": "dropship",
+          "join_date": "2025-09-16 03:57:00",
+          "total_products": 42
+        },
+        {
+          "seller_id": 4,
+          "seller_name": "BB Outlet",
+          "seller_type": "dropship",
+          "join_date": "2025-09-16 03:57:00",
+          "total_products": 3
+        },
+        {
+          "seller_id": 5,
+          "seller_name": "Mavishop",
+          "seller_type": "dropship",
+          "join_date": "2025-09-16 03:57:00",
+          "total_products": 9
+        }
+      ]
+    }
+  ],
+  "views": [
+    {
+      "name": "products_with_price",
+      "type": "view",
+      "columns": [
+        {
+          "column_id": 0,
+          "name": "product_id",
+          "data_type": "INTEGER",
+          "not_null": false,
+          "default_value": null,
+          "primary_key": false
+        },
+        {
+          "column_id": 1,
+          "name": "name",
+          "data_type": "TEXT",
+          "not_null": false,
+          "default_value": null,
+          "primary_key": false
+        },
+        {
+          "column_id": 2,
+          "name": "description",
+          "data_type": "TEXT",
+          "not_null": false,
+          "default_value": null,
+          "primary_key": false
+        },
+        {
+          "column_id": 3,
+          "name": "brand_id",
+          "data_type": "INTEGER",
+          "not_null": false,
+          "default_value": null,
+          "primary_key": false
+        },
+        {
+          "column_id": 4,
+          "name": "category_id",
+          "data_type": "INTEGER",
+          "not_null": false,
+          "default_value": null,
+          "primary_key": false
+        },
+        {
+          "column_id": 5,
+          "name": "seller_id",
+          "data_type": "INTEGER",
+          "not_null": false,
+          "default_value": null,
+          "primary_key": false
+        },
+        {
+          "column_id": 6,
+          "name": "brand_name",
+          "data_type": "",
+          "not_null": false,
+          "default_value": null,
+          "primary_key": false
+        },
+        {
+          "column_id": 7,
+          "name": "category_name",
+          "data_type": "",
+          "not_null": false,
+          "default_value": null,
+          "primary_key": false
+        },
+        {
+          "column_id": 8,
+          "name": "price",
+          "data_type": "",
+          "not_null": false,
+          "default_value": null,
+          "primary_key": false
+        },
+        {
+          "column_id": 9,
+          "name": "original_price",
+          "data_type": "",
+          "not_null": false,
+          "default_value": null,
+          "primary_key": false
+        },
+        {
+          "column_id": 10,
+          "name": "current_price",
+          "data_type": "",
+          "not_null": false,
+          "default_value": null,
+          "primary_key": false
+        },
+        {
+          "column_id": 11,
+          "name": "quantity_sold",
+          "data_type": "",
+          "not_null": false,
+          "default_value": null,
+          "primary_key": false
+        },
+        {
+          "column_id": 12,
+          "name": "rating_average",
+          "data_type": "",
+          "not_null": false,
+          "default_value": null,
+          "primary_key": false
+        },
+        {
+          "column_id": 13,
+          "name": "review_count",
+          "data_type": "",
+          "not_null": false,
+          "default_value": null,
+          "primary_key": false
+        },
+        {
+          "column_id": 14,
+          "name": "favourite_count",
+          "data_type": "",
+          "not_null": false,
+          "default_value": null,
+          "primary_key": false
+        }
+      ],
+      "definition": "CREATE VIEW products_with_price AS\n        SELECT \n            p.product_id,\n            p.name,\n            p.description,\n            p.brand_id,\n            p.category_id,\n            p.seller_id,\n            COALESCE(b.brand_name, 'Unknown') as brand_name,\n            COALESCE(c.category_name, 'Unknown') as category_name,\n            COALESCE(pr.current_price, 0) as price,\n            COALESCE(pr.original_price, 0) as original_price,\n            COALESCE(pr.current_price, 0) as current_price,\n            COALESCE(pr.quantity_sold, 0) as quantity_sold,\n            COALESCE(r.rating_average, 0) as rating_average,\n            COALESCE(r.review_count, 0) as review_count,\n            COALESCE(r.favourite_count, 0) as favourite_count\n        FROM products p\n        LEFT JOIN brands b ON p.brand_id = b.brand_id\n        LEFT JOIN categories c ON p.category_id = c.category_id\n        LEFT JOIN product_pricing pr ON p.product_id = pr.product_id\n        LEFT JOIN product_reviews r ON p.product_id = r.product_id",
+      "sample_data": [
+        {
+          "product_id": 159901,
+          "name": "Bộ Chăm Sóc Giày GoldCare (Bàn Chải + Tuýp Kem) - GC 1006",
+          "description": "Bộ Chăm Sóc Giày GoldCare (Bàn Chải+Tuýp Kem) - GC 1006Bộ Chăm Sóc Giày GoldCare (Bàn Chải+Tuýp Kem) - GC 1006 gồm có 1 tuýp Kem chăm sóc giày GoldCare - GC 1004 và 1 Bàn chải đánh bóng giày GoldCare...",
+          "brand_id": 368,
+          "category_id": 3,
+          "seller_id": 1487,
+          "brand_name": "GoldCare",
+          "category_name": "Giày dép nam",
+          "price": 206000,
+          "original_price": 206000,
+          "current_price": 206000,
+          "quantity_sold": 25,
+          "rating_average": 3.8,
+          "review_count": 140,
+          "favourite_count": 47
+        },
+        {
+          "product_id": 476608,
+          "name": "Cặp Đeo Laptop Mikkor Glamour Mac GM 13\" 004 - Hồng",
+          "description": "Cặp Đeo Laptop Mikkor Glamour Mac GM 13\" 004 - Hồng Cặp Đeo Laptop Mikkor Glamour Mac GM 13\" 004 - Hồng được thiết kế đẹp mắt, trang trí logo Mikkor tinh tế. Cặp có kích thước 22 x 28 x 5 cm với 1 ng...",
+          "brand_id": 105,
+          "category_id": 1,
+          "seller_id": 564,
+          "brand_name": "Mikkor",
+          "category_name": "Balo & Vali",
+          "price": 221900,
+          "original_price": 221900,
+          "current_price": 221900,
+          "quantity_sold": 1,
+          "rating_average": 5.0,
+          "review_count": 1,
+          "favourite_count": 3
+        },
+        {
+          "product_id": 476610,
+          "name": "Cặp Đeo Laptop Mikkor Glamour Mac GM 13\" 005 - Xanh Ngọc",
+          "description": "Cặp Đeo Laptop Mikkor Glamour Mac GM 13\" 005 - Xanh Ngọc Cặp Đeo Laptop Mikkor Glamour Mac GM 13\" 005 - Xanh Ngọc được thiết kế đẹp mắt với màu xanh ngọc nhẹ nhàng mang đến cho bạn phong cách trẻ tru...",
+          "brand_id": 105,
+          "category_id": 1,
+          "seller_id": 564,
+          "brand_name": "Mikkor",
+          "category_name": "Balo & Vali",
+          "price": 221900,
+          "original_price": 221900,
+          "current_price": 221900,
+          "quantity_sold": 8,
+          "rating_average": 3.6,
+          "review_count": 51,
+          "favourite_count": 15
+        },
+        {
+          "product_id": 481273,
+          "name": "Cặp Đeo Laptop Editor Briefcase Mikkor EB 002 - Xanh Lá Mạ ",
+          "description": "Cặp Đeo Laptop Editor Briefcase Mikkor EB 002 - Xanh Lá Mạ Cặp Đeo Laptop Editor Briefcase Mikkor EB 002 - Xanh Lá Mạ có màu xanh lá mạ độc đáo tô điểm vẻ cá tính và khác biệt cho phong cách của bạn....",
+          "brand_id": 105,
+          "category_id": 1,
+          "seller_id": 564,
+          "brand_name": "Mikkor",
+          "category_name": "Balo & Vali",
+          "price": 299000,
+          "original_price": 299000,
+          "current_price": 299000,
+          "quantity_sold": 3,
+          "rating_average": 5.0,
+          "review_count": 1,
+          "favourite_count": 2
+        },
+        {
+          "product_id": 481290,
+          "name": "Cặp Đeo Laptop Editor Briefcase Mikkor EB 008 - Hồng",
+          "description": "Cặp Đeo Laptop Editor Briefcase Mikkor EB 008 - Hồng  Cặp Đeo Laptop Editor Briefcase Mikkor EB 008 - Hồng có màu hồng tươi tắn sẽ khoác lên cho bạn gu thời trang cuốn hút, năng động hơn. Cặp có kích...",
+          "brand_id": 105,
+          "category_id": 1,
+          "seller_id": 564,
+          "brand_name": "Mikkor",
+          "category_name": "Balo & Vali",
+          "price": 299000,
+          "original_price": 299000,
+          "current_price": 299000,
+          "quantity_sold": 2,
+          "rating_average": 0.0,
+          "review_count": 0,
+          "favourite_count": 0
+        }
+      ]
+    }
+  ],
+  "statistics": {
+    "total_tables": 6,
+    "total_views": 1,
+    "table_names": [
+      "brands",
+      "categories",
+      "product_pricing",
+      "product_reviews",
+      "products",
+      "sellers"
+    ],
+    "view_names": [
+      "products_with_price"
+    ],
+    "total_rows": 129418
+  }
+}

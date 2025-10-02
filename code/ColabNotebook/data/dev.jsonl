@@ -1,0 +1,7 @@
+{"text": "Sản phẩm Samsung có giá bao nhiêu? (variant 4)", "sql": "SELECT name, price FROM product_overview WHERE brand = 'Samsung';", "complexity": "simple"}
+{"text": "Tìm sản phẩm có rating trên 4.5 (variant 4)", "sql": "SELECT * FROM product_overview WHERE rating > 4.5;", "complexity": "simple"}
+{"text": "Thương hiệu nào có nhiều sản phẩm nhất? (variant 4)", "sql": "SELECT brand, COUNT(*) as count FROM product_overview GROUP BY brand ORDER BY count DESC LIMIT 1;", "complexity": "complex"}
+{"text": "Giá trung bình của sản phẩm theo danh mục (variant 4)", "sql": "SELECT category, AVG(price) as avg_price FROM product_overview GROUP BY category;", "complexity": "medium"}
+{"text": "Sản phẩm nào có nhiều review nhất? (variant 4)", "sql": "SELECT * FROM product_overview ORDER BY review_count DESC LIMIT 1;", "complexity": "medium"}
+{"text": "Hiển thị tất cả sản phẩm (variant 5)", "sql": "SELECT * FROM product_overview;", "complexity": "simple"}
+{"text": "Tìm sản phẩm có giá dưới 500000 đồng (variant 5)", "sql": "SELECT * FROM product_overview WHERE price < 500000;", "complexity": "simple"}

@@ -1,0 +1,12 @@
+---
+config:
+  layout: dagre
+---
+flowchart TB
+    Input["Vietnamese Query"] --> S1["Stage 1: Normalization<br>Text cleaning and intent detection"]
+    S1 --> S2["Stage 2: RAG Retrieval<br>Find relevant context from knowledge base"]
+    S2 --> S3["Stage 3: Prompt Composition<br>Assemble context for LLM"]
+    S3 --> S4["Stage 4: LLM Generation<br>Generate SQL with GPT-4o-mini"]
+    S4 --> S5["Stage 5: Post-Processing<br>Clean and normalize SQL output"]
+    S5 --> S6["Stage 6: Validation<br>Verify SQL structure and quality"]
+    S6 --> Output["SQL Output + Metrics"]

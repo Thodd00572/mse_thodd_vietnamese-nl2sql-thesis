@@ -1,0 +1,100 @@
+{"index": 0, "vietnamese": "Tìm áo thun", "english": "Find áo thun", "gold_sql": "SELECT * FROM products WHERE name LIKE '%áo thun%' LIMIT 10;", "complexity": "simple"}
+{"index": 1, "vietnamese": "Hiển thị giày", "english": "Show giày", "gold_sql": "SELECT * FROM products WHERE name LIKE '%giày%' LIMIT 10;", "complexity": "simple"}
+{"index": 2, "vietnamese": "Xem túi xách", "english": "View túi xách", "gold_sql": "SELECT * FROM products WHERE name LIKE '%túi xách%' LIMIT 10;", "complexity": "simple"}
+{"index": 3, "vietnamese": "Liệt kê balo", "english": "List balo", "gold_sql": "SELECT name FROM products WHERE name LIKE '%balo%' LIMIT 10;", "complexity": "simple"}
+{"index": 4, "vietnamese": "Tìm kiếm vali", "english": "Search vali", "gold_sql": "SELECT * FROM products WHERE name LIKE '%vali%' LIMIT 10;", "complexity": "simple"}
+{"index": 5, "vietnamese": "Tìm ví", "english": "Find ví", "gold_sql": "SELECT * FROM products WHERE name LIKE '%ví%' LIMIT 10;", "complexity": "simple"}
+{"index": 6, "vietnamese": "Hiển thị dép", "english": "Show dép", "gold_sql": "SELECT * FROM products WHERE name LIKE '%dép%' LIMIT 10;", "complexity": "simple"}
+{"index": 7, "vietnamese": "Xem nón", "english": "View nón", "gold_sql": "SELECT * FROM products WHERE name LIKE '%nón%' LIMIT 10;", "complexity": "simple"}
+{"index": 8, "vietnamese": "Liệt kê thắt lưng", "english": "List thắt lưng", "gold_sql": "SELECT name FROM products WHERE name LIKE '%thắt lưng%' LIMIT 10;", "complexity": "simple"}
+{"index": 9, "vietnamese": "Tìm kiếm kính", "english": "Search kính", "gold_sql": "SELECT * FROM products WHERE name LIKE '%kính%' LIMIT 10;", "complexity": "simple"}
+{"index": 10, "vietnamese": "Tìm đồng hồ", "english": "Find đồng hồ", "gold_sql": "SELECT * FROM products WHERE name LIKE '%đồng hồ%' LIMIT 10;", "complexity": "simple"}
+{"index": 11, "vietnamese": "Hiển thị vớ", "english": "Show vớ", "gold_sql": "SELECT * FROM products WHERE name LIKE '%vớ%' LIMIT 10;", "complexity": "simple"}
+{"index": 12, "vietnamese": "Xem khăn", "english": "View khăn", "gold_sql": "SELECT * FROM products WHERE name LIKE '%khăn%' LIMIT 10;", "complexity": "simple"}
+{"index": 13, "vietnamese": "Liệt kê găng tay", "english": "List găng tay", "gold_sql": "SELECT name FROM products WHERE name LIKE '%găng tay%' LIMIT 10;", "complexity": "simple"}
+{"index": 14, "vietnamese": "Tìm kiếm áo khoác", "english": "Search áo khoác", "gold_sql": "SELECT * FROM products WHERE name LIKE '%áo khoác%' LIMIT 10;", "complexity": "simple"}
+{"index": 15, "vietnamese": "Tìm quần", "english": "Find quần", "gold_sql": "SELECT * FROM products WHERE name LIKE '%quần%' LIMIT 10;", "complexity": "simple"}
+{"index": 16, "vietnamese": "Hiển thị váy", "english": "Show váy", "gold_sql": "SELECT * FROM products WHERE name LIKE '%váy%' LIMIT 10;", "complexity": "simple"}
+{"index": 17, "vietnamese": "Xem áo sơ mi", "english": "View áo sơ mi", "gold_sql": "SELECT * FROM products WHERE name LIKE '%áo sơ mi%' LIMIT 10;", "complexity": "simple"}
+{"index": 18, "vietnamese": "Liệt kê giày thể thao", "english": "List giày thể thao", "gold_sql": "SELECT name FROM products WHERE name LIKE '%giày thể thao%' LIMIT 10;", "complexity": "simple"}
+{"index": 19, "vietnamese": "Tìm kiếm giày cao gót", "english": "Search giày cao gót", "gold_sql": "SELECT * FROM products WHERE name LIKE '%giày cao gót%' LIMIT 10;", "complexity": "simple"}
+{"index": 20, "vietnamese": "Tìm boot", "english": "Find boot", "gold_sql": "SELECT * FROM products WHERE name LIKE '%boot%' LIMIT 10;", "complexity": "simple"}
+{"index": 21, "vietnamese": "Hiển thị túi đeo chéo", "english": "Show túi đeo chéo", "gold_sql": "SELECT * FROM products WHERE name LIKE '%túi đeo chéo%' LIMIT 10;", "complexity": "simple"}
+{"index": 22, "vietnamese": "Xem cặp sách", "english": "View cặp sách", "gold_sql": "SELECT * FROM products WHERE name LIKE '%cặp sách%' LIMIT 10;", "complexity": "simple"}
+{"index": 23, "vietnamese": "Liệt kê túi laptop", "english": "List túi laptop", "gold_sql": "SELECT name FROM products WHERE name LIKE '%túi laptop%' LIMIT 10;", "complexity": "simple"}
+{"index": 24, "vietnamese": "Tìm kiếm phụ kiện", "english": "Search phụ kiện", "gold_sql": "SELECT * FROM products WHERE name LIKE '%phụ kiện%' LIMIT 10;", "complexity": "simple"}
+{"index": 25, "vietnamese": "Tìm trang sức", "english": "Find trang sức", "gold_sql": "SELECT * FROM products WHERE name LIKE '%trang sức%' LIMIT 10;", "complexity": "simple"}
+{"index": 26, "vietnamese": "Hiển thị mũ lưỡi trai", "english": "Show mũ lưỡi trai", "gold_sql": "SELECT * FROM products WHERE name LIKE '%mũ lưỡi trai%' LIMIT 10;", "complexity": "simple"}
+{"index": 27, "vietnamese": "Xem mũ beret", "english": "View mũ beret", "gold_sql": "SELECT * FROM products WHERE name LIKE '%mũ beret%' LIMIT 10;", "complexity": "simple"}
+{"index": 28, "vietnamese": "Liệt kê áo len", "english": "List áo len", "gold_sql": "SELECT name FROM products WHERE name LIKE '%áo len%' LIMIT 10;", "complexity": "simple"}
+{"index": 29, "vietnamese": "Tìm kiếm hoodie", "english": "Search hoodie", "gold_sql": "SELECT * FROM products WHERE name LIKE '%hoodie%' LIMIT 10;", "complexity": "simple"}
+{"index": 30, "vietnamese": "Tìm quần jean", "english": "Find quần jean", "gold_sql": "SELECT * FROM products WHERE name LIKE '%quần jean%' LIMIT 10;", "complexity": "simple"}
+{"index": 31, "vietnamese": "Hiển thị quần short", "english": "Show quần short", "gold_sql": "SELECT * FROM products WHERE name LIKE '%quần short%' LIMIT 10;", "complexity": "simple"}
+{"index": 32, "vietnamese": "Xem áo polo", "english": "View áo polo", "gold_sql": "SELECT * FROM products WHERE name LIKE '%áo polo%' LIMIT 10;", "complexity": "simple"}
+{"index": 33, "vietnamese": "Liệt kê tank top", "english": "List tank top", "gold_sql": "SELECT name FROM products WHERE name LIKE '%tank top%' LIMIT 10;", "complexity": "simple"}
+{"index": 34, "vietnamese": "Tìm kiếm đầm", "english": "Search đầm", "gold_sql": "SELECT * FROM products WHERE name LIKE '%đầm%' LIMIT 10;", "complexity": "simple"}
+{"index": 35, "vietnamese": "Tìm chân váy", "english": "Find chân váy", "gold_sql": "SELECT * FROM products WHERE name LIKE '%chân váy%' LIMIT 10;", "complexity": "simple"}
+{"index": 36, "vietnamese": "Hiển thị blazer", "english": "Show blazer", "gold_sql": "SELECT * FROM products WHERE name LIKE '%blazer%' LIMIT 10;", "complexity": "simple"}
+{"index": 37, "vietnamese": "Xem vest", "english": "View vest", "gold_sql": "SELECT * FROM products WHERE name LIKE '%vest%' LIMIT 10;", "complexity": "simple"}
+{"index": 38, "vietnamese": "Liệt kê đồ lót", "english": "List đồ lót", "gold_sql": "SELECT name FROM products WHERE name LIKE '%đồ lót%' LIMIT 10;", "complexity": "simple"}
+{"index": 39, "vietnamese": "Tìm kiếm đồ ngủ", "english": "Search đồ ngủ", "gold_sql": "SELECT * FROM products WHERE name LIKE '%đồ ngủ%' LIMIT 10;", "complexity": "simple"}
+{"index": 40, "vietnamese": "Tìm đồ bơi", "english": "Find đồ bơi", "gold_sql": "SELECT * FROM products WHERE name LIKE '%đồ bơi%' LIMIT 10;", "complexity": "simple"}
+{"index": 41, "vietnamese": "Hiển thị áo cardigan", "english": "Show áo cardigan", "gold_sql": "SELECT * FROM products WHERE name LIKE '%áo cardigan%' LIMIT 10;", "complexity": "simple"}
+{"index": 42, "vietnamese": "Xem áo croptop", "english": "View áo croptop", "gold_sql": "SELECT * FROM products WHERE name LIKE '%áo croptop%' LIMIT 10;", "complexity": "simple"}
+{"index": 43, "vietnamese": "Liệt kê áo bomber", "english": "List áo bomber", "gold_sql": "SELECT name FROM products WHERE name LIKE '%áo bomber%' LIMIT 10;", "complexity": "simple"}
+{"index": 44, "vietnamese": "Tìm kiếm áo denim", "english": "Search áo denim", "gold_sql": "SELECT * FROM products WHERE name LIKE '%áo denim%' LIMIT 10;", "complexity": "simple"}
+{"index": 45, "vietnamese": "Tìm áo flannel", "english": "Find áo flannel", "gold_sql": "SELECT * FROM products WHERE name LIKE '%áo flannel%' LIMIT 10;", "complexity": "simple"}
+{"index": 46, "vietnamese": "Hiển thị áo kimono", "english": "Show áo kimono", "gold_sql": "SELECT * FROM products WHERE name LIKE '%áo kimono%' LIMIT 10;", "complexity": "simple"}
+{"index": 47, "vietnamese": "Xem quần tây", "english": "View quần tây", "gold_sql": "SELECT * FROM products WHERE name LIKE '%quần tây%' LIMIT 10;", "complexity": "simple"}
+{"index": 48, "vietnamese": "Liệt kê quần baggy", "english": "List quần baggy", "gold_sql": "SELECT name FROM products WHERE name LIKE '%quần baggy%' LIMIT 10;", "complexity": "simple"}
+{"index": 49, "vietnamese": "Tìm kiếm quần cargo", "english": "Search quần cargo", "gold_sql": "SELECT * FROM products WHERE name LIKE '%quần cargo%' LIMIT 10;", "complexity": "simple"}
+{"index": 50, "vietnamese": "Tìm quần legging", "english": "Find quần legging", "gold_sql": "SELECT * FROM products WHERE name LIKE '%quần legging%' LIMIT 10;", "complexity": "simple"}
+{"index": 51, "vietnamese": "Hiển thị quần culottes", "english": "Show quần culottes", "gold_sql": "SELECT * FROM products WHERE name LIKE '%quần culottes%' LIMIT 10;", "complexity": "simple"}
+{"index": 52, "vietnamese": "Xem quần palazzo", "english": "View quần palazzo", "gold_sql": "SELECT * FROM products WHERE name LIKE '%quần palazzo%' LIMIT 10;", "complexity": "simple"}
+{"index": 53, "vietnamese": "Liệt kê váy midi", "english": "List váy midi", "gold_sql": "SELECT name FROM products WHERE name LIKE '%váy midi%' LIMIT 10;", "complexity": "simple"}
+{"index": 54, "vietnamese": "Tìm kiếm váy mini", "english": "Search váy mini", "gold_sql": "SELECT * FROM products WHERE name LIKE '%váy mini%' LIMIT 10;", "complexity": "simple"}
+{"index": 55, "vietnamese": "Tìm váy maxi", "english": "Find váy maxi", "gold_sql": "SELECT * FROM products WHERE name LIKE '%váy maxi%' LIMIT 10;", "complexity": "simple"}
+{"index": 56, "vietnamese": "Hiển thị váy bodycon", "english": "Show váy bodycon", "gold_sql": "SELECT * FROM products WHERE name LIKE '%váy bodycon%' LIMIT 10;", "complexity": "simple"}
+{"index": 57, "vietnamese": "Xem váy swing", "english": "View váy swing", "gold_sql": "SELECT * FROM products WHERE name LIKE '%váy swing%' LIMIT 10;", "complexity": "simple"}
+{"index": 58, "vietnamese": "Liệt kê váy wrap", "english": "List váy wrap", "gold_sql": "SELECT name FROM products WHERE name LIKE '%váy wrap%' LIMIT 10;", "complexity": "simple"}
+{"index": 59, "vietnamese": "Tìm kiếm giày oxford", "english": "Search giày oxford", "gold_sql": "SELECT * FROM products WHERE name LIKE '%giày oxford%' LIMIT 10;", "complexity": "simple"}
+{"index": 60, "vietnamese": "Tìm giày loafer", "english": "Find giày loafer", "gold_sql": "SELECT * FROM products WHERE name LIKE '%giày loafer%' LIMIT 10;", "complexity": "simple"}
+{"index": 61, "vietnamese": "Hiển thị giày moccasin", "english": "Show giày moccasin", "gold_sql": "SELECT * FROM products WHERE name LIKE '%giày moccasin%' LIMIT 10;", "complexity": "simple"}
+{"index": 62, "vietnamese": "Xem giày slip-on", "english": "View giày slip-on", "gold_sql": "SELECT * FROM products WHERE name LIKE '%giày slip-on%' LIMIT 10;", "complexity": "simple"}
+{"index": 63, "vietnamese": "Liệt kê giày combat", "english": "List giày combat", "gold_sql": "SELECT name FROM products WHERE name LIKE '%giày combat%' LIMIT 10;", "complexity": "simple"}
+{"index": 64, "vietnamese": "Tìm kiếm giày chelsea", "english": "Search giày chelsea", "gold_sql": "SELECT * FROM products WHERE name LIKE '%giày chelsea%' LIMIT 10;", "complexity": "simple"}
+{"index": 65, "vietnamese": "Tìm túi clutch", "english": "Find túi clutch", "gold_sql": "SELECT * FROM products WHERE name LIKE '%túi clutch%' LIMIT 10;", "complexity": "simple"}
+{"index": 66, "vietnamese": "Hiển thị túi tote", "english": "Show túi tote", "gold_sql": "SELECT * FROM products WHERE name LIKE '%túi tote%' LIMIT 10;", "complexity": "simple"}
+{"index": 67, "vietnamese": "Xem túi bucket", "english": "View túi bucket", "gold_sql": "SELECT * FROM products WHERE name LIKE '%túi bucket%' LIMIT 10;", "complexity": "simple"}
+{"index": 68, "vietnamese": "Liệt kê túi saddle", "english": "List túi saddle", "gold_sql": "SELECT name FROM products WHERE name LIKE '%túi saddle%' LIMIT 10;", "complexity": "simple"}
+{"index": 69, "vietnamese": "Tìm kiếm túi hobo", "english": "Search túi hobo", "gold_sql": "SELECT * FROM products WHERE name LIKE '%túi hobo%' LIMIT 10;", "complexity": "simple"}
+{"index": 70, "vietnamese": "Tìm túi messenger", "english": "Find túi messenger", "gold_sql": "SELECT * FROM products WHERE name LIKE '%túi messenger%' LIMIT 10;", "complexity": "simple"}
+{"index": 71, "vietnamese": "Hiển thị mũ fedora", "english": "Show mũ fedora", "gold_sql": "SELECT * FROM products WHERE name LIKE '%mũ fedora%' LIMIT 10;", "complexity": "simple"}
+{"index": 72, "vietnamese": "Xem mũ bucket", "english": "View mũ bucket", "gold_sql": "SELECT * FROM products WHERE name LIKE '%mũ bucket%' LIMIT 10;", "complexity": "simple"}
+{"index": 73, "vietnamese": "Liệt kê mũ panama", "english": "List mũ panama", "gold_sql": "SELECT name FROM products WHERE name LIKE '%mũ panama%' LIMIT 10;", "complexity": "simple"}
+{"index": 74, "vietnamese": "Tìm kiếm mũ newsboy", "english": "Search mũ newsboy", "gold_sql": "SELECT * FROM products WHERE name LIKE '%mũ newsboy%' LIMIT 10;", "complexity": "simple"}
+{"index": 75, "vietnamese": "Tìm mũ trucker", "english": "Find mũ trucker", "gold_sql": "SELECT * FROM products WHERE name LIKE '%mũ trucker%' LIMIT 10;", "complexity": "simple"}
+{"index": 76, "vietnamese": "Hiển thị mũ beanie", "english": "Show mũ beanie", "gold_sql": "SELECT * FROM products WHERE name LIKE '%mũ beanie%' LIMIT 10;", "complexity": "simple"}
+{"index": 77, "vietnamese": "Xem kính cận", "english": "View kính cận", "gold_sql": "SELECT * FROM products WHERE name LIKE '%kính cận%' LIMIT 10;", "complexity": "simple"}
+{"index": 78, "vietnamese": "Liệt kê kính mát", "english": "List kính mát", "gold_sql": "SELECT name FROM products WHERE name LIKE '%kính mát%' LIMIT 10;", "complexity": "simple"}
+{"index": 79, "vietnamese": "Tìm kiếm kính gọng tròn", "english": "Search kính gọng tròn", "gold_sql": "SELECT * FROM products WHERE name LIKE '%kính gọng tròn%' LIMIT 10;", "complexity": "simple"}
+{"index": 80, "vietnamese": "Tìm tất cả sản phẩm", "english": "Find all products", "gold_sql": "SELECT * FROM products LIMIT 10;", "complexity": "simple"}
+{"index": 81, "vietnamese": "Hiển thị tên sản phẩm", "english": "Show product names", "gold_sql": "SELECT name FROM products LIMIT 10;", "complexity": "simple"}
+{"index": 82, "vietnamese": "Đếm số sản phẩm", "english": "Count products", "gold_sql": "SELECT COUNT(*) as total_products FROM products;", "complexity": "simple"}
+{"index": 83, "vietnamese": "Xem danh sách thương hiệu", "english": "View brand list", "gold_sql": "SELECT DISTINCT brand_name FROM brands;", "complexity": "simple"}
+{"index": 84, "vietnamese": "Hiển thị danh mục", "english": "Show categories", "gold_sql": "SELECT category_name FROM categories;", "complexity": "simple"}
+{"index": 85, "vietnamese": "Tìm sản phẩm đầu tiên", "english": "Find first product", "gold_sql": "SELECT * FROM products ORDER BY product_id LIMIT 1;", "complexity": "simple"}
+{"index": 86, "vietnamese": "Xem 5 sản phẩm", "english": "View 5 products", "gold_sql": "SELECT * FROM products LIMIT 5;", "complexity": "simple"}
+{"index": 87, "vietnamese": "Hiển thị tên và giá", "english": "Show name and price", "gold_sql": "SELECT p.name, pr.current_price FROM products p JOIN product_pricing pr ON p.product_id = pr.product_id LIMIT 10;", "complexity": "simple"}
+{"index": 88, "vietnamese": "Đếm thương hiệu", "english": "Count brands", "gold_sql": "SELECT COUNT(*) as total_brands FROM brands;", "complexity": "simple"}
+{"index": 89, "vietnamese": "Xem người bán", "english": "View sellers", "gold_sql": "SELECT seller_name FROM sellers LIMIT 10;", "complexity": "simple"}
+{"index": 90, "vietnamese": "Xem 10 sản phẩm", "english": "View 10 products", "gold_sql": "SELECT * FROM products LIMIT 10;", "complexity": "simple"}
+{"index": 91, "vietnamese": "Xem 20 sản phẩm", "english": "View 20 products", "gold_sql": "SELECT * FROM products LIMIT 20;", "complexity": "simple"}
+{"index": 92, "vietnamese": "Sản phẩm mới nhất", "english": "Latest products", "gold_sql": "SELECT * FROM products ORDER BY product_id DESC LIMIT 10;", "complexity": "simple"}
+{"index": 93, "vietnamese": "Sản phẩm cũ nhất", "english": "Oldest products", "gold_sql": "SELECT * FROM products ORDER BY product_id ASC LIMIT 10;", "complexity": "simple"}
+{"index": 94, "vietnamese": "Danh sách tất cả danh mục", "english": "List all categories", "gold_sql": "SELECT * FROM categories;", "complexity": "simple"}
+{"index": 95, "vietnamese": "Danh sách tất cả thương hiệu", "english": "List all brands", "gold_sql": "SELECT * FROM brands;", "complexity": "simple"}
+{"index": 96, "vietnamese": "Danh sách người bán", "english": "List sellers", "gold_sql": "SELECT * FROM sellers LIMIT 10;", "complexity": "simple"}
+{"index": 97, "vietnamese": "Tổng số danh mục", "english": "Total categories", "gold_sql": "SELECT COUNT(*) as total FROM categories;", "complexity": "simple"}
+{"index": 98, "vietnamese": "Tổng số người bán", "english": "Total sellers", "gold_sql": "SELECT COUNT(*) as total FROM sellers;", "complexity": "simple"}
+{"index": 99, "vietnamese": "Sản phẩm có hình ảnh", "english": "Products with images", "gold_sql": "SELECT * FROM products WHERE number_of_images > 0 LIMIT 10;", "complexity": "simple"}

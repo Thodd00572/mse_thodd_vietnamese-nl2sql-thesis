@@ -1,0 +1,13 @@
+---
+config:
+  layout: elk
+---
+flowchart LR
+    Input["Vietnamese Query"] --> RAG["RAG Engine<br>Vanna + Vector Search"]
+    KB[("Knowledge Base<br>ChromaDB<br>Embeddings + Schema + Rules")] --> RAG
+    RAG --> LLM["LLM<br>GPT-4o-mini"]
+    LLM --> SQL["Generated SQL Queries"]
+    SQL --> Process["SQL Post-Processing<br>Normalize + Validate"]
+    Process --> DB[("Evaluate with SQLite Database<br>~40k Products")]
+    DB --> Output["Result Metrics"]
+

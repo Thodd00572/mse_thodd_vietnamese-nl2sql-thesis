@@ -1,0 +1,2136 @@
+{
+  "metadata": {
+    "title": "Vietnamese NL2SQL Sample Queries Dataset - Complete",
+    "description": "Complete structured sample queries for Vietnamese to SQL translation testing based on normalized Tiki database schema",
+    "version": "2.0.0",
+    "created_date": "2025-09-22",
+    "total_queries": 300,
+    "categories": {
+      "simple": 100,
+      "medium": 100,
+      "complex": 100
+    },
+    "database_schema": {
+      "tables": [
+        "products",
+        "brands",
+        "categories",
+        "sellers",
+        "product_pricing",
+        "product_reviews"
+      ],
+      "relationships": "Normalized schema with proper foreign key relationships for complex JOIN operations"
+    },
+    "structure": {
+      "simple": "Basic product searches, single table queries, basic filtering",
+      "medium": "Brand/category searches with JOINs, price filtering, rating filters",
+      "complex": "Multi-table JOINs, aggregations, rankings, market analysis, statistical queries"
+    }
+  },
+  "simple": [
+    {
+      "id": "simple_001",
+      "vietnamese": "Tìm áo thun",
+      "english": "Find áo thun",
+      "sql": "SELECT * FROM products WHERE name LIKE '%áo thun%' LIMIT 10;",
+      "complexity": "simple"
+    },
+    {
+      "id": "simple_002",
+      "vietnamese": "Hiển thị giày",
+      "english": "Show giày",
+      "sql": "SELECT * FROM products WHERE name LIKE '%giày%' LIMIT 10;",
+      "complexity": "simple"
+    },
+    {
+      "id": "simple_003",
+      "vietnamese": "Xem túi xách",
+      "english": "View túi xách",
+      "sql": "SELECT * FROM products WHERE name LIKE '%túi xách%' LIMIT 10;",
+      "complexity": "simple"
+    },
+    {
+      "id": "simple_004",
+      "vietnamese": "Liệt kê balo",
+      "english": "List balo",
+      "sql": "SELECT name FROM products WHERE name LIKE '%balo%' LIMIT 10;",
+      "complexity": "simple"
+    },
+    {
+      "id": "simple_005",
+      "vietnamese": "Tìm kiếm vali",
+      "english": "Search vali",
+      "sql": "SELECT * FROM products WHERE name LIKE '%vali%' LIMIT 10;",
+      "complexity": "simple"
+    },
+    {
+      "id": "simple_006",
+      "vietnamese": "Tìm ví",
+      "english": "Find ví",
+      "sql": "SELECT * FROM products WHERE name LIKE '%ví%' LIMIT 10;",
+      "complexity": "simple"
+    },
+    {
+      "id": "simple_007",
+      "vietnamese": "Hiển thị dép",
+      "english": "Show dép",
+      "sql": "SELECT * FROM products WHERE name LIKE '%dép%' LIMIT 10;",
+      "complexity": "simple"
+    },
+    {
+      "id": "simple_008",
+      "vietnamese": "Xem nón",
+      "english": "View nón",
+      "sql": "SELECT * FROM products WHERE name LIKE '%nón%' LIMIT 10;",
+      "complexity": "simple"
+    },
+    {
+      "id": "simple_009",
+      "vietnamese": "Liệt kê thắt lưng",
+      "english": "List thắt lưng",
+      "sql": "SELECT name FROM products WHERE name LIKE '%thắt lưng%' LIMIT 10;",
+      "complexity": "simple"
+    },
+    {
+      "id": "simple_010",
+      "vietnamese": "Tìm kiếm kính",
+      "english": "Search kính",
+      "sql": "SELECT * FROM products WHERE name LIKE '%kính%' LIMIT 10;",
+      "complexity": "simple"
+    },
+    {
+      "id": "simple_011",
+      "vietnamese": "Tìm đồng hồ",
+      "english": "Find đồng hồ",
+      "sql": "SELECT * FROM products WHERE name LIKE '%đồng hồ%' LIMIT 10;",
+      "complexity": "simple"
+    },
+    {
+      "id": "simple_012",
+      "vietnamese": "Hiển thị vớ",
+      "english": "Show vớ",
+      "sql": "SELECT * FROM products WHERE name LIKE '%vớ%' LIMIT 10;",
+      "complexity": "simple"
+    },
+    {
+      "id": "simple_013",
+      "vietnamese": "Xem khăn",
+      "english": "View khăn",
+      "sql": "SELECT * FROM products WHERE name LIKE '%khăn%' LIMIT 10;",
+      "complexity": "simple"
+    },
+    {
+      "id": "simple_014",
+      "vietnamese": "Liệt kê găng tay",
+      "english": "List găng tay",
+      "sql": "SELECT name FROM products WHERE name LIKE '%găng tay%' LIMIT 10;",
+      "complexity": "simple"
+    },
+    {
+      "id": "simple_015",
+      "vietnamese": "Tìm kiếm áo khoác",
+      "english": "Search áo khoác",
+      "sql": "SELECT * FROM products WHERE name LIKE '%áo khoác%' LIMIT 10;",
+      "complexity": "simple"
+    },
+    {
+      "id": "simple_016",
+      "vietnamese": "Tìm quần",
+      "english": "Find quần",
+      "sql": "SELECT * FROM products WHERE name LIKE '%quần%' LIMIT 10;",
+      "complexity": "simple"
+    },
+    {
+      "id": "simple_017",
+      "vietnamese": "Hiển thị váy",
+      "english": "Show váy",
+      "sql": "SELECT * FROM products WHERE name LIKE '%váy%' LIMIT 10;",
+      "complexity": "simple"
+    },
+    {
+      "id": "simple_018",
+      "vietnamese": "Xem áo sơ mi",
+      "english": "View áo sơ mi",
+      "sql": "SELECT * FROM products WHERE name LIKE '%áo sơ mi%' LIMIT 10;",
+      "complexity": "simple"
+    },
+    {
+      "id": "simple_019",
+      "vietnamese": "Liệt kê giày thể thao",
+      "english": "List giày thể thao",
+      "sql": "SELECT name FROM products WHERE name LIKE '%giày thể thao%' LIMIT 10;",
+      "complexity": "simple"
+    },
+    {
+      "id": "simple_020",
+      "vietnamese": "Tìm kiếm giày cao gót",
+      "english": "Search giày cao gót",
+      "sql": "SELECT * FROM products WHERE name LIKE '%giày cao gót%' LIMIT 10;",
+      "complexity": "simple"
+    },
+    {
+      "id": "simple_021",
+      "vietnamese": "Tìm boot",
+      "english": "Find boot",
+      "sql": "SELECT * FROM products WHERE name LIKE '%boot%' LIMIT 10;",
+      "complexity": "simple"
+    },
+    {
+      "id": "simple_022",
+      "vietnamese": "Hiển thị túi đeo chéo",
+      "english": "Show túi đeo chéo",
+      "sql": "SELECT * FROM products WHERE name LIKE '%túi đeo chéo%' LIMIT 10;",
+      "complexity": "simple"
+    },
+    {
+      "id": "simple_023",
+      "vietnamese": "Xem cặp sách",
+      "english": "View cặp sách",
+      "sql": "SELECT * FROM products WHERE name LIKE '%cặp sách%' LIMIT 10;",
+      "complexity": "simple"
+    },
+    {
+      "id": "simple_024",
+      "vietnamese": "Liệt kê túi laptop",
+      "english": "List túi laptop",
+      "sql": "SELECT name FROM products WHERE name LIKE '%túi laptop%' LIMIT 10;",
+      "complexity": "simple"
+    },
+    {
+      "id": "simple_025",
+      "vietnamese": "Tìm kiếm phụ kiện",
+      "english": "Search phụ kiện",
+      "sql": "SELECT * FROM products WHERE name LIKE '%phụ kiện%' LIMIT 10;",
+      "complexity": "simple"
+    },
+    {
+      "id": "simple_026",
+      "vietnamese": "Tìm trang sức",
+      "english": "Find trang sức",
+      "sql": "SELECT * FROM products WHERE name LIKE '%trang sức%' LIMIT 10;",
+      "complexity": "simple"
+    },
+    {
+      "id": "simple_027",
+      "vietnamese": "Hiển thị mũ lưỡi trai",
+      "english": "Show mũ lưỡi trai",
+      "sql": "SELECT * FROM products WHERE name LIKE '%mũ lưỡi trai%' LIMIT 10;",
+      "complexity": "simple"
+    },
+    {
+      "id": "simple_028",
+      "vietnamese": "Xem mũ beret",
+      "english": "View mũ beret",
+      "sql": "SELECT * FROM products WHERE name LIKE '%mũ beret%' LIMIT 10;",
+      "complexity": "simple"
+    },
+    {
+      "id": "simple_029",
+      "vietnamese": "Liệt kê áo len",
+      "english": "List áo len",
+      "sql": "SELECT name FROM products WHERE name LIKE '%áo len%' LIMIT 10;",
+      "complexity": "simple"
+    },
+    {
+      "id": "simple_030",
+      "vietnamese": "Tìm kiếm hoodie",
+      "english": "Search hoodie",
+      "sql": "SELECT * FROM products WHERE name LIKE '%hoodie%' LIMIT 10;",
+      "complexity": "simple"
+    },
+    {
+      "id": "simple_031",
+      "vietnamese": "Tìm quần jean",
+      "english": "Find quần jean",
+      "sql": "SELECT * FROM products WHERE name LIKE '%quần jean%' LIMIT 10;",
+      "complexity": "simple"
+    },
+    {
+      "id": "simple_032",
+      "vietnamese": "Hiển thị quần short",
+      "english": "Show quần short",
+      "sql": "SELECT * FROM products WHERE name LIKE '%quần short%' LIMIT 10;",
+      "complexity": "simple"
+    },
+    {
+      "id": "simple_033",
+      "vietnamese": "Xem áo polo",
+      "english": "View áo polo",
+      "sql": "SELECT * FROM products WHERE name LIKE '%áo polo%' LIMIT 10;",
+      "complexity": "simple"
+    },
+    {
+      "id": "simple_034",
+      "vietnamese": "Liệt kê tank top",
+      "english": "List tank top",
+      "sql": "SELECT name FROM products WHERE name LIKE '%tank top%' LIMIT 10;",
+      "complexity": "simple"
+    },
+    {
+      "id": "simple_035",
+      "vietnamese": "Tìm kiếm đầm",
+      "english": "Search đầm",
+      "sql": "SELECT * FROM products WHERE name LIKE '%đầm%' LIMIT 10;",
+      "complexity": "simple"
+    },
+    {
+      "id": "simple_036",
+      "vietnamese": "Tìm chân váy",
+      "english": "Find chân váy",
+      "sql": "SELECT * FROM products WHERE name LIKE '%chân váy%' LIMIT 10;",
+      "complexity": "simple"
+    },
+    {
+      "id": "simple_037",
+      "vietnamese": "Hiển thị blazer",
+      "english": "Show blazer",
+      "sql": "SELECT * FROM products WHERE name LIKE '%blazer%' LIMIT 10;",
+      "complexity": "simple"
+    },
+    {
+      "id": "simple_038",
+      "vietnamese": "Xem vest",
+      "english": "View vest",
+      "sql": "SELECT * FROM products WHERE name LIKE '%vest%' LIMIT 10;",
+      "complexity": "simple"
+    },
+    {
+      "id": "simple_039",
+      "vietnamese": "Liệt kê đồ lót",
+      "english": "List đồ lót",
+      "sql": "SELECT name FROM products WHERE name LIKE '%đồ lót%' LIMIT 10;",
+      "complexity": "simple"
+    },
+    {
+      "id": "simple_040",
+      "vietnamese": "Tìm kiếm đồ ngủ",
+      "english": "Search đồ ngủ",
+      "sql": "SELECT * FROM products WHERE name LIKE '%đồ ngủ%' LIMIT 10;",
+      "complexity": "simple"
+    },
+    {
+      "id": "simple_041",
+      "vietnamese": "Tìm đồ bơi",
+      "english": "Find đồ bơi",
+      "sql": "SELECT * FROM products WHERE name LIKE '%đồ bơi%' LIMIT 10;",
+      "complexity": "simple"
+    },
+    {
+      "id": "simple_042",
+      "vietnamese": "Hiển thị áo cardigan",
+      "english": "Show áo cardigan",
+      "sql": "SELECT * FROM products WHERE name LIKE '%áo cardigan%' LIMIT 10;",
+      "complexity": "simple"
+    },
+    {
+      "id": "simple_043",
+      "vietnamese": "Xem áo croptop",
+      "english": "View áo croptop",
+      "sql": "SELECT * FROM products WHERE name LIKE '%áo croptop%' LIMIT 10;",
+      "complexity": "simple"
+    },
+    {
+      "id": "simple_044",
+      "vietnamese": "Liệt kê áo bomber",
+      "english": "List áo bomber",
+      "sql": "SELECT name FROM products WHERE name LIKE '%áo bomber%' LIMIT 10;",
+      "complexity": "simple"
+    },
+    {
+      "id": "simple_045",
+      "vietnamese": "Tìm kiếm áo denim",
+      "english": "Search áo denim",
+      "sql": "SELECT * FROM products WHERE name LIKE '%áo denim%' LIMIT 10;",
+      "complexity": "simple"
+    },
+    {
+      "id": "simple_046",
+      "vietnamese": "Tìm áo flannel",
+      "english": "Find áo flannel",
+      "sql": "SELECT * FROM products WHERE name LIKE '%áo flannel%' LIMIT 10;",
+      "complexity": "simple"
+    },
+    {
+      "id": "simple_047",
+      "vietnamese": "Hiển thị áo kimono",
+      "english": "Show áo kimono",
+      "sql": "SELECT * FROM products WHERE name LIKE '%áo kimono%' LIMIT 10;",
+      "complexity": "simple"
+    },
+    {
+      "id": "simple_048",
+      "vietnamese": "Xem quần tây",
+      "english": "View quần tây",
+      "sql": "SELECT * FROM products WHERE name LIKE '%quần tây%' LIMIT 10;",
+      "complexity": "simple"
+    },
+    {
+      "id": "simple_049",
+      "vietnamese": "Liệt kê quần baggy",
+      "english": "List quần baggy",
+      "sql": "SELECT name FROM products WHERE name LIKE '%quần baggy%' LIMIT 10;",
+      "complexity": "simple"
+    },
+    {
+      "id": "simple_050",
+      "vietnamese": "Tìm kiếm quần cargo",
+      "english": "Search quần cargo",
+      "sql": "SELECT * FROM products WHERE name LIKE '%quần cargo%' LIMIT 10;",
+      "complexity": "simple"
+    },
+    {
+      "id": "simple_051",
+      "vietnamese": "Tìm quần legging",
+      "english": "Find quần legging",
+      "sql": "SELECT * FROM products WHERE name LIKE '%quần legging%' LIMIT 10;",
+      "complexity": "simple"
+    },
+    {
+      "id": "simple_052",
+      "vietnamese": "Hiển thị quần culottes",
+      "english": "Show quần culottes",
+      "sql": "SELECT * FROM products WHERE name LIKE '%quần culottes%' LIMIT 10;",
+      "complexity": "simple"
+    },
+    {
+      "id": "simple_053",
+      "vietnamese": "Xem quần palazzo",
+      "english": "View quần palazzo",
+      "sql": "SELECT * FROM products WHERE name LIKE '%quần palazzo%' LIMIT 10;",
+      "complexity": "simple"
+    },
+    {
+      "id": "simple_054",
+      "vietnamese": "Liệt kê váy midi",
+      "english": "List váy midi",
+      "sql": "SELECT name FROM products WHERE name LIKE '%váy midi%' LIMIT 10;",
+      "complexity": "simple"
+    },
+    {
+      "id": "simple_055",
+      "vietnamese": "Tìm kiếm váy mini",
+      "english": "Search váy mini",
+      "sql": "SELECT * FROM products WHERE name LIKE '%váy mini%' LIMIT 10;",
+      "complexity": "simple"
+    },
+    {
+      "id": "simple_056",
+      "vietnamese": "Tìm váy maxi",
+      "english": "Find váy maxi",
+      "sql": "SELECT * FROM products WHERE name LIKE '%váy maxi%' LIMIT 10;",
+      "complexity": "simple"
+    },
+    {
+      "id": "simple_057",
+      "vietnamese": "Hiển thị váy bodycon",
+      "english": "Show váy bodycon",
+      "sql": "SELECT * FROM products WHERE name LIKE '%váy bodycon%' LIMIT 10;",
+      "complexity": "simple"
+    },
+    {
+      "id": "simple_058",
+      "vietnamese": "Xem váy swing",
+      "english": "View váy swing",
+      "sql": "SELECT * FROM products WHERE name LIKE '%váy swing%' LIMIT 10;",
+      "complexity": "simple"
+    },
+    {
+      "id": "simple_059",
+      "vietnamese": "Liệt kê váy wrap",
+      "english": "List váy wrap",
+      "sql": "SELECT name FROM products WHERE name LIKE '%váy wrap%' LIMIT 10;",
+      "complexity": "simple"
+    },
+    {
+      "id": "simple_060",
+      "vietnamese": "Tìm kiếm giày oxford",
+      "english": "Search giày oxford",
+      "sql": "SELECT * FROM products WHERE name LIKE '%giày oxford%' LIMIT 10;",
+      "complexity": "simple"
+    },
+    {
+      "id": "simple_061",
+      "vietnamese": "Tìm giày loafer",
+      "english": "Find giày loafer",
+      "sql": "SELECT * FROM products WHERE name LIKE '%giày loafer%' LIMIT 10;",
+      "complexity": "simple"
+    },
+    {
+      "id": "simple_062",
+      "vietnamese": "Hiển thị giày moccasin",
+      "english": "Show giày moccasin",
+      "sql": "SELECT * FROM products WHERE name LIKE '%giày moccasin%' LIMIT 10;",
+      "complexity": "simple"
+    },
+    {
+      "id": "simple_063",
+      "vietnamese": "Xem giày slip-on",
+      "english": "View giày slip-on",
+      "sql": "SELECT * FROM products WHERE name LIKE '%giày slip-on%' LIMIT 10;",
+      "complexity": "simple"
+    },
+    {
+      "id": "simple_064",
+      "vietnamese": "Liệt kê giày combat",
+      "english": "List giày combat",
+      "sql": "SELECT name FROM products WHERE name LIKE '%giày combat%' LIMIT 10;",
+      "complexity": "simple"
+    },
+    {
+      "id": "simple_065",
+      "vietnamese": "Tìm kiếm giày chelsea",
+      "english": "Search giày chelsea",
+      "sql": "SELECT * FROM products WHERE name LIKE '%giày chelsea%' LIMIT 10;",
+      "complexity": "simple"
+    },
+    {
+      "id": "simple_066",
+      "vietnamese": "Tìm túi clutch",
+      "english": "Find túi clutch",
+      "sql": "SELECT * FROM products WHERE name LIKE '%túi clutch%' LIMIT 10;",
+      "complexity": "simple"
+    },
+    {
+      "id": "simple_067",
+      "vietnamese": "Hiển thị túi tote",
+      "english": "Show túi tote",
+      "sql": "SELECT * FROM products WHERE name LIKE '%túi tote%' LIMIT 10;",
+      "complexity": "simple"
+    },
+    {
+      "id": "simple_068",
+      "vietnamese": "Xem túi bucket",
+      "english": "View túi bucket",
+      "sql": "SELECT * FROM products WHERE name LIKE '%túi bucket%' LIMIT 10;",
+      "complexity": "simple"
+    },
+    {
+      "id": "simple_069",
+      "vietnamese": "Liệt kê túi saddle",
+      "english": "List túi saddle",
+      "sql": "SELECT name FROM products WHERE name LIKE '%túi saddle%' LIMIT 10;",
+      "complexity": "simple"
+    },
+    {
+      "id": "simple_070",
+      "vietnamese": "Tìm kiếm túi hobo",
+      "english": "Search túi hobo",
+      "sql": "SELECT * FROM products WHERE name LIKE '%túi hobo%' LIMIT 10;",
+      "complexity": "simple"
+    },
+    {
+      "id": "simple_071",
+      "vietnamese": "Tìm túi messenger",
+      "english": "Find túi messenger",
+      "sql": "SELECT * FROM products WHERE name LIKE '%túi messenger%' LIMIT 10;",
+      "complexity": "simple"
+    },
+    {
+      "id": "simple_072",
+      "vietnamese": "Hiển thị mũ fedora",
+      "english": "Show mũ fedora",
+      "sql": "SELECT * FROM products WHERE name LIKE '%mũ fedora%' LIMIT 10;",
+      "complexity": "simple"
+    },
+    {
+      "id": "simple_073",
+      "vietnamese": "Xem mũ bucket",
+      "english": "View mũ bucket",
+      "sql": "SELECT * FROM products WHERE name LIKE '%mũ bucket%' LIMIT 10;",
+      "complexity": "simple"
+    },
+    {
+      "id": "simple_074",
+      "vietnamese": "Liệt kê mũ panama",
+      "english": "List mũ panama",
+      "sql": "SELECT name FROM products WHERE name LIKE '%mũ panama%' LIMIT 10;",
+      "complexity": "simple"
+    },
+    {
+      "id": "simple_075",
+      "vietnamese": "Tìm kiếm mũ newsboy",
+      "english": "Search mũ newsboy",
+      "sql": "SELECT * FROM products WHERE name LIKE '%mũ newsboy%' LIMIT 10;",
+      "complexity": "simple"
+    },
+    {
+      "id": "simple_076",
+      "vietnamese": "Tìm mũ trucker",
+      "english": "Find mũ trucker",
+      "sql": "SELECT * FROM products WHERE name LIKE '%mũ trucker%' LIMIT 10;",
+      "complexity": "simple"
+    },
+    {
+      "id": "simple_077",
+      "vietnamese": "Hiển thị mũ beanie",
+      "english": "Show mũ beanie",
+      "sql": "SELECT * FROM products WHERE name LIKE '%mũ beanie%' LIMIT 10;",
+      "complexity": "simple"
+    },
+    {
+      "id": "simple_078",
+      "vietnamese": "Xem kính cận",
+      "english": "View kính cận",
+      "sql": "SELECT * FROM products WHERE name LIKE '%kính cận%' LIMIT 10;",
+      "complexity": "simple"
+    },
+    {
+      "id": "simple_079",
+      "vietnamese": "Liệt kê kính mát",
+      "english": "List kính mát",
+      "sql": "SELECT name FROM products WHERE name LIKE '%kính mát%' LIMIT 10;",
+      "complexity": "simple"
+    },
+    {
+      "id": "simple_080",
+      "vietnamese": "Tìm kiếm kính gọng tròn",
+      "english": "Search kính gọng tròn",
+      "sql": "SELECT * FROM products WHERE name LIKE '%kính gọng tròn%' LIMIT 10;",
+      "complexity": "simple"
+    },
+    {
+      "id": "simple_081",
+      "vietnamese": "Tìm tất cả sản phẩm",
+      "english": "Find all products",
+      "sql": "SELECT * FROM products LIMIT 10;",
+      "complexity": "simple"
+    },
+    {
+      "id": "simple_082",
+      "vietnamese": "Hiển thị tên sản phẩm",
+      "english": "Show product names",
+      "sql": "SELECT name FROM products LIMIT 10;",
+      "complexity": "simple"
+    },
+    {
+      "id": "simple_083",
+      "vietnamese": "Đếm số sản phẩm",
+      "english": "Count products",
+      "sql": "SELECT COUNT(*) as total_products FROM products;",
+      "complexity": "simple"
+    },
+    {
+      "id": "simple_084",
+      "vietnamese": "Xem danh sách thương hiệu",
+      "english": "View brand list",
+      "sql": "SELECT DISTINCT brand_name FROM brands;",
+      "complexity": "simple"
+    },
+    {
+      "id": "simple_085",
+      "vietnamese": "Hiển thị danh mục",
+      "english": "Show categories",
+      "sql": "SELECT category_name FROM categories;",
+      "complexity": "simple"
+    },
+    {
+      "id": "simple_086",
+      "vietnamese": "Tìm sản phẩm đầu tiên",
+      "english": "Find first product",
+      "sql": "SELECT * FROM products ORDER BY product_id LIMIT 1;",
+      "complexity": "simple"
+    },
+    {
+      "id": "simple_087",
+      "vietnamese": "Xem 5 sản phẩm",
+      "english": "View 5 products",
+      "sql": "SELECT * FROM products LIMIT 5;",
+      "complexity": "simple"
+    },
+    {
+      "id": "simple_088",
+      "vietnamese": "Hiển thị tên và giá",
+      "english": "Show name and price",
+      "sql": "SELECT p.name, pr.current_price FROM products p JOIN product_pricing pr ON p.product_id = pr.product_id LIMIT 10;",
+      "complexity": "simple"
+    },
+    {
+      "id": "simple_089",
+      "vietnamese": "Đếm thương hiệu",
+      "english": "Count brands",
+      "sql": "SELECT COUNT(*) as total_brands FROM brands;",
+      "complexity": "simple"
+    },
+    {
+      "id": "simple_090",
+      "vietnamese": "Xem người bán",
+      "english": "View sellers",
+      "sql": "SELECT seller_name FROM sellers LIMIT 10;",
+      "complexity": "simple"
+    },
+    {
+      "id": "simple_091",
+      "vietnamese": "Xem 10 sản phẩm",
+      "english": "View 10 products",
+      "sql": "SELECT * FROM products LIMIT 10;",
+      "complexity": "simple"
+    },
+    {
+      "id": "simple_092",
+      "vietnamese": "Xem 20 sản phẩm",
+      "english": "View 20 products",
+      "sql": "SELECT * FROM products LIMIT 20;",
+      "complexity": "simple"
+    },
+    {
+      "id": "simple_093",
+      "vietnamese": "Sản phẩm mới nhất",
+      "english": "Latest products",
+      "sql": "SELECT * FROM products ORDER BY product_id DESC LIMIT 10;",
+      "complexity": "simple"
+    },
+    {
+      "id": "simple_094",
+      "vietnamese": "Sản phẩm cũ nhất",
+      "english": "Oldest products",
+      "sql": "SELECT * FROM products ORDER BY product_id ASC LIMIT 10;",
+      "complexity": "simple"
+    },
+    {
+      "id": "simple_095",
+      "vietnamese": "Danh sách tất cả danh mục",
+      "english": "List all categories",
+      "sql": "SELECT * FROM categories;",
+      "complexity": "simple"
+    },
+    {
+      "id": "simple_096",
+      "vietnamese": "Danh sách tất cả thương hiệu",
+      "english": "List all brands",
+      "sql": "SELECT * FROM brands;",
+      "complexity": "simple"
+    },
+    {
+      "id": "simple_097",
+      "vietnamese": "Danh sách người bán",
+      "english": "List sellers",
+      "sql": "SELECT * FROM sellers LIMIT 10;",
+      "complexity": "simple"
+    },
+    {
+      "id": "simple_098",
+      "vietnamese": "Tổng số danh mục",
+      "english": "Total categories",
+      "sql": "SELECT COUNT(*) as total FROM categories;",
+      "complexity": "simple"
+    },
+    {
+      "id": "simple_099",
+      "vietnamese": "Tổng số người bán",
+      "english": "Total sellers",
+      "sql": "SELECT COUNT(*) as total FROM sellers;",
+      "complexity": "simple"
+    },
+    {
+      "id": "simple_100",
+      "vietnamese": "Sản phẩm có hình ảnh",
+      "english": "Products with images",
+      "sql": "SELECT * FROM products WHERE number_of_images > 0 LIMIT 10;",
+      "complexity": "simple"
+    }
+  ],
+  "medium": [
+    {
+      "id": "medium_001",
+      "vietnamese": "Sản phẩm theo thương hiệu",
+      "english": "Products by brand",
+      "sql": "SELECT b.brand_name, COUNT(p.product_id) as product_count FROM brands b JOIN products p ON b.brand_id = p.brand_id GROUP BY b.brand_name ORDER BY product_count DESC;",
+      "complexity": "medium"
+    },
+    {
+      "id": "medium_002",
+      "vietnamese": "Giá trung bình theo danh mục",
+      "english": "Average price by category",
+      "sql": "SELECT c.category_name, AVG(pr.current_price) as avg_price FROM categories c JOIN products p ON c.category_id = p.category_id JOIN product_pricing pr ON p.product_id = pr.product_id GROUP BY c.category_name;",
+      "complexity": "medium"
+    },
+    {
+      "id": "medium_003",
+      "vietnamese": "Sản phẩm có đánh giá cao",
+      "english": "High rated products",
+      "sql": "SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average >= 4.0 ORDER BY rv.rating_average DESC LIMIT 20;",
+      "complexity": "medium"
+    },
+    {
+      "id": "medium_004",
+      "vietnamese": "Thương hiệu Nike",
+      "english": "Nike brand products",
+      "sql": "SELECT p.name, pr.current_price FROM products p JOIN brands b ON p.brand_id = b.brand_id JOIN product_pricing pr ON p.product_id = pr.product_id WHERE b.brand_name LIKE '%Nike%' LIMIT 10;",
+      "complexity": "medium"
+    },
+    {
+      "id": "medium_005",
+      "vietnamese": "Sản phẩm giá dưới 500k",
+      "english": "Products under 500k",
+      "sql": "SELECT p.name, pr.current_price FROM products p JOIN product_pricing pr ON p.product_id = pr.product_id WHERE pr.current_price < 500000 ORDER BY pr.current_price LIMIT 20;",
+      "complexity": "medium"
+    },
+    {
+      "id": "medium_006",
+      "vietnamese": "Sản phẩm giá dưới 100k",
+      "english": "Products under 100k",
+      "sql": "SELECT p.name, pr.current_price FROM products p JOIN product_pricing pr ON p.product_id = pr.product_id WHERE pr.current_price < 100000 ORDER BY pr.current_price LIMIT 20;",
+      "complexity": "medium"
+    },
+    {
+      "id": "medium_007",
+      "vietnamese": "Sản phẩm giá trên 100k",
+      "english": "Products over 100k",
+      "sql": "SELECT p.name, pr.current_price FROM products p JOIN product_pricing pr ON p.product_id = pr.product_id WHERE pr.current_price > 100000 ORDER BY pr.current_price DESC LIMIT 20;",
+      "complexity": "medium"
+    },
+    {
+      "id": "medium_008",
+      "vietnamese": "Sản phẩm giá dưới 200k",
+      "english": "Products under 200k",
+      "sql": "SELECT p.name, pr.current_price FROM products p JOIN product_pricing pr ON p.product_id = pr.product_id WHERE pr.current_price < 200000 ORDER BY pr.current_price LIMIT 20;",
+      "complexity": "medium"
+    },
+    {
+      "id": "medium_009",
+      "vietnamese": "Sản phẩm giá trên 200k",
+      "english": "Products over 200k",
+      "sql": "SELECT p.name, pr.current_price FROM products p JOIN product_pricing pr ON p.product_id = pr.product_id WHERE pr.current_price > 200000 ORDER BY pr.current_price DESC LIMIT 20;",
+      "complexity": "medium"
+    },
+    {
+      "id": "medium_010",
+      "vietnamese": "Sản phẩm giá dưới 300k",
+      "english": "Products under 300k",
+      "sql": "SELECT p.name, pr.current_price FROM products p JOIN product_pricing pr ON p.product_id = pr.product_id WHERE pr.current_price < 300000 ORDER BY pr.current_price LIMIT 20;",
+      "complexity": "medium"
+    },
+    {
+      "id": "medium_011",
+      "vietnamese": "Sản phẩm giá trên 300k",
+      "english": "Products over 300k",
+      "sql": "SELECT p.name, pr.current_price FROM products p JOIN product_pricing pr ON p.product_id = pr.product_id WHERE pr.current_price > 300000 ORDER BY pr.current_price DESC LIMIT 20;",
+      "complexity": "medium"
+    },
+    {
+      "id": "medium_012",
+      "vietnamese": "Sản phẩm giá dưới 500k",
+      "english": "Products under 500k",
+      "sql": "SELECT p.name, pr.current_price FROM products p JOIN product_pricing pr ON p.product_id = pr.product_id WHERE pr.current_price < 500000 ORDER BY pr.current_price LIMIT 20;",
+      "complexity": "medium"
+    },
+    {
+      "id": "medium_013",
+      "vietnamese": "Sản phẩm giá trên 500k",
+      "english": "Products over 500k",
+      "sql": "SELECT p.name, pr.current_price FROM products p JOIN product_pricing pr ON p.product_id = pr.product_id WHERE pr.current_price > 500000 ORDER BY pr.current_price DESC LIMIT 20;",
+      "complexity": "medium"
+    },
+    {
+      "id": "medium_014",
+      "vietnamese": "Sản phẩm giá dưới 1000k",
+      "english": "Products under 1000k",
+      "sql": "SELECT p.name, pr.current_price FROM products p JOIN product_pricing pr ON p.product_id = pr.product_id WHERE pr.current_price < 1000000 ORDER BY pr.current_price LIMIT 20;",
+      "complexity": "medium"
+    },
+    {
+      "id": "medium_015",
+      "vietnamese": "Sản phẩm giá trên 1000k",
+      "english": "Products over 1000k",
+      "sql": "SELECT p.name, pr.current_price FROM products p JOIN product_pricing pr ON p.product_id = pr.product_id WHERE pr.current_price > 1000000 ORDER BY pr.current_price DESC LIMIT 20;",
+      "complexity": "medium"
+    },
+    {
+      "id": "medium_016",
+      "vietnamese": "Sản phẩm giá dưới 2000k",
+      "english": "Products under 2000k",
+      "sql": "SELECT p.name, pr.current_price FROM products p JOIN product_pricing pr ON p.product_id = pr.product_id WHERE pr.current_price < 2000000 ORDER BY pr.current_price LIMIT 20;",
+      "complexity": "medium"
+    },
+    {
+      "id": "medium_017",
+      "vietnamese": "Sản phẩm giá trên 2000k",
+      "english": "Products over 2000k",
+      "sql": "SELECT p.name, pr.current_price FROM products p JOIN product_pricing pr ON p.product_id = pr.product_id WHERE pr.current_price > 2000000 ORDER BY pr.current_price DESC LIMIT 20;",
+      "complexity": "medium"
+    },
+    {
+      "id": "medium_018",
+      "vietnamese": "Sản phẩm thương hiệu Nike",
+      "english": "Nike brand products",
+      "sql": "SELECT p.name, pr.current_price FROM products p JOIN brands b ON p.brand_id = b.brand_id JOIN product_pricing pr ON p.product_id = pr.product_id WHERE b.brand_name LIKE '%Nike%' LIMIT 10;",
+      "complexity": "medium"
+    },
+    {
+      "id": "medium_019",
+      "vietnamese": "Sản phẩm thương hiệu Adidas",
+      "english": "Adidas brand products",
+      "sql": "SELECT p.name, pr.current_price FROM products p JOIN brands b ON p.brand_id = b.brand_id JOIN product_pricing pr ON p.product_id = pr.product_id WHERE b.brand_name LIKE '%Adidas%' LIMIT 10;",
+      "complexity": "medium"
+    },
+    {
+      "id": "medium_020",
+      "vietnamese": "Sản phẩm thương hiệu Samsung",
+      "english": "Samsung brand products",
+      "sql": "SELECT p.name, pr.current_price FROM products p JOIN brands b ON p.brand_id = b.brand_id JOIN product_pricing pr ON p.product_id = pr.product_id WHERE b.brand_name LIKE '%Samsung%' LIMIT 10;",
+      "complexity": "medium"
+    },
+    {
+      "id": "medium_021",
+      "vietnamese": "Sản phẩm thương hiệu Apple",
+      "english": "Apple brand products",
+      "sql": "SELECT p.name, pr.current_price FROM products p JOIN brands b ON p.brand_id = b.brand_id JOIN product_pricing pr ON p.product_id = pr.product_id WHERE b.brand_name LIKE '%Apple%' LIMIT 10;",
+      "complexity": "medium"
+    },
+    {
+      "id": "medium_022",
+      "vietnamese": "Sản phẩm thương hiệu Louis Vuitton",
+      "english": "Louis Vuitton brand products",
+      "sql": "SELECT p.name, pr.current_price FROM products p JOIN brands b ON p.brand_id = b.brand_id JOIN product_pricing pr ON p.product_id = pr.product_id WHERE b.brand_name LIKE '%Louis Vuitton%' LIMIT 10;",
+      "complexity": "medium"
+    },
+    {
+      "id": "medium_023",
+      "vietnamese": "Sản phẩm thương hiệu Gucci",
+      "english": "Gucci brand products",
+      "sql": "SELECT p.name, pr.current_price FROM products p JOIN brands b ON p.brand_id = b.brand_id JOIN product_pricing pr ON p.product_id = pr.product_id WHERE b.brand_name LIKE '%Gucci%' LIMIT 10;",
+      "complexity": "medium"
+    },
+    {
+      "id": "medium_024",
+      "vietnamese": "Sản phẩm thương hiệu Uniqlo",
+      "english": "Uniqlo brand products",
+      "sql": "SELECT p.name, pr.current_price FROM products p JOIN brands b ON p.brand_id = b.brand_id JOIN product_pricing pr ON p.product_id = pr.product_id WHERE b.brand_name LIKE '%Uniqlo%' LIMIT 10;",
+      "complexity": "medium"
+    },
+    {
+      "id": "medium_025",
+      "vietnamese": "Sản phẩm thương hiệu Zara",
+      "english": "Zara brand products",
+      "sql": "SELECT p.name, pr.current_price FROM products p JOIN brands b ON p.brand_id = b.brand_id JOIN product_pricing pr ON p.product_id = pr.product_id WHERE b.brand_name LIKE '%Zara%' LIMIT 10;",
+      "complexity": "medium"
+    },
+    {
+      "id": "medium_026",
+      "vietnamese": "Sản phẩm có đánh giá trên 4.1 sao",
+      "english": "Products with rating above 4.1 stars",
+      "sql": "SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average >= 4.1 ORDER BY rv.rating_average DESC LIMIT 15;",
+      "complexity": "medium"
+    },
+    {
+      "id": "medium_027",
+      "vietnamese": "Sản phẩm có đánh giá trên 4.2 sao",
+      "english": "Products with rating above 4.2 stars",
+      "sql": "SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average >= 4.2 ORDER BY rv.rating_average DESC LIMIT 15;",
+      "complexity": "medium"
+    },
+    {
+      "id": "medium_028",
+      "vietnamese": "Sản phẩm có đánh giá trên 4.3 sao",
+      "english": "Products with rating above 4.3 stars",
+      "sql": "SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average >= 4.3 ORDER BY rv.rating_average DESC LIMIT 15;",
+      "complexity": "medium"
+    },
+    {
+      "id": "medium_029",
+      "vietnamese": "Sản phẩm có đánh giá trên 4.4 sao",
+      "english": "Products with rating above 4.4 stars",
+      "sql": "SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average >= 4.4 ORDER BY rv.rating_average DESC LIMIT 15;",
+      "complexity": "medium"
+    },
+    {
+      "id": "medium_030",
+      "vietnamese": "Sản phẩm có đánh giá trên 3.5 sao",
+      "english": "Products with rating above 3.5 stars",
+      "sql": "SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average >= 3.5 ORDER BY rv.rating_average DESC LIMIT 15;",
+      "complexity": "medium"
+    },
+    {
+      "id": "medium_031",
+      "vietnamese": "Sản phẩm có đánh giá trên 3.6 sao",
+      "english": "Products with rating above 3.6 stars",
+      "sql": "SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average >= 3.6 ORDER BY rv.rating_average DESC LIMIT 15;",
+      "complexity": "medium"
+    },
+    {
+      "id": "medium_032",
+      "vietnamese": "Sản phẩm có đánh giá trên 3.7 sao",
+      "english": "Products with rating above 3.7 stars",
+      "sql": "SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average >= 3.7 ORDER BY rv.rating_average DESC LIMIT 15;",
+      "complexity": "medium"
+    },
+    {
+      "id": "medium_033",
+      "vietnamese": "Sản phẩm có đánh giá trên 3.8 sao",
+      "english": "Products with rating above 3.8 stars",
+      "sql": "SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average >= 3.8 ORDER BY rv.rating_average DESC LIMIT 15;",
+      "complexity": "medium"
+    },
+    {
+      "id": "medium_034",
+      "vietnamese": "Sản phẩm có đánh giá trên 3.9 sao",
+      "english": "Products with rating above 3.9 stars",
+      "sql": "SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average >= 3.9 ORDER BY rv.rating_average DESC LIMIT 15;",
+      "complexity": "medium"
+    },
+    {
+      "id": "medium_035",
+      "vietnamese": "Sản phẩm có đánh giá trên 4.0 sao",
+      "english": "Products with rating above 4.0 stars",
+      "sql": "SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average >= 4.0 ORDER BY rv.rating_average DESC LIMIT 15;",
+      "complexity": "medium"
+    },
+    {
+      "id": "medium_036",
+      "vietnamese": "Sản phẩm có đánh giá trên 4.1 sao",
+      "english": "Products with rating above 4.1 stars",
+      "sql": "SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average >= 4.1 ORDER BY rv.rating_average DESC LIMIT 15;",
+      "complexity": "medium"
+    },
+    {
+      "id": "medium_037",
+      "vietnamese": "Sản phẩm có đánh giá trên 4.2 sao",
+      "english": "Products with rating above 4.2 stars",
+      "sql": "SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average >= 4.2 ORDER BY rv.rating_average DESC LIMIT 15;",
+      "complexity": "medium"
+    },
+    {
+      "id": "medium_038",
+      "vietnamese": "Sản phẩm có đánh giá trên 4.3 sao",
+      "english": "Products with rating above 4.3 stars",
+      "sql": "SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average >= 4.3 ORDER BY rv.rating_average DESC LIMIT 15;",
+      "complexity": "medium"
+    },
+    {
+      "id": "medium_039",
+      "vietnamese": "Sản phẩm có đánh giá trên 4.4 sao",
+      "english": "Products with rating above 4.4 stars",
+      "sql": "SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average >= 4.4 ORDER BY rv.rating_average DESC LIMIT 15;",
+      "complexity": "medium"
+    },
+    {
+      "id": "medium_040",
+      "vietnamese": "Sản phẩm có đánh giá trên 3.5 sao",
+      "english": "Products with rating above 3.5 stars",
+      "sql": "SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average >= 3.5 ORDER BY rv.rating_average DESC LIMIT 15;",
+      "complexity": "medium"
+    },
+    {
+      "id": "medium_041",
+      "vietnamese": "Sản phẩm có đánh giá trên 3.6 sao",
+      "english": "Products with rating above 3.6 stars",
+      "sql": "SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average >= 3.6 ORDER BY rv.rating_average DESC LIMIT 15;",
+      "complexity": "medium"
+    },
+    {
+      "id": "medium_042",
+      "vietnamese": "Sản phẩm có đánh giá trên 3.7 sao",
+      "english": "Products with rating above 3.7 stars",
+      "sql": "SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average >= 3.7 ORDER BY rv.rating_average DESC LIMIT 15;",
+      "complexity": "medium"
+    },
+    {
+      "id": "medium_043",
+      "vietnamese": "Sản phẩm có đánh giá trên 3.8 sao",
+      "english": "Products with rating above 3.8 stars",
+      "sql": "SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average >= 3.8 ORDER BY rv.rating_average DESC LIMIT 15;",
+      "complexity": "medium"
+    },
+    {
+      "id": "medium_044",
+      "vietnamese": "Sản phẩm có đánh giá trên 3.9 sao",
+      "english": "Products with rating above 3.9 stars",
+      "sql": "SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average >= 3.9 ORDER BY rv.rating_average DESC LIMIT 15;",
+      "complexity": "medium"
+    },
+    {
+      "id": "medium_045",
+      "vietnamese": "Sản phẩm có đánh giá trên 4.0 sao",
+      "english": "Products with rating above 4.0 stars",
+      "sql": "SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average >= 4.0 ORDER BY rv.rating_average DESC LIMIT 15;",
+      "complexity": "medium"
+    },
+    {
+      "id": "medium_046",
+      "vietnamese": "Sản phẩm có đánh giá trên 4.1 sao",
+      "english": "Products with rating above 4.1 stars",
+      "sql": "SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average >= 4.1 ORDER BY rv.rating_average DESC LIMIT 15;",
+      "complexity": "medium"
+    },
+    {
+      "id": "medium_047",
+      "vietnamese": "Sản phẩm có đánh giá trên 4.2 sao",
+      "english": "Products with rating above 4.2 stars",
+      "sql": "SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average >= 4.2 ORDER BY rv.rating_average DESC LIMIT 15;",
+      "complexity": "medium"
+    },
+    {
+      "id": "medium_048",
+      "vietnamese": "Sản phẩm có đánh giá trên 4.3 sao",
+      "english": "Products with rating above 4.3 stars",
+      "sql": "SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average >= 4.3 ORDER BY rv.rating_average DESC LIMIT 15;",
+      "complexity": "medium"
+    },
+    {
+      "id": "medium_049",
+      "vietnamese": "Sản phẩm có đánh giá trên 4.4 sao",
+      "english": "Products with rating above 4.4 stars",
+      "sql": "SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average >= 4.4 ORDER BY rv.rating_average DESC LIMIT 15;",
+      "complexity": "medium"
+    },
+    {
+      "id": "medium_050",
+      "vietnamese": "Sản phẩm có đánh giá trên 3.5 sao",
+      "english": "Products with rating above 3.5 stars",
+      "sql": "SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average >= 3.5 ORDER BY rv.rating_average DESC LIMIT 15;",
+      "complexity": "medium"
+    },
+    {
+      "id": "medium_051",
+      "vietnamese": "Sản phẩm có đánh giá trên 3.6 sao",
+      "english": "Products with rating above 3.6 stars",
+      "sql": "SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average >= 3.6 ORDER BY rv.rating_average DESC LIMIT 15;",
+      "complexity": "medium"
+    },
+    {
+      "id": "medium_052",
+      "vietnamese": "Sản phẩm có đánh giá trên 3.7 sao",
+      "english": "Products with rating above 3.7 stars",
+      "sql": "SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average >= 3.7 ORDER BY rv.rating_average DESC LIMIT 15;",
+      "complexity": "medium"
+    },
+    {
+      "id": "medium_053",
+      "vietnamese": "Sản phẩm có đánh giá trên 3.8 sao",
+      "english": "Products with rating above 3.8 stars",
+      "sql": "SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average >= 3.8 ORDER BY rv.rating_average DESC LIMIT 15;",
+      "complexity": "medium"
+    },
+    {
+      "id": "medium_054",
+      "vietnamese": "Sản phẩm có đánh giá trên 3.9 sao",
+      "english": "Products with rating above 3.9 stars",
+      "sql": "SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average >= 3.9 ORDER BY rv.rating_average DESC LIMIT 15;",
+      "complexity": "medium"
+    },
+    {
+      "id": "medium_055",
+      "vietnamese": "Sản phẩm có đánh giá trên 4.0 sao",
+      "english": "Products with rating above 4.0 stars",
+      "sql": "SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average >= 4.0 ORDER BY rv.rating_average DESC LIMIT 15;",
+      "complexity": "medium"
+    },
+    {
+      "id": "medium_056",
+      "vietnamese": "Sản phẩm có đánh giá trên 4.1 sao",
+      "english": "Products with rating above 4.1 stars",
+      "sql": "SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average >= 4.1 ORDER BY rv.rating_average DESC LIMIT 15;",
+      "complexity": "medium"
+    },
+    {
+      "id": "medium_057",
+      "vietnamese": "Sản phẩm có đánh giá trên 4.2 sao",
+      "english": "Products with rating above 4.2 stars",
+      "sql": "SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average >= 4.2 ORDER BY rv.rating_average DESC LIMIT 15;",
+      "complexity": "medium"
+    },
+    {
+      "id": "medium_058",
+      "vietnamese": "Sản phẩm có đánh giá trên 4.3 sao",
+      "english": "Products with rating above 4.3 stars",
+      "sql": "SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average >= 4.3 ORDER BY rv.rating_average DESC LIMIT 15;",
+      "complexity": "medium"
+    },
+    {
+      "id": "medium_059",
+      "vietnamese": "Sản phẩm có đánh giá trên 4.4 sao",
+      "english": "Products with rating above 4.4 stars",
+      "sql": "SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average >= 4.4 ORDER BY rv.rating_average DESC LIMIT 15;",
+      "complexity": "medium"
+    },
+    {
+      "id": "medium_060",
+      "vietnamese": "Sản phẩm có đánh giá trên 3.5 sao",
+      "english": "Products with rating above 3.5 stars",
+      "sql": "SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average >= 3.5 ORDER BY rv.rating_average DESC LIMIT 15;",
+      "complexity": "medium"
+    },
+    {
+      "id": "medium_061",
+      "vietnamese": "Sản phẩm có đánh giá trên 3.6 sao",
+      "english": "Products with rating above 3.6 stars",
+      "sql": "SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average >= 3.6 ORDER BY rv.rating_average DESC LIMIT 15;",
+      "complexity": "medium"
+    },
+    {
+      "id": "medium_062",
+      "vietnamese": "Sản phẩm có đánh giá trên 3.7 sao",
+      "english": "Products with rating above 3.7 stars",
+      "sql": "SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average >= 3.7 ORDER BY rv.rating_average DESC LIMIT 15;",
+      "complexity": "medium"
+    },
+    {
+      "id": "medium_063",
+      "vietnamese": "Sản phẩm có đánh giá trên 3.8 sao",
+      "english": "Products with rating above 3.8 stars",
+      "sql": "SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average >= 3.8 ORDER BY rv.rating_average DESC LIMIT 15;",
+      "complexity": "medium"
+    },
+    {
+      "id": "medium_064",
+      "vietnamese": "Sản phẩm có đánh giá trên 3.9 sao",
+      "english": "Products with rating above 3.9 stars",
+      "sql": "SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average >= 3.9 ORDER BY rv.rating_average DESC LIMIT 15;",
+      "complexity": "medium"
+    },
+    {
+      "id": "medium_065",
+      "vietnamese": "Sản phẩm có đánh giá trên 4.0 sao",
+      "english": "Products with rating above 4.0 stars",
+      "sql": "SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average >= 4.0 ORDER BY rv.rating_average DESC LIMIT 15;",
+      "complexity": "medium"
+    },
+    {
+      "id": "medium_066",
+      "vietnamese": "Sản phẩm có đánh giá trên 4.1 sao",
+      "english": "Products with rating above 4.1 stars",
+      "sql": "SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average >= 4.1 ORDER BY rv.rating_average DESC LIMIT 15;",
+      "complexity": "medium"
+    },
+    {
+      "id": "medium_067",
+      "vietnamese": "Sản phẩm có đánh giá trên 4.2 sao",
+      "english": "Products with rating above 4.2 stars",
+      "sql": "SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average >= 4.2 ORDER BY rv.rating_average DESC LIMIT 15;",
+      "complexity": "medium"
+    },
+    {
+      "id": "medium_068",
+      "vietnamese": "Sản phẩm có đánh giá trên 4.3 sao",
+      "english": "Products with rating above 4.3 stars",
+      "sql": "SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average >= 4.3 ORDER BY rv.rating_average DESC LIMIT 15;",
+      "complexity": "medium"
+    },
+    {
+      "id": "medium_069",
+      "vietnamese": "Sản phẩm có đánh giá trên 4.4 sao",
+      "english": "Products with rating above 4.4 stars",
+      "sql": "SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average >= 4.4 ORDER BY rv.rating_average DESC LIMIT 15;",
+      "complexity": "medium"
+    },
+    {
+      "id": "medium_070",
+      "vietnamese": "Sản phẩm có đánh giá trên 3.5 sao",
+      "english": "Products with rating above 3.5 stars",
+      "sql": "SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average >= 3.5 ORDER BY rv.rating_average DESC LIMIT 15;",
+      "complexity": "medium"
+    },
+    {
+      "id": "medium_071",
+      "vietnamese": "Sản phẩm có đánh giá trên 3.6 sao",
+      "english": "Products with rating above 3.6 stars",
+      "sql": "SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average >= 3.6 ORDER BY rv.rating_average DESC LIMIT 15;",
+      "complexity": "medium"
+    },
+    {
+      "id": "medium_072",
+      "vietnamese": "Sản phẩm có đánh giá trên 3.7 sao",
+      "english": "Products with rating above 3.7 stars",
+      "sql": "SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average >= 3.7 ORDER BY rv.rating_average DESC LIMIT 15;",
+      "complexity": "medium"
+    },
+    {
+      "id": "medium_073",
+      "vietnamese": "Sản phẩm có đánh giá trên 3.8 sao",
+      "english": "Products with rating above 3.8 stars",
+      "sql": "SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average >= 3.8 ORDER BY rv.rating_average DESC LIMIT 15;",
+      "complexity": "medium"
+    },
+    {
+      "id": "medium_074",
+      "vietnamese": "Sản phẩm có đánh giá trên 3.9 sao",
+      "english": "Products with rating above 3.9 stars",
+      "sql": "SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average >= 3.9 ORDER BY rv.rating_average DESC LIMIT 15;",
+      "complexity": "medium"
+    },
+    {
+      "id": "medium_075",
+      "vietnamese": "Sản phẩm có đánh giá trên 4.0 sao",
+      "english": "Products with rating above 4.0 stars",
+      "sql": "SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average >= 4.0 ORDER BY rv.rating_average DESC LIMIT 15;",
+      "complexity": "medium"
+    },
+    {
+      "id": "medium_076",
+      "vietnamese": "Sản phẩm có đánh giá trên 4.1 sao",
+      "english": "Products with rating above 4.1 stars",
+      "sql": "SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average >= 4.1 ORDER BY rv.rating_average DESC LIMIT 15;",
+      "complexity": "medium"
+    },
+    {
+      "id": "medium_077",
+      "vietnamese": "Sản phẩm có đánh giá trên 4.2 sao",
+      "english": "Products with rating above 4.2 stars",
+      "sql": "SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average >= 4.2 ORDER BY rv.rating_average DESC LIMIT 15;",
+      "complexity": "medium"
+    },
+    {
+      "id": "medium_078",
+      "vietnamese": "Sản phẩm có đánh giá trên 4.3 sao",
+      "english": "Products with rating above 4.3 stars",
+      "sql": "SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average >= 4.3 ORDER BY rv.rating_average DESC LIMIT 15;",
+      "complexity": "medium"
+    },
+    {
+      "id": "medium_079",
+      "vietnamese": "Sản phẩm có đánh giá trên 4.4 sao",
+      "english": "Products with rating above 4.4 stars",
+      "sql": "SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average >= 4.4 ORDER BY rv.rating_average DESC LIMIT 15;",
+      "complexity": "medium"
+    },
+    {
+      "id": "medium_080",
+      "vietnamese": "Sản phẩm có đánh giá trên 3.5 sao",
+      "english": "Products with rating above 3.5 stars",
+      "sql": "SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average >= 3.5 ORDER BY rv.rating_average DESC LIMIT 15;",
+      "complexity": "medium"
+    },
+    {
+      "id": "medium_081",
+      "vietnamese": "Sản phẩm có đánh giá trên 3.6 sao",
+      "english": "Products with rating above 3.6 stars",
+      "sql": "SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average >= 3.6 ORDER BY rv.rating_average DESC LIMIT 15;",
+      "complexity": "medium"
+    },
+    {
+      "id": "medium_082",
+      "vietnamese": "Sản phẩm có đánh giá trên 3.7 sao",
+      "english": "Products with rating above 3.7 stars",
+      "sql": "SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average >= 3.7 ORDER BY rv.rating_average DESC LIMIT 15;",
+      "complexity": "medium"
+    },
+    {
+      "id": "medium_083",
+      "vietnamese": "Sản phẩm có đánh giá trên 3.8 sao",
+      "english": "Products with rating above 3.8 stars",
+      "sql": "SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average >= 3.8 ORDER BY rv.rating_average DESC LIMIT 15;",
+      "complexity": "medium"
+    },
+    {
+      "id": "medium_084",
+      "vietnamese": "Sản phẩm có đánh giá trên 3.9 sao",
+      "english": "Products with rating above 3.9 stars",
+      "sql": "SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average >= 3.9 ORDER BY rv.rating_average DESC LIMIT 15;",
+      "complexity": "medium"
+    },
+    {
+      "id": "medium_085",
+      "vietnamese": "Sản phẩm có đánh giá trên 4.0 sao",
+      "english": "Products with rating above 4.0 stars",
+      "sql": "SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average >= 4.0 ORDER BY rv.rating_average DESC LIMIT 15;",
+      "complexity": "medium"
+    },
+    {
+      "id": "medium_086",
+      "vietnamese": "Sản phẩm có đánh giá trên 4.1 sao",
+      "english": "Products with rating above 4.1 stars",
+      "sql": "SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average >= 4.1 ORDER BY rv.rating_average DESC LIMIT 15;",
+      "complexity": "medium"
+    },
+    {
+      "id": "medium_087",
+      "vietnamese": "Sản phẩm có đánh giá trên 4.2 sao",
+      "english": "Products with rating above 4.2 stars",
+      "sql": "SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average >= 4.2 ORDER BY rv.rating_average DESC LIMIT 15;",
+      "complexity": "medium"
+    },
+    {
+      "id": "medium_088",
+      "vietnamese": "Sản phẩm có đánh giá trên 4.3 sao",
+      "english": "Products with rating above 4.3 stars",
+      "sql": "SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average >= 4.3 ORDER BY rv.rating_average DESC LIMIT 15;",
+      "complexity": "medium"
+    },
+    {
+      "id": "medium_089",
+      "vietnamese": "Sản phẩm có đánh giá trên 4.4 sao",
+      "english": "Products with rating above 4.4 stars",
+      "sql": "SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average >= 4.4 ORDER BY rv.rating_average DESC LIMIT 15;",
+      "complexity": "medium"
+    },
+    {
+      "id": "medium_090",
+      "vietnamese": "Sản phẩm có đánh giá trên 3.5 sao",
+      "english": "Products with rating above 3.5 stars",
+      "sql": "SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average >= 3.5 ORDER BY rv.rating_average DESC LIMIT 15;",
+      "complexity": "medium"
+    },
+    {
+      "id": "medium_091",
+      "vietnamese": "Sản phẩm có đánh giá trên 3.6 sao",
+      "english": "Products with rating above 3.6 stars",
+      "sql": "SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average >= 3.6 ORDER BY rv.rating_average DESC LIMIT 15;",
+      "complexity": "medium"
+    },
+    {
+      "id": "medium_092",
+      "vietnamese": "Sản phẩm có đánh giá trên 3.7 sao",
+      "english": "Products with rating above 3.7 stars",
+      "sql": "SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average >= 3.7 ORDER BY rv.rating_average DESC LIMIT 15;",
+      "complexity": "medium"
+    },
+    {
+      "id": "medium_093",
+      "vietnamese": "Sản phẩm có đánh giá trên 3.8 sao",
+      "english": "Products with rating above 3.8 stars",
+      "sql": "SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average >= 3.8 ORDER BY rv.rating_average DESC LIMIT 15;",
+      "complexity": "medium"
+    },
+    {
+      "id": "medium_094",
+      "vietnamese": "Sản phẩm có đánh giá trên 3.9 sao",
+      "english": "Products with rating above 3.9 stars",
+      "sql": "SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average >= 3.9 ORDER BY rv.rating_average DESC LIMIT 15;",
+      "complexity": "medium"
+    },
+    {
+      "id": "medium_095",
+      "vietnamese": "Sản phẩm có đánh giá trên 4.0 sao",
+      "english": "Products with rating above 4.0 stars",
+      "sql": "SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average >= 4.0 ORDER BY rv.rating_average DESC LIMIT 15;",
+      "complexity": "medium"
+    },
+    {
+      "id": "medium_096",
+      "vietnamese": "Sản phẩm có đánh giá trên 4.1 sao",
+      "english": "Products with rating above 4.1 stars",
+      "sql": "SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average >= 4.1 ORDER BY rv.rating_average DESC LIMIT 15;",
+      "complexity": "medium"
+    },
+    {
+      "id": "medium_097",
+      "vietnamese": "Sản phẩm có đánh giá trên 4.2 sao",
+      "english": "Products with rating above 4.2 stars",
+      "sql": "SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average >= 4.2 ORDER BY rv.rating_average DESC LIMIT 15;",
+      "complexity": "medium"
+    },
+    {
+      "id": "medium_098",
+      "vietnamese": "Sản phẩm có đánh giá trên 4.3 sao",
+      "english": "Products with rating above 4.3 stars",
+      "sql": "SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average >= 4.3 ORDER BY rv.rating_average DESC LIMIT 15;",
+      "complexity": "medium"
+    },
+    {
+      "id": "medium_099",
+      "vietnamese": "Sản phẩm có đánh giá trên 4.4 sao",
+      "english": "Products with rating above 4.4 stars",
+      "sql": "SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average >= 4.4 ORDER BY rv.rating_average DESC LIMIT 15;",
+      "complexity": "medium"
+    },
+    {
+      "id": "medium_100",
+      "vietnamese": "Sản phẩm có đánh giá trên 3.5 sao",
+      "english": "Products with rating above 3.5 stars",
+      "sql": "SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average >= 3.5 ORDER BY rv.rating_average DESC LIMIT 15;",
+      "complexity": "medium"
+    }
+  ],
+  "complex": [
+    {
+      "id": "complex_001",
+      "vietnamese": "Top 10 sản phẩm đánh giá cao nhất có giá dưới 1 triệu",
+      "english": "Top 10 highest rated products under 1 million",
+      "sql": "SELECT p.name, b.brand_name, c.category_name, pr.current_price, rv.rating_average, rv.review_count \nFROM products p \nJOIN brands b ON p.brand_id = b.brand_id \nJOIN categories c ON p.category_id = c.category_id \nJOIN product_pricing pr ON p.product_id = pr.product_id \nJOIN product_reviews rv ON p.product_id = rv.product_id \nWHERE pr.current_price < 1000000 AND rv.rating_average >= 4.0 \nORDER BY rv.rating_average DESC, rv.review_count DESC \nLIMIT 10;",
+      "complexity": "complex"
+    },
+    {
+      "id": "complex_002",
+      "vietnamese": "Phân tích thị phần thương hiệu",
+      "english": "Brand market share analysis",
+      "sql": "SELECT b.brand_name, \nCOUNT(p.product_id) as product_count,\nROUND(COUNT(p.product_id) * 100.0 / (SELECT COUNT(*) FROM products), 2) as market_share_percent,\nAVG(pr.current_price) as avg_price,\nAVG(rv.rating_average) as avg_rating\nFROM brands b \nJOIN products p ON b.brand_id = p.brand_id \nJOIN product_pricing pr ON p.product_id = pr.product_id \nJOIN product_reviews rv ON p.product_id = rv.product_id \nGROUP BY b.brand_id, b.brand_name \nHAVING COUNT(p.product_id) >= 10\nORDER BY market_share_percent DESC \nLIMIT 20;",
+      "complexity": "complex"
+    },
+    {
+      "id": "complex_003",
+      "vietnamese": "Top 5 sản phẩm bán chạy nhất trong danh mục Phụ kiện thời trang",
+      "english": "Top 5 best selling products in Phụ kiện thời trang category",
+      "sql": "SELECT p.name, b.brand_name, pr.current_price, rv.rating_average, pr.quantity_sold\nFROM products p \nJOIN brands b ON p.brand_id = b.brand_id \nJOIN categories c ON p.category_id = c.category_id \nJOIN product_pricing pr ON p.product_id = pr.product_id \nJOIN product_reviews rv ON p.product_id = rv.product_id \nWHERE c.category_name = 'Phụ kiện thời trang'\nORDER BY pr.quantity_sold DESC, rv.rating_average DESC \nLIMIT 5;",
+      "complexity": "complex"
+    },
+    {
+      "id": "complex_004",
+      "vietnamese": "Top 6 sản phẩm bán chạy nhất trong danh mục Giày dép nam",
+      "english": "Top 6 best selling products in Giày dép nam category",
+      "sql": "SELECT p.name, b.brand_name, pr.current_price, rv.rating_average, pr.quantity_sold\nFROM products p \nJOIN brands b ON p.brand_id = b.brand_id \nJOIN categories c ON p.category_id = c.category_id \nJOIN product_pricing pr ON p.product_id = pr.product_id \nJOIN product_reviews rv ON p.product_id = rv.product_id \nWHERE c.category_name = 'Giày dép nam'\nORDER BY pr.quantity_sold DESC, rv.rating_average DESC \nLIMIT 6;",
+      "complexity": "complex"
+    },
+    {
+      "id": "complex_005",
+      "vietnamese": "Top 7 sản phẩm bán chạy nhất trong danh mục Túi nam",
+      "english": "Top 7 best selling products in Túi nam category",
+      "sql": "SELECT p.name, b.brand_name, pr.current_price, rv.rating_average, pr.quantity_sold\nFROM products p \nJOIN brands b ON p.brand_id = b.brand_id \nJOIN categories c ON p.category_id = c.category_id \nJOIN product_pricing pr ON p.product_id = pr.product_id \nJOIN product_reviews rv ON p.product_id = rv.product_id \nWHERE c.category_name = 'Túi nam'\nORDER BY pr.quantity_sold DESC, rv.rating_average DESC \nLIMIT 7;",
+      "complexity": "complex"
+    },
+    {
+      "id": "complex_006",
+      "vietnamese": "Top 8 sản phẩm bán chạy nhất trong danh mục Balo & Vali",
+      "english": "Top 8 best selling products in Balo & Vali category",
+      "sql": "SELECT p.name, b.brand_name, pr.current_price, rv.rating_average, pr.quantity_sold\nFROM products p \nJOIN brands b ON p.brand_id = b.brand_id \nJOIN categories c ON p.category_id = c.category_id \nJOIN product_pricing pr ON p.product_id = pr.product_id \nJOIN product_reviews rv ON p.product_id = rv.product_id \nWHERE c.category_name = 'Balo & Vali'\nORDER BY pr.quantity_sold DESC, rv.rating_average DESC \nLIMIT 8;",
+      "complexity": "complex"
+    },
+    {
+      "id": "complex_007",
+      "vietnamese": "Top 9 sản phẩm bán chạy nhất trong danh mục Phụ kiện thời trang",
+      "english": "Top 9 best selling products in Phụ kiện thời trang category",
+      "sql": "SELECT p.name, b.brand_name, pr.current_price, rv.rating_average, pr.quantity_sold\nFROM products p \nJOIN brands b ON p.brand_id = b.brand_id \nJOIN categories c ON p.category_id = c.category_id \nJOIN product_pricing pr ON p.product_id = pr.product_id \nJOIN product_reviews rv ON p.product_id = rv.product_id \nWHERE c.category_name = 'Phụ kiện thời trang'\nORDER BY pr.quantity_sold DESC, rv.rating_average DESC \nLIMIT 9;",
+      "complexity": "complex"
+    },
+    {
+      "id": "complex_008",
+      "vietnamese": "Top 10 sản phẩm bán chạy nhất trong danh mục Giày dép nam",
+      "english": "Top 10 best selling products in Giày dép nam category",
+      "sql": "SELECT p.name, b.brand_name, pr.current_price, rv.rating_average, pr.quantity_sold\nFROM products p \nJOIN brands b ON p.brand_id = b.brand_id \nJOIN categories c ON p.category_id = c.category_id \nJOIN product_pricing pr ON p.product_id = pr.product_id \nJOIN product_reviews rv ON p.product_id = rv.product_id \nWHERE c.category_name = 'Giày dép nam'\nORDER BY pr.quantity_sold DESC, rv.rating_average DESC \nLIMIT 10;",
+      "complexity": "complex"
+    },
+    {
+      "id": "complex_009",
+      "vietnamese": "Top 11 sản phẩm bán chạy nhất trong danh mục Túi nam",
+      "english": "Top 11 best selling products in Túi nam category",
+      "sql": "SELECT p.name, b.brand_name, pr.current_price, rv.rating_average, pr.quantity_sold\nFROM products p \nJOIN brands b ON p.brand_id = b.brand_id \nJOIN categories c ON p.category_id = c.category_id \nJOIN product_pricing pr ON p.product_id = pr.product_id \nJOIN product_reviews rv ON p.product_id = rv.product_id \nWHERE c.category_name = 'Túi nam'\nORDER BY pr.quantity_sold DESC, rv.rating_average DESC \nLIMIT 11;",
+      "complexity": "complex"
+    },
+    {
+      "id": "complex_010",
+      "vietnamese": "Top 12 sản phẩm bán chạy nhất trong danh mục Balo & Vali",
+      "english": "Top 12 best selling products in Balo & Vali category",
+      "sql": "SELECT p.name, b.brand_name, pr.current_price, rv.rating_average, pr.quantity_sold\nFROM products p \nJOIN brands b ON p.brand_id = b.brand_id \nJOIN categories c ON p.category_id = c.category_id \nJOIN product_pricing pr ON p.product_id = pr.product_id \nJOIN product_reviews rv ON p.product_id = rv.product_id \nWHERE c.category_name = 'Balo & Vali'\nORDER BY pr.quantity_sold DESC, rv.rating_average DESC \nLIMIT 12;",
+      "complexity": "complex"
+    },
+    {
+      "id": "complex_011",
+      "vietnamese": "Top 13 sản phẩm bán chạy nhất trong danh mục Phụ kiện thời trang",
+      "english": "Top 13 best selling products in Phụ kiện thời trang category",
+      "sql": "SELECT p.name, b.brand_name, pr.current_price, rv.rating_average, pr.quantity_sold\nFROM products p \nJOIN brands b ON p.brand_id = b.brand_id \nJOIN categories c ON p.category_id = c.category_id \nJOIN product_pricing pr ON p.product_id = pr.product_id \nJOIN product_reviews rv ON p.product_id = rv.product_id \nWHERE c.category_name = 'Phụ kiện thời trang'\nORDER BY pr.quantity_sold DESC, rv.rating_average DESC \nLIMIT 13;",
+      "complexity": "complex"
+    },
+    {
+      "id": "complex_012",
+      "vietnamese": "Top 14 sản phẩm bán chạy nhất trong danh mục Giày dép nam",
+      "english": "Top 14 best selling products in Giày dép nam category",
+      "sql": "SELECT p.name, b.brand_name, pr.current_price, rv.rating_average, pr.quantity_sold\nFROM products p \nJOIN brands b ON p.brand_id = b.brand_id \nJOIN categories c ON p.category_id = c.category_id \nJOIN product_pricing pr ON p.product_id = pr.product_id \nJOIN product_reviews rv ON p.product_id = rv.product_id \nWHERE c.category_name = 'Giày dép nam'\nORDER BY pr.quantity_sold DESC, rv.rating_average DESC \nLIMIT 14;",
+      "complexity": "complex"
+    },
+    {
+      "id": "complex_013",
+      "vietnamese": "Top 5 sản phẩm bán chạy nhất trong danh mục Túi nam",
+      "english": "Top 5 best selling products in Túi nam category",
+      "sql": "SELECT p.name, b.brand_name, pr.current_price, rv.rating_average, pr.quantity_sold\nFROM products p \nJOIN brands b ON p.brand_id = b.brand_id \nJOIN categories c ON p.category_id = c.category_id \nJOIN product_pricing pr ON p.product_id = pr.product_id \nJOIN product_reviews rv ON p.product_id = rv.product_id \nWHERE c.category_name = 'Túi nam'\nORDER BY pr.quantity_sold DESC, rv.rating_average DESC \nLIMIT 5;",
+      "complexity": "complex"
+    },
+    {
+      "id": "complex_014",
+      "vietnamese": "Top 6 sản phẩm bán chạy nhất trong danh mục Balo & Vali",
+      "english": "Top 6 best selling products in Balo & Vali category",
+      "sql": "SELECT p.name, b.brand_name, pr.current_price, rv.rating_average, pr.quantity_sold\nFROM products p \nJOIN brands b ON p.brand_id = b.brand_id \nJOIN categories c ON p.category_id = c.category_id \nJOIN product_pricing pr ON p.product_id = pr.product_id \nJOIN product_reviews rv ON p.product_id = rv.product_id \nWHERE c.category_name = 'Balo & Vali'\nORDER BY pr.quantity_sold DESC, rv.rating_average DESC \nLIMIT 6;",
+      "complexity": "complex"
+    },
+    {
+      "id": "complex_015",
+      "vietnamese": "Top 7 sản phẩm bán chạy nhất trong danh mục Phụ kiện thời trang",
+      "english": "Top 7 best selling products in Phụ kiện thời trang category",
+      "sql": "SELECT p.name, b.brand_name, pr.current_price, rv.rating_average, pr.quantity_sold\nFROM products p \nJOIN brands b ON p.brand_id = b.brand_id \nJOIN categories c ON p.category_id = c.category_id \nJOIN product_pricing pr ON p.product_id = pr.product_id \nJOIN product_reviews rv ON p.product_id = rv.product_id \nWHERE c.category_name = 'Phụ kiện thời trang'\nORDER BY pr.quantity_sold DESC, rv.rating_average DESC \nLIMIT 7;",
+      "complexity": "complex"
+    },
+    {
+      "id": "complex_016",
+      "vietnamese": "Top 8 sản phẩm bán chạy nhất trong danh mục Giày dép nam",
+      "english": "Top 8 best selling products in Giày dép nam category",
+      "sql": "SELECT p.name, b.brand_name, pr.current_price, rv.rating_average, pr.quantity_sold\nFROM products p \nJOIN brands b ON p.brand_id = b.brand_id \nJOIN categories c ON p.category_id = c.category_id \nJOIN product_pricing pr ON p.product_id = pr.product_id \nJOIN product_reviews rv ON p.product_id = rv.product_id \nWHERE c.category_name = 'Giày dép nam'\nORDER BY pr.quantity_sold DESC, rv.rating_average DESC \nLIMIT 8;",
+      "complexity": "complex"
+    },
+    {
+      "id": "complex_017",
+      "vietnamese": "Top 9 sản phẩm bán chạy nhất trong danh mục Túi nam",
+      "english": "Top 9 best selling products in Túi nam category",
+      "sql": "SELECT p.name, b.brand_name, pr.current_price, rv.rating_average, pr.quantity_sold\nFROM products p \nJOIN brands b ON p.brand_id = b.brand_id \nJOIN categories c ON p.category_id = c.category_id \nJOIN product_pricing pr ON p.product_id = pr.product_id \nJOIN product_reviews rv ON p.product_id = rv.product_id \nWHERE c.category_name = 'Túi nam'\nORDER BY pr.quantity_sold DESC, rv.rating_average DESC \nLIMIT 9;",
+      "complexity": "complex"
+    },
+    {
+      "id": "complex_018",
+      "vietnamese": "Top 10 sản phẩm bán chạy nhất trong danh mục Balo & Vali",
+      "english": "Top 10 best selling products in Balo & Vali category",
+      "sql": "SELECT p.name, b.brand_name, pr.current_price, rv.rating_average, pr.quantity_sold\nFROM products p \nJOIN brands b ON p.brand_id = b.brand_id \nJOIN categories c ON p.category_id = c.category_id \nJOIN product_pricing pr ON p.product_id = pr.product_id \nJOIN product_reviews rv ON p.product_id = rv.product_id \nWHERE c.category_name = 'Balo & Vali'\nORDER BY pr.quantity_sold DESC, rv.rating_average DESC \nLIMIT 10;",
+      "complexity": "complex"
+    },
+    {
+      "id": "complex_019",
+      "vietnamese": "Top 11 sản phẩm bán chạy nhất trong danh mục Phụ kiện thời trang",
+      "english": "Top 11 best selling products in Phụ kiện thời trang category",
+      "sql": "SELECT p.name, b.brand_name, pr.current_price, rv.rating_average, pr.quantity_sold\nFROM products p \nJOIN brands b ON p.brand_id = b.brand_id \nJOIN categories c ON p.category_id = c.category_id \nJOIN product_pricing pr ON p.product_id = pr.product_id \nJOIN product_reviews rv ON p.product_id = rv.product_id \nWHERE c.category_name = 'Phụ kiện thời trang'\nORDER BY pr.quantity_sold DESC, rv.rating_average DESC \nLIMIT 11;",
+      "complexity": "complex"
+    },
+    {
+      "id": "complex_020",
+      "vietnamese": "Top 12 sản phẩm bán chạy nhất trong danh mục Giày dép nam",
+      "english": "Top 12 best selling products in Giày dép nam category",
+      "sql": "SELECT p.name, b.brand_name, pr.current_price, rv.rating_average, pr.quantity_sold\nFROM products p \nJOIN brands b ON p.brand_id = b.brand_id \nJOIN categories c ON p.category_id = c.category_id \nJOIN product_pricing pr ON p.product_id = pr.product_id \nJOIN product_reviews rv ON p.product_id = rv.product_id \nWHERE c.category_name = 'Giày dép nam'\nORDER BY pr.quantity_sold DESC, rv.rating_average DESC \nLIMIT 12;",
+      "complexity": "complex"
+    },
+    {
+      "id": "complex_021",
+      "vietnamese": "Top 13 sản phẩm bán chạy nhất trong danh mục Túi nam",
+      "english": "Top 13 best selling products in Túi nam category",
+      "sql": "SELECT p.name, b.brand_name, pr.current_price, rv.rating_average, pr.quantity_sold\nFROM products p \nJOIN brands b ON p.brand_id = b.brand_id \nJOIN categories c ON p.category_id = c.category_id \nJOIN product_pricing pr ON p.product_id = pr.product_id \nJOIN product_reviews rv ON p.product_id = rv.product_id \nWHERE c.category_name = 'Túi nam'\nORDER BY pr.quantity_sold DESC, rv.rating_average DESC \nLIMIT 13;",
+      "complexity": "complex"
+    },
+    {
+      "id": "complex_022",
+      "vietnamese": "Top 14 sản phẩm bán chạy nhất trong danh mục Balo & Vali",
+      "english": "Top 14 best selling products in Balo & Vali category",
+      "sql": "SELECT p.name, b.brand_name, pr.current_price, rv.rating_average, pr.quantity_sold\nFROM products p \nJOIN brands b ON p.brand_id = b.brand_id \nJOIN categories c ON p.category_id = c.category_id \nJOIN product_pricing pr ON p.product_id = pr.product_id \nJOIN product_reviews rv ON p.product_id = rv.product_id \nWHERE c.category_name = 'Balo & Vali'\nORDER BY pr.quantity_sold DESC, rv.rating_average DESC \nLIMIT 14;",
+      "complexity": "complex"
+    },
+    {
+      "id": "complex_023",
+      "vietnamese": "Top 5 sản phẩm bán chạy nhất trong danh mục Phụ kiện thời trang",
+      "english": "Top 5 best selling products in Phụ kiện thời trang category",
+      "sql": "SELECT p.name, b.brand_name, pr.current_price, rv.rating_average, pr.quantity_sold\nFROM products p \nJOIN brands b ON p.brand_id = b.brand_id \nJOIN categories c ON p.category_id = c.category_id \nJOIN product_pricing pr ON p.product_id = pr.product_id \nJOIN product_reviews rv ON p.product_id = rv.product_id \nWHERE c.category_name = 'Phụ kiện thời trang'\nORDER BY pr.quantity_sold DESC, rv.rating_average DESC \nLIMIT 5;",
+      "complexity": "complex"
+    },
+    {
+      "id": "complex_024",
+      "vietnamese": "Top 6 sản phẩm bán chạy nhất trong danh mục Giày dép nam",
+      "english": "Top 6 best selling products in Giày dép nam category",
+      "sql": "SELECT p.name, b.brand_name, pr.current_price, rv.rating_average, pr.quantity_sold\nFROM products p \nJOIN brands b ON p.brand_id = b.brand_id \nJOIN categories c ON p.category_id = c.category_id \nJOIN product_pricing pr ON p.product_id = pr.product_id \nJOIN product_reviews rv ON p.product_id = rv.product_id \nWHERE c.category_name = 'Giày dép nam'\nORDER BY pr.quantity_sold DESC, rv.rating_average DESC \nLIMIT 6;",
+      "complexity": "complex"
+    },
+    {
+      "id": "complex_025",
+      "vietnamese": "Top 7 sản phẩm bán chạy nhất trong danh mục Túi nam",
+      "english": "Top 7 best selling products in Túi nam category",
+      "sql": "SELECT p.name, b.brand_name, pr.current_price, rv.rating_average, pr.quantity_sold\nFROM products p \nJOIN brands b ON p.brand_id = b.brand_id \nJOIN categories c ON p.category_id = c.category_id \nJOIN product_pricing pr ON p.product_id = pr.product_id \nJOIN product_reviews rv ON p.product_id = rv.product_id \nWHERE c.category_name = 'Túi nam'\nORDER BY pr.quantity_sold DESC, rv.rating_average DESC \nLIMIT 7;",
+      "complexity": "complex"
+    },
+    {
+      "id": "complex_026",
+      "vietnamese": "Top 8 sản phẩm bán chạy nhất trong danh mục Balo & Vali",
+      "english": "Top 8 best selling products in Balo & Vali category",
+      "sql": "SELECT p.name, b.brand_name, pr.current_price, rv.rating_average, pr.quantity_sold\nFROM products p \nJOIN brands b ON p.brand_id = b.brand_id \nJOIN categories c ON p.category_id = c.category_id \nJOIN product_pricing pr ON p.product_id = pr.product_id \nJOIN product_reviews rv ON p.product_id = rv.product_id \nWHERE c.category_name = 'Balo & Vali'\nORDER BY pr.quantity_sold DESC, rv.rating_average DESC \nLIMIT 8;",
+      "complexity": "complex"
+    },
+    {
+      "id": "complex_027",
+      "vietnamese": "Top 9 sản phẩm bán chạy nhất trong danh mục Phụ kiện thời trang",
+      "english": "Top 9 best selling products in Phụ kiện thời trang category",
+      "sql": "SELECT p.name, b.brand_name, pr.current_price, rv.rating_average, pr.quantity_sold\nFROM products p \nJOIN brands b ON p.brand_id = b.brand_id \nJOIN categories c ON p.category_id = c.category_id \nJOIN product_pricing pr ON p.product_id = pr.product_id \nJOIN product_reviews rv ON p.product_id = rv.product_id \nWHERE c.category_name = 'Phụ kiện thời trang'\nORDER BY pr.quantity_sold DESC, rv.rating_average DESC \nLIMIT 9;",
+      "complexity": "complex"
+    },
+    {
+      "id": "complex_028",
+      "vietnamese": "Top 10 sản phẩm bán chạy nhất trong danh mục Giày dép nam",
+      "english": "Top 10 best selling products in Giày dép nam category",
+      "sql": "SELECT p.name, b.brand_name, pr.current_price, rv.rating_average, pr.quantity_sold\nFROM products p \nJOIN brands b ON p.brand_id = b.brand_id \nJOIN categories c ON p.category_id = c.category_id \nJOIN product_pricing pr ON p.product_id = pr.product_id \nJOIN product_reviews rv ON p.product_id = rv.product_id \nWHERE c.category_name = 'Giày dép nam'\nORDER BY pr.quantity_sold DESC, rv.rating_average DESC \nLIMIT 10;",
+      "complexity": "complex"
+    },
+    {
+      "id": "complex_029",
+      "vietnamese": "Top 11 sản phẩm bán chạy nhất trong danh mục Túi nam",
+      "english": "Top 11 best selling products in Túi nam category",
+      "sql": "SELECT p.name, b.brand_name, pr.current_price, rv.rating_average, pr.quantity_sold\nFROM products p \nJOIN brands b ON p.brand_id = b.brand_id \nJOIN categories c ON p.category_id = c.category_id \nJOIN product_pricing pr ON p.product_id = pr.product_id \nJOIN product_reviews rv ON p.product_id = rv.product_id \nWHERE c.category_name = 'Túi nam'\nORDER BY pr.quantity_sold DESC, rv.rating_average DESC \nLIMIT 11;",
+      "complexity": "complex"
+    },
+    {
+      "id": "complex_030",
+      "vietnamese": "Top 12 sản phẩm bán chạy nhất trong danh mục Balo & Vali",
+      "english": "Top 12 best selling products in Balo & Vali category",
+      "sql": "SELECT p.name, b.brand_name, pr.current_price, rv.rating_average, pr.quantity_sold\nFROM products p \nJOIN brands b ON p.brand_id = b.brand_id \nJOIN categories c ON p.category_id = c.category_id \nJOIN product_pricing pr ON p.product_id = pr.product_id \nJOIN product_reviews rv ON p.product_id = rv.product_id \nWHERE c.category_name = 'Balo & Vali'\nORDER BY pr.quantity_sold DESC, rv.rating_average DESC \nLIMIT 12;",
+      "complexity": "complex"
+    },
+    {
+      "id": "complex_031",
+      "vietnamese": "Top 13 sản phẩm bán chạy nhất trong danh mục Phụ kiện thời trang",
+      "english": "Top 13 best selling products in Phụ kiện thời trang category",
+      "sql": "SELECT p.name, b.brand_name, pr.current_price, rv.rating_average, pr.quantity_sold\nFROM products p \nJOIN brands b ON p.brand_id = b.brand_id \nJOIN categories c ON p.category_id = c.category_id \nJOIN product_pricing pr ON p.product_id = pr.product_id \nJOIN product_reviews rv ON p.product_id = rv.product_id \nWHERE c.category_name = 'Phụ kiện thời trang'\nORDER BY pr.quantity_sold DESC, rv.rating_average DESC \nLIMIT 13;",
+      "complexity": "complex"
+    },
+    {
+      "id": "complex_032",
+      "vietnamese": "Top 14 sản phẩm bán chạy nhất trong danh mục Giày dép nam",
+      "english": "Top 14 best selling products in Giày dép nam category",
+      "sql": "SELECT p.name, b.brand_name, pr.current_price, rv.rating_average, pr.quantity_sold\nFROM products p \nJOIN brands b ON p.brand_id = b.brand_id \nJOIN categories c ON p.category_id = c.category_id \nJOIN product_pricing pr ON p.product_id = pr.product_id \nJOIN product_reviews rv ON p.product_id = rv.product_id \nWHERE c.category_name = 'Giày dép nam'\nORDER BY pr.quantity_sold DESC, rv.rating_average DESC \nLIMIT 14;",
+      "complexity": "complex"
+    },
+    {
+      "id": "complex_033",
+      "vietnamese": "Sản phẩm Nike hoặc Adidas có đánh giá trên 4.0 sao",
+      "english": "Nike or Adidas products with rating above 4.0 stars",
+      "sql": "SELECT p.name, b.brand_name, c.category_name, pr.current_price, rv.rating_average\nFROM products p \nJOIN brands b ON p.brand_id = b.brand_id \nJOIN categories c ON p.category_id = c.category_id \nJOIN product_pricing pr ON p.product_id = pr.product_id \nJOIN product_reviews rv ON p.product_id = rv.product_id \nWHERE (b.brand_name LIKE '%Nike%' OR b.brand_name LIKE '%Adidas%') \nAND rv.rating_average >= 4.0\nORDER BY rv.rating_average DESC, pr.current_price ASC \nLIMIT 15;",
+      "complexity": "complex"
+    },
+    {
+      "id": "complex_034",
+      "vietnamese": "Sản phẩm Samsung hoặc Apple có đánh giá trên 4.1 sao",
+      "english": "Samsung or Apple products with rating above 4.1 stars",
+      "sql": "SELECT p.name, b.brand_name, c.category_name, pr.current_price, rv.rating_average\nFROM products p \nJOIN brands b ON p.brand_id = b.brand_id \nJOIN categories c ON p.category_id = c.category_id \nJOIN product_pricing pr ON p.product_id = pr.product_id \nJOIN product_reviews rv ON p.product_id = rv.product_id \nWHERE (b.brand_name LIKE '%Samsung%' OR b.brand_name LIKE '%Apple%') \nAND rv.rating_average >= 4.1\nORDER BY rv.rating_average DESC, pr.current_price ASC \nLIMIT 15;",
+      "complexity": "complex"
+    },
+    {
+      "id": "complex_035",
+      "vietnamese": "Sản phẩm Louis Vuitton hoặc Gucci có đánh giá trên 4.2 sao",
+      "english": "Louis Vuitton or Gucci products with rating above 4.2 stars",
+      "sql": "SELECT p.name, b.brand_name, c.category_name, pr.current_price, rv.rating_average\nFROM products p \nJOIN brands b ON p.brand_id = b.brand_id \nJOIN categories c ON p.category_id = c.category_id \nJOIN product_pricing pr ON p.product_id = pr.product_id \nJOIN product_reviews rv ON p.product_id = rv.product_id \nWHERE (b.brand_name LIKE '%Louis Vuitton%' OR b.brand_name LIKE '%Gucci%') \nAND rv.rating_average >= 4.2\nORDER BY rv.rating_average DESC, pr.current_price ASC \nLIMIT 15;",
+      "complexity": "complex"
+    },
+    {
+      "id": "complex_036",
+      "vietnamese": "Sản phẩm Nike hoặc Adidas có đánh giá trên 4.3 sao",
+      "english": "Nike or Adidas products with rating above 4.3 stars",
+      "sql": "SELECT p.name, b.brand_name, c.category_name, pr.current_price, rv.rating_average\nFROM products p \nJOIN brands b ON p.brand_id = b.brand_id \nJOIN categories c ON p.category_id = c.category_id \nJOIN product_pricing pr ON p.product_id = pr.product_id \nJOIN product_reviews rv ON p.product_id = rv.product_id \nWHERE (b.brand_name LIKE '%Nike%' OR b.brand_name LIKE '%Adidas%') \nAND rv.rating_average >= 4.3\nORDER BY rv.rating_average DESC, pr.current_price ASC \nLIMIT 15;",
+      "complexity": "complex"
+    },
+    {
+      "id": "complex_037",
+      "vietnamese": "Sản phẩm Samsung hoặc Apple có đánh giá trên 4.4 sao",
+      "english": "Samsung or Apple products with rating above 4.4 stars",
+      "sql": "SELECT p.name, b.brand_name, c.category_name, pr.current_price, rv.rating_average\nFROM products p \nJOIN brands b ON p.brand_id = b.brand_id \nJOIN categories c ON p.category_id = c.category_id \nJOIN product_pricing pr ON p.product_id = pr.product_id \nJOIN product_reviews rv ON p.product_id = rv.product_id \nWHERE (b.brand_name LIKE '%Samsung%' OR b.brand_name LIKE '%Apple%') \nAND rv.rating_average >= 4.4\nORDER BY rv.rating_average DESC, pr.current_price ASC \nLIMIT 15;",
+      "complexity": "complex"
+    },
+    {
+      "id": "complex_038",
+      "vietnamese": "Sản phẩm Louis Vuitton hoặc Gucci có đánh giá trên 4.0 sao",
+      "english": "Louis Vuitton or Gucci products with rating above 4.0 stars",
+      "sql": "SELECT p.name, b.brand_name, c.category_name, pr.current_price, rv.rating_average\nFROM products p \nJOIN brands b ON p.brand_id = b.brand_id \nJOIN categories c ON p.category_id = c.category_id \nJOIN product_pricing pr ON p.product_id = pr.product_id \nJOIN product_reviews rv ON p.product_id = rv.product_id \nWHERE (b.brand_name LIKE '%Louis Vuitton%' OR b.brand_name LIKE '%Gucci%') \nAND rv.rating_average >= 4.0\nORDER BY rv.rating_average DESC, pr.current_price ASC \nLIMIT 15;",
+      "complexity": "complex"
+    },
+    {
+      "id": "complex_039",
+      "vietnamese": "Sản phẩm Nike hoặc Adidas có đánh giá trên 4.1 sao",
+      "english": "Nike or Adidas products with rating above 4.1 stars",
+      "sql": "SELECT p.name, b.brand_name, c.category_name, pr.current_price, rv.rating_average\nFROM products p \nJOIN brands b ON p.brand_id = b.brand_id \nJOIN categories c ON p.category_id = c.category_id \nJOIN product_pricing pr ON p.product_id = pr.product_id \nJOIN product_reviews rv ON p.product_id = rv.product_id \nWHERE (b.brand_name LIKE '%Nike%' OR b.brand_name LIKE '%Adidas%') \nAND rv.rating_average >= 4.1\nORDER BY rv.rating_average DESC, pr.current_price ASC \nLIMIT 15;",
+      "complexity": "complex"
+    },
+    {
+      "id": "complex_040",
+      "vietnamese": "Sản phẩm Samsung hoặc Apple có đánh giá trên 4.2 sao",
+      "english": "Samsung or Apple products with rating above 4.2 stars",
+      "sql": "SELECT p.name, b.brand_name, c.category_name, pr.current_price, rv.rating_average\nFROM products p \nJOIN brands b ON p.brand_id = b.brand_id \nJOIN categories c ON p.category_id = c.category_id \nJOIN product_pricing pr ON p.product_id = pr.product_id \nJOIN product_reviews rv ON p.product_id = rv.product_id \nWHERE (b.brand_name LIKE '%Samsung%' OR b.brand_name LIKE '%Apple%') \nAND rv.rating_average >= 4.2\nORDER BY rv.rating_average DESC, pr.current_price ASC \nLIMIT 15;",
+      "complexity": "complex"
+    },
+    {
+      "id": "complex_041",
+      "vietnamese": "Sản phẩm Louis Vuitton hoặc Gucci có đánh giá trên 4.3 sao",
+      "english": "Louis Vuitton or Gucci products with rating above 4.3 stars",
+      "sql": "SELECT p.name, b.brand_name, c.category_name, pr.current_price, rv.rating_average\nFROM products p \nJOIN brands b ON p.brand_id = b.brand_id \nJOIN categories c ON p.category_id = c.category_id \nJOIN product_pricing pr ON p.product_id = pr.product_id \nJOIN product_reviews rv ON p.product_id = rv.product_id \nWHERE (b.brand_name LIKE '%Louis Vuitton%' OR b.brand_name LIKE '%Gucci%') \nAND rv.rating_average >= 4.3\nORDER BY rv.rating_average DESC, pr.current_price ASC \nLIMIT 15;",
+      "complexity": "complex"
+    },
+    {
+      "id": "complex_042",
+      "vietnamese": "Sản phẩm Nike hoặc Adidas có đánh giá trên 4.4 sao",
+      "english": "Nike or Adidas products with rating above 4.4 stars",
+      "sql": "SELECT p.name, b.brand_name, c.category_name, pr.current_price, rv.rating_average\nFROM products p \nJOIN brands b ON p.brand_id = b.brand_id \nJOIN categories c ON p.category_id = c.category_id \nJOIN product_pricing pr ON p.product_id = pr.product_id \nJOIN product_reviews rv ON p.product_id = rv.product_id \nWHERE (b.brand_name LIKE '%Nike%' OR b.brand_name LIKE '%Adidas%') \nAND rv.rating_average >= 4.4\nORDER BY rv.rating_average DESC, pr.current_price ASC \nLIMIT 15;",
+      "complexity": "complex"
+    },
+    {
+      "id": "complex_043",
+      "vietnamese": "Sản phẩm Samsung hoặc Apple có đánh giá trên 4.0 sao",
+      "english": "Samsung or Apple products with rating above 4.0 stars",
+      "sql": "SELECT p.name, b.brand_name, c.category_name, pr.current_price, rv.rating_average\nFROM products p \nJOIN brands b ON p.brand_id = b.brand_id \nJOIN categories c ON p.category_id = c.category_id \nJOIN product_pricing pr ON p.product_id = pr.product_id \nJOIN product_reviews rv ON p.product_id = rv.product_id \nWHERE (b.brand_name LIKE '%Samsung%' OR b.brand_name LIKE '%Apple%') \nAND rv.rating_average >= 4.0\nORDER BY rv.rating_average DESC, pr.current_price ASC \nLIMIT 15;",
+      "complexity": "complex"
+    },
+    {
+      "id": "complex_044",
+      "vietnamese": "Sản phẩm Louis Vuitton hoặc Gucci có đánh giá trên 4.1 sao",
+      "english": "Louis Vuitton or Gucci products with rating above 4.1 stars",
+      "sql": "SELECT p.name, b.brand_name, c.category_name, pr.current_price, rv.rating_average\nFROM products p \nJOIN brands b ON p.brand_id = b.brand_id \nJOIN categories c ON p.category_id = c.category_id \nJOIN product_pricing pr ON p.product_id = pr.product_id \nJOIN product_reviews rv ON p.product_id = rv.product_id \nWHERE (b.brand_name LIKE '%Louis Vuitton%' OR b.brand_name LIKE '%Gucci%') \nAND rv.rating_average >= 4.1\nORDER BY rv.rating_average DESC, pr.current_price ASC \nLIMIT 15;",
+      "complexity": "complex"
+    },
+    {
+      "id": "complex_045",
+      "vietnamese": "Sản phẩm Nike hoặc Adidas có đánh giá trên 4.2 sao",
+      "english": "Nike or Adidas products with rating above 4.2 stars",
+      "sql": "SELECT p.name, b.brand_name, c.category_name, pr.current_price, rv.rating_average\nFROM products p \nJOIN brands b ON p.brand_id = b.brand_id \nJOIN categories c ON p.category_id = c.category_id \nJOIN product_pricing pr ON p.product_id = pr.product_id \nJOIN product_reviews rv ON p.product_id = rv.product_id \nWHERE (b.brand_name LIKE '%Nike%' OR b.brand_name LIKE '%Adidas%') \nAND rv.rating_average >= 4.2\nORDER BY rv.rating_average DESC, pr.current_price ASC \nLIMIT 15;",
+      "complexity": "complex"
+    },
+    {
+      "id": "complex_046",
+      "vietnamese": "Sản phẩm Samsung hoặc Apple có đánh giá trên 4.3 sao",
+      "english": "Samsung or Apple products with rating above 4.3 stars",
+      "sql": "SELECT p.name, b.brand_name, c.category_name, pr.current_price, rv.rating_average\nFROM products p \nJOIN brands b ON p.brand_id = b.brand_id \nJOIN categories c ON p.category_id = c.category_id \nJOIN product_pricing pr ON p.product_id = pr.product_id \nJOIN product_reviews rv ON p.product_id = rv.product_id \nWHERE (b.brand_name LIKE '%Samsung%' OR b.brand_name LIKE '%Apple%') \nAND rv.rating_average >= 4.3\nORDER BY rv.rating_average DESC, pr.current_price ASC \nLIMIT 15;",
+      "complexity": "complex"
+    },
+    {
+      "id": "complex_047",
+      "vietnamese": "Sản phẩm Louis Vuitton hoặc Gucci có đánh giá trên 4.4 sao",
+      "english": "Louis Vuitton or Gucci products with rating above 4.4 stars",
+      "sql": "SELECT p.name, b.brand_name, c.category_name, pr.current_price, rv.rating_average\nFROM products p \nJOIN brands b ON p.brand_id = b.brand_id \nJOIN categories c ON p.category_id = c.category_id \nJOIN product_pricing pr ON p.product_id = pr.product_id \nJOIN product_reviews rv ON p.product_id = rv.product_id \nWHERE (b.brand_name LIKE '%Louis Vuitton%' OR b.brand_name LIKE '%Gucci%') \nAND rv.rating_average >= 4.4\nORDER BY rv.rating_average DESC, pr.current_price ASC \nLIMIT 15;",
+      "complexity": "complex"
+    },
+    {
+      "id": "complex_048",
+      "vietnamese": "Sản phẩm Nike hoặc Adidas có đánh giá trên 4.0 sao",
+      "english": "Nike or Adidas products with rating above 4.0 stars",
+      "sql": "SELECT p.name, b.brand_name, c.category_name, pr.current_price, rv.rating_average\nFROM products p \nJOIN brands b ON p.brand_id = b.brand_id \nJOIN categories c ON p.category_id = c.category_id \nJOIN product_pricing pr ON p.product_id = pr.product_id \nJOIN product_reviews rv ON p.product_id = rv.product_id \nWHERE (b.brand_name LIKE '%Nike%' OR b.brand_name LIKE '%Adidas%') \nAND rv.rating_average >= 4.0\nORDER BY rv.rating_average DESC, pr.current_price ASC \nLIMIT 15;",
+      "complexity": "complex"
+    },
+    {
+      "id": "complex_049",
+      "vietnamese": "Sản phẩm Samsung hoặc Apple có đánh giá trên 4.1 sao",
+      "english": "Samsung or Apple products with rating above 4.1 stars",
+      "sql": "SELECT p.name, b.brand_name, c.category_name, pr.current_price, rv.rating_average\nFROM products p \nJOIN brands b ON p.brand_id = b.brand_id \nJOIN categories c ON p.category_id = c.category_id \nJOIN product_pricing pr ON p.product_id = pr.product_id \nJOIN product_reviews rv ON p.product_id = rv.product_id \nWHERE (b.brand_name LIKE '%Samsung%' OR b.brand_name LIKE '%Apple%') \nAND rv.rating_average >= 4.1\nORDER BY rv.rating_average DESC, pr.current_price ASC \nLIMIT 15;",
+      "complexity": "complex"
+    },
+    {
+      "id": "complex_050",
+      "vietnamese": "Sản phẩm Louis Vuitton hoặc Gucci có đánh giá trên 4.2 sao",
+      "english": "Louis Vuitton or Gucci products with rating above 4.2 stars",
+      "sql": "SELECT p.name, b.brand_name, c.category_name, pr.current_price, rv.rating_average\nFROM products p \nJOIN brands b ON p.brand_id = b.brand_id \nJOIN categories c ON p.category_id = c.category_id \nJOIN product_pricing pr ON p.product_id = pr.product_id \nJOIN product_reviews rv ON p.product_id = rv.product_id \nWHERE (b.brand_name LIKE '%Louis Vuitton%' OR b.brand_name LIKE '%Gucci%') \nAND rv.rating_average >= 4.2\nORDER BY rv.rating_average DESC, pr.current_price ASC \nLIMIT 15;",
+      "complexity": "complex"
+    },
+    {
+      "id": "complex_051",
+      "vietnamese": "Sản phẩm Nike hoặc Adidas có đánh giá trên 4.3 sao",
+      "english": "Nike or Adidas products with rating above 4.3 stars",
+      "sql": "SELECT p.name, b.brand_name, c.category_name, pr.current_price, rv.rating_average\nFROM products p \nJOIN brands b ON p.brand_id = b.brand_id \nJOIN categories c ON p.category_id = c.category_id \nJOIN product_pricing pr ON p.product_id = pr.product_id \nJOIN product_reviews rv ON p.product_id = rv.product_id \nWHERE (b.brand_name LIKE '%Nike%' OR b.brand_name LIKE '%Adidas%') \nAND rv.rating_average >= 4.3\nORDER BY rv.rating_average DESC, pr.current_price ASC \nLIMIT 15;",
+      "complexity": "complex"
+    },
+    {
+      "id": "complex_052",
+      "vietnamese": "Sản phẩm Samsung hoặc Apple có đánh giá trên 4.4 sao",
+      "english": "Samsung or Apple products with rating above 4.4 stars",
+      "sql": "SELECT p.name, b.brand_name, c.category_name, pr.current_price, rv.rating_average\nFROM products p \nJOIN brands b ON p.brand_id = b.brand_id \nJOIN categories c ON p.category_id = c.category_id \nJOIN product_pricing pr ON p.product_id = pr.product_id \nJOIN product_reviews rv ON p.product_id = rv.product_id \nWHERE (b.brand_name LIKE '%Samsung%' OR b.brand_name LIKE '%Apple%') \nAND rv.rating_average >= 4.4\nORDER BY rv.rating_average DESC, pr.current_price ASC \nLIMIT 15;",
+      "complexity": "complex"
+    },
+    {
+      "id": "complex_053",
+      "vietnamese": "Sản phẩm Louis Vuitton hoặc Gucci có đánh giá trên 4.0 sao",
+      "english": "Louis Vuitton or Gucci products with rating above 4.0 stars",
+      "sql": "SELECT p.name, b.brand_name, c.category_name, pr.current_price, rv.rating_average\nFROM products p \nJOIN brands b ON p.brand_id = b.brand_id \nJOIN categories c ON p.category_id = c.category_id \nJOIN product_pricing pr ON p.product_id = pr.product_id \nJOIN product_reviews rv ON p.product_id = rv.product_id \nWHERE (b.brand_name LIKE '%Louis Vuitton%' OR b.brand_name LIKE '%Gucci%') \nAND rv.rating_average >= 4.0\nORDER BY rv.rating_average DESC, pr.current_price ASC \nLIMIT 15;",
+      "complexity": "complex"
+    },
+    {
+      "id": "complex_054",
+      "vietnamese": "Sản phẩm Nike hoặc Adidas có đánh giá trên 4.1 sao",
+      "english": "Nike or Adidas products with rating above 4.1 stars",
+      "sql": "SELECT p.name, b.brand_name, c.category_name, pr.current_price, rv.rating_average\nFROM products p \nJOIN brands b ON p.brand_id = b.brand_id \nJOIN categories c ON p.category_id = c.category_id \nJOIN product_pricing pr ON p.product_id = pr.product_id \nJOIN product_reviews rv ON p.product_id = rv.product_id \nWHERE (b.brand_name LIKE '%Nike%' OR b.brand_name LIKE '%Adidas%') \nAND rv.rating_average >= 4.1\nORDER BY rv.rating_average DESC, pr.current_price ASC \nLIMIT 15;",
+      "complexity": "complex"
+    },
+    {
+      "id": "complex_055",
+      "vietnamese": "Sản phẩm Samsung hoặc Apple có đánh giá trên 4.2 sao",
+      "english": "Samsung or Apple products with rating above 4.2 stars",
+      "sql": "SELECT p.name, b.brand_name, c.category_name, pr.current_price, rv.rating_average\nFROM products p \nJOIN brands b ON p.brand_id = b.brand_id \nJOIN categories c ON p.category_id = c.category_id \nJOIN product_pricing pr ON p.product_id = pr.product_id \nJOIN product_reviews rv ON p.product_id = rv.product_id \nWHERE (b.brand_name LIKE '%Samsung%' OR b.brand_name LIKE '%Apple%') \nAND rv.rating_average >= 4.2\nORDER BY rv.rating_average DESC, pr.current_price ASC \nLIMIT 15;",
+      "complexity": "complex"
+    },
+    {
+      "id": "complex_056",
+      "vietnamese": "Sản phẩm Louis Vuitton hoặc Gucci có đánh giá trên 4.3 sao",
+      "english": "Louis Vuitton or Gucci products with rating above 4.3 stars",
+      "sql": "SELECT p.name, b.brand_name, c.category_name, pr.current_price, rv.rating_average\nFROM products p \nJOIN brands b ON p.brand_id = b.brand_id \nJOIN categories c ON p.category_id = c.category_id \nJOIN product_pricing pr ON p.product_id = pr.product_id \nJOIN product_reviews rv ON p.product_id = rv.product_id \nWHERE (b.brand_name LIKE '%Louis Vuitton%' OR b.brand_name LIKE '%Gucci%') \nAND rv.rating_average >= 4.3\nORDER BY rv.rating_average DESC, pr.current_price ASC \nLIMIT 15;",
+      "complexity": "complex"
+    },
+    {
+      "id": "complex_057",
+      "vietnamese": "Sản phẩm Nike hoặc Adidas có đánh giá trên 4.4 sao",
+      "english": "Nike or Adidas products with rating above 4.4 stars",
+      "sql": "SELECT p.name, b.brand_name, c.category_name, pr.current_price, rv.rating_average\nFROM products p \nJOIN brands b ON p.brand_id = b.brand_id \nJOIN categories c ON p.category_id = c.category_id \nJOIN product_pricing pr ON p.product_id = pr.product_id \nJOIN product_reviews rv ON p.product_id = rv.product_id \nWHERE (b.brand_name LIKE '%Nike%' OR b.brand_name LIKE '%Adidas%') \nAND rv.rating_average >= 4.4\nORDER BY rv.rating_average DESC, pr.current_price ASC \nLIMIT 15;",
+      "complexity": "complex"
+    },
+    {
+      "id": "complex_058",
+      "vietnamese": "Sản phẩm Samsung hoặc Apple có đánh giá trên 4.0 sao",
+      "english": "Samsung or Apple products with rating above 4.0 stars",
+      "sql": "SELECT p.name, b.brand_name, c.category_name, pr.current_price, rv.rating_average\nFROM products p \nJOIN brands b ON p.brand_id = b.brand_id \nJOIN categories c ON p.category_id = c.category_id \nJOIN product_pricing pr ON p.product_id = pr.product_id \nJOIN product_reviews rv ON p.product_id = rv.product_id \nWHERE (b.brand_name LIKE '%Samsung%' OR b.brand_name LIKE '%Apple%') \nAND rv.rating_average >= 4.0\nORDER BY rv.rating_average DESC, pr.current_price ASC \nLIMIT 15;",
+      "complexity": "complex"
+    },
+    {
+      "id": "complex_059",
+      "vietnamese": "Sản phẩm Louis Vuitton hoặc Gucci có đánh giá trên 4.1 sao",
+      "english": "Louis Vuitton or Gucci products with rating above 4.1 stars",
+      "sql": "SELECT p.name, b.brand_name, c.category_name, pr.current_price, rv.rating_average\nFROM products p \nJOIN brands b ON p.brand_id = b.brand_id \nJOIN categories c ON p.category_id = c.category_id \nJOIN product_pricing pr ON p.product_id = pr.product_id \nJOIN product_reviews rv ON p.product_id = rv.product_id \nWHERE (b.brand_name LIKE '%Louis Vuitton%' OR b.brand_name LIKE '%Gucci%') \nAND rv.rating_average >= 4.1\nORDER BY rv.rating_average DESC, pr.current_price ASC \nLIMIT 15;",
+      "complexity": "complex"
+    },
+    {
+      "id": "complex_060",
+      "vietnamese": "Sản phẩm Nike hoặc Adidas có đánh giá trên 4.2 sao",
+      "english": "Nike or Adidas products with rating above 4.2 stars",
+      "sql": "SELECT p.name, b.brand_name, c.category_name, pr.current_price, rv.rating_average\nFROM products p \nJOIN brands b ON p.brand_id = b.brand_id \nJOIN categories c ON p.category_id = c.category_id \nJOIN product_pricing pr ON p.product_id = pr.product_id \nJOIN product_reviews rv ON p.product_id = rv.product_id \nWHERE (b.brand_name LIKE '%Nike%' OR b.brand_name LIKE '%Adidas%') \nAND rv.rating_average >= 4.2\nORDER BY rv.rating_average DESC, pr.current_price ASC \nLIMIT 15;",
+      "complexity": "complex"
+    },
+    {
+      "id": "complex_061",
+      "vietnamese": "Sản phẩm Samsung hoặc Apple có đánh giá trên 4.3 sao",
+      "english": "Samsung or Apple products with rating above 4.3 stars",
+      "sql": "SELECT p.name, b.brand_name, c.category_name, pr.current_price, rv.rating_average\nFROM products p \nJOIN brands b ON p.brand_id = b.brand_id \nJOIN categories c ON p.category_id = c.category_id \nJOIN product_pricing pr ON p.product_id = pr.product_id \nJOIN product_reviews rv ON p.product_id = rv.product_id \nWHERE (b.brand_name LIKE '%Samsung%' OR b.brand_name LIKE '%Apple%') \nAND rv.rating_average >= 4.3\nORDER BY rv.rating_average DESC, pr.current_price ASC \nLIMIT 15;",
+      "complexity": "complex"
+    },
+    {
+      "id": "complex_062",
+      "vietnamese": "Sản phẩm Louis Vuitton hoặc Gucci có đánh giá trên 4.4 sao",
+      "english": "Louis Vuitton or Gucci products with rating above 4.4 stars",
+      "sql": "SELECT p.name, b.brand_name, c.category_name, pr.current_price, rv.rating_average\nFROM products p \nJOIN brands b ON p.brand_id = b.brand_id \nJOIN categories c ON p.category_id = c.category_id \nJOIN product_pricing pr ON p.product_id = pr.product_id \nJOIN product_reviews rv ON p.product_id = rv.product_id \nWHERE (b.brand_name LIKE '%Louis Vuitton%' OR b.brand_name LIKE '%Gucci%') \nAND rv.rating_average >= 4.4\nORDER BY rv.rating_average DESC, pr.current_price ASC \nLIMIT 15;",
+      "complexity": "complex"
+    },
+    {
+      "id": "complex_063",
+      "vietnamese": "Phân tích giá theo khoảng từ 100k đến 600k",
+      "english": "Price analysis from 100k to 600k range",
+      "sql": "SELECT \nCASE \n    WHEN pr.current_price < 100000 THEN 'Under 100K'\n    WHEN pr.current_price BETWEEN 100000 AND 600000 THEN '100K-600K'\n    ELSE 'Over 600K'\nEND as price_range,\nCOUNT(*) as product_count,\nAVG(rv.rating_average) as avg_rating,\nAVG(pr.current_price) as avg_price\nFROM product_pricing pr \nJOIN product_reviews rv ON pr.product_id = rv.product_id \nGROUP BY price_range \nORDER BY avg_price;",
+      "complexity": "complex"
+    },
+    {
+      "id": "complex_064",
+      "vietnamese": "Phân tích giá theo khoảng từ 200k đến 700k",
+      "english": "Price analysis from 200k to 700k range",
+      "sql": "SELECT \nCASE \n    WHEN pr.current_price < 200000 THEN 'Under 200K'\n    WHEN pr.current_price BETWEEN 200000 AND 700000 THEN '200K-700K'\n    ELSE 'Over 700K'\nEND as price_range,\nCOUNT(*) as product_count,\nAVG(rv.rating_average) as avg_rating,\nAVG(pr.current_price) as avg_price\nFROM product_pricing pr \nJOIN product_reviews rv ON pr.product_id = rv.product_id \nGROUP BY price_range \nORDER BY avg_price;",
+      "complexity": "complex"
+    },
+    {
+      "id": "complex_065",
+      "vietnamese": "Phân tích giá theo khoảng từ 300k đến 800k",
+      "english": "Price analysis from 300k to 800k range",
+      "sql": "SELECT \nCASE \n    WHEN pr.current_price < 300000 THEN 'Under 300K'\n    WHEN pr.current_price BETWEEN 300000 AND 800000 THEN '300K-800K'\n    ELSE 'Over 800K'\nEND as price_range,\nCOUNT(*) as product_count,\nAVG(rv.rating_average) as avg_rating,\nAVG(pr.current_price) as avg_price\nFROM product_pricing pr \nJOIN product_reviews rv ON pr.product_id = rv.product_id \nGROUP BY price_range \nORDER BY avg_price;",
+      "complexity": "complex"
+    },
+    {
+      "id": "complex_066",
+      "vietnamese": "Phân tích giá theo khoảng từ 400k đến 900k",
+      "english": "Price analysis from 400k to 900k range",
+      "sql": "SELECT \nCASE \n    WHEN pr.current_price < 400000 THEN 'Under 400K'\n    WHEN pr.current_price BETWEEN 400000 AND 900000 THEN '400K-900K'\n    ELSE 'Over 900K'\nEND as price_range,\nCOUNT(*) as product_count,\nAVG(rv.rating_average) as avg_rating,\nAVG(pr.current_price) as avg_price\nFROM product_pricing pr \nJOIN product_reviews rv ON pr.product_id = rv.product_id \nGROUP BY price_range \nORDER BY avg_price;",
+      "complexity": "complex"
+    },
+    {
+      "id": "complex_067",
+      "vietnamese": "Phân tích giá theo khoảng từ 500k đến 1000k",
+      "english": "Price analysis from 500k to 1000k range",
+      "sql": "SELECT \nCASE \n    WHEN pr.current_price < 500000 THEN 'Under 500K'\n    WHEN pr.current_price BETWEEN 500000 AND 1000000 THEN '500K-1000K'\n    ELSE 'Over 1000K'\nEND as price_range,\nCOUNT(*) as product_count,\nAVG(rv.rating_average) as avg_rating,\nAVG(pr.current_price) as avg_price\nFROM product_pricing pr \nJOIN product_reviews rv ON pr.product_id = rv.product_id \nGROUP BY price_range \nORDER BY avg_price;",
+      "complexity": "complex"
+    },
+    {
+      "id": "complex_068",
+      "vietnamese": "Phân tích giá theo khoảng từ 600k đến 1100k",
+      "english": "Price analysis from 600k to 1100k range",
+      "sql": "SELECT \nCASE \n    WHEN pr.current_price < 600000 THEN 'Under 600K'\n    WHEN pr.current_price BETWEEN 600000 AND 1100000 THEN '600K-1100K'\n    ELSE 'Over 1100K'\nEND as price_range,\nCOUNT(*) as product_count,\nAVG(rv.rating_average) as avg_rating,\nAVG(pr.current_price) as avg_price\nFROM product_pricing pr \nJOIN product_reviews rv ON pr.product_id = rv.product_id \nGROUP BY price_range \nORDER BY avg_price;",
+      "complexity": "complex"
+    },
+    {
+      "id": "complex_069",
+      "vietnamese": "Phân tích giá theo khoảng từ 700k đến 1200k",
+      "english": "Price analysis from 700k to 1200k range",
+      "sql": "SELECT \nCASE \n    WHEN pr.current_price < 700000 THEN 'Under 700K'\n    WHEN pr.current_price BETWEEN 700000 AND 1200000 THEN '700K-1200K'\n    ELSE 'Over 1200K'\nEND as price_range,\nCOUNT(*) as product_count,\nAVG(rv.rating_average) as avg_rating,\nAVG(pr.current_price) as avg_price\nFROM product_pricing pr \nJOIN product_reviews rv ON pr.product_id = rv.product_id \nGROUP BY price_range \nORDER BY avg_price;",
+      "complexity": "complex"
+    },
+    {
+      "id": "complex_070",
+      "vietnamese": "Phân tích giá theo khoảng từ 800k đến 1300k",
+      "english": "Price analysis from 800k to 1300k range",
+      "sql": "SELECT \nCASE \n    WHEN pr.current_price < 800000 THEN 'Under 800K'\n    WHEN pr.current_price BETWEEN 800000 AND 1300000 THEN '800K-1300K'\n    ELSE 'Over 1300K'\nEND as price_range,\nCOUNT(*) as product_count,\nAVG(rv.rating_average) as avg_rating,\nAVG(pr.current_price) as avg_price\nFROM product_pricing pr \nJOIN product_reviews rv ON pr.product_id = rv.product_id \nGROUP BY price_range \nORDER BY avg_price;",
+      "complexity": "complex"
+    },
+    {
+      "id": "complex_071",
+      "vietnamese": "Phân tích giá theo khoảng từ 900k đến 1400k",
+      "english": "Price analysis from 900k to 1400k range",
+      "sql": "SELECT \nCASE \n    WHEN pr.current_price < 900000 THEN 'Under 900K'\n    WHEN pr.current_price BETWEEN 900000 AND 1400000 THEN '900K-1400K'\n    ELSE 'Over 1400K'\nEND as price_range,\nCOUNT(*) as product_count,\nAVG(rv.rating_average) as avg_rating,\nAVG(pr.current_price) as avg_price\nFROM product_pricing pr \nJOIN product_reviews rv ON pr.product_id = rv.product_id \nGROUP BY price_range \nORDER BY avg_price;",
+      "complexity": "complex"
+    },
+    {
+      "id": "complex_072",
+      "vietnamese": "Phân tích giá theo khoảng từ 1000k đến 1500k",
+      "english": "Price analysis from 1000k to 1500k range",
+      "sql": "SELECT \nCASE \n    WHEN pr.current_price < 1000000 THEN 'Under 1000K'\n    WHEN pr.current_price BETWEEN 1000000 AND 1500000 THEN '1000K-1500K'\n    ELSE 'Over 1500K'\nEND as price_range,\nCOUNT(*) as product_count,\nAVG(rv.rating_average) as avg_rating,\nAVG(pr.current_price) as avg_price\nFROM product_pricing pr \nJOIN product_reviews rv ON pr.product_id = rv.product_id \nGROUP BY price_range \nORDER BY avg_price;",
+      "complexity": "complex"
+    },
+    {
+      "id": "complex_073",
+      "vietnamese": "Phân tích giá theo khoảng từ 100k đến 600k",
+      "english": "Price analysis from 100k to 600k range",
+      "sql": "SELECT \nCASE \n    WHEN pr.current_price < 100000 THEN 'Under 100K'\n    WHEN pr.current_price BETWEEN 100000 AND 600000 THEN '100K-600K'\n    ELSE 'Over 600K'\nEND as price_range,\nCOUNT(*) as product_count,\nAVG(rv.rating_average) as avg_rating,\nAVG(pr.current_price) as avg_price\nFROM product_pricing pr \nJOIN product_reviews rv ON pr.product_id = rv.product_id \nGROUP BY price_range \nORDER BY avg_price;",
+      "complexity": "complex"
+    },
+    {
+      "id": "complex_074",
+      "vietnamese": "Phân tích giá theo khoảng từ 200k đến 700k",
+      "english": "Price analysis from 200k to 700k range",
+      "sql": "SELECT \nCASE \n    WHEN pr.current_price < 200000 THEN 'Under 200K'\n    WHEN pr.current_price BETWEEN 200000 AND 700000 THEN '200K-700K'\n    ELSE 'Over 700K'\nEND as price_range,\nCOUNT(*) as product_count,\nAVG(rv.rating_average) as avg_rating,\nAVG(pr.current_price) as avg_price\nFROM product_pricing pr \nJOIN product_reviews rv ON pr.product_id = rv.product_id \nGROUP BY price_range \nORDER BY avg_price;",
+      "complexity": "complex"
+    },
+    {
+      "id": "complex_075",
+      "vietnamese": "Phân tích giá theo khoảng từ 300k đến 800k",
+      "english": "Price analysis from 300k to 800k range",
+      "sql": "SELECT \nCASE \n    WHEN pr.current_price < 300000 THEN 'Under 300K'\n    WHEN pr.current_price BETWEEN 300000 AND 800000 THEN '300K-800K'\n    ELSE 'Over 800K'\nEND as price_range,\nCOUNT(*) as product_count,\nAVG(rv.rating_average) as avg_rating,\nAVG(pr.current_price) as avg_price\nFROM product_pricing pr \nJOIN product_reviews rv ON pr.product_id = rv.product_id \nGROUP BY price_range \nORDER BY avg_price;",
+      "complexity": "complex"
+    },
+    {
+      "id": "complex_076",
+      "vietnamese": "Phân tích giá theo khoảng từ 400k đến 900k",
+      "english": "Price analysis from 400k to 900k range",
+      "sql": "SELECT \nCASE \n    WHEN pr.current_price < 400000 THEN 'Under 400K'\n    WHEN pr.current_price BETWEEN 400000 AND 900000 THEN '400K-900K'\n    ELSE 'Over 900K'\nEND as price_range,\nCOUNT(*) as product_count,\nAVG(rv.rating_average) as avg_rating,\nAVG(pr.current_price) as avg_price\nFROM product_pricing pr \nJOIN product_reviews rv ON pr.product_id = rv.product_id \nGROUP BY price_range \nORDER BY avg_price;",
+      "complexity": "complex"
+    },
+    {
+      "id": "complex_077",
+      "vietnamese": "Phân tích giá theo khoảng từ 500k đến 1000k",
+      "english": "Price analysis from 500k to 1000k range",
+      "sql": "SELECT \nCASE \n    WHEN pr.current_price < 500000 THEN 'Under 500K'\n    WHEN pr.current_price BETWEEN 500000 AND 1000000 THEN '500K-1000K'\n    ELSE 'Over 1000K'\nEND as price_range,\nCOUNT(*) as product_count,\nAVG(rv.rating_average) as avg_rating,\nAVG(pr.current_price) as avg_price\nFROM product_pricing pr \nJOIN product_reviews rv ON pr.product_id = rv.product_id \nGROUP BY price_range \nORDER BY avg_price;",
+      "complexity": "complex"
+    },
+    {
+      "id": "complex_078",
+      "vietnamese": "Phân tích giá theo khoảng từ 600k đến 1100k",
+      "english": "Price analysis from 600k to 1100k range",
+      "sql": "SELECT \nCASE \n    WHEN pr.current_price < 600000 THEN 'Under 600K'\n    WHEN pr.current_price BETWEEN 600000 AND 1100000 THEN '600K-1100K'\n    ELSE 'Over 1100K'\nEND as price_range,\nCOUNT(*) as product_count,\nAVG(rv.rating_average) as avg_rating,\nAVG(pr.current_price) as avg_price\nFROM product_pricing pr \nJOIN product_reviews rv ON pr.product_id = rv.product_id \nGROUP BY price_range \nORDER BY avg_price;",
+      "complexity": "complex"
+    },
+    {
+      "id": "complex_079",
+      "vietnamese": "Phân tích giá theo khoảng từ 700k đến 1200k",
+      "english": "Price analysis from 700k to 1200k range",
+      "sql": "SELECT \nCASE \n    WHEN pr.current_price < 700000 THEN 'Under 700K'\n    WHEN pr.current_price BETWEEN 700000 AND 1200000 THEN '700K-1200K'\n    ELSE 'Over 1200K'\nEND as price_range,\nCOUNT(*) as product_count,\nAVG(rv.rating_average) as avg_rating,\nAVG(pr.current_price) as avg_price\nFROM product_pricing pr \nJOIN product_reviews rv ON pr.product_id = rv.product_id \nGROUP BY price_range \nORDER BY avg_price;",
+      "complexity": "complex"
+    },
+    {
+      "id": "complex_080",
+      "vietnamese": "Phân tích giá theo khoảng từ 800k đến 1300k",
+      "english": "Price analysis from 800k to 1300k range",
+      "sql": "SELECT \nCASE \n    WHEN pr.current_price < 800000 THEN 'Under 800K'\n    WHEN pr.current_price BETWEEN 800000 AND 1300000 THEN '800K-1300K'\n    ELSE 'Over 1300K'\nEND as price_range,\nCOUNT(*) as product_count,\nAVG(rv.rating_average) as avg_rating,\nAVG(pr.current_price) as avg_price\nFROM product_pricing pr \nJOIN product_reviews rv ON pr.product_id = rv.product_id \nGROUP BY price_range \nORDER BY avg_price;",
+      "complexity": "complex"
+    },
+    {
+      "id": "complex_081",
+      "vietnamese": "Phân tích giá theo khoảng từ 900k đến 1400k",
+      "english": "Price analysis from 900k to 1400k range",
+      "sql": "SELECT \nCASE \n    WHEN pr.current_price < 900000 THEN 'Under 900K'\n    WHEN pr.current_price BETWEEN 900000 AND 1400000 THEN '900K-1400K'\n    ELSE 'Over 1400K'\nEND as price_range,\nCOUNT(*) as product_count,\nAVG(rv.rating_average) as avg_rating,\nAVG(pr.current_price) as avg_price\nFROM product_pricing pr \nJOIN product_reviews rv ON pr.product_id = rv.product_id \nGROUP BY price_range \nORDER BY avg_price;",
+      "complexity": "complex"
+    },
+    {
+      "id": "complex_082",
+      "vietnamese": "Phân tích giá theo khoảng từ 1000k đến 1500k",
+      "english": "Price analysis from 1000k to 1500k range",
+      "sql": "SELECT \nCASE \n    WHEN pr.current_price < 1000000 THEN 'Under 1000K'\n    WHEN pr.current_price BETWEEN 1000000 AND 1500000 THEN '1000K-1500K'\n    ELSE 'Over 1500K'\nEND as price_range,\nCOUNT(*) as product_count,\nAVG(rv.rating_average) as avg_rating,\nAVG(pr.current_price) as avg_price\nFROM product_pricing pr \nJOIN product_reviews rv ON pr.product_id = rv.product_id \nGROUP BY price_range \nORDER BY avg_price;",
+      "complexity": "complex"
+    },
+    {
+      "id": "complex_083",
+      "vietnamese": "Phân tích giá theo khoảng từ 100k đến 600k",
+      "english": "Price analysis from 100k to 600k range",
+      "sql": "SELECT \nCASE \n    WHEN pr.current_price < 100000 THEN 'Under 100K'\n    WHEN pr.current_price BETWEEN 100000 AND 600000 THEN '100K-600K'\n    ELSE 'Over 600K'\nEND as price_range,\nCOUNT(*) as product_count,\nAVG(rv.rating_average) as avg_rating,\nAVG(pr.current_price) as avg_price\nFROM product_pricing pr \nJOIN product_reviews rv ON pr.product_id = rv.product_id \nGROUP BY price_range \nORDER BY avg_price;",
+      "complexity": "complex"
+    },
+    {
+      "id": "complex_084",
+      "vietnamese": "Phân tích giá theo khoảng từ 200k đến 700k",
+      "english": "Price analysis from 200k to 700k range",
+      "sql": "SELECT \nCASE \n    WHEN pr.current_price < 200000 THEN 'Under 200K'\n    WHEN pr.current_price BETWEEN 200000 AND 700000 THEN '200K-700K'\n    ELSE 'Over 700K'\nEND as price_range,\nCOUNT(*) as product_count,\nAVG(rv.rating_average) as avg_rating,\nAVG(pr.current_price) as avg_price\nFROM product_pricing pr \nJOIN product_reviews rv ON pr.product_id = rv.product_id \nGROUP BY price_range \nORDER BY avg_price;",
+      "complexity": "complex"
+    },
+    {
+      "id": "complex_085",
+      "vietnamese": "Phân tích giá theo khoảng từ 300k đến 800k",
+      "english": "Price analysis from 300k to 800k range",
+      "sql": "SELECT \nCASE \n    WHEN pr.current_price < 300000 THEN 'Under 300K'\n    WHEN pr.current_price BETWEEN 300000 AND 800000 THEN '300K-800K'\n    ELSE 'Over 800K'\nEND as price_range,\nCOUNT(*) as product_count,\nAVG(rv.rating_average) as avg_rating,\nAVG(pr.current_price) as avg_price\nFROM product_pricing pr \nJOIN product_reviews rv ON pr.product_id = rv.product_id \nGROUP BY price_range \nORDER BY avg_price;",
+      "complexity": "complex"
+    },
+    {
+      "id": "complex_086",
+      "vietnamese": "Phân tích giá theo khoảng từ 400k đến 900k",
+      "english": "Price analysis from 400k to 900k range",
+      "sql": "SELECT \nCASE \n    WHEN pr.current_price < 400000 THEN 'Under 400K'\n    WHEN pr.current_price BETWEEN 400000 AND 900000 THEN '400K-900K'\n    ELSE 'Over 900K'\nEND as price_range,\nCOUNT(*) as product_count,\nAVG(rv.rating_average) as avg_rating,\nAVG(pr.current_price) as avg_price\nFROM product_pricing pr \nJOIN product_reviews rv ON pr.product_id = rv.product_id \nGROUP BY price_range \nORDER BY avg_price;",
+      "complexity": "complex"
+    },
+    {
+      "id": "complex_087",
+      "vietnamese": "Phân tích giá theo khoảng từ 500k đến 1000k",
+      "english": "Price analysis from 500k to 1000k range",
+      "sql": "SELECT \nCASE \n    WHEN pr.current_price < 500000 THEN 'Under 500K'\n    WHEN pr.current_price BETWEEN 500000 AND 1000000 THEN '500K-1000K'\n    ELSE 'Over 1000K'\nEND as price_range,\nCOUNT(*) as product_count,\nAVG(rv.rating_average) as avg_rating,\nAVG(pr.current_price) as avg_price\nFROM product_pricing pr \nJOIN product_reviews rv ON pr.product_id = rv.product_id \nGROUP BY price_range \nORDER BY avg_price;",
+      "complexity": "complex"
+    },
+    {
+      "id": "complex_088",
+      "vietnamese": "Phân tích giá theo khoảng từ 600k đến 1100k",
+      "english": "Price analysis from 600k to 1100k range",
+      "sql": "SELECT \nCASE \n    WHEN pr.current_price < 600000 THEN 'Under 600K'\n    WHEN pr.current_price BETWEEN 600000 AND 1100000 THEN '600K-1100K'\n    ELSE 'Over 1100K'\nEND as price_range,\nCOUNT(*) as product_count,\nAVG(rv.rating_average) as avg_rating,\nAVG(pr.current_price) as avg_price\nFROM product_pricing pr \nJOIN product_reviews rv ON pr.product_id = rv.product_id \nGROUP BY price_range \nORDER BY avg_price;",
+      "complexity": "complex"
+    },
+    {
+      "id": "complex_089",
+      "vietnamese": "Phân tích giá theo khoảng từ 700k đến 1200k",
+      "english": "Price analysis from 700k to 1200k range",
+      "sql": "SELECT \nCASE \n    WHEN pr.current_price < 700000 THEN 'Under 700K'\n    WHEN pr.current_price BETWEEN 700000 AND 1200000 THEN '700K-1200K'\n    ELSE 'Over 1200K'\nEND as price_range,\nCOUNT(*) as product_count,\nAVG(rv.rating_average) as avg_rating,\nAVG(pr.current_price) as avg_price\nFROM product_pricing pr \nJOIN product_reviews rv ON pr.product_id = rv.product_id \nGROUP BY price_range \nORDER BY avg_price;",
+      "complexity": "complex"
+    },
+    {
+      "id": "complex_090",
+      "vietnamese": "Phân tích giá theo khoảng từ 800k đến 1300k",
+      "english": "Price analysis from 800k to 1300k range",
+      "sql": "SELECT \nCASE \n    WHEN pr.current_price < 800000 THEN 'Under 800K'\n    WHEN pr.current_price BETWEEN 800000 AND 1300000 THEN '800K-1300K'\n    ELSE 'Over 1300K'\nEND as price_range,\nCOUNT(*) as product_count,\nAVG(rv.rating_average) as avg_rating,\nAVG(pr.current_price) as avg_price\nFROM product_pricing pr \nJOIN product_reviews rv ON pr.product_id = rv.product_id \nGROUP BY price_range \nORDER BY avg_price;",
+      "complexity": "complex"
+    },
+    {
+      "id": "complex_091",
+      "vietnamese": "Phân tích giá theo khoảng từ 900k đến 1400k",
+      "english": "Price analysis from 900k to 1400k range",
+      "sql": "SELECT \nCASE \n    WHEN pr.current_price < 900000 THEN 'Under 900K'\n    WHEN pr.current_price BETWEEN 900000 AND 1400000 THEN '900K-1400K'\n    ELSE 'Over 1400K'\nEND as price_range,\nCOUNT(*) as product_count,\nAVG(rv.rating_average) as avg_rating,\nAVG(pr.current_price) as avg_price\nFROM product_pricing pr \nJOIN product_reviews rv ON pr.product_id = rv.product_id \nGROUP BY price_range \nORDER BY avg_price;",
+      "complexity": "complex"
+    },
+    {
+      "id": "complex_092",
+      "vietnamese": "Phân tích giá theo khoảng từ 1000k đến 1500k",
+      "english": "Price analysis from 1000k to 1500k range",
+      "sql": "SELECT \nCASE \n    WHEN pr.current_price < 1000000 THEN 'Under 1000K'\n    WHEN pr.current_price BETWEEN 1000000 AND 1500000 THEN '1000K-1500K'\n    ELSE 'Over 1500K'\nEND as price_range,\nCOUNT(*) as product_count,\nAVG(rv.rating_average) as avg_rating,\nAVG(pr.current_price) as avg_price\nFROM product_pricing pr \nJOIN product_reviews rv ON pr.product_id = rv.product_id \nGROUP BY price_range \nORDER BY avg_price;",
+      "complexity": "complex"
+    },
+    {
+      "id": "complex_093",
+      "vietnamese": "Phân tích giá theo khoảng từ 100k đến 600k",
+      "english": "Price analysis from 100k to 600k range",
+      "sql": "SELECT \nCASE \n    WHEN pr.current_price < 100000 THEN 'Under 100K'\n    WHEN pr.current_price BETWEEN 100000 AND 600000 THEN '100K-600K'\n    ELSE 'Over 600K'\nEND as price_range,\nCOUNT(*) as product_count,\nAVG(rv.rating_average) as avg_rating,\nAVG(pr.current_price) as avg_price\nFROM product_pricing pr \nJOIN product_reviews rv ON pr.product_id = rv.product_id \nGROUP BY price_range \nORDER BY avg_price;",
+      "complexity": "complex"
+    },
+    {
+      "id": "complex_094",
+      "vietnamese": "Phân tích giá theo khoảng từ 200k đến 700k",
+      "english": "Price analysis from 200k to 700k range",
+      "sql": "SELECT \nCASE \n    WHEN pr.current_price < 200000 THEN 'Under 200K'\n    WHEN pr.current_price BETWEEN 200000 AND 700000 THEN '200K-700K'\n    ELSE 'Over 700K'\nEND as price_range,\nCOUNT(*) as product_count,\nAVG(rv.rating_average) as avg_rating,\nAVG(pr.current_price) as avg_price\nFROM product_pricing pr \nJOIN product_reviews rv ON pr.product_id = rv.product_id \nGROUP BY price_range \nORDER BY avg_price;",
+      "complexity": "complex"
+    },
+    {
+      "id": "complex_095",
+      "vietnamese": "Phân tích giá theo khoảng từ 300k đến 800k",
+      "english": "Price analysis from 300k to 800k range",
+      "sql": "SELECT \nCASE \n    WHEN pr.current_price < 300000 THEN 'Under 300K'\n    WHEN pr.current_price BETWEEN 300000 AND 800000 THEN '300K-800K'\n    ELSE 'Over 800K'\nEND as price_range,\nCOUNT(*) as product_count,\nAVG(rv.rating_average) as avg_rating,\nAVG(pr.current_price) as avg_price\nFROM product_pricing pr \nJOIN product_reviews rv ON pr.product_id = rv.product_id \nGROUP BY price_range \nORDER BY avg_price;",
+      "complexity": "complex"
+    },
+    {
+      "id": "complex_096",
+      "vietnamese": "Phân tích giá theo khoảng từ 400k đến 900k",
+      "english": "Price analysis from 400k to 900k range",
+      "sql": "SELECT \nCASE \n    WHEN pr.current_price < 400000 THEN 'Under 400K'\n    WHEN pr.current_price BETWEEN 400000 AND 900000 THEN '400K-900K'\n    ELSE 'Over 900K'\nEND as price_range,\nCOUNT(*) as product_count,\nAVG(rv.rating_average) as avg_rating,\nAVG(pr.current_price) as avg_price\nFROM product_pricing pr \nJOIN product_reviews rv ON pr.product_id = rv.product_id \nGROUP BY price_range \nORDER BY avg_price;",
+      "complexity": "complex"
+    },
+    {
+      "id": "complex_097",
+      "vietnamese": "Phân tích giá theo khoảng từ 500k đến 1000k",
+      "english": "Price analysis from 500k to 1000k range",
+      "sql": "SELECT \nCASE \n    WHEN pr.current_price < 500000 THEN 'Under 500K'\n    WHEN pr.current_price BETWEEN 500000 AND 1000000 THEN '500K-1000K'\n    ELSE 'Over 1000K'\nEND as price_range,\nCOUNT(*) as product_count,\nAVG(rv.rating_average) as avg_rating,\nAVG(pr.current_price) as avg_price\nFROM product_pricing pr \nJOIN product_reviews rv ON pr.product_id = rv.product_id \nGROUP BY price_range \nORDER BY avg_price;",
+      "complexity": "complex"
+    },
+    {
+      "id": "complex_098",
+      "vietnamese": "Phân tích giá theo khoảng từ 600k đến 1100k",
+      "english": "Price analysis from 600k to 1100k range",
+      "sql": "SELECT \nCASE \n    WHEN pr.current_price < 600000 THEN 'Under 600K'\n    WHEN pr.current_price BETWEEN 600000 AND 1100000 THEN '600K-1100K'\n    ELSE 'Over 1100K'\nEND as price_range,\nCOUNT(*) as product_count,\nAVG(rv.rating_average) as avg_rating,\nAVG(pr.current_price) as avg_price\nFROM product_pricing pr \nJOIN product_reviews rv ON pr.product_id = rv.product_id \nGROUP BY price_range \nORDER BY avg_price;",
+      "complexity": "complex"
+    },
+    {
+      "id": "complex_099",
+      "vietnamese": "Top 15 sản phẩm có tỷ lệ đánh giá 5 sao cao nhất theo danh mục",
+      "english": "Top 15 products with highest 5-star rating percentage by category",
+      "sql": "SELECT p.name, c.category_name, b.brand_name, pr.current_price, rv.rating_average, rv.review_count,\nROUND((rv.favourite_count * 100.0 / NULLIF(rv.review_count, 0)), 2) as five_star_percentage\nFROM products p \nJOIN categories c ON p.category_id = c.category_id \nJOIN brands b ON p.brand_id = b.brand_id \nJOIN product_pricing pr ON p.product_id = pr.product_id \nJOIN product_reviews rv ON p.product_id = rv.product_id \nWHERE rv.review_count >= 50 AND rv.rating_average >= 4.5\nORDER BY five_star_percentage DESC, rv.rating_average DESC \nLIMIT 15;",
+      "complexity": "complex"
+    },
+    {
+      "id": "complex_100",
+      "vietnamese": "Phân tích hiệu suất bán hàng theo thương hiệu và danh mục với thống kê chi tiết",
+      "english": "Sales performance analysis by brand and category with detailed statistics",
+      "sql": "SELECT b.brand_name, c.category_name,\nCOUNT(p.product_id) as total_products,\nSUM(pr.quantity_sold) as total_sales,\nAVG(pr.current_price) as avg_price,\nAVG(rv.rating_average) as avg_rating,\nSUM(pr.vnd_cashback) as total_cashback,\nROUND(AVG(pr.current_price) * SUM(pr.quantity_sold), 0) as estimated_revenue,\nROUND(SUM(pr.quantity_sold) * 100.0 / (SELECT SUM(quantity_sold) FROM product_pricing), 2) as market_share_percent\nFROM brands b \nJOIN products p ON b.brand_id = p.brand_id \nJOIN categories c ON p.category_id = c.category_id \nJOIN product_pricing pr ON p.product_id = pr.product_id \nJOIN product_reviews rv ON p.product_id = rv.product_id \nGROUP BY b.brand_id, b.brand_name, c.category_id, c.category_name \nHAVING COUNT(p.product_id) >= 5 AND SUM(pr.quantity_sold) > 0\nORDER BY estimated_revenue DESC, market_share_percent DESC \nLIMIT 20;",
+      "complexity": "complex"
+    }
+  ]
+}

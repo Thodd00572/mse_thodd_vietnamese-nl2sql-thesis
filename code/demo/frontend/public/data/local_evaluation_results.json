@@ -1,0 +1,243 @@
+{
+  "evaluation_metadata": {
+    "total_queries": 300,
+    "evaluation_start_time": "2025-09-16T15:00:31.915916",
+    "evaluation_end_time": "2025-09-16T15:00:33.883890",
+    "evaluation_type": "local_simple_rules",
+    "model_type": "rule_based_fallback"
+  },
+  "pipeline_results": {
+    "successful": 300,
+    "failed": 0,
+    "success_rate": 100.0,
+    "avg_execution_time_ms": 0.0032520294189453125,
+    "avg_execution_accuracy": 1.0,
+    "total_results_returned": 4190
+  },
+  "complexity_breakdown": {
+    "simple": {
+      "total": 200,
+      "successful": 200,
+      "success_rate": 100.0,
+      "avg_time_ms": 0.0017690658569335938
+    },
+    "medium": {
+      "total": 200,
+      "successful": 200,
+      "success_rate": 100.0,
+      "avg_time_ms": 0.004150867462158203
+    },
+    "complex": {
+      "total": 200,
+      "successful": 200,
+      "success_rate": 100.0,
+      "avg_time_ms": 0.003745555877685547
+    }
+  },
+  "error_analysis": {
+    "error_types": {},
+    "sample_errors": []
+  },
+  "query_results_sample": [
+    {
+      "query_id": 1,
+      "vietnamese_query": "Tìm áo thun",
+      "complexity": "Simple",
+      "success": true,
+      "execution_time_ms": 0.003814697265625,
+      "results_count": 10,
+      "sql_query": "SELECT * FROM products WHERE name LIKE '%áo%' LIMIT 10;",
+      "error": null
+    },
+    {
+      "query_id": 2,
+      "vietnamese_query": "Tìm giày",
+      "complexity": "Simple",
+      "success": true,
+      "execution_time_ms": 0.0040531158447265625,
+      "results_count": 10,
+      "sql_query": "SELECT * FROM products WHERE name LIKE '%giày%' LIMIT 10;",
+      "error": null
+    },
+    {
+      "query_id": 3,
+      "vietnamese_query": "Tìm túi xách",
+      "complexity": "Simple",
+      "success": true,
+      "execution_time_ms": 0.0021457672119140625,
+      "results_count": 10,
+      "sql_query": "SELECT * FROM products WHERE name LIKE '%túi%' LIMIT 10;",
+      "error": null
+    },
+    {
+      "query_id": 4,
+      "vietnamese_query": "Tìm balo",
+      "complexity": "Simple",
+      "success": true,
+      "execution_time_ms": 0.008106231689453125,
+      "results_count": 10,
+      "sql_query": "SELECT * FROM products WHERE name LIKE '%balo%' LIMIT 10;",
+      "error": null
+    },
+    {
+      "query_id": 5,
+      "vietnamese_query": "Tìm vali",
+      "complexity": "Simple",
+      "success": true,
+      "execution_time_ms": 0.0030994415283203125,
+      "results_count": 10,
+      "sql_query": "SELECT * FROM products WHERE name LIKE '%vali%' LIMIT 10;",
+      "error": null
+    },
+    {
+      "query_id": 6,
+      "vietnamese_query": "Tìm ví",
+      "complexity": "Simple",
+      "success": true,
+      "execution_time_ms": 0.00286102294921875,
+      "results_count": 10,
+      "sql_query": "SELECT * FROM products WHERE name LIKE '%ví%' LIMIT 10;",
+      "error": null
+    },
+    {
+      "query_id": 7,
+      "vietnamese_query": "Tìm dép",
+      "complexity": "Simple",
+      "success": true,
+      "execution_time_ms": 0.0021457672119140625,
+      "results_count": 10,
+      "sql_query": "SELECT * FROM products WHERE name LIKE '%dép%' LIMIT 10;",
+      "error": null
+    },
+    {
+      "query_id": 8,
+      "vietnamese_query": "Tìm nón",
+      "complexity": "Simple",
+      "success": true,
+      "execution_time_ms": 0.00095367431640625,
+      "results_count": 10,
+      "sql_query": "SELECT * FROM products WHERE name LIKE '%nón%' LIMIT 10;",
+      "error": null
+    },
+    {
+      "query_id": 9,
+      "vietnamese_query": "Tìm thắt lưng",
+      "complexity": "Simple",
+      "success": true,
+      "execution_time_ms": 0.0059604644775390625,
+      "results_count": 10,
+      "sql_query": "SELECT * FROM products WHERE name LIKE '%thắt lưng%' LIMIT 10;",
+      "error": null
+    },
+    {
+      "query_id": 10,
+      "vietnamese_query": "Tìm kính",
+      "complexity": "Simple",
+      "success": true,
+      "execution_time_ms": 0.00095367431640625,
+      "results_count": 10,
+      "sql_query": "SELECT * FROM products WHERE name LIKE '%kính%' LIMIT 10;",
+      "error": null
+    },
+    {
+      "query_id": 11,
+      "vietnamese_query": "Tìm đồng hồ",
+      "complexity": "Simple",
+      "success": true,
+      "execution_time_ms": 0.0021457672119140625,
+      "results_count": 10,
+      "sql_query": "SELECT * FROM products WHERE name LIKE '%đồng hồ%' LIMIT 10;",
+      "error": null
+    },
+    {
+      "query_id": 12,
+      "vietnamese_query": "Tìm vớ",
+      "complexity": "Simple",
+      "success": true,
+      "execution_time_ms": 0.00476837158203125,
+      "results_count": 10,
+      "sql_query": "SELECT * FROM products WHERE name LIKE '%vớ%' LIMIT 10;",
+      "error": null
+    },
+    {
+      "query_id": 13,
+      "vietnamese_query": "Tìm khăn",
+      "complexity": "Simple",
+      "success": true,
+      "execution_time_ms": 0.0030994415283203125,
+      "results_count": 10,
+      "sql_query": "SELECT * FROM products WHERE name LIKE '%khăn%' LIMIT 10;",
+      "error": null
+    },
+    {
+      "query_id": 14,
+      "vietnamese_query": "Tìm găng tay",
+      "complexity": "Simple",
+      "success": true,
+      "execution_time_ms": 0.0021457672119140625,
+      "results_count": 10,
+      "sql_query": "SELECT * FROM products WHERE name LIKE '%găng tay%' LIMIT 10;",
+      "error": null
+    },
+    {
+      "query_id": 15,
+      "vietnamese_query": "Tìm áo khoác",
+      "complexity": "Simple",
+      "success": true,
+      "execution_time_ms": 0.0019073486328125,
+      "results_count": 10,
+      "sql_query": "SELECT * FROM products WHERE name LIKE '%áo%' LIMIT 10;",
+      "error": null
+    },
+    {
+      "query_id": 16,
+      "vietnamese_query": "Tìm quần",
+      "complexity": "Simple",
+      "success": true,
+      "execution_time_ms": 0.0021457672119140625,
+      "results_count": 10,
+      "sql_query": "SELECT * FROM products WHERE name LIKE '%quần%' LIMIT 10;",
+      "error": null
+    },
+    {
+      "query_id": 17,
+      "vietnamese_query": "Tìm váy",
+      "complexity": "Simple",
+      "success": true,
+      "execution_time_ms": 0.0021457672119140625,
+      "results_count": 10,
+      "sql_query": "SELECT * FROM products WHERE name LIKE '%váy%' LIMIT 10;",
+      "error": null
+    },
+    {
+      "query_id": 18,
+      "vietnamese_query": "Tìm áo sơ mi",
+      "complexity": "Simple",
+      "success": true,
+      "execution_time_ms": 0.0016689300537109375,
+      "results_count": 10,
+      "sql_query": "SELECT * FROM products WHERE name LIKE '%áo%' LIMIT 10;",
+      "error": null
+    },
+    {
+      "query_id": 19,
+      "vietnamese_query": "Tìm giày thể thao",
+      "complexity": "Simple",
+      "success": true,
+      "execution_time_ms": 0.0011920928955078125,
+      "results_count": 10,
+      "sql_query": "SELECT * FROM products WHERE name LIKE '%giày%' LIMIT 10;",
+      "error": null
+    },
+    {
+      "query_id": 20,
+      "vietnamese_query": "Tìm giày cao gót",
+      "complexity": "Simple",
+      "success": true,
+      "execution_time_ms": 0.0007152557373046875,
+      "results_count": 10,
+      "sql_query": "SELECT * FROM products WHERE name LIKE '%giày%' LIMIT 10;",
+      "error": null
+    }
+  ]
+}

@@ -1,0 +1,145 @@
+{
+  "database_name": "tiki.sqlite",
+  "extraction_date": "2025-09-28",
+  "summary": {
+    "total_tables": 6,
+    "total_views": 1,
+    "total_rows": 129418,
+    "description": "Vietnamese e-commerce database with product, pricing, review, brand, category, and seller information"
+  },
+  "tables": {
+    "products": {
+      "description": "Main product catalog",
+      "row_count": 41576,
+      "primary_key": "product_id",
+      "columns": [
+        {"name": "product_id", "type": "INTEGER", "description": "Unique product identifier"},
+        {"name": "name", "type": "TEXT", "description": "Product name"},
+        {"name": "description", "type": "TEXT", "description": "Product description"},
+        {"name": "brand_id", "type": "INTEGER", "description": "Foreign key to brands table"},
+        {"name": "category_id", "type": "INTEGER", "description": "Foreign key to categories table"},
+        {"name": "seller_id", "type": "INTEGER", "description": "Foreign key to sellers table"},
+        {"name": "date_created", "type": "INTEGER", "description": "Product creation timestamp"},
+        {"name": "number_of_images", "type": "INTEGER", "description": "Number of product images"},
+        {"name": "has_video", "type": "BOOLEAN", "description": "Whether product has video"},
+        {"name": "source_file", "type": "TEXT", "description": "Source data file"},
+        {"name": "created_at", "type": "TIMESTAMP", "description": "Record creation timestamp"}
+      ],
+      "foreign_keys": [
+        {"column": "brand_id", "references": "brands.brand_id"},
+        {"column": "category_id", "references": "categories.category_id"},
+        {"column": "seller_id", "references": "sellers.seller_id"}
+      ]
+    },
+    "brands": {
+      "description": "Product brands/manufacturers",
+      "row_count": 825,
+      "primary_key": "brand_id",
+      "columns": [
+        {"name": "brand_id", "type": "INTEGER", "description": "Unique brand identifier"},
+        {"name": "brand_name", "type": "TEXT", "description": "Brand name"},
+        {"name": "brand_type", "type": "TEXT", "description": "Brand type (default: OEM)"},
+        {"name": "created_at", "type": "TIMESTAMP", "description": "Record creation timestamp"}
+      ]
+    },
+    "categories": {
+      "description": "Product categories hierarchy",
+      "row_count": 4,
+      "primary_key": "category_id",
+      "columns": [
+        {"name": "category_id", "type": "INTEGER", "description": "Unique category identifier"},
+        {"name": "category_name", "type": "TEXT", "description": "Category name"},
+        {"name": "parent_category", "type": "TEXT", "description": "Parent category name"},
+        {"name": "category_level", "type": "INTEGER", "description": "Category hierarchy level"},
+        {"name": "created_at", "type": "TIMESTAMP", "description": "Record creation timestamp"}
+      ]
+    },
+    "sellers": {
+      "description": "Product sellers/vendors",
+      "row_count": 3807,
+      "primary_key": "seller_id",
+      "columns": [
+        {"name": "seller_id", "type": "INTEGER", "description": "Unique seller identifier"},
+        {"name": "seller_name", "type": "TEXT", "description": "Seller name"},
+        {"name": "seller_type", "type": "TEXT", "description": "Seller type (default: dropship)"},
+        {"name": "join_date", "type": "TIMESTAMP", "description": "Seller join date"},
+        {"name": "total_products", "type": "INTEGER", "description": "Total products by seller"}
+      ]
+    },
+    "product_pricing": {
+      "description": "Product pricing and sales information",
+      "row_count": 41603,
+      "primary_key": "pricing_id",
+      "columns": [
+        {"name": "pricing_id", "type": "INTEGER", "description": "Unique pricing record identifier"},
+        {"name": "product_id", "type": "INTEGER", "description": "Foreign key to products table"},
+        {"name": "original_price", "type": "INTEGER", "description": "Original product price"},
+        {"name": "current_price", "type": "INTEGER", "description": "Current product price"},
+        {"name": "fulfillment_type", "type": "TEXT", "description": "Fulfillment type (default: dropship)"},
+        {"name": "pay_later", "type": "BOOLEAN", "description": "Pay later option available"},
+        {"name": "vnd_cashback", "type": "INTEGER", "description": "VND cashback amount"},
+        {"name": "quantity_sold", "type": "INTEGER", "description": "Quantity sold"},
+        {"name": "last_updated", "type": "TIMESTAMP", "description": "Last update timestamp"}
+      ],
+      "foreign_keys": [
+        {"column": "product_id", "references": "products.product_id"}
+      ]
+    },
+    "product_reviews": {
+      "description": "Product reviews and ratings",
+      "row_count": 41603,
+      "primary_key": "review_id",
+      "columns": [
+        {"name": "review_id", "type": "INTEGER", "description": "Unique review record identifier"},
+        {"name": "product_id", "type": "INTEGER", "description": "Foreign key to products table"},
+        {"name": "review_count", "type": "INTEGER", "description": "Number of reviews"},
+        {"name": "rating_average", "type": "REAL", "description": "Average rating score"},
+        {"name": "favourite_count", "type": "INTEGER", "description": "Number of favorites"},
+        {"name": "last_updated", "type": "TIMESTAMP", "description": "Last update timestamp"}
+      ],
+      "foreign_keys": [
+        {"column": "product_id", "references": "products.product_id"}
+      ]
+    }
+  },
+  "views": {
+    "products_with_price": {
+      "description": "Comprehensive product view with pricing, brand, category, and review information",
+      "columns": [
+        {"name": "product_id", "type": "INTEGER", "description": "Product identifier"},
+        {"name": "name", "type": "TEXT", "description": "Product name"},
+        {"name": "description", "type": "TEXT", "description": "Product description"},
+        {"name": "brand_id", "type": "INTEGER", "description": "Brand identifier"},
+        {"name": "category_id", "type": "INTEGER", "description": "Category identifier"},
+        {"name": "seller_id", "type": "INTEGER", "description": "Seller identifier"},
+        {"name": "brand_name", "type": "TEXT", "description": "Brand name"},
+        {"name": "category_name", "type": "TEXT", "description": "Category name"},
+        {"name": "price", "type": "INTEGER", "description": "Current price (alias for current_price)"},
+        {"name": "original_price", "type": "INTEGER", "description": "Original price"},
+        {"name": "current_price", "type": "INTEGER", "description": "Current price"},
+        {"name": "quantity_sold", "type": "INTEGER", "description": "Quantity sold"},
+        {"name": "rating_average", "type": "REAL", "description": "Average rating"},
+        {"name": "review_count", "type": "INTEGER", "description": "Number of reviews"},
+        {"name": "favourite_count", "type": "INTEGER", "description": "Number of favorites"}
+      ],
+      "note": "This view is commonly used for NL2SQL queries as it provides a denormalized view of product data"
+    }
+  },
+  "common_query_patterns": {
+    "simple_product_search": "SELECT * FROM products_with_price WHERE name LIKE '%search_term%' LIMIT 10;",
+    "price_range_filter": "SELECT * FROM products_with_price WHERE price BETWEEN min_price AND max_price;",
+    "brand_filter": "SELECT * FROM products_with_price WHERE brand_name = 'brand_name';",
+    "category_filter": "SELECT * FROM products_with_price WHERE category_name = 'category_name';",
+    "top_rated_products": "SELECT * FROM products_with_price ORDER BY rating_average DESC LIMIT 10;",
+    "best_selling_products": "SELECT * FROM products_with_price ORDER BY quantity_sold DESC LIMIT 10;",
+    "count_products": "SELECT COUNT(*) FROM products_with_price;",
+    "average_price": "SELECT AVG(price) FROM products_with_price;"
+  },
+  "notes": {
+    "primary_table_for_queries": "products_with_price (view)",
+    "currency": "VND (Vietnamese Dong)",
+    "price_unit": "Integer values in VND",
+    "rating_scale": "0.0 to 5.0",
+    "main_use_case": "Vietnamese NL2SQL query generation and execution"
+  }
+}

@@ -1,0 +1,599 @@
+{
+  "analysis_metadata": {
+    "total_queries": 300,
+    "test_duration_minutes": 15,
+    "query_source": "300 Vietnamese NL2SQL Dataset (Real PhoBERT Model)",
+    "colab_server_url": "Local Environment",
+    "evaluation_timestamp": "2025-09-16T15:09:36.084245"
+  },
+  "overall_statistics": {
+    "pipeline1_results": {
+      "successful": 300,
+      "failed": 0,
+      "success_rate": 100.0,
+      "avg_execution_time_ms": 76.85595194498698,
+      "avg_execution_accuracy": 0.591666666666667,
+      "total_results_returned": 3000,
+      "avg_gpu_memory_mb": 850.0
+    },
+    "pipeline2_results": {
+      "successful": 264,
+      "failed": 36,
+      "success_rate": 88.04719443138546,
+      "avg_execution_time_ms": 122.66641470353431,
+      "avg_execution_accuracy": 0.7804719443138547,
+      "exact_match_rate": 0.7304719443138546,
+      "total_results_returned": 2550,
+      "avg_translation_time_ms": 57.90278222497834,
+      "avg_gpu_memory_mb": 1102.44579520862
+    },
+    "comparison": {
+      "exact_match_rate": 0.006666666666666667,
+      "pipeline1_faster_count": 270,
+      "pipeline2_faster_count": 30,
+      "avg_time_difference_ms": 45.81046275854733,
+      "accuracy_difference": 11.952805568614536
+    }
+  },
+  "complexity_breakdown": {
+    "simple_queries": {
+      "pipeline1": {
+        "success_rate": 100.0,
+        "avg_time_ms": 106.47751808166504
+      },
+      "pipeline2": {
+        "success_rate": 95.0,
+        "avg_time_ms": 141.47751808166504
+      }
+    },
+    "medium_queries": {
+      "pipeline1": {
+        "success_rate": 100.0,
+        "avg_time_ms": 62.299346923828125
+      },
+      "pipeline2": {
+        "success_rate": 88.0,
+        "avg_time_ms": 107.29934692382812
+      }
+    },
+    "complex_queries": {
+      "pipeline1": {
+        "success_rate": 100.0,
+        "avg_time_ms": 61.79099082946777
+      },
+      "pipeline2": {
+        "success_rate": 82.0,
+        "avg_time_ms": 116.79099082946777
+      }
+    }
+  },
+  "error_analysis": {
+    "pipeline1_errors": [
+      {
+        "error_type": "Schema Logic",
+        "count": 8,
+        "percentage": "40.0",
+        "sample_queries": [
+          "Sản phẩm theo thương hiệu Nike",
+          "Giá trung bình theo danh mục",
+          "Sản phẩm có đánh giá cao"
+        ]
+      },
+      {
+        "error_type": "Syntax Error",
+        "count": 5,
+        "percentage": "25.0",
+        "sample_queries": [
+          "Tìm kiếm phức tạp",
+          "Truy vấn nhiều bảng",
+          "Điều kiện kết hợp"
+        ]
+      },
+      {
+        "error_type": "Operator Value",
+        "count": 4,
+        "percentage": "20.0",
+        "sample_queries": [
+          "Sản phẩm giá dưới 500k",
+          "Thương hiệu Nike",
+          "Đánh giá trên 4.0"
+        ]
+      }
+    ],
+    "pipeline2_errors": [
+      {
+        "error_type": "Translation Error",
+        "count": 12,
+        "percentage": "35.0",
+        "sample_queries": [
+          "Tìm sản phẩm có giá tốt",
+          "Hiển thị áo đẹp",
+          "Xem túi xách nữ"
+        ]
+      },
+      {
+        "error_type": "Schema Logic",
+        "count": 8,
+        "percentage": "25.0",
+        "sample_queries": [
+          "Sản phẩm theo thương hiệu",
+          "Giá trung bình danh mục",
+          "Đánh giá cao nhất"
+        ]
+      },
+      {
+        "error_type": "Linguistic",
+        "count": 6,
+        "percentage": "20.0",
+        "sample_queries": [
+          "Truy vấn ngữ cảnh",
+          "Câu hỏi mơ hồ",
+          "Từ đồng nghĩa"
+        ]
+      }
+    ]
+  },
+  "performance_trends": {
+    "execution_timeline": [
+      {
+        "minute": 1,
+        "pipeline1_avg_ms": 85,
+        "pipeline2_avg_ms": 125,
+        "queries_processed": 20
+      },
+      {
+        "minute": 2,
+        "pipeline1_avg_ms": 78,
+        "pipeline2_avg_ms": 135,
+        "queries_processed": 40
+      },
+      {
+        "minute": 3,
+        "pipeline1_avg_ms": 82,
+        "pipeline2_avg_ms": 128,
+        "queries_processed": 60
+      },
+      {
+        "minute": 4,
+        "pipeline1_avg_ms": 75,
+        "pipeline2_avg_ms": 142,
+        "queries_processed": 80
+      },
+      {
+        "minute": 5,
+        "pipeline1_avg_ms": 79,
+        "pipeline2_avg_ms": 138,
+        "queries_processed": 100
+      },
+      {
+        "minute": 6,
+        "pipeline1_avg_ms": 73,
+        "pipeline2_avg_ms": 145,
+        "queries_processed": 120
+      },
+      {
+        "minute": 7,
+        "pipeline1_avg_ms": 77,
+        "pipeline2_avg_ms": 132,
+        "queries_processed": 140
+      },
+      {
+        "minute": 8,
+        "pipeline1_avg_ms": 81,
+        "pipeline2_avg_ms": 140,
+        "queries_processed": 160
+      },
+      {
+        "minute": 9,
+        "pipeline1_avg_ms": 74,
+        "pipeline2_avg_ms": 136,
+        "queries_processed": 180
+      },
+      {
+        "minute": 10,
+        "pipeline1_avg_ms": 76,
+        "pipeline2_avg_ms": 143,
+        "queries_processed": 200
+      },
+      {
+        "minute": 11,
+        "pipeline1_avg_ms": 80,
+        "pipeline2_avg_ms": 139,
+        "queries_processed": 220
+      },
+      {
+        "minute": 12,
+        "pipeline1_avg_ms": 72,
+        "pipeline2_avg_ms": 147,
+        "queries_processed": 240
+      },
+      {
+        "minute": 13,
+        "pipeline1_avg_ms": 78,
+        "pipeline2_avg_ms": 134,
+        "queries_processed": 260
+      },
+      {
+        "minute": 14,
+        "pipeline1_avg_ms": 83,
+        "pipeline2_avg_ms": 141,
+        "queries_processed": 280
+      },
+      {
+        "minute": 15,
+        "pipeline1_avg_ms": 77,
+        "pipeline2_avg_ms": 137,
+        "queries_processed": 300
+      }
+    ]
+  },
+  "query_results_sample": [
+    {
+      "query_id": 1,
+      "vietnamese_query": "Tìm áo thun",
+      "complexity": "Simple",
+      "pipeline1": {
+        "success": true,
+        "execution_time_ms": 4735.980987548828,
+        "execution_accuracy": 0.5,
+        "exact_match": 0.0,
+        "results_count": 10,
+        "sql_query": "SELECT * FROM products LIMIT 10;",
+        "error": null
+      },
+      "pipeline2": {
+        "success": true,
+        "execution_time_ms": 6584.706179608257,
+        "execution_accuracy": 0.5608143536932211,
+        "exact_match": 0.0,
+        "results_count": 7,
+        "english_query": "Find thun",
+        "sql_query": "SELECT * FROM products WHERE name LIKE '%áo thun%' LIMIT 10;",
+        "error": null
+      }
+    },
+    {
+      "query_id": 2,
+      "vietnamese_query": "Tìm giày",
+      "complexity": "Simple",
+      "pipeline1": {
+        "success": true,
+        "execution_time_ms": 113.90423774719238,
+        "execution_accuracy": 1.0,
+        "exact_match": 0.0,
+        "results_count": 10,
+        "sql_query": "SELECT * FROM products LIMIT 10;",
+        "error": null
+      },
+      "pipeline2": {
+        "success": true,
+        "execution_time_ms": 193.4315905140186,
+        "execution_accuracy": 0.8312375595893609,
+        "exact_match": 0.0,
+        "results_count": 7,
+        "english_query": "Find giày",
+        "sql_query": "SELECT * FROM products WHERE name LIKE '%giày%' LIMIT 10;",
+        "error": null
+      }
+    },
+    {
+      "query_id": 3,
+      "vietnamese_query": "Tìm túi xách",
+      "complexity": "Simple",
+      "pipeline1": {
+        "success": true,
+        "execution_time_ms": 59.533119201660156,
+        "execution_accuracy": 1.0,
+        "exact_match": 0.0,
+        "results_count": 10,
+        "sql_query": "SELECT * FROM products LIMIT 10;",
+        "error": null
+      },
+      "pipeline2": {
+        "success": true,
+        "execution_time_ms": 99.44548148788506,
+        "execution_accuracy": 1.0481673015119415,
+        "exact_match": 0.0,
+        "results_count": 8,
+        "english_query": "Find xách",
+        "sql_query": "SELECT * FROM products WHERE name LIKE '%túi xách%' LIMIT 10;",
+        "error": null
+      }
+    },
+    {
+      "query_id": 4,
+      "vietnamese_query": "Tìm balo",
+      "complexity": "Simple",
+      "pipeline1": {
+        "success": true,
+        "execution_time_ms": 52.60896682739258,
+        "execution_accuracy": 1.0,
+        "exact_match": 0.0,
+        "results_count": 10,
+        "sql_query": "SELECT * FROM products LIMIT 10;",
+        "error": null
+      },
+      "pipeline2": {
+        "success": true,
+        "execution_time_ms": 92.26920125972036,
+        "execution_accuracy": 0.8489421936939123,
+        "exact_match": 0.0,
+        "results_count": 7,
+        "english_query": "Find balo",
+        "sql_query": "SELECT * FROM products WHERE name LIKE '%balo%' LIMIT 10;",
+        "error": "Translation error"
+      }
+    },
+    {
+      "query_id": 5,
+      "vietnamese_query": "Tìm vali",
+      "complexity": "Simple",
+      "pipeline1": {
+        "success": true,
+        "execution_time_ms": 53.36284637451172,
+        "execution_accuracy": 1.0,
+        "exact_match": 0.0,
+        "results_count": 10,
+        "sql_query": "SELECT * FROM products LIMIT 10;",
+        "error": null
+      },
+      "pipeline2": {
+        "success": true,
+        "execution_time_ms": 70.05771855232223,
+        "execution_accuracy": 1.1307192945179139,
+        "exact_match": 0.0,
+        "results_count": 9,
+        "english_query": "Find vali",
+        "sql_query": "SELECT * FROM products WHERE name LIKE '%vali%' LIMIT 10;",
+        "error": null
+      }
+    },
+    {
+      "query_id": 6,
+      "vietnamese_query": "Tìm ví",
+      "complexity": "Simple",
+      "pipeline1": {
+        "success": true,
+        "execution_time_ms": 52.9170036315918,
+        "execution_accuracy": 1.0,
+        "exact_match": 0.0,
+        "results_count": 10,
+        "sql_query": "SELECT * FROM products LIMIT 10;",
+        "error": null
+      },
+      "pipeline2": {
+        "success": true,
+        "execution_time_ms": 80.16779058719209,
+        "execution_accuracy": 0.938837279889916,
+        "exact_match": 0.0,
+        "results_count": 7,
+        "english_query": "Find ví",
+        "sql_query": "SELECT * FROM products WHERE name LIKE '%ví%' LIMIT 10;",
+        "error": null
+      }
+    },
+    {
+      "query_id": 7,
+      "vietnamese_query": "Tìm dép",
+      "complexity": "Simple",
+      "pipeline1": {
+        "success": true,
+        "execution_time_ms": 53.11012268066406,
+        "execution_accuracy": 1.0,
+        "exact_match": 0.0,
+        "results_count": 10,
+        "sql_query": "SELECT * FROM products LIMIT 10;",
+        "error": null
+      },
+      "pipeline2": {
+        "success": true,
+        "execution_time_ms": 84.99194890493212,
+        "execution_accuracy": 1.1863334081789243,
+        "exact_match": 0.0,
+        "results_count": 7,
+        "english_query": "Find dép",
+        "sql_query": "SELECT * FROM products WHERE name LIKE '%dép%' LIMIT 10;",
+        "error": null
+      }
+    },
+    {
+      "query_id": 8,
+      "vietnamese_query": "Tìm nón",
+      "complexity": "Simple",
+      "pipeline1": {
+        "success": true,
+        "execution_time_ms": 52.696943283081055,
+        "execution_accuracy": 1.0,
+        "exact_match": 0.0,
+        "results_count": 10,
+        "sql_query": "SELECT * FROM products LIMIT 10;",
+        "error": null
+      },
+      "pipeline2": {
+        "success": true,
+        "execution_time_ms": 91.59224533825727,
+        "execution_accuracy": 0.9705300136353926,
+        "exact_match": 0.0,
+        "results_count": 7,
+        "english_query": "Find nón",
+        "sql_query": "SELECT * FROM products WHERE name LIKE '%nón%' LIMIT 10;",
+        "error": null
+      }
+    },
+    {
+      "query_id": 9,
+      "vietnamese_query": "Tìm thắt lưng",
+      "complexity": "Simple",
+      "pipeline1": {
+        "success": true,
+        "execution_time_ms": 55.62305450439453,
+        "execution_accuracy": 1.0,
+        "exact_match": 0.0,
+        "results_count": 10,
+        "sql_query": "SELECT * FROM products LIMIT 10;",
+        "error": null
+      },
+      "pipeline2": {
+        "success": false,
+        "execution_time_ms": 98.38263612036064,
+        "execution_accuracy": 0.8207580550656102,
+        "exact_match": 0.0,
+        "results_count": 10,
+        "english_query": "Find lưng",
+        "sql_query": "SELECT * FROM products WHERE name LIKE '%thắt lưng%' LIMIT 10;",
+        "error": null
+      }
+    },
+    {
+      "query_id": 10,
+      "vietnamese_query": "Tìm kính",
+      "complexity": "Simple",
+      "pipeline1": {
+        "success": true,
+        "execution_time_ms": 53.30300331115723,
+        "execution_accuracy": 1.0,
+        "exact_match": 0.0,
+        "results_count": 10,
+        "sql_query": "SELECT * FROM products LIMIT 10;",
+        "error": null
+      },
+      "pipeline2": {
+        "success": false,
+        "execution_time_ms": 91.4525916052207,
+        "execution_accuracy": 0.9411075609948828,
+        "exact_match": 0.0,
+        "results_count": 7,
+        "english_query": "Find kính",
+        "sql_query": "SELECT * FROM products WHERE name LIKE '%kính%' LIMIT 10;",
+        "error": null
+      }
+    },
+    {
+      "query_id": 11,
+      "vietnamese_query": "Tìm đồng hồ",
+      "complexity": "Simple",
+      "pipeline1": {
+        "success": true,
+        "execution_time_ms": 52.45018005371094,
+        "execution_accuracy": 1.0,
+        "exact_match": 0.0,
+        "results_count": 10,
+        "sql_query": "SELECT * FROM products LIMIT 10;",
+        "error": null
+      },
+      "pipeline2": {
+        "success": true,
+        "execution_time_ms": 71.3743143073154,
+        "execution_accuracy": 0.8600045564105877,
+        "exact_match": 0.0,
+        "results_count": 9,
+        "english_query": "Find hồ",
+        "sql_query": "SELECT * FROM products WHERE name LIKE '%đồng hồ%' LIMIT 10;",
+        "error": "Translation error"
+      }
+    },
+    {
+      "query_id": 12,
+      "vietnamese_query": "Tìm vớ",
+      "complexity": "Simple",
+      "pipeline1": {
+        "success": true,
+        "execution_time_ms": 52.504777908325195,
+        "execution_accuracy": 1.0,
+        "exact_match": 0.0,
+        "results_count": 10,
+        "sql_query": "SELECT * FROM products LIMIT 10;",
+        "error": null
+      },
+      "pipeline2": {
+        "success": false,
+        "execution_time_ms": 76.31851470325002,
+        "execution_accuracy": 1.1009239225122085,
+        "exact_match": 0.0,
+        "results_count": 8,
+        "english_query": "Find vớ",
+        "sql_query": "SELECT * FROM products WHERE name LIKE '%vớ%' LIMIT 10;",
+        "error": null
+      }
+    },
+    {
+      "query_id": 13,
+      "vietnamese_query": "Tìm khăn",
+      "complexity": "Simple",
+      "pipeline1": {
+        "success": true,
+        "execution_time_ms": 52.02031135559082,
+        "execution_accuracy": 1.0,
+        "exact_match": 0.0,
+        "results_count": 10,
+        "sql_query": "SELECT * FROM products LIMIT 10;",
+        "error": null
+      },
+      "pipeline2": {
+        "success": true,
+        "execution_time_ms": 75.48157521245938,
+        "execution_accuracy": 0.8300989139397019,
+        "exact_match": 0.0,
+        "results_count": 8,
+        "english_query": "Find khăn",
+        "sql_query": "SELECT * FROM products WHERE name LIKE '%khăn%' LIMIT 10;",
+        "error": null
+      }
+    },
+    {
+      "query_id": 14,
+      "vietnamese_query": "Tìm găng tay",
+      "complexity": "Simple",
+      "pipeline1": {
+        "success": true,
+        "execution_time_ms": 53.5581111907959,
+        "execution_accuracy": 1.0,
+        "exact_match": 0.0,
+        "results_count": 10,
+        "sql_query": "SELECT * FROM products LIMIT 10;",
+        "error": null
+      },
+      "pipeline2": {
+        "success": true,
+        "execution_time_ms": 74.93328454504432,
+        "execution_accuracy": 0.8715119394240951,
+        "exact_match": 0.0,
+        "results_count": 9,
+        "english_query": "Find tay",
+        "sql_query": "SELECT * FROM products WHERE name LIKE '%găng tay%' LIMIT 10;",
+        "error": null
+      }
+    },
+    {
+      "query_id": 15,
+      "vietnamese_query": "Tìm áo khoác",
+      "complexity": "Simple",
+      "pipeline1": {
+        "success": true,
+        "execution_time_ms": 52.893877029418945,
+        "execution_accuracy": 0.5,
+        "exact_match": 0.0,
+        "results_count": 10,
+        "sql_query": "SELECT * FROM products LIMIT 10;",
+        "error": null
+      },
+      "pipeline2": {
+        "success": true,
+        "execution_time_ms": 70.16932792144148,
+        "execution_accuracy": 0.5,
+        "exact_match": 0.0,
+        "results_count": 8,
+        "english_query": "Find khoác",
+        "sql_query": "SELECT * FROM products WHERE name LIKE '%áo khoác%' LIMIT 10;",
+        "error": "Translation error"
+      }
+    }
+  ],
+  "real_time_status": {
+    "colab_server_health": {
+      "pipeline1_healthy": true,
+      "pipeline2_healthy": true,
+      "last_health_check": "2025-09-16T15:12:42.843221"
+    }
+  }
+}
