@@ -13,7 +13,7 @@ from shared_models import (
 )
 from models.pipelines import pipeline1, pipeline2
 
-# Import local model processor
+# Import local model processor (optional)
 import sys
 sys.path.append(os.path.join(os.path.dirname(__file__), '..', '..'))
 # from local_model_processor import LocalModelProcessor  # Not needed for Colab-only mode
@@ -24,6 +24,7 @@ router = APIRouter()
 # Initialize local model processor
 # local_processor = LocalModelProcessor(models_dir="local_models")  # Not needed for Colab-only mode
 local_processor = None  # Disabled for Colab-only mode
+
 
 class ExportRequest(BaseModel):
     format: str = "csv"
@@ -964,6 +965,55 @@ async def generate_statistical_charts():
         
     except Exception as e:
         logger.error(f"Chart generation error: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+@router.get("/eval-data")
+async def get_eval_data(complexity: Optional[str] = None, limit: Optional[int] = None):
+    """Load evaluation data from eval_data.jsonl"""
+    try:
+        import json
+        from pathlib import Path
+        
+        # Path to eval_data.jsonl
+        eval_file = Path(__file__).parent.parent.parent.parent / "ColabNotebook" / "data" / "eval_data.jsonl"
+        
+        if not eval_file.exists():
+            raise HTTPException(status_code=404, detail="eval_data.jsonl not found")
+        
+        # Load data
+        eval_data = []
+        with open(eval_file, 'r', encoding='utf-8') as f:
+            for line in f:
+                if line.strip():
+                    data = json.loads(line)
+                    eval_data.append(data)
+        
+        # Filter by complexity if specified
+        if complexity and complexity != 'all':
+            eval_data = [item for item in eval_data if item.get('complexity') == complexity]
+        
+        # Limit results if specified
+        if limit:
+            eval_data = eval_data[:limit]
+        
+        # Group by complexity
+        grouped_data = {
+            'simple': [item for item in eval_data if item.get('complexity') == 'simple'],
+            'medium': [item for item in eval_data if item.get('complexity') == 'medium'],
+            'complex': [item for item in eval_data if item.get('complexity') == 'complex'],
+            'all': eval_data
+        }
+        
+        return {
+            "total": len(eval_data),
+            "simple_count": len(grouped_data['simple']),
+            "medium_count": len(grouped_data['medium']),
+            "complex_count": len(grouped_data['complex']),
+            "data": grouped_data
+        }
+        
+    except Exception as e:
+        logger.error(f"Error loading eval data: {e}")
         raise HTTPException(status_code=500, detail=str(e))
 
 @router.post("/reset")

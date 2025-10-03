@@ -3,7 +3,7 @@
 
 ---
 
-## 🎯 Quick Access
+## Quick Access
 
 **Local URLs**:
 - **Frontend**: http://localhost:3000
@@ -12,14 +12,14 @@
 
 ---
 
-## 📊 Analysis Page - Key Highlights
+## Analysis Page - Key Highlights
 
 ### URL: http://localhost:3000/analysis
 
 ### What to Show:
 
 #### 1. **Winner Banner** (Top of page)
-- **P3 Vanna AI RAG**: 76.3% Execution Accuracy 🏆
+- **P3 Vanna AI RAG**: 76.3% Execution Accuracy [BEST]
 - Automatically highlights best performing pipeline
 - Shows key metrics: 43.0% EM, 76.3% EX, 1.78s latency
 
@@ -58,14 +58,14 @@ Each card shows:
 
 **E. Error Rate Comparison** (Horizontal stacked bar chart)
 
-**📋 What is Error Rate?**
+**What is Error Rate?**
 - Measures: Percentage of queries that **fail to produce valid, executable SQL**
 - Counts as error: No output, invalid syntax, crashes, timeout
 - Does NOT count as error: Valid SQL that returns wrong results
 - **Key: 0% error = "always produces SQL" ≠ "always produces CORRECT SQL"**
 
 **Results:**
-- **P2 SQLCoder**: 0% error rate (perfect reliability) ✅
+- **P2 SQLCoder**: 0% error rate (perfect reliability)
 - **P1 mT5**: 1.3% error rate (highly reliable)
 - **P3 Vanna AI**: 13% error rate (trade-off for higher accuracy)
 - Shows reliability vs accuracy trade-off
@@ -83,15 +83,15 @@ Performance Ranking:
 - #3: P2 SQLCoder Zero-shot - 22.3% EX, 18.0% EM
 
 Technical Observations:
-- 🎯 Vanna AI breakthrough: 76.3% EX after training optimization
-- 📊 Complex query handling: 64% success (only pipeline achieving this)
-- ⚡ Speed vs accuracy: mT5 fastest but lowest accuracy
-- 💾 Resource efficiency: Vanna AI uses only 3.3GB GPU
-- 🎓 Training impact: Improved from 26.7% to 76.3% EX
+- Vanna AI breakthrough: 76.3% EX after training optimization
+- Complex query handling: 64% success (only pipeline achieving this)
+- Speed vs accuracy: mT5 fastest but lowest accuracy
+- Resource efficiency: Vanna AI uses only 3.3GB GPU
+- Training impact: Improved from 26.7% to 76.3% EX
 
 ---
 
-## 🎤 Demo Talking Points
+## Demo Talking Points
 
 ### Opening (30 seconds)
 > "This analysis dashboard shows results from evaluating three Vietnamese NL2SQL pipelines on 300 diverse queries from a Tiki e-commerce database."
@@ -128,7 +128,7 @@ Technical Observations:
 
 ---
 
-## 📈 Filter Demonstrations
+## Filter Demonstrations
 
 ### Show "All Queries" (Default)
 - Overall winner: P3 with 76.3% EX
@@ -143,15 +143,15 @@ Technical Observations:
 - P2 drops to: 0% EX
 - P1: 9% EX (better than P2 but still poor)
 
-### Filter to "Complex Queries" ⭐
+### Filter to "Complex Queries" [KEY DIFFERENTIATOR]
 - **Critical differentiator**
-- P3: 64% EX ✅
-- P2: 0% EX ❌
+- P3: 64% EX
+- P2: 0% EX
 - P1: 30% EX (but 0% EM - not exact matches)
 
 ---
 
-## 💡 Key Messages for Thesis Defense
+## Key Messages for Thesis Defense
 
 ### 1. **Research Question Answered**
 > "Can RAG-based approaches outperform zero-shot prompting for Vietnamese NL2SQL?"
@@ -168,7 +168,7 @@ Technical Observations:
 
 ---
 
-## 🎨 Visual Highlights to Mention
+## Visual Highlights to Mention
 
 ### Colors Guide:
 - **Blue**: P1 mT5 (fast but less accurate)
@@ -182,7 +182,7 @@ Technical Observations:
 
 ---
 
-## 🔄 Export Features
+## Export Features
 
 ### CSV Export Button (Top right)
 - Downloads comparison table
@@ -192,7 +192,7 @@ Technical Observations:
 
 ---
 
-## 📊 Expected Questions & Answers
+## Expected Questions & Answers
 
 ### Q: "What exactly is error rate measuring?"
 **A**: "Error rate measures technical reliability - the percentage of queries where the system fails to produce valid, executable SQL. It counts: no output, invalid syntax, crashes, or timeouts. It does NOT count queries where valid SQL is generated but returns wrong results. That's why SQLCoder has 0% error but only 22.3% accuracy - it always produces SQL, just wrong SQL."
@@ -220,22 +220,22 @@ Technical Observations:
 
 ---
 
-## 🎯 Demo Flow Checklist
+## Demo Flow Checklist
 
-1. ✅ Open http://localhost:3000/analysis
-2. ✅ Highlight winner banner (P3: 76.3% EX)
-3. ✅ Explain three pipeline cards
-4. ✅ Show accuracy comparison chart (P3 dominance)
-5. ✅ Filter to "Complex Queries" to show P3's strength
-6. ✅ Point to radar chart (multi-dimensional view)
-7. ✅ Scroll to Key Research Insights
-8. ✅ Mention CSV export capability
-9. ✅ Return to "All Queries" view
-10. ✅ Summarize: "76.3% EX represents production-ready Vietnamese NL2SQL"
+1. Open http://localhost:3000/analysis
+2. Highlight winner banner (P3: 76.3% EX)
+3. Explain three pipeline cards
+4. Show accuracy comparison chart (P3 dominance)
+5. Filter to "Complex Queries" to show P3's strength
+6. Point to radar chart (multi-dimensional view)
+7. Scroll to Key Research Insights
+8. Mention CSV export capability
+9. Return to "All Queries" view
+10. Summarize: "76.3% EX represents production-ready Vietnamese NL2SQL"
 
 ---
 
-## 📁 Related Files
+## Related Files
 
 **Metrics Source**:
 - `/code/ColabNotebook/V4/result/P1_Prompting_mT5_20251001_110900_metrics.json`
@@ -250,7 +250,7 @@ Technical Observations:
 
 ---
 
-## 🚀 Starting the Demo App
+## Starting the Demo App
 
 ```bash
 cd /Users/thoduong/CascadeProjects/MSE_Thesis_2025/code/demo
@@ -258,8 +258,8 @@ cd /Users/thoduong/CascadeProjects/MSE_Thesis_2025/code/demo
 ```
 
 Wait for:
-- Backend: http://localhost:8000 ✅
-- Frontend: http://localhost:3000 ✅
+- Backend: http://localhost:8000
+- Frontend: http://localhost:3000
 
 Then navigate to: http://localhost:3000/analysis
 

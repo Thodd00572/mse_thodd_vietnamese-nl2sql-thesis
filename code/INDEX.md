@@ -1,22 +1,22 @@
-# 📚 Documentation Index - MSE Thesis 2025
+# Documentation Index - MSE Thesis 2025
 
 **Quick Navigation Guide for All Project Documentation**
 
 ---
 
-## 🚀 Start Here
+## Start Here
 
 ### For First-Time Users
-👉 **[QUICK_START.md](QUICK_START.md)** - 3-minute setup guide  
+**[QUICK_START.md](QUICK_START.md)** - 3-minute setup guide  
 Everything you need to run the best pipeline in under 5 minutes.
 
 ### For Project Overview
-👉 **[README.md](README.md)** - Main project documentation  
+**[README.md](README.md)** - Main project documentation  
 Complete overview, architecture, and performance summary.
 
 ---
 
-## 📖 Detailed Documentation
+## Detailed Documentation
 
 ### Organization & Cleanup
 - **[CLEANUP_COMPLETE.md](CLEANUP_COMPLETE.md)** - Cleanup achievements  
@@ -41,19 +41,19 @@ Complete overview, architecture, and performance summary.
 
 ---
 
-## 🎯 By Use Case
+## By Use Case
 
 ### "I want to run the best pipeline"
 → [QUICK_START.md](QUICK_START.md) → Section "3-Minute Setup"
 
 ### "I need to understand the project"
-→ [README.md](README.md) → "📊 Performance Summary"
+→ [README.md](README.md) → "Performance Summary"
 
 ### "I want to see all files organized"
-→ [PROJECT_STRUCTURE.md](PROJECT_STRUCTURE.md) → "📁 Clean Directory Tree"
+→ [PROJECT_STRUCTURE.md](PROJECT_STRUCTURE.md) → "Clean Directory Tree"
 
 ### "What was changed during cleanup?"
-→ [CLEANUP_COMPLETE.md](CLEANUP_COMPLETE.md) → "🗂️ Final Structure"
+→ [CLEANUP_COMPLETE.md](CLEANUP_COMPLETE.md) → "Final Structure"
 
 ### "Where is the production code?"
 → [ColabNotebook/V4/final/README.md](ColabNotebook/V4/final/README.md)
@@ -63,7 +63,7 @@ Complete overview, architecture, and performance summary.
 
 ---
 
-## 📊 Quick Reference
+## Quick Reference
 
 ### Best Performance
 - **Pipeline**: P3 Vanna AI
@@ -89,7 +89,7 @@ INDEX.md                  ← This file
 
 ---
 
-## 🎓 For Different Audiences
+## For Different Audiences
 
 ### Thesis Reviewers
 1. [QUICK_START.md](QUICK_START.md) - Fast overview
@@ -108,27 +108,27 @@ INDEX.md                  ← This file
 
 ---
 
-## 🔍 Search by Topic
+## Search by Topic
 
 ### Performance Metrics
-- [README.md](README.md) → "📊 Performance Summary"
-- [CLEANUP_COMPLETE.md](CLEANUP_COMPLETE.md) → "🏆 Production Code Summary"
+- [README.md](README.md) → "Performance Summary"
+- [CLEANUP_COMPLETE.md](CLEANUP_COMPLETE.md) → "Production Code Summary"
 
 ### Setup Instructions
-- [QUICK_START.md](QUICK_START.md) → "⚡ 3-Minute Setup"
-- [ColabNotebook/V4/final/README.md](ColabNotebook/V4/final/README.md) → "🚀 Quick Start"
+- [QUICK_START.md](QUICK_START.md) → "3-Minute Setup"
+- [ColabNotebook/V4/final/README.md](ColabNotebook/V4/final/README.md) → "Quick Start"
 
 ### Bug Fixes
-- [CLEANUP_COMPLETE.md](CLEANUP_COMPLETE.md) → "🔧 Critical Fixes Applied"
-- [README.md](README.md) → "🔧 Critical Fixes Applied"
+- [CLEANUP_COMPLETE.md](CLEANUP_COMPLETE.md) → "Critical Fixes Applied"
+- [README.md](README.md) → "Critical Fixes Applied"
 
 ### File Organization
-- [PROJECT_STRUCTURE.md](PROJECT_STRUCTURE.md) → "📁 Clean Directory Tree"
-- [CLEANUP_COMPLETE.md](CLEANUP_COMPLETE.md) → "📦 Files Moved"
+- [PROJECT_STRUCTURE.md](PROJECT_STRUCTURE.md) → "Clean Directory Tree"
+- [CLEANUP_COMPLETE.md](CLEANUP_COMPLETE.md) → "Files Moved"
 
 ---
 
-## 📏 Document Sizes
+## Document Sizes
 
 | Document | Size | Read Time | Purpose |
 |----------|------|-----------|---------|
@@ -142,7 +142,7 @@ INDEX.md                  ← This file
 
 ---
 
-## ✅ Checklist for New Users
+## Checklist for New Users
 
 - [ ] Read [QUICK_START.md](QUICK_START.md)
 - [ ] Navigate to `ColabNotebook/V4/final/`
@@ -154,7 +154,7 @@ INDEX.md                  ← This file
 
 ---
 
-## 📝 Last Updated
+## Last Updated
 
 **Date**: October 1, 2025  
 **Status**: Complete and production-ready  

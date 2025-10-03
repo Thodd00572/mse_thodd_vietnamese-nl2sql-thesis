@@ -7,7 +7,12 @@ import sqlite3
 import json
 import time
 import psutil
-import torch
+try:
+    import torch
+    TORCH_AVAILABLE = True
+except ImportError:
+    torch = None
+    TORCH_AVAILABLE = False
 import logging
 from datetime import datetime
 import os
@@ -156,7 +161,7 @@ def get_system_metrics():
         "timestamp": datetime.now().isoformat()
     }
     
-    if torch.cuda.is_available():
+    if TORCH_AVAILABLE and torch.cuda.is_available():
         metrics.update({
             "gpu_memory_allocated_mb": torch.cuda.memory_allocated() / (1024**2),
             "gpu_memory_reserved_mb": torch.cuda.memory_reserved() / (1024**2),

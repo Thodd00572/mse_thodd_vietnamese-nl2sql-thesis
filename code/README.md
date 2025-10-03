@@ -1,32 +1,32 @@
 # Vietnamese NL2SQL - MSE Thesis 2025
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 code/
-├── ColabNotebook/          # ✅ PRODUCTION EVALUATION CODE
+├── ColabNotebook/          # PRODUCTION EVALUATION CODE
 │   ├── V4/final/          # Three working pipelines (MAIN THESIS WORK)
 │   │   ├── colab_p1_mt5_zero.py        (48% EM, 59% EX)
 │   │   ├── colab_p2_sqlcoder_zero.py   (19% EM, 21% EX)
-│   │   └── colab_p3_vanna_zero.py      (43% EM, 76.3% EX) 🏆
+│   │   └── colab_p3_vanna_zero.py      (43% EM, 76.3% EX) [BEST]
 │   ├── data/              # Evaluation datasets (300 queries)
 │   ├── db/                # Tiki e-commerce database
 │   ├── diagram/           # Architecture diagrams
 │   └── unused/            # Archived experimental code
 │
-├── demo/                  # ✅ DEMO APPLICATION (for presentations)
+├── demo/                  # DEMO APPLICATION (for presentations)
 │   ├── backend/           # FastAPI server
 │   ├── frontend/          # React/Next.js UI
 │   └── start_thesis_app.sh # Quick startup script
 │
-└── archived/              # 🗑️ NON-PRODUCTION CODE
+└── archived/              # NON-PRODUCTION CODE
     ├── phobert_models/    # PhoBERT trained models (650MB)
     ├── local_evaluation/  # Local evaluation scripts
     ├── utility_scripts/   # Database utilities
     └── old_unused_files/  # Previously archived files
 ```
 
-## 🎯 What to Use
+## What to Use
 
 ### For Thesis Evaluation (Main Work)
 **Use**: `/ColabNotebook/V4/final/`
@@ -40,7 +40,7 @@ code/
    - Code-specialized model
    - Performance: 19% EM, 21% EX
 
-3. **P3: Vanna AI RAG** (`colab_p3_vanna_zero.py`) 🏆 **RECOMMENDED**
+3. **P3: Vanna AI RAG** (`colab_p3_vanna_zero.py`) **RECOMMENDED**
    - RAG + GPT-4o approach
    - **Best Performance: 43% EM, 76.3% EX**
 
@@ -61,25 +61,23 @@ cd demo
 # Backend: http://localhost:8000
 ```
 
----
 
-## 📊 Performance Summary
+## Performance Summary
 
 | Pipeline | EM | EX | Latency | Status |
 |----------|----|----|---------|--------|
-| P1 mT5 | 48% | 59% | 0.30s | ✅ Working |
-| P2 SQLCoder | 19% | 21% | 1.33s | ✅ Working |
-| **P3 Vanna AI** | **43%** | **76.3%** | 1.78s | **�� BEST** |
+| P1 mT5 | 48% | 59% | 0.30s | Working |
+| P2 SQLCoder | 19% | 21% | 1.33s | Working |
+| **P3 Vanna AI** | **43%** | **76.3%** | 1.78s | **BEST** |
 
 ### P3 Vanna AI Complexity Breakdown
 - **Simple** (100 queries): 38% EM, 81% EX
 - **Medium** (100 queries): 29% EM, 84% EX
 - **Complex** (100 queries): 62% EM, 64% EX
-- **Overall** (300 queries): **43% EM, 76.3% EX**
 
 ---
 
-## 🚀 Quick Start
+## Quick Start
 
 ### Option 1: Run Production Evaluation (Recommended for Thesis)
 
@@ -108,7 +106,7 @@ cd demo
 
 ---
 
-## 🔧 Critical Fixes Applied
+## Critical Fixes Applied
 
 ### 1. Escape Sequence Bug (P3 Vanna AI)
 **Problem**: Vanna AI returned literal `\n` strings
@@ -136,7 +134,7 @@ pred = pred.replace('\\n', ' ').replace('\\t', ' ').replace('\\r', ' ')
 
 ---
 
-## 🗑️ What Was Archived
+## What Was Archived
 
 ### `/archived/phobert_models/`
 PhoBERT trained models (~650MB):
@@ -157,7 +155,7 @@ Database exploration and setup scripts:
 
 ---
 
-## 📖 Documentation
+## Documentation
 
 Complete documentation available:
 - **[README.md](README.md)** - This file (project overview)
@@ -171,25 +169,25 @@ Complete documentation available:
 
 ---
 
-## 🎓 For Thesis Submission
+## For Thesis Submission
 
 ### Must Include:
-✅ `/ColabNotebook/V4/final/` - Production pipelines  
-✅ `/ColabNotebook/data/` - Evaluation datasets  
-✅ `/ColabNotebook/db/` - Tiki database  
-✅ `/ColabNotebook/diagram/` - Architecture diagrams  
-✅ All README files - Complete documentation  
+- `/ColabNotebook/V4/final/` - Production pipelines  
+- `/ColabNotebook/data/` - Evaluation datasets  
+- `/ColabNotebook/db/` - Tiki database  
+- `/ColabNotebook/diagram/` - Architecture diagrams  
+- All README files - Complete documentation  
 
 ### Optional (Recommended):
-✅ `/demo/` - Demo app for defense presentation  
+- `/demo/` - Demo app for defense presentation  
 
 ### Can Include for Reference:
-⚠️ `/ColabNotebook/unused/` - Experimental approaches  
-⚠️ `/archived/` - Historical code (can omit)
+- `/ColabNotebook/unused/` - Experimental approaches  
+- `/archived/` - Historical code (can omit)
 
 ---
 
-## 🏆 Key Achievements
+## Key Achievements
 
 1. **Highest Execution Accuracy**: 76.3% (P3 Vanna AI)
 2. **Production-Ready Code**: Three tested pipelines
@@ -200,7 +198,7 @@ Complete documentation available:
 
 ---
 
-## 🎯 Use Case Guide
+## Use Case Guide
 
 | Task | Use This | Location |
 |------|----------|----------|
@@ -212,13 +210,13 @@ Complete documentation available:
 
 ---
 
-## 📧 Project Information
+## Project Information
 
 **MSE Thesis 2025**: Vietnamese Natural Language to SQL Generation  
 **Database**: Tiki E-commerce (41,576 products, 5 tables)  
 **Best Pipeline**: P3 Vanna AI (RAG + GPT-4o)  
 **Best Performance**: 76.3% Execution Accuracy  
-**Status**: ✅ Production-ready for thesis submission  
+**Status**: Production-ready for thesis submission  
 
 ---
 

@@ -5,10 +5,10 @@ Based on the codebase analysis, here's the use case diagram for the Vietnamese N
 ```mermaid
 graph TB
     %% Actors
-    User[👤 End User]
-    Researcher[👨‍🔬 Researcher/Developer]
-    ColabAPI[☁️ Google Colab API]
-    Database[🗄️ Tiki Database]
+    User[End User]
+    Researcher[Researcher/Developer]
+    ColabAPI[Google Colab API]
+    Database[Tiki Database]
     
     %% System Boundary
     subgraph "Vietnamese NL2SQL System"

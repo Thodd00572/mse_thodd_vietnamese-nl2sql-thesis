@@ -595,6 +595,44 @@ function AnalysisPage() {
               </div>
             </div>
 
+            {/* Performance by Complexity Level */}
+            <div className="card">
+              <h3 className="text-lg font-semibold text-gray-900 mb-6">Performance by Query Complexity</h3>
+              <ResponsiveContainer width="100%" height={400}>
+                <BarChart 
+                  data={[
+                    { 
+                      complexity: 'Simple', 
+                      'P1 mT5': pipelineResults.P1?.simple_ex * 100 || 0,
+                      'P2 SQLCoder': pipelineResults.P2?.simple_ex * 100 || 0,
+                      'P3 Vanna AI': pipelineResults.P3?.simple_ex * 100 || 0
+                    },
+                    { 
+                      complexity: 'Medium', 
+                      'P1 mT5': pipelineResults.P1?.medium_ex * 100 || 0,
+                      'P2 SQLCoder': pipelineResults.P2?.medium_ex * 100 || 0,
+                      'P3 Vanna AI': pipelineResults.P3?.medium_ex * 100 || 0
+                    },
+                    { 
+                      complexity: 'Complex', 
+                      'P1 mT5': pipelineResults.P1?.complex_ex * 100 || 0,
+                      'P2 SQLCoder': pipelineResults.P2?.complex_ex * 100 || 0,
+                      'P3 Vanna AI': pipelineResults.P3?.complex_ex * 100 || 0
+                    }
+                  ]}
+                >
+                  <CartesianGrid strokeDasharray="3 3" />
+                  <XAxis dataKey="complexity" />
+                  <YAxis label={{ value: 'Execution Accuracy (%)', angle: -90, position: 'insideLeft' }} domain={[0, 100]} />
+                  <Tooltip formatter={(value) => `${value.toFixed(1)}%`} />
+                  <Legend />
+                  <Bar dataKey="P1 mT5" fill="#3b82f6" name="P1: mT5 Zero-shot" />
+                  <Bar dataKey="P2 SQLCoder" fill="#22c55e" name="P2: SQLCoder Zero-shot" />
+                  <Bar dataKey="P3 Vanna AI" fill="#f59e0b" name="P3: Vanna AI RAG" />
+                </BarChart>
+              </ResponsiveContainer>
+            </div>
+
             {/* EM vs EX Accuracy Line Chart */}
             <div className="card">
               <h3 className="text-lg font-semibold text-gray-900 mb-6">Accuracy Metrics Comparison: EM vs EX</h3>

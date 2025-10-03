@@ -1,11 +1,21 @@
-import torch
-from transformers import pipeline, AutoTokenizer, AutoModelForSeq2SeqLM
+try:
+    import torch
+    from transformers import pipeline, AutoTokenizer, AutoModelForSeq2SeqLM
+    TORCH_AVAILABLE = True
+except ImportError:
+    TORCH_AVAILABLE = False
+    torch = None
+
 import logging
 import time
 import httpx
 import json
 from typing import Dict, Any, List
-from .model_config import model_loader
+
+try:
+    from .model_config import model_loader
+except ImportError:
+    model_loader = None
 
 logger = logging.getLogger(__name__)
 
@@ -15,7 +25,7 @@ class VietnameseSQLPipeline:
     def __init__(self):
         self.model = None
         self.tokenizer = None
-        self.device = model_loader.device
+        self.device = model_loader.device if model_loader else 'cpu'
         self.colab_url = None
         
     def load_model(self):
@@ -229,7 +239,7 @@ class VietnameseEnglishSQLPipeline:
     
     def __init__(self):
         # No local models - Colab API only
-        self.device = model_loader.device
+        self.device = model_loader.device if model_loader else 'cpu'
         self.colab_url = None
         
     def set_colab_url(self, url: str):

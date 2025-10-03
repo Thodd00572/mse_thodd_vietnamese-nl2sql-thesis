@@ -1,10 +1,10 @@
-# 🚀 Quick Start Guide - Vietnamese NL2SQL Thesis
+# Quick Start Guide - Vietnamese NL2SQL Thesis
 
 ## For Busy Reviewers / Quick Setup
 
 ---
 
-## 🎯 What You Need to Know
+## What You Need to Know
 
 **Best Pipeline**: P3 Vanna AI  
 **Performance**: 76.3% Execution Accuracy (highest achieved)  
@@ -12,7 +12,7 @@
 
 ---
 
-## ⚡ 3-Minute Setup
+## 3-Minute Setup
 
 ### 1. Find the Production Code
 ```bash
@@ -22,7 +22,7 @@ cd ColabNotebook/V4/final/
 You'll see **3 files**:
 - `colab_p1_mt5_zero.py` - mT5 baseline (48% EM, 59% EX)
 - `colab_p2_sqlcoder_zero.py` - SQLCoder baseline (19% EM, 21% EX)  
-- `colab_p3_vanna_zero.py` - **Vanna AI BEST (43% EM, 76.3% EX)** 🏆
+- `colab_p3_vanna_zero.py` - **Vanna AI BEST (43% EM, 76.3% EX)**
 
 ### 2. Upload to Google Colab
 - Go to [Google Colab](https://colab.research.google.com/)
@@ -45,24 +45,24 @@ api_key = "your-openai-api-key-here"
 
 ### 4. View Results
 Results include:
-- ✅ Exact Match (EM): 43%
-- ✅ Execution Accuracy (EX): 76.3%
-- ✅ Detailed complexity breakdown
-- ✅ Sample query results
+- Exact Match (EM): 43%
+- Execution Accuracy (EX): 76.3%
+- Detailed complexity breakdown
+- Sample query results
 
 ---
 
-## 📊 What Each Pipeline Does
+## What Each Pipeline Does
 
 | Pipeline | Model | Strategy | EM | EX | Speed |
 |----------|-------|----------|----|----|-------|
-| **P1** | Google mT5 | Zero-shot prompting | 48% | 59% | 0.30s ⚡ |
+| **P1** | Google mT5 | Zero-shot prompting | 48% | 59% | 0.30s |
 | **P2** | SQLCoder-7B | Code-specialized LLM | 19% | 21% | 1.33s |
-| **P3** 🏆 | Vanna AI + GPT-4o | RAG retrieval | **43%** | **76.3%** | 1.78s |
+| **P3** | Vanna AI + GPT-4o | RAG retrieval | **43%** | **76.3%** | 1.78s |
 
 ---
 
-## 📁 Where Everything Is
+## Where Everything Is
 
 ```
 code/
@@ -74,7 +74,7 @@ code/
 
 ---
 
-## 🎓 For Thesis Reviewers
+## For Thesis Reviewers
 
 ### Key Files to Review:
 1. **`ColabNotebook/V4/final/colab_p3_vanna_zero.py`** - Best pipeline
@@ -90,7 +90,7 @@ code/
 
 ---
 
-## 🔧 Requirements
+## Requirements
 
 ### For P1 & P2:
 - Google Colab (free tier works)
@@ -103,7 +103,7 @@ code/
 
 ---
 
-## 📖 Documentation
+## Documentation
 
 All documentation is in README files:
 - `/code/README.md` - Main overview
@@ -113,7 +113,7 @@ All documentation is in README files:
 
 ---
 
-## ❓ Common Questions
+## Common Questions
 
 **Q: Which pipeline should I use?**  
 A: P3 Vanna AI (`colab_p3_vanna_zero.py`) - highest accuracy (76.3% EX)
@@ -135,10 +135,10 @@ A: Yes, but Colab GPU is faster and easier
 
 ---
 
-## 🏆 Expected Results (P3 Vanna AI)
+## Expected Results (P3 Vanna AI)
 
 ```
-📊 OVERALL PERFORMANCE:
+OVERALL PERFORMANCE:
    Total Queries:        300
    Overall EM:           0.430 (43.0%)
    Overall EX:           0.763 (76.3%)
@@ -152,7 +152,7 @@ Complexity Breakdown:
 
 ---
 
-## 📧 Need Help?
+## Need Help?
 
 1. Check `/code/README.md` for detailed instructions
 2. Review `/ColabNotebook/V4/final/README.md` for pipeline specifics
@@ -160,4 +160,4 @@ Complexity Breakdown:
 
 ---
 
-**TL;DR**: Upload `ColabNotebook/V4/final/colab_p3_vanna_zero.py` to Google Colab, add OpenAI API key, run all cells. Get 76.3% execution accuracy on 300 Vietnamese NL2SQL queries. Done. 🎉
+**TL;DR**: Upload `ColabNotebook/V4/final/colab_p3_vanna_zero.py` to Google Colab, add OpenAI API key, run all cells. Get 76.3% execution accuracy on 300 Vietnamese NL2SQL queries. Done.

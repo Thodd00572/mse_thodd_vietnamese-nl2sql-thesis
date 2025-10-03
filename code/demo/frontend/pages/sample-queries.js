@@ -12,6 +12,7 @@ export default function SampleQueries() {
   const [executionLogs, setExecutionLogs] = useState([]);
   const [showLogs, setShowLogs] = useState(true);
   const [sampleQueries, setSampleQueries] = useState([]);
+  const [executing, setExecuting] = useState(false);
 
   // Load sample queries data from backend - 100 queries each level
   const [sampleQueriesData, setSampleQueriesData] = useState({
@@ -20,20 +21,42 @@ export default function SampleQueries() {
     'complex': []
   });
 
-  // Load sample queries on component mount
+  // Load sample queries from eval_data.jsonl
   useEffect(() => {
     const loadSampleQueries = async () => {
       try {
-        const response = await fetch('http://localhost:8000/api/sample-queries');
+        const response = await fetch('http://localhost:8000/api/eval-data');
         if (response.ok) {
           const data = await response.json();
-          setSampleQueriesData(data);
+          // Transform eval_data format to match expected structure
+          const transformedData = {
+            'simple': data.data.simple.map(item => ({
+              vietnamese: item.vietnamese || item.text || item.vn,
+              english: item.english || '',
+              sql: item.sql || item.gold_sql,
+              complexity: 'simple'
+            })),
+            'medium': data.data.medium.map(item => ({
+              vietnamese: item.vietnamese || item.text || item.vn,
+              english: item.english || '',
+              sql: item.sql || item.gold_sql,
+              complexity: 'medium'
+            })),
+            'complex': data.data.complex.map(item => ({
+              vietnamese: item.vietnamese || item.text || item.vn,
+              english: item.english || '',
+              sql: item.sql || item.gold_sql,
+              complexity: 'complex'
+            }))
+          };
+          setSampleQueriesData(transformedData);
+          console.log(`Loaded ${data.total} queries from eval_data.jsonl`);
         } else {
           // Fallback to local data if API fails
           setSampleQueriesData(getLocalSampleQueries());
         }
       } catch (error) {
-        console.error('Failed to load sample queries:', error);
+        console.error('Failed to load eval data:', error);
         setSampleQueriesData(getLocalSampleQueries());
       }
     };
@@ -187,11 +210,12 @@ export default function SampleQueries() {
     setExecutionLogs(prev => [newLog, ...prev.slice(0, 49)]); // Keep last 50 logs
   };
 
-  const executeQuery = async (vietnameseQuery, pipeline = 'both') => {
-    addLog(`🚀 Executing query: "${vietnameseQuery}" on ${pipeline === 'both' ? 'both pipelines' : `Pipeline ${pipeline}`}`, 'info');
+  const executeQuery = async (vietnameseQuery, pipeline = 'all') => {
+    setExecuting(true);
+    addLog(`🚀 Executing query: "${vietnameseQuery}" on all 3 pipelines`, 'info');
     
     try {
-      if (pipeline === 'both' || pipeline === '1') {
+      if (pipeline === 'all' || pipeline === '1') {
         addLog('📡 API Request: POST /api/search (Pipeline 1)', 'api');
         addLog(`📤 Request Body: {"query": "${vietnameseQuery}", "pipeline": "pipeline1"}`, 'request');
         
@@ -216,7 +240,7 @@ export default function SampleQueries() {
         }
       }
       
-      if (pipeline === 'both' || pipeline === '2') {
+      if (pipeline === 'all' || pipeline === '2') {
         addLog('📡 API Request: POST /api/search (Pipeline 2)', 'api');
         addLog(`📤 Request Body: {"query": "${vietnameseQuery}", "pipeline": "pipeline2"}`, 'request');
         
@@ -243,10 +267,40 @@ export default function SampleQueries() {
         }
       }
       
+      if (pipeline === 'all' || pipeline === '3') {
+        addLog('📡 API Request: POST /api/search (Pipeline 3 - Vanna RAG)', 'api');
+        addLog(`📤 Request Body: {"query": "${vietnameseQuery}", "pipeline": "pipeline3"}`, 'request');
+        
+        const p3Response = await fetch('http://localhost:8000/api/search', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ 
+            query: vietnameseQuery, 
+            pipeline: 'pipeline3' 
+          })
+        });
+        const p3Data = await p3Response.json();
+        
+        addLog(`📥 API Response: ${p3Response.status} ${p3Response.statusText}`, 'response');
+        
+        if (p3Data.success && p3Data.pipeline3_result) {
+          addLog(`✅ Pipeline 3 Success: Generated SQL in ${(p3Data.pipeline3_result.execution_time * 1000).toFixed(1)}ms`, 'success');
+          addLog(`📝 Generated SQL: ${p3Data.pipeline3_result.sql_query}`, 'sql');
+          addLog(`📊 Query Results: ${p3Data.pipeline3_result.results.length} rows returned`, 'result');
+          if (p3Data.pipeline3_result.rag_examples) {
+            addLog(`🔍 RAG Retrieved: ${p3Data.pipeline3_result.rag_examples} similar examples`, 'info');
+          }
+        } else {
+          addLog(`❌ Pipeline 3 Error: ${p3Data.error}`, 'error');
+        }
+      }
+      
       addLog(`🎉 Query execution completed successfully!`, 'success');
       
     } catch (error) {
       addLog(`💥 Execution failed: ${error.message}`, 'error');
+    } finally {
+      setExecuting(false);
     }
   };
 
@@ -266,7 +320,8 @@ export default function SampleQueries() {
       results: [],
       summary: {
         pipeline1: { success: 0, failed: 0, total_time: 0 },
-        pipeline2: { success: 0, failed: 0, total_time: 0 }
+        pipeline2: { success: 0, failed: 0, total_time: 0 },
+        pipeline3: { success: 0, failed: 0, total_time: 0 }
       }
     };
     
@@ -281,9 +336,11 @@ export default function SampleQueries() {
           query_id: queryId,
           vietnamese_query: query.vietnamese,
           english_query: query.english,
+          gold_sql: query.sql,
           complexity: query.complexity,
           pipeline1_result: null,
           pipeline2_result: null,
+          pipeline3_result: null,
           execution_time: new Date().toISOString()
         };
         
@@ -427,6 +484,73 @@ export default function SampleQueries() {
           addLog(`❌ Pipeline 2 Network Error: ${error.message}`, 'error');
         }
         
+        // Execute Pipeline 3 (Vanna RAG)
+        try {
+          addLog(`📡 Pipeline 3 API Request: POST /api/search`, 'api');
+          addLog(`📤 Request Body: {"query": "${query.vietnamese}", "pipeline": "pipeline3"}`, 'request');
+          
+          const p3Response = await fetch('http://localhost:8000/api/search', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ 
+              query: query.vietnamese, 
+              pipeline: 'pipeline3' 
+            })
+          });
+          const p3Data = await p3Response.json();
+          
+          addLog(`📥 Pipeline 3 Response: ${p3Response.status} ${p3Response.statusText}`, 'response');
+          addLog(`📋 Response Data: ${JSON.stringify(p3Data, null, 2)}`, 'response');
+          
+          if (p3Data.success && p3Data.pipeline3_result) {
+            queryResult.pipeline3_result = {
+              success: true,
+              sql_query: p3Data.pipeline3_result.sql_query,
+              results: p3Data.pipeline3_result.results,
+              execution_time: p3Data.pipeline3_result.execution_time,
+              rag_examples: p3Data.pipeline3_result.rag_examples,
+              metrics: p3Data.pipeline3_result.metrics || {}
+            };
+            batchResults.summary.pipeline3.success++;
+            batchResults.summary.pipeline3.total_time += p3Data.pipeline3_result.execution_time;
+            
+            addLog(`📝 Generated SQL: ${p3Data.pipeline3_result.sql_query}`, 'sql');
+            addLog(`📊 SQL Execution Results: ${p3Data.pipeline3_result.results.length} rows returned`, 'result');
+            addLog(`⏱️ Pipeline 3 Total Time: ${(p3Data.pipeline3_result.execution_time * 1000).toFixed(1)}ms`, 'timing');
+            
+            if (p3Data.pipeline3_result.rag_examples) {
+              addLog(`🔍 RAG Retrieved: ${p3Data.pipeline3_result.rag_examples} similar examples`, 'info');
+            }
+            
+            // Research Metrics Logging
+            if (p3Data.pipeline3_result.execution_accuracy !== undefined) {
+              addLog(`🎯 Execution Accuracy (EX): ${(p3Data.pipeline3_result.execution_accuracy * 100).toFixed(1)}%`, 'metric');
+            }
+            if (p3Data.pipeline3_result.latency_ms !== undefined) {
+              addLog(`⚡ Latency: ${p3Data.pipeline3_result.latency_ms.toFixed(1)}ms`, 'metric');
+            }
+            
+            addLog(`✅ Pipeline 3 Success`, 'success');
+          } else {
+            queryResult.pipeline3_result = {
+              success: false,
+              error: p3Data.error || 'Unknown error'
+            };
+            batchResults.summary.pipeline3.failed++;
+            if (p3Data.pipeline3_result && p3Data.pipeline3_result.error_type) {
+              addLog(`🏷️ Error Type: ${p3Data.pipeline3_result.error_type}`, 'error');
+            }
+            addLog(`❌ Pipeline 3 Error: ${p3Data.error || 'Unknown error'}`, 'error');
+          }
+        } catch (error) {
+          queryResult.pipeline3_result = {
+            success: false,
+            error: error.message
+          };
+          batchResults.summary.pipeline3.failed++;
+          addLog(`❌ Pipeline 3 Network Error: ${error.message}`, 'error');
+        }
+        
         batchResults.results.push(queryResult);
         
         // Add small delay between queries to avoid overwhelming the API
@@ -498,6 +622,7 @@ export default function SampleQueries() {
       addLog(`🎉 Batch execution completed successfully!`, 'success');
       addLog(`📊 Pipeline 1: ${batchResults.summary.pipeline1.success}/${allQueries.length} success`, 'info');
       addLog(`📊 Pipeline 2: ${batchResults.summary.pipeline2.success}/${allQueries.length} success`, 'info');
+      addLog(`📊 Pipeline 3: ${batchResults.summary.pipeline3.success}/${allQueries.length} success`, 'info');
       
     } catch (error) {
       addLog(`❌ Batch execution failed: ${error.message}`, 'error');
@@ -693,7 +818,7 @@ export default function SampleQueries() {
                 <span className={styles.statLabel}>Vietnamese-SQL Pairs</span>
               </div>
               <div className={styles.stat}>
-                <span className={styles.statNumber}>2</span>
+                <span className={styles.statNumber}>3</span>
                 <span className={styles.statLabel}>Pipelines</span>
               </div>
               <div className={styles.stat}>
@@ -721,20 +846,6 @@ export default function SampleQueries() {
               </select>
             </div>
             
-            <button 
-              onClick={executeAllQueries} 
-              disabled={loading}
-              className={`${styles.executeButton} ${loading ? styles.loading : ''}`}
-            >
-              {loading ? (
-                <>
-                  <span className={styles.spinner}></span>
-                  Processing...
-                </>
-              ) : (
-                '🚀 Execute All Queries'
-              )}
-            </button>
           </div>
         </div>
 
@@ -744,6 +855,15 @@ export default function SampleQueries() {
             <div className={styles.logHeader}>
               <h2>📋 Execution Logs</h2>
               <div className={styles.logControls}>
+                {selectedQuery && (
+                  <button 
+                    onClick={() => executeQuery(selectedQuery.vietnamese, 'all')}
+                    disabled={executing}
+                    className={styles.executeButton}
+                  >
+                    {executing ? '⏳ Executing...' : '🚀 Execute'}
+                  </button>
+                )}
                 <button 
                   onClick={() => setShowLogs(!showLogs)}
                   className={styles.toggleButton}
@@ -758,6 +878,11 @@ export default function SampleQueries() {
                 </button>
               </div>
             </div>
+            {selectedQuery && (
+              <div className={styles.selectedQueryInfo}>
+                <strong>Selected Query:</strong> {selectedQuery.vietnamese}
+              </div>
+            )}
             <p>Real-time logging of pipeline execution and results</p>
           </div>
           
@@ -792,7 +917,12 @@ export default function SampleQueries() {
             
             <div className={styles.queriesGrid}>
               {getFilteredSampleQueries().map((query, index) => (
-                <div key={index} className={styles.queryCard}>
+                <div 
+                  key={index} 
+                  className={`${styles.queryCard} ${selectedQuery?.vietnamese === query.vietnamese ? styles.selected : ''}`}
+                  onClick={() => setSelectedQuery(query)}
+                  style={{ cursor: 'pointer' }}
+                >
                   <div className={styles.queryCardHeader}>
                     <span 
                       className={styles.complexityBadge}
@@ -814,29 +944,6 @@ export default function SampleQueries() {
                         <pre className={styles.sqlCode}>{query.sql}</pre>
                       </div>
                     )}
-                  </div>
-                  <div className={styles.queryActions}>
-                    <button 
-                      onClick={() => executeQuery(query.vietnamese, 'both')}
-                      className={styles.testButton}
-                      disabled={loading}
-                    >
-                      🔄 Test Both Pipelines
-                    </button>
-                    <button 
-                      onClick={() => executeQuery(query.vietnamese, '1')}
-                      className={styles.testButtonSmall}
-                      disabled={loading}
-                    >
-                      P1
-                    </button>
-                    <button 
-                      onClick={() => executeQuery(query.vietnamese, '2')}
-                      className={styles.testButtonSmall}
-                      disabled={loading}
-                    >
-                      P2
-                    </button>
                   </div>
                 </div>
               ))}
