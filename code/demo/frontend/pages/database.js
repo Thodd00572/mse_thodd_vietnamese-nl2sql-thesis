@@ -15,7 +15,7 @@ import {
   ChevronRight,
   GitBranch
 } from 'lucide-react'
-import api from '../utils/api'
+import dbApi from '../utils/dbApi'
 import mermaid from 'mermaid'
 
 export default function DatabaseManagementPage() {
@@ -43,8 +43,8 @@ export default function DatabaseManagementPage() {
   const fetchDatabaseStats = async () => {
     setLoading(true)
     try {
-      console.log('Fetching database stats from:', api.defaults.baseURL + '/api/database/stats')
-      const response = await api.get('/api/database/stats')
+      console.log('Fetching database stats from:', dbApi.defaults.baseURL + '/api/database/stats')
+      const response = await dbApi.get('/api/database/stats')
       console.log('Database stats response:', response.data)
       setDbStats(response.data)
     } catch (error) {
@@ -61,7 +61,7 @@ export default function DatabaseManagementPage() {
     
     setQueryLoading(true)
     try {
-      const response = await api.post('/api/database/query', { query: sqlQuery })
+      const response = await dbApi.post('/api/database/query', { query: sqlQuery })
       setQueryResult(response.data)
     } catch (error) {
       console.error('Query execution error:', error)
@@ -75,7 +75,7 @@ export default function DatabaseManagementPage() {
   const fetchSampleData = async (page = 1) => {
     setLoading(true)
     try {
-      const response = await api.get('/api/products', {
+      const response = await dbApi.get('/api/products', {
         params: { page, limit: itemsPerPage }
       })
       setSampleData(response.data.products || [])

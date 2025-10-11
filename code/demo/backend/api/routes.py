@@ -16,13 +16,14 @@ from models.pipelines import pipeline1, pipeline2
 # Import local model processor
 import sys
 sys.path.append(os.path.join(os.path.dirname(__file__), '..', '..'))
-from local_model_processor import LocalModelProcessor
+# from local_model_processor import LocalModelProcessor  # Not needed for Colab-only mode
 
 logger = logging.getLogger(__name__)
 router = APIRouter()
 
 # Initialize local model processor
-local_processor = LocalModelProcessor(models_dir="local_models")
+# local_processor = LocalModelProcessor(models_dir="local_models")  # Not needed for Colab-only mode
+local_processor = None  # Disabled for Colab-only mode
 
 class ExportRequest(BaseModel):
     format: str = "csv"

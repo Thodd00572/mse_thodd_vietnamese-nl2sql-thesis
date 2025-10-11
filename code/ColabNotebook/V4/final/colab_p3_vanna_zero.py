@@ -8,6 +8,36 @@ Class: MSE14
 Copyright (c) 2025
 """
 
+# ============================================================================
+# API KEY CONFIGURATION - Auto-loaded from Colab Secrets
+# ============================================================================
+# 
+# This code automatically loads your API key from Colab Secrets
+# Secret name: "OPENAI_API_KEY"
+#
+# Setup Instructions (if not already done):
+#    1. Click the key icon in the left sidebar (Secrets)
+#    2. Add new secret: OPENAI_API_KEY
+#    3. Paste your OpenAI API key
+#    4. Enable notebook access
+#
+# The key will be automatically loaded when you run this cell
+#
+# ============================================================================
+
+# Automatically load API key from Colab Secrets
+MANUAL_API_KEY = ""
+
+try:
+    from google.colab import userdata
+    MANUAL_API_KEY = userdata.get('OPENAI_API_KEY')
+    print("[OK] API key loaded from Colab Secrets")
+except Exception as e:
+    print(f"[INFO] Could not load from Colab Secrets: {e}")
+    print("[INFO] You can manually set MANUAL_API_KEY above if needed")
+
+# ============================================================================
+
 # Core imports
 import torch
 import json
@@ -645,7 +675,6 @@ def create_vanna_instance(api_key: Optional[str] = None, use_multilingual: bool 
         # Terminate the process - no fallbacks
         raise RuntimeError(f"Vanna AI initialization failed: {e}") from e
 
-{{ ... }}
 # ============================================================================
 # CELL 5: P3 - Vanna AI Pipeline
 # ============================================================================
@@ -1051,7 +1080,7 @@ class VannaPipeline:
         
         # 2. Generate price filter variations (if pattern exists in training)
         if patterns['price_filter']:
-            print(f"   💰 Generating price filter variations...")
+            print(f"   Generating price filter variations...")
             price_count = 0
             price_thresholds = [100, 200, 300, 400, 500, 800, 1000, 1500, 2000, 3000, 5000]
             for threshold in price_thresholds:
@@ -1133,7 +1162,7 @@ class VannaPipeline:
         
         # 6. Generate rating filter variations (NEW - medium complexity)
         if patterns['rating_filter']:
-            print(f"   ⭐ Generating rating filter variations...")
+            print(f"   Generating rating filter variations...")
             rating_count = 0
             rating_thresholds = [3.0, 3.5, 4.0, 4.5]
             for rating in rating_thresholds:
@@ -1161,7 +1190,7 @@ class VannaPipeline:
         
         # 8. Generate brand + price combinations (NEW - complex)
         if patterns['brand_filter'] and patterns['price_filter']:
-            print(f"   💎 Generating brand + price combinations...")
+            print(f"   Generating brand + price combinations...")
             brand_price_count = 0
             top_brands = ["Nike", "Adidas", "Samsung", "Apple"]
             for brand in top_brands:
@@ -1943,16 +1972,49 @@ def run_evaluation():
     print("\nP3: Testing Vanna AI Pipeline")
     
     # Initialize Vanna with OpenAI API key - strict mode (no fallbacks)
-    # SECURITY: Use environment variable or Colab secrets - NEVER hardcode API keys!
-    api_key = os.getenv('OPENAI_API_KEY')
+    # SECURITY: Load API key (Priority: Manual > Colab Secrets > Environment)
+    api_key = None
+    
+    # Priority 1: Manual API key (from top of file - for quick testing)
+    if MANUAL_API_KEY and MANUAL_API_KEY.strip():
+        api_key = MANUAL_API_KEY.strip()
+        print("[OK] Using manual API key from file configuration")
+        print("  [WARNING] Remember to delete the key before committing to GitHub!")
+    
+    # Priority 2: Colab Secrets (RECOMMENDED - secure method)
     if not api_key:
         try:
             from google.colab import userdata
             api_key = userdata.get('OPENAI_API_KEY')
-        except:
-            print("ERROR: OPENAI_API_KEY not found in environment or Colab secrets!")
-            print("Please set it using: os.environ['OPENAI_API_KEY'] = 'your-key-here'")
-            raise ValueError("OpenAI API key required for P3 evaluation")
+            print("[OK] Using API key from Colab Secrets (secure)")
+        except Exception as e:
+            print(f"  [INFO] Colab Secrets not available: {e}")
+    
+    # Priority 3: Environment variable (for local development)
+    if not api_key:
+        api_key = os.getenv('OPENAI_API_KEY')
+        if api_key:
+            print("[OK] Using API key from environment variable")
+    
+    # Validation
+    if not api_key:
+        print("\n" + "=" * 60)
+        print("[ERROR] No OpenAI API key found!")
+        print("=" * 60)
+        print("\nPlease provide your API key using one of these methods:")
+        print("\n1. COLAB SECRETS (Recommended - Secure):")
+        print("   - Click the key icon in the left sidebar")
+        print("   - Add new secret: OPENAI_API_KEY")
+        print("   - Paste your key and enable notebook access")
+        print("\n2. MANUAL INPUT (Quick Testing):")
+        print("   - Scroll to top of this file")
+        print("   - Find MANUAL_API_KEY variable")
+        print("   - Uncomment and paste your key")
+        print("   - [WARNING] DELETE before committing to GitHub!")
+        print("\n3. ENVIRONMENT VARIABLE (Local Development):")
+        print("   - Set: os.environ['OPENAI_API_KEY'] = 'your-key'")
+        print("=" * 60)
+        raise ValueError("OpenAI API key required for P3 Vanna AI evaluation")
     
     try:
         pipeline_p3 = VannaPipeline(api_key=api_key)
@@ -2111,11 +2173,7 @@ else:
 print("\n" + "=" * 60)
 print("TRAINING/EVALUATION COMPLETED!")
 print("=" * 60)
-print("\nTo expose this pipeline as an API:")
-print("1. Scroll down to the 'API SETUP' section below")
-print("2. Run the API cells separately")
-print("3. This allows you to skip API setup if you only need evaluation results")
-print("=" * 60)
+
 
 # ============================================================================
 # ============================================================================

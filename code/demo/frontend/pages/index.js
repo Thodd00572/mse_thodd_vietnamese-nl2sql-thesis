@@ -3,6 +3,7 @@ import Layout from '../components/Layout'
 import { Search, Clock, Database, AlertCircle, CheckCircle, Download, Cloud, Settings } from 'lucide-react'
 import Link from 'next/link'
 import api from '../utils/api'
+import dbApi from '../utils/dbApi'
 
 export default function SearchPage() {
   const [query, setQuery] = useState('')
@@ -19,10 +20,51 @@ export default function SearchPage() {
 
   const fetchColabStatus = async () => {
     try {
+      // Try backend API first
       const response = await api.get('/config/colab/status')
       setColabStatus(response.data.status)
     } catch (error) {
-      console.error('Failed to fetch Colab status:', error)
+      console.error('Failed to fetch Colab status from backend:', error)
+      
+      // Try connecting directly to Colab endpoint as fallback
+      try {
+        const colabResponse = await fetch('https://abnormally-direct-rhino.ngrok-free.app/health', {
+          method: 'GET',
+          headers: {
+            'Accept': 'application/json',
+            'ngrok-skip-browser-warning': 'true'
+          },
+          mode: 'cors'
+        })
+        
+        if (colabResponse.ok) {
+          const healthData = await colabResponse.json()
+          setColabStatus({
+            pipeline1_healthy: healthData.pipelines?.P1 || false,
+            pipeline2_healthy: healthData.pipelines?.P2 || false,
+            pipeline3_healthy: healthData.pipelines?.P3 || false,
+            colab_status: healthData.status === 'healthy' ? 'connected' : 'disconnected'
+          })
+          console.log('Successfully connected to Colab directly:', healthData)
+        } else {
+          // Set default disconnected status
+          setColabStatus({
+            pipeline1_healthy: false,
+            pipeline2_healthy: false,
+            pipeline3_healthy: false,
+            colab_status: 'disconnected'
+          })
+        }
+      } catch (directError) {
+        console.error('Failed to connect to Colab directly:', directError)
+        // Set default disconnected status
+        setColabStatus({
+          pipeline1_healthy: false,
+          pipeline2_healthy: false,
+          pipeline3_healthy: false,
+          colab_status: 'disconnected'
+        })
+      }
     }
   }
 
@@ -44,29 +86,61 @@ export default function SearchPage() {
     addProcessLog(`🔧 Pipeline: ${selectedPipeline}`, 'info')
     
     try {
-      addProcessLog('📡 Making API call to backend...', 'info')
-      const response = await api.post('/api/search', {
-        query: query.trim(),
-        pipeline: selectedPipeline
-      })
+      const queryText = query.trim()
+      const results = {}
       
-      addProcessLog('✅ API call successful', 'success')
+      // Call individual pipeline endpoints based on selection
+      if (selectedPipeline === 'all' || selectedPipeline === 'p1') {
+        addProcessLog('📡 Calling P1 (mT5) endpoint...', 'info')
+        try {
+          const p1Response = await api.post('/p1/generate', { query: queryText })
+          results.pipeline1_result = p1Response.data
+          addProcessLog('✅ P1 response received', 'success')
+        } catch (err) {
+          addProcessLog('❌ P1 failed: ' + err.message, 'error')
+          results.pipeline1_result = { success: false, error: err.message }
+        }
+      }
+      
+      if (selectedPipeline === 'all' || selectedPipeline === 'p2') {
+        addProcessLog('📡 Calling P2 (SQLCoder) endpoint...', 'info')
+        try {
+          const p2Response = await api.post('/p2/generate', { query: queryText })
+          results.pipeline2_result = p2Response.data
+          addProcessLog('✅ P2 response received', 'success')
+        } catch (err) {
+          addProcessLog('❌ P2 failed: ' + err.message, 'error')
+          results.pipeline2_result = { success: false, error: err.message }
+        }
+      }
+      
+      if (selectedPipeline === 'all' || selectedPipeline === 'p3') {
+        addProcessLog('📡 Calling P3 (Vanna AI) endpoint...', 'info')
+        try {
+          const p3Response = await api.post('/p3/generate', { query: queryText })
+          results.pipeline3_result = p3Response.data
+          addProcessLog('✅ P3 response received', 'success')
+        } catch (err) {
+          addProcessLog('❌ P3 failed: ' + err.message, 'error')
+          results.pipeline3_result = { success: false, error: err.message }
+        }
+      }
+      
       addProcessLog('📊 Processing results...', 'info')
-      
-      setResults(response.data)
+      setResults(results)
       
       // Check for Colab connection errors
-      const hasColabError = (response.data.pipeline1_result?.requires_colab) || 
-                           (response.data.pipeline2_result?.requires_colab) ||
-                           (response.data.pipeline3_result?.requires_colab)
+      const hasColabError = (results.pipeline1_result?.requires_colab) || 
+                           (results.pipeline2_result?.requires_colab) ||
+                           (results.pipeline3_result?.requires_colab)
       
       if (hasColabError) {
         addProcessLog('⚠️ Colab server connection required!', 'error')
       }
       
       // Log pipeline results with detailed metrics
-      if (response.data.pipeline1_result) {
-        const p1 = response.data.pipeline1_result
+      if (results.pipeline1_result) {
+        const p1 = results.pipeline1_result
         addProcessLog(`🔵 Pipeline 1: ${p1.success ? 'SUCCESS' : 'FAILED'}`, p1.success ? 'success' : 'error')
         addProcessLog(`⏱️ Pipeline 1 Execution Time: ${(p1.execution_time * 1000).toFixed(2)}ms`, 'info')
         if (p1.sql_query) {
@@ -92,8 +166,8 @@ export default function SearchPage() {
         }
       }
       
-      if (response.data.pipeline2_result) {
-        const p2 = response.data.pipeline2_result
+      if (results.pipeline2_result) {
+        const p2 = results.pipeline2_result
         addProcessLog(`🟢 Pipeline 2: ${p2.success ? 'SUCCESS' : 'FAILED'}`, p2.success ? 'success' : 'error')
         addProcessLog(`⏱️ Pipeline 2 Total Time: ${(p2.execution_time * 1000).toFixed(2)}ms`, 'info')
         if (p2.english_query) {
@@ -117,8 +191,8 @@ export default function SearchPage() {
       }
       
       // Handle Pipeline 3 (Vanna AI RAG) results
-      if (response.data.pipeline3_result) {
-        const p3 = response.data.pipeline3_result
+      if (results.pipeline3_result) {
+        const p3 = results.pipeline3_result
         addProcessLog(`🟣 Pipeline 3 (Vanna AI): ${p3.success ? 'SUCCESS' : 'FAILED'}`, p3.success ? 'success' : 'error')
         addProcessLog(`⏱️ Pipeline 3 Total Time: ${(p3.execution_time * 1000).toFixed(2)}ms`, 'info')
         if (p3.sql_query) {
@@ -138,24 +212,46 @@ export default function SearchPage() {
         }
       }
       
-      // Handle local model results
-      if (response.data.local_model_result) {
-        const local = response.data.local_model_result
-        addProcessLog(`🏠 Local Model: ${local.success ? 'SUCCESS' : 'FAILED'}`, local.success ? 'success' : 'error')
-        addProcessLog(`⏱️ Local Model Execution Time: ${local.execution_time.toFixed(2)}ms`, 'info')
-        if (local.sql_query) {
-          addProcessLog(`📝 Local Model SQL: ${local.sql_query}`, 'info')
-        }
-        if (local.model_used) {
-          addProcessLog(`🤖 Model Used: ${local.model_used}`, 'info')
-        }
-        if (local.error) {
-          addProcessLog(`❌ Local Model Error: ${local.error}`, 'error')
-        }
-        if (local.debug_info && local.debug_info.raw_output) {
-          addProcessLog(`🔍 Raw Model Output: ${local.debug_info.raw_output}`, 'info')
+      // Execute SQL queries against local database to get actual results
+      addProcessLog('💾 Executing queries against local database...', 'info')
+      
+      if (results.pipeline1_result?.sql_query) {
+        try {
+          const dbResponse = await dbApi.post('/api/database/query', { query: results.pipeline1_result.sql_query })
+          results.pipeline1_result.results = dbResponse.data.results
+          results.pipeline1_result.rowCount = dbResponse.data.results?.length || 0
+          addProcessLog(`✅ P1: Retrieved ${results.pipeline1_result.rowCount} rows`, 'success')
+        } catch (err) {
+          addProcessLog(`❌ P1 DB execution failed: ${err.message}`, 'error')
+          results.pipeline1_result.rowCount = 0
         }
       }
+      
+      if (results.pipeline2_result?.sql_query) {
+        try {
+          const dbResponse = await dbApi.post('/api/database/query', { query: results.pipeline2_result.sql_query })
+          results.pipeline2_result.results = dbResponse.data.results
+          results.pipeline2_result.rowCount = dbResponse.data.results?.length || 0
+          addProcessLog(`✅ P2: Retrieved ${results.pipeline2_result.rowCount} rows`, 'success')
+        } catch (err) {
+          addProcessLog(`❌ P2 DB execution failed: ${err.message}`, 'error')
+          results.pipeline2_result.rowCount = 0
+        }
+      }
+      
+      if (results.pipeline3_result?.sql_query) {
+        try {
+          const dbResponse = await dbApi.post('/api/database/query', { query: results.pipeline3_result.sql_query })
+          results.pipeline3_result.results = dbResponse.data.results
+          results.pipeline3_result.rowCount = dbResponse.data.results?.length || 0
+          addProcessLog(`✅ P3: Retrieved ${results.pipeline3_result.rowCount} rows`, 'success')
+        } catch (err) {
+          addProcessLog(`❌ P3 DB execution failed: ${err.message}`, 'error')
+          results.pipeline3_result.rowCount = 0
+        }
+      }
+      
+      setResults(results) // Update results with DB query results
       
       if (!hasColabError) {
         addProcessLog('🎉 Search completed successfully!', 'success')
@@ -779,13 +875,13 @@ export default function SearchPage() {
                     <p className="text-sm text-gray-600">Result Counts</p>
                     <div className="text-xs space-y-1 mt-2">
                       {results.pipeline1_result && (
-                        <div>P1: {results.pipeline1_result.results?.length || 0}</div>
+                        <div>P1: {results.pipeline1_result.rowCount || 0}</div>
                       )}
                       {results.pipeline2_result && (
-                        <div>P2: {results.pipeline2_result.results?.length || 0}</div>
+                        <div>P2: {results.pipeline2_result.rowCount || 0}</div>
                       )}
                       {results.pipeline3_result && (
-                        <div>P3: {results.pipeline3_result.results?.length || 0}</div>
+                        <div>P3: {results.pipeline3_result.rowCount || 0}</div>
                       )}
                     </div>
                   </div>
@@ -794,9 +890,9 @@ export default function SearchPage() {
                     <div className="text-sm font-semibold mt-2">
                       {(() => {
                         const pipelines = []
-                        if (results.pipeline1_result?.success) pipelines.push({ name: 'P1', time: results.pipeline1_result.execution_time, results: results.pipeline1_result.results?.length || 0 })
-                        if (results.pipeline2_result?.success) pipelines.push({ name: 'P2', time: results.pipeline2_result.execution_time, results: results.pipeline2_result.results?.length || 0 })
-                        if (results.pipeline3_result?.success) pipelines.push({ name: 'P3', time: results.pipeline3_result.execution_time, results: results.pipeline3_result.results?.length || 0 })
+                        if (results.pipeline1_result?.success) pipelines.push({ name: 'P1', time: results.pipeline1_result.execution_time, results: results.pipeline1_result.rowCount || 0 })
+                        if (results.pipeline2_result?.success) pipelines.push({ name: 'P2', time: results.pipeline2_result.execution_time, results: results.pipeline2_result.rowCount || 0 })
+                        if (results.pipeline3_result?.success) pipelines.push({ name: 'P3', time: results.pipeline3_result.execution_time, results: results.pipeline3_result.rowCount || 0 })
                         
                         if (pipelines.length === 0) return 'None'
                         
@@ -834,19 +930,19 @@ export default function SearchPage() {
             <div className="flex items-center mb-4">
               <div className="w-3 h-3 bg-green-500 rounded-full mr-3"></div>
               <h4 className="font-medium text-green-700 text-lg">Simple Queries</h4>
-              <span className="ml-2 text-xs bg-green-100 text-green-700 px-2 py-1 rounded-full">Basic keyword matching</span>
+              <span className="ml-2 text-xs bg-green-100 text-green-700 px-2 py-1 rounded-full">From eval_data.jsonl (index 0-99)</span>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
               {[
-                "Tìm tất cả balo nữ",
-                "Hiển thị các giày thể thao nam có giá dưới 500k",
-                "Tìm túi xách của thương hiệu Samsonite",
-                "Cho tôi xem tất cả dép tổ ong",
-                "Tìm giày boots nữ có rating trên 4 sao",
-                "Hiển thị kính mát có giá từ 100k đến 300k",
-                "Tìm balo laptop",
-                "Cho tôi xem vali vải",
-                "Tìm giày sandals nam"
+                "Tìm áo thun",
+                "Hiển thị giày",
+                "Xem túi xách",
+                "Liệt kê balo",
+                "Tìm kiếm vali",
+                "Hiển thị dép",
+                "Xem nón",
+                "Tìm kiếm kính",
+                "Liệt kê giày thể thao"
               ].map((sampleQuery, idx) => (
                 <button
                   key={`simple-${idx}`}
@@ -865,18 +961,18 @@ export default function SearchPage() {
             <div className="flex items-center mb-4">
               <div className="w-3 h-3 bg-yellow-500 rounded-full mr-3"></div>
               <h4 className="font-medium text-yellow-700 text-lg">Medium Queries</h4>
-              <span className="ml-2 text-xs bg-yellow-100 text-yellow-700 px-2 py-1 rounded-full">Multiple conditions & OR logic</span>
+              <span className="ml-2 text-xs bg-yellow-100 text-yellow-700 px-2 py-1 rounded-full">From eval_data.jsonl (index 100-199)</span>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
               {[
-                "Tìm giày thể thao thương hiệu Nike có giá dưới 1 triệu",
-                "Hiển thị balo nam hoặc balo nữ có rating trên 4.5 sao",
-                "Tìm túi xách nữ có giá từ 200k đến 800k",
-                "Cho tôi xem giày boots thương hiệu Timberland hoặc Dr.Martens",
-                "Tìm kính mát có số lượt đánh giá trên 50 và rating trên 4 sao",
-                "Hiển thị dép nam có giá dưới 200k sắp xếp theo giá tăng dần",
-                "Tìm vali có kích thước lớn hoặc vừa thương hiệu American Tourister",
-                "Cho tôi xem giày cao gót có giá từ 300k đến 1 triệu và rating trên 4 sao"
+                "Sản phẩm theo thương hiệu",
+                "Giá trung bình theo danh mục",
+                "Sản phẩm có đánh giá cao",
+                "Thương hiệu Nike",
+                "Sản phẩm giá dưới 500k",
+                "Sản phẩm giá dưới 200k",
+                "Sản phẩm giá trên 1000k",
+                "Sản phẩm thương hiệu Adidas"
               ].map((sampleQuery, idx) => (
                 <button
                   key={`medium-${idx}`}
@@ -895,17 +991,17 @@ export default function SearchPage() {
             <div className="flex items-center mb-4">
               <div className="w-3 h-3 bg-red-500 rounded-full mr-3"></div>
               <h4 className="font-medium text-red-700 text-lg">Complex Queries</h4>
-              <span className="ml-2 text-xs bg-red-100 text-red-700 px-2 py-1 rounded-full">Aggregation, JOIN, GROUP BY</span>
+              <span className="ml-2 text-xs bg-red-100 text-red-700 px-2 py-1 rounded-full">From eval_data.jsonl (index 200-299)</span>
             </div>
             <div className="grid grid-cols-1 gap-3">
               {[
-                "Tìm giày có giá cao nhất trong danh mục Giày thể thao nam",
-                "Hiển thị top 10 balo bán chạy nhất có rating trên 4.5 sao",
-                "Đếm số lượng túi xách của từng thương hiệu có giá dưới 500k",
-                "Tìm kính mát có rating cao nhất trong khoảng giá từ 200k đến 1 triệu",
-                "Hiển thị top 5 thương hiệu có nhiều giày dép nhất",
-                "Tìm balo có số lượt đánh giá nhiều nhất trong danh mục Balo laptop",
-                "Hiển thị giá trung bình của túi xách theo từng thương hiệu"
+                "Top 10 sản phẩm đánh giá cao nhất có giá dưới 1 triệu",
+                "Phân tích thị phần thương hiệu",
+                "Top 5 sản phẩm bán chạy nhất trong danh mục Phụ kiện thời trang",
+                "Top 6 sản phẩm bán chạy nhất trong danh mục Giày dép nam",
+                "Top 8 sản phẩm bán chạy nhất trong danh mục Balo & Vali",
+                "Top 10 sản phẩm bán chạy nhất trong danh mục Giày dép nam",
+                "Top 13 sản phẩm bán chạy nhất trong danh mục Phụ kiện thời trang"
               ].map((sampleQuery, idx) => (
                 <button
                   key={`complex-${idx}`}

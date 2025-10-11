@@ -45,6 +45,9 @@ export default function ConfigPage() {
         if (colabData.status.pipeline2_url) {
           setConfig(prev => ({ ...prev, pipeline2_url: colabData.status.pipeline2_url }))
         }
+        if (colabData.status.pipeline3_url) {
+          setConfig(prev => ({ ...prev, pipeline3_url: colabData.status.pipeline3_url }))
+        }
         return
       }
       
@@ -58,6 +61,9 @@ export default function ConfigPage() {
       if (response.data.status.pipeline2_url) {
         setConfig(prev => ({ ...prev, pipeline2_url: response.data.status.pipeline2_url }))
       }
+      if (response.data.status.pipeline3_url) {
+        setConfig(prev => ({ ...prev, pipeline3_url: response.data.status.pipeline3_url }))
+      }
     } catch (error) {
       console.error('Failed to fetch status:', error)
       console.error('Error details:', error.message)
@@ -65,8 +71,10 @@ export default function ConfigPage() {
       setStatus({
         pipeline1_healthy: false,
         pipeline2_healthy: false,
+        pipeline3_healthy: false,
         pipeline1_url: config.pipeline1_url,
         pipeline2_url: config.pipeline2_url,
+        pipeline3_url: config.pipeline3_url,
         colab_status: "disconnected"
       })
     } finally {
