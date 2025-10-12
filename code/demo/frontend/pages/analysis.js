@@ -35,10 +35,13 @@ function AnalysisPage() {
         Success_Rate_Complex: 1.0,
         simple_em: 0.48,
         simple_ex: 0.59,
+        simple_success: 1.0,
         medium_em: 0.0,
         medium_ex: 0.09,
+        medium_success: 1.0,
         complex_em: 0.0,
-        complex_ex: 0.3
+        complex_ex: 0.3,
+        complex_success: 1.0
       },
       'P2': {
         pipeline: 'SQLCoder',
@@ -57,10 +60,13 @@ function AnalysisPage() {
         Success_Rate_Complex: 1.0,
         simple_em: 0.54,
         simple_ex: 0.67,
+        simple_success: 1.0,
         medium_em: 0.0,
         medium_ex: 0.0,
+        medium_success: 1.0,
         complex_em: 0.0,
-        complex_ex: 0.0
+        complex_ex: 0.0,
+        complex_success: 1.0
       },
       'P3': {
         pipeline: 'P3_Vanna_AI',
@@ -79,10 +85,13 @@ function AnalysisPage() {
         Success_Rate_Complex: 0.64,
         simple_em: 0.38,
         simple_ex: 0.81,
+        simple_success: 0.99,
         medium_em: 0.29,
         medium_ex: 0.84,
+        medium_success: 0.98,
         complex_em: 0.62,
-        complex_ex: 0.64
+        complex_ex: 0.64,
+        complex_success: 0.64
       }
     }
     
@@ -144,25 +153,41 @@ function AnalysisPage() {
   const getFilteredData = (data, complexity) => {
     if (complexity === 'all') return data
     
-    // For complexity-specific filtering, we'll use the success rates
-    // and adjust the overall metrics accordingly
-    const complexityMultipliers = {
-      'simple': { rate: data.Success_Rate_Simple, label: 'Simple Queries' },
-      'medium': { rate: data.Success_Rate_Medium, label: 'Medium Queries' },
-      'complex': { rate: data.Success_Rate_Complex, label: 'Complex Queries' }
+    // Use the actual complexity-specific metrics from the JSON data
+    if (complexity === 'simple') {
+      return {
+        ...data,
+        EM: data.simple_em || 0,
+        EX: data.simple_ex || 0,
+        Model_Success_Rate: data.simple_success || data.Success_Rate_Simple || 1.0,
+        N: 100, // Each complexity has 100 queries
+        complexity_filter: 'Simple Queries'
+      }
     }
     
-    const multiplier = complexityMultipliers[complexity]
-    if (!multiplier) return data
-    
-    return {
-      ...data,
-      EM: data.EM * (multiplier.rate / data.Model_Success_Rate || 1),
-      EX: data.EX * (multiplier.rate / data.Model_Success_Rate || 1),
-      Model_Success_Rate: multiplier.rate,
-      N: Math.round(data.N / 3), // Approximate queries per complexity level
-      complexity_filter: multiplier.label
+    if (complexity === 'medium') {
+      return {
+        ...data,
+        EM: data.medium_em || 0,
+        EX: data.medium_ex || 0,
+        Model_Success_Rate: data.medium_success || data.Success_Rate_Medium || 1.0,
+        N: 100,
+        complexity_filter: 'Medium Queries'
+      }
     }
+    
+    if (complexity === 'complex') {
+      return {
+        ...data,
+        EM: data.complex_em || 0,
+        EX: data.complex_ex || 0,
+        Model_Success_Rate: data.complex_success || data.Success_Rate_Complex || 1.0,
+        N: 100,
+        complexity_filter: 'Complex Queries'
+      }
+    }
+    
+    return data
   }
 
   // Process pipeline data for charts with complexity filtering
@@ -471,6 +496,35 @@ function AnalysisPage() {
               </div>
             </div>
 
+            {/* Key Insights */}
+            <div className="card bg-gradient-to-r from-blue-50 to-green-50">
+              <h3 className="text-lg font-semibold text-gray-900 mb-4">Key Research Insights</h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                  <h4 className="font-medium text-gray-700 mb-2">Performance Ranking</h4>
+                  <ul className="space-y-2 text-sm text-gray-600">
+                    {Object.entries(pipelineResults)
+                      .sort(([,a], [,b]) => b.EX - a.EX)
+                      .map(([key, data], index) => (
+                        <li key={key}>
+                          • <strong>#{index + 1}: {data.name}</strong> - {(data.EX * 100).toFixed(1)}% EX, {(data.EM * 100).toFixed(1)}% EM
+                        </li>
+                      ))}
+                  </ul>
+                </div>
+                <div>
+                  <h4 className="font-medium text-gray-700 mb-2">Technical Observations</h4>
+                  <ul className="space-y-2 text-sm text-gray-600">
+                    <li>• <strong>Vanna AI breakthrough:</strong> 76.3% EX - Best overall performance after training optimization</li>
+                    <li>• <strong>Complex query handling:</strong> Vanna AI 64% success on complex queries (vs 0% for others)</li>
+                    <li>• <strong>Speed vs accuracy:</strong> mT5 fastest (304ms) but lower accuracy (32.7% EX)</li>
+                    <li>• <strong>Resource efficiency:</strong> Vanna AI uses 3.3GB GPU (vs 13.8GB for SQLCoder)</li>
+                    <li>• <strong>Training impact:</strong> Vanna AI improved from 26.7% to 76.3% EX with enhanced training data</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
             {/* Comprehensive Radar Chart */}
             <div className="card">
               <h3 className="text-lg font-semibold text-gray-900 mb-6">Multi-Dimensional Performance Comparison</h3>
@@ -509,7 +563,7 @@ function AnalysisPage() {
             <div className="card">
               <h3 className="text-lg font-semibold text-gray-900 mb-6">Pipeline Reliability: Error Rate Comparison</h3>
               <div className="mb-4 p-3 bg-blue-50 border border-blue-200 rounded-lg">
-                <h4 className="font-medium text-blue-900 mb-2">📋 What is Error Rate?</h4>
+                <h4 className="font-medium text-blue-900 mb-2">What is Error Rate?</h4>
                 <p className="text-sm text-blue-800 mb-2">
                   <strong>Error Rate</strong> measures the percentage of queries where the pipeline <strong>fails to produce valid, executable SQL</strong>, regardless of correctness.
                 </p>
@@ -713,34 +767,6 @@ function AnalysisPage() {
               </ResponsiveContainer>
             </div>
 
-            {/* Key Insights */}
-            <div className="card bg-gradient-to-r from-blue-50 to-green-50">
-              <h3 className="text-lg font-semibold text-gray-900 mb-4">Key Research Insights</h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                  <h4 className="font-medium text-gray-700 mb-2">Performance Ranking</h4>
-                  <ul className="space-y-2 text-sm text-gray-600">
-                    {Object.entries(pipelineResults)
-                      .sort(([,a], [,b]) => b.EX - a.EX)
-                      .map(([key, data], index) => (
-                        <li key={key}>
-                          • <strong>#{index + 1}: {data.name}</strong> - {(data.EX * 100).toFixed(1)}% EX, {(data.EM * 100).toFixed(1)}% EM
-                        </li>
-                      ))}
-                  </ul>
-                </div>
-                <div>
-                  <h4 className="font-medium text-gray-700 mb-2">Technical Observations</h4>
-                  <ul className="space-y-2 text-sm text-gray-600">
-                    <li>• <strong>🎯 Vanna AI breakthrough:</strong> 76.3% EX - Best overall performance after training optimization</li>
-                    <li>• <strong>📊 Complex query handling:</strong> Vanna AI 64% success on complex queries (vs 0% for others)</li>
-                    <li>• <strong>⚡ Speed vs accuracy:</strong> mT5 fastest (304ms) but lower accuracy (32.7% EX)</li>
-                    <li>• <strong>💾 Resource efficiency:</strong> Vanna AI uses 3.3GB GPU (vs 13.8GB for SQLCoder)</li>
-                    <li>• <strong>🎓 Training impact:</strong> Vanna AI improved from 26.7% to 76.3% EX with enhanced training data</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
           </div>
         )}
       </div>

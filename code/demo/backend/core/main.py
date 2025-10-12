@@ -44,9 +44,11 @@ app.include_router(sample_query_routes.router, prefix="/api/sample-queries")
 # Include database management routes
 from api.database_routes import router as database_router
 from api.sample_queries_routes import router as sample_queries_router
+from api.colab_proxy_routes import router as colab_proxy_router
 
 app.include_router(database_router, prefix="/api")
 app.include_router(sample_queries_router, prefix="/api")
+app.include_router(colab_proxy_router)  # No prefix - routes are /p1, /p2, /p3
 
 @app.on_event("startup")
 async def startup_event():

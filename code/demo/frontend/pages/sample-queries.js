@@ -821,10 +821,6 @@ export default function SampleQueries() {
                 <span className={styles.statNumber}>3</span>
                 <span className={styles.statLabel}>Pipelines</span>
               </div>
-              <div className={styles.stat}>
-                <span className={styles.statNumber}>{executionLogs.length}</span>
-                <span className={styles.statLabel}>Log Entries</span>
-              </div>
             </div>
           </div>
           
@@ -849,79 +845,19 @@ export default function SampleQueries() {
           </div>
         </div>
 
-        {/* Execution Logs Section - Full Width Under Banner */}
-        <div className={styles.logsSection}>
-          <div className={styles.sectionHeader}>
-            <div className={styles.logHeader}>
-              <h2>📋 Execution Logs</h2>
-              <div className={styles.logControls}>
-                {selectedQuery && (
-                  <button 
-                    onClick={() => executeQuery(selectedQuery.vietnamese, 'all')}
-                    disabled={executing}
-                    className={styles.executeButton}
-                  >
-                    {executing ? '⏳ Executing...' : '🚀 Execute'}
-                  </button>
-                )}
-                <button 
-                  onClick={() => setShowLogs(!showLogs)}
-                  className={styles.toggleButton}
-                >
-                  {showLogs ? '🙈 Hide' : '👁️ Show'}
-                </button>
-                <button 
-                  onClick={clearLogs}
-                  className={styles.clearButton}
-                >
-                  🧹 Clear
-                </button>
-              </div>
-            </div>
-            {selectedQuery && (
-              <div className={styles.selectedQueryInfo}>
-                <strong>Selected Query:</strong> {selectedQuery.vietnamese}
-              </div>
-            )}
-            <p>Real-time logging of pipeline execution and results</p>
-          </div>
-          
-          {showLogs && (
-            <div className={styles.logsContainer}>
-              {executionLogs.length === 0 ? (
-                <div className={styles.emptyLogs}>
-                  <p>No logs yet. Execute a query to see detailed logging information.</p>
-                </div>
-              ) : (
-                <div className={styles.logsList}>
-                  {executionLogs.map((log) => (
-                    <div key={log.id} className={`${styles.logEntry} ${styles[log.type]}`}>
-                      <span className={styles.logTimestamp}>{log.timestamp}</span>
-                      <span className={styles.logIcon}>{getLogIcon(log.type)}</span>
-                      <span className={styles.logMessage}>{log.message}</span>
-                    </div>
-                  ))}
-                </div>
-              )}
-            </div>
-          )}
-        </div>
-
         <div className={styles.mainContent}>
           {/* Sample Queries Section - Full Width Below Logs */}
           <div className={styles.sampleQueriesSection}>
             <div className={styles.sectionHeader}>
-              <h2>📝 Sample Queries ({getFilteredSampleQueries().length})</h2>
-              <p>Click any query to test it on both pipelines</p>
+              <h2>Sample Queries ({getFilteredSampleQueries().length})</h2>
+              <p>Select a query and test with different pipelines</p>
             </div>
             
             <div className={styles.queriesGrid}>
               {getFilteredSampleQueries().map((query, index) => (
                 <div 
                   key={index} 
-                  className={`${styles.queryCard} ${selectedQuery?.vietnamese === query.vietnamese ? styles.selected : ''}`}
-                  onClick={() => setSelectedQuery(query)}
-                  style={{ cursor: 'pointer' }}
+                  className={styles.queryCard}
                 >
                   <div className={styles.queryCardHeader}>
                     <span 
@@ -933,14 +869,14 @@ export default function SampleQueries() {
                   </div>
                   <div className={styles.queryContent}>
                     <div className={styles.vietnameseQuery}>
-                      <strong>🇻🇳 Vietnamese:</strong> "{query.vietnamese}"
+                      <strong>Vietnamese:</strong> "{query.vietnamese}"
                     </div>
                     <div className={styles.englishQuery}>
-                      <strong>🇺🇸 English:</strong> "{query.english}"
+                      <strong>English:</strong> "{query.english}"
                     </div>
                     {query.sql && (
                       <div className={styles.sqlQuery}>
-                        <strong>🗄️ SQL:</strong>
+                        <strong>SQL:</strong>
                         <pre className={styles.sqlCode}>{query.sql}</pre>
                       </div>
                     )}

@@ -2174,28 +2174,22 @@ print("\n" + "=" * 60)
 print("TRAINING/EVALUATION COMPLETED!")
 print("=" * 60)
 
-
 # ============================================================================
+# OPTIONAL: API DEPLOYMENT SECTION
 # ============================================================================
-# API SETUP SECTION - RUN SEPARATELY (OPTIONAL)
-# ============================================================================
-# ============================================================================
-#
-# INSTRUCTIONS:
-# - Run this section ONLY if you want to expose the pipeline via FastAPI
-# - This section is INDEPENDENT and can be run after training completes
-# - Useful for: Local evaluation, remote access, web integration
+# If you want to expose P3 (Vanna AI) as an API endpoint, run Cells 7 and 8
+# This allows external applications to call P3 via HTTP requests
+# - Exposes P3 (Vanna AI) on /p3/generate endpoint
 # - Skip this section if you only need training/evaluation results
-# - Requires: pipeline object from evaluation above
 #
 # ============================================================================
 
 # ============================================================================
-# CELL 7: FastAPI Setup for P3 Vanna AI RAG
+# CELL 7: FastAPI Setup for P3 (Vanna AI)
 # ============================================================================
 
 print("\n" + "=" * 60)
-print("Setting up FastAPI for P3: Vanna AI RAG Pipeline")
+print("Setting up FastAPI for P3 (Vanna AI RAG)")
 print("=" * 60)
 
 # Install API dependencies (if not already installed)
@@ -2205,7 +2199,7 @@ try:
     import uvicorn
     import nest_asyncio
     from pyngrok import ngrok
-    print("All API packages already installed")
+    print("[OK] All API packages already installed")
 except ImportError:
     print("Installing FastAPI dependencies...")
     import subprocess
@@ -2216,26 +2210,99 @@ except ImportError:
             subprocess.check_call([sys.executable, "-m", "pip", "install", package, "-q"])
         except Exception as e:
             print(f"Warning: Failed to install {package}: {e}")
-    print("API packages installed")
+    print("[OK] API packages installed")
 
 # Now import all API dependencies
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
 from pydantic import BaseModel
-from typing import Optional
 import nest_asyncio
 from pyngrok import ngrok
+import time
+from typing import Optional, Dict, Any
 
 nest_asyncio.apply()
 
 # Set up ngrok with token
 ngrok.set_auth_token("32BqVAspvTl3PmS23seCfxTxW93_7p3vCzKHixcdNg936rpXv")
 
-# Create FastAPI app
+# ============================================================================
+# INITIALIZE P3 PIPELINE FOR API
+# ============================================================================
+
+print("\n" + "=" * 60)
+print("INITIALIZING P3 PIPELINE FOR API")
+print("=" * 60)
+
+# Check if pipeline was already loaded from evaluation
+if 'pipeline' not in dir() or pipeline is None:
+    print("\n[INFO] P3 (Vanna AI) not found in memory. Initializing for API...")
+    try:
+        # Get OpenAI API key
+        try:
+            from google.colab import userdata
+            openai_key = userdata.get('OPENAI_API_KEY')
+            print("[INFO] Using OpenAI API key from Colab secrets")
+        except:
+            openai_key = MANUAL_API_KEY if MANUAL_API_KEY else None
+            if openai_key:
+                print("[INFO] Using manual API key")
+        
+        if not openai_key:
+            print("[✗] OpenAI API key not found. P3 requires OPENAI_API_KEY")
+            print("    Set it in Colab Secrets or MANUAL_API_KEY variable")
+            pipeline = None
+        else:
+            # Initialize P3 with API key
+            pipeline = VannaPipeline(api_key=openai_key, model_name="gpt-4o-mini")
+            
+            # Setup database schema
+            db_path = PATHS.get('db', '/content/vietnamese_tiki_products.db')
+            if isinstance(db_path, Path):
+                db_path = str(db_path / "tiki.sqlite")
+            
+            if os.path.exists(db_path):
+                print(f"[INFO] Setting up P3 database schema from {db_path}...")
+                pipeline.setup_database_schema(db_path)
+                print("[✓] P3 initialized successfully!")
+            else:
+                # Try alternative path
+                alt_path = "/content/vietnamese_tiki_products.db"
+                if os.path.exists(alt_path):
+                    print(f"[INFO] Setting up P3 database schema from {alt_path}...")
+                    pipeline.setup_database_schema(alt_path)
+                    print("[✓] P3 initialized successfully!")
+                else:
+                    print(f"[✗] Database not found at {db_path} or {alt_path}")
+                    print("    P3 requires database file to be uploaded")
+                    pipeline = None
+    except Exception as e:
+        print(f"[✗] Failed to initialize P3: {e}")
+        import traceback
+        traceback.print_exc()
+        pipeline = None
+else:
+    print("[✓] P3 (Vanna AI) already loaded from evaluation")
+
+print("\n" + "=" * 60)
+print("PIPELINE STATUS")
+print("=" * 60)
+print(f"P3 (Vanna AI):  {'✓ Ready' if pipeline else '✗ Not Available'}")
+print("=" * 60)
+
+# ============================================================================
+# FASTAPI APP SETUP
+# ============================================================================
+
+print("\n" + "=" * 60)
+print("SETTING UP FASTAPI APP")
+print("=" * 60)
+
+# Create FastAPI app for P3
 app = FastAPI(
-    title="Vietnamese NL2SQL - P3: Vanna AI RAG API",
-    description="Pipeline 3: Retrieval-Augmented Generation using Vanna AI + ChromaDB + OpenAI GPT-4o for Vietnamese NL2SQL",
+    title="Vietnamese NL2SQL - P3 Vanna AI API",
+    description="API for P3 (Vanna AI RAG) Vietnamese NL2SQL pipeline",
     version="1.0"
 )
 
@@ -2245,194 +2312,115 @@ app.add_middleware(
     allow_origins=["*"],
     allow_credentials=True,
     allow_methods=["*"],
-    allow_headers=["*"]
+    allow_headers=["*"],
 )
 
 # Request/Response models
 class QueryRequest(BaseModel):
     query: str
 
-class P3Response(BaseModel):
+class PipelineResponse(BaseModel):
     pipeline: str
+    vietnamese_query: str
     sql_query: str
     execution_time: float
     valid: bool
     success: bool
     error: Optional[str] = None
-    metrics: dict
-    rag_context: Optional[dict] = None
+    metrics: Dict[str, Any] = {}
 
-# API Endpoints
-@app.get("/")
-async def root():
-    return {
-        "message": "Vietnamese NL2SQL - P3: Vanna AI RAG",
-        "version": "1.0",
-        "status": "running",
-        "device": str(device),
-        "pipeline": "P3_Vanna_AI_RAG",
-        "method": "Retrieval-Augmented Generation",
-        "components": {
-            "vector_db": "ChromaDB",
-            "llm": "OpenAI GPT-4o",
-            "training_examples": 98
-        },
-        "ready": pipeline is not None,
-        "endpoint": "/p3/generate"
-    }
-
+# Health check endpoint
 @app.get("/health")
 async def health_check():
+    """Check API and P3 pipeline status"""
     return {
         "status": "healthy",
         "version": "1.0",
-        "pipeline": "P3",
-        "model_loaded": pipeline is not None,
-        "device": str(device),
-        "vanna_configured": pipeline.vn is not None if pipeline else False
+        "pipeline": "P3_Vanna_AI_RAG",
+        "available": pipeline is not None,
+        "model": "gpt-4o-mini"
     }
 
-@app.post("/p3/generate", response_model=P3Response)
-async def generate_sql_p3(request: QueryRequest):
-    """Generate SQL from Vietnamese query using P3 Vanna AI RAG"""
+# P3 Endpoint
+@app.post("/p3/generate", response_model=PipelineResponse)
+async def generate_p3(request: QueryRequest):
+    """Generate SQL using P3 (Vanna AI RAG)"""
+    if not pipeline:
+        raise HTTPException(status_code=503, detail="P3 pipeline not available")
+    
     try:
-        if not pipeline:
-            raise HTTPException(
-                status_code=503, 
-                detail="Pipeline not loaded. Please run evaluation first."
-            )
-        
         start_time = time.time()
         sql = pipeline.generate_sql(request.query)
         execution_time = time.time() - start_time
         
-        # Validate SQL
-        valid = bool(sql and len(sql.strip()) > 5 and "SELECT" in sql.upper())
-        
-        # Get error statistics for context
-        error_stats = pipeline.get_error_statistics()
-        
-        return P3Response(
+        return PipelineResponse(
             pipeline="P3_Vanna_AI_RAG",
+            vietnamese_query=request.query,
             sql_query=sql,
             execution_time=execution_time,
-            valid=valid,
-            success=valid,
-            error=None if valid else "Generated SQL is invalid or empty",
+            valid=bool(sql and len(sql) > 0),
+            success=True,
             metrics={
                 "latency_ms": execution_time * 1000,
-                "rag_method": "ChromaDB + OpenAI GPT-4o",
-                "training_examples": 98,
-                "successful_generations": error_stats.get('successful_generations', 0),
-                "total_attempts": error_stats.get('total_attempts', 0)
-            },
-            rag_context={
-                "retrieval_success": valid,
-                "error_stats": error_stats
+                "model": "gpt-4o-mini",
+                "method": "retrieval_augmented_generation"
             }
         )
-        
-    except HTTPException:
-        raise
     except Exception as e:
-        error_msg = f"P3 generation failed: {str(e)}"
-        return P3Response(
-            pipeline="P3_Vanna_AI_RAG",
-            sql_query="",
-            execution_time=0,
-            valid=False,
-            success=False,
-            error=error_msg,
-            metrics={},
-            rag_context=None
-        )
+        import logging
+        logging.error(f"P3 generation error: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
 
+# Metrics endpoint
 @app.get("/p3/metrics")
 async def get_p3_metrics():
-    """Get evaluation metrics for P3"""
-    if not metrics:
-        raise HTTPException(status_code=404, detail="Metrics not available. Run evaluation first.")
-    
-    return {
-        "pipeline": "P3_Vanna_AI_RAG",
-        "metrics": metrics,
-        "description": "Retrieval-Augmented Generation with 98 training examples",
-        "components": "Vanna AI + ChromaDB + OpenAI GPT-4o"
-    }
-
-@app.get("/p3/error-stats")
-async def get_p3_error_stats():
-    """Get detailed error statistics for P3"""
+    """Get P3 metrics"""
     if not pipeline:
-        raise HTTPException(status_code=503, detail="Pipeline not loaded.")
+        raise HTTPException(status_code=503, detail="P3 not available")
     
-    error_stats = pipeline.get_error_statistics()
-    return {
-        "pipeline": "P3_Vanna_AI_RAG",
-        "error_statistics": error_stats,
-        "success_rate": (error_stats.get('successful_generations', 0) / 
-                        max(1, error_stats.get('total_attempts', 1))) * 100
-    }
+    # Return evaluation metrics if available
+    if 'metrics' in dir() and metrics:
+        return {
+            "pipeline": "P3_Vanna_AI_RAG",
+            "status": "ready",
+            "evaluation_metrics": metrics
+        }
+    else:
+        return {
+            "pipeline": "P3_Vanna_AI_RAG",
+            "status": "ready",
+            "evaluation_metrics": None
+        }
 
-print("FastAPI app configured for P3")
+print("[✓] FastAPI app configured for P3 (Vanna AI)")
 
 # ============================================================================
 # CELL 8: Start ngrok Tunnel and FastAPI Server for P3
 # ============================================================================
 
-print("\nStarting ngrok tunnel for P3: Vanna AI RAG...")
-try:
-    # Use custom domain - all pipelines share this domain with different paths
-    public_url = ngrok.connect(8000, domain="abnormally-direct-rhino.ngrok-free.app")
-    print(f"P3 API URL: {public_url}")
-    print(f"P3 Generate Endpoint: {public_url}/p3/generate")
-    
-    api_url = f"{public_url}"
-    print(f"\nP3 Vanna AI RAG API is available at:")
-    print(f"  Base URL: {api_url}")
-    print(f"  Health Check: {api_url}/health")
-    print(f"  API Docs: {api_url}/docs")
-    print(f"  Generate SQL: {api_url}/p3/generate (POST)")
-    print(f"  View Metrics: {api_url}/p3/metrics (GET)")
-    print(f"  Error Stats: {api_url}/p3/error-stats (GET)")
-    
-    # Test health endpoint
-    print(f"\nTesting P3 server health...")
-    import requests
-    try:
-        health_response = requests.get(f"{api_url}/health", timeout=10)
-        if health_response.status_code == 200:
-            health_data = health_response.json()
-            print(f"P3 Health check passed: {health_data['status']}")
-            print(f"Model loaded: {'Yes' if health_data['model_loaded'] else 'No'}")
-            print(f"Vanna configured: {'Yes' if health_data.get('vanna_configured') else 'No'}")
-        else:
-            print(f"Health check returned: HTTP {health_response.status_code}")
-    except Exception as health_e:
-        print(f"Health check error: {health_e}")
-    
-except Exception as e:
-    print(f"Custom domain failed: {e}")
-    print("Falling back to random domain...")
-    public_url = ngrok.connect(8000)
-    print(f"Fallback URL: {public_url}")
-    api_url = f"{public_url}"
-
-print(f"\nStarting P3 FastAPI server on port 8000...")
-print("Keep this cell running to maintain the API!")
-print(f"Configure this URL in your local system: {api_url}")
 print("\n" + "=" * 60)
-print("EXAMPLE CURL REQUEST:")
-print(f'curl -X POST "{api_url}/p3/generate" \\')
-print('     -H "Content-Type: application/json" \\')
-print('     -d \'{"query": "Hiển thị top 10 sản phẩm bán chạy nhất"}\'')
-print("=" * 60)
-print("\nRAG Pipeline Features:")
-print("  - ChromaDB vector store with 98 Vietnamese training examples")
-print("  - OpenAI GPT-4o for SQL generation")
-print("  - Smart post-processing (auto LIMIT, column fixes)")
-print("  - Comprehensive error tracking")
+print("STARTING P3 API SERVER")
 print("=" * 60)
 
-# Start server
-uvicorn.run(app, host="0.0.0.0", port=8000, log_level="info")
+# Kill any existing ngrok tunnels
+ngrok.kill()
+
+# Start new tunnel
+public_url = ngrok.connect(8000)
+print(f"\n✓ Public URL: {public_url}")
+print(f"  Use this URL in your frontend configuration")
+print(f"\n✓ API Endpoints:")
+print(f"  - Health: {public_url}/health")
+print(f"  - P3: {public_url}/p3/generate")
+print(f"  - Metrics: {public_url}/p3/metrics")
+print(f"\n✓ Test with curl:")
+print(f'  curl -X POST {public_url}/p3/generate \\')
+print(f'    -H "Content-Type: application/json" \\')
+print(f'    -d \'{{"query":"Tìm áo thun"}}\'')
+print("\n" + "=" * 60)
+
+# Start FastAPI server
+print("\nStarting FastAPI server on port 8000...")
+print("Press Ctrl+C to stop the server\n")
+
+uvicorn.run(app, host="0.0.0.0", port=8000)

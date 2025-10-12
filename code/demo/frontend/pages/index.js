@@ -81,9 +81,9 @@ export default function SearchPage() {
     setProcessLogs([])
     setShowProcessView(true)
     
-    addProcessLog('🚀 Starting search process...', 'info')
-    addProcessLog(`📝 Query: "${query.trim()}"`, 'info')
-    addProcessLog(`🔧 Pipeline: ${selectedPipeline}`, 'info')
+    addProcessLog('Starting search process...', 'info')
+    addProcessLog(`Query: "${query.trim()}"`, 'info')
+    addProcessLog(`Pipeline: ${selectedPipeline}`, 'info')
     
     try {
       const queryText = query.trim()
@@ -91,42 +91,42 @@ export default function SearchPage() {
       
       // Call individual pipeline endpoints based on selection
       if (selectedPipeline === 'all' || selectedPipeline === 'p1') {
-        addProcessLog('📡 Calling P1 (mT5) endpoint...', 'info')
+        addProcessLog('Calling P1 (mT5) endpoint...', 'info')
         try {
           const p1Response = await api.post('/p1/generate', { query: queryText })
           results.pipeline1_result = p1Response.data
-          addProcessLog('✅ P1 response received', 'success')
+          addProcessLog('P1 response received', 'success')
         } catch (err) {
-          addProcessLog('❌ P1 failed: ' + err.message, 'error')
+          addProcessLog('P1 failed: ' + err.message, 'error')
           results.pipeline1_result = { success: false, error: err.message }
         }
       }
       
       if (selectedPipeline === 'all' || selectedPipeline === 'p2') {
-        addProcessLog('📡 Calling P2 (SQLCoder) endpoint...', 'info')
+        addProcessLog('Calling P2 (SQLCoder) endpoint...', 'info')
         try {
           const p2Response = await api.post('/p2/generate', { query: queryText })
           results.pipeline2_result = p2Response.data
-          addProcessLog('✅ P2 response received', 'success')
+          addProcessLog('P2 response received', 'success')
         } catch (err) {
-          addProcessLog('❌ P2 failed: ' + err.message, 'error')
+          addProcessLog('P2 failed: ' + err.message, 'error')
           results.pipeline2_result = { success: false, error: err.message }
         }
       }
       
       if (selectedPipeline === 'all' || selectedPipeline === 'p3') {
-        addProcessLog('📡 Calling P3 (Vanna AI) endpoint...', 'info')
+        addProcessLog('Calling P3 (Vanna AI) endpoint...', 'info')
         try {
           const p3Response = await api.post('/p3/generate', { query: queryText })
           results.pipeline3_result = p3Response.data
-          addProcessLog('✅ P3 response received', 'success')
+          addProcessLog('P3 response received', 'success')
         } catch (err) {
-          addProcessLog('❌ P3 failed: ' + err.message, 'error')
+          addProcessLog('P3 failed: ' + err.message, 'error')
           results.pipeline3_result = { success: false, error: err.message }
         }
       }
       
-      addProcessLog('📊 Processing results...', 'info')
+      addProcessLog('Processing results...', 'info')
       setResults(results)
       
       // Check for Colab connection errors
@@ -135,94 +135,67 @@ export default function SearchPage() {
                            (results.pipeline3_result?.requires_colab)
       
       if (hasColabError) {
-        addProcessLog('⚠️ Colab server connection required!', 'error')
+        addProcessLog('WARNING: Colab server connection required!', 'error')
       }
       
       // Log pipeline results with detailed metrics
       if (results.pipeline1_result) {
         const p1 = results.pipeline1_result
-        addProcessLog(`🔵 Pipeline 1: ${p1.success ? 'SUCCESS' : 'FAILED'}`, p1.success ? 'success' : 'error')
-        addProcessLog(`⏱️ Pipeline 1 Execution Time: ${(p1.execution_time * 1000).toFixed(2)}ms`, 'info')
+        addProcessLog(`Pipeline 1: ${p1.success ? 'SUCCESS' : 'FAILED'}`, p1.success ? 'success' : 'error')
+        addProcessLog(`Pipeline 1 Execution Time: ${(p1.execution_time * 1000).toFixed(2)}ms`, 'info')
         if (p1.sql_query) {
-          addProcessLog(`📝 Pipeline 1 SQL: ${p1.sql_query}`, 'info')
-        }
-        if (p1.metrics && p1.metrics.detailed_metrics) {
-          const metrics = p1.metrics.detailed_metrics
-          if (metrics.tokenization_time) {
-            addProcessLog(`🔤 Tokenization: ${(metrics.tokenization_time * 1000).toFixed(1)}ms`, 'info')
-          }
-          if (metrics.phobert_inference_time) {
-            addProcessLog(`🧠 PhoBERT Inference: ${(metrics.phobert_inference_time * 1000).toFixed(1)}ms`, 'info')
-          }
-          if (metrics.sql_generation_time) {
-            addProcessLog(`⚙️ SQL Generation: ${(metrics.sql_generation_time * 1000).toFixed(1)}ms`, 'info')
-          }
+          addProcessLog(`Pipeline 1 SQL: ${p1.sql_query}`, 'info')
         }
         if (p1.error) {
-          addProcessLog(`❌ Pipeline 1 Error: ${p1.error}`, 'error')
+          addProcessLog(`Pipeline 1 Error: ${p1.error}`, 'error')
         }
         if (p1.requires_colab) {
-          addProcessLog('🔗 Pipeline 1 requires Colab connection', 'error')
+          addProcessLog('Pipeline 1 requires Colab connection', 'error')
         }
       }
       
       if (results.pipeline2_result) {
         const p2 = results.pipeline2_result
-        addProcessLog(`🟢 Pipeline 2: ${p2.success ? 'SUCCESS' : 'FAILED'}`, p2.success ? 'success' : 'error')
-        addProcessLog(`⏱️ Pipeline 2 Total Time: ${(p2.execution_time * 1000).toFixed(2)}ms`, 'info')
-        if (p2.english_query) {
-          addProcessLog(`🌐 English Translation: ${p2.english_query}`, 'info')
-        }
-        if (p2.translation_time) {
-          addProcessLog(`🔄 Translation Time: ${(p2.translation_time * 1000).toFixed(1)}ms`, 'info')
-        }
-        if (p2.sql_generation_time) {
-          addProcessLog(`⚙️ SQL Generation Time: ${(p2.sql_generation_time * 1000).toFixed(1)}ms`, 'info')
-        }
+        addProcessLog(`Pipeline 2: ${p2.success ? 'SUCCESS' : 'FAILED'}`, p2.success ? 'success' : 'error')
+        addProcessLog(`Pipeline 2 Total Time: ${(p2.execution_time * 1000).toFixed(2)}ms`, 'info')
         if (p2.sql_query) {
-          addProcessLog(`📝 Pipeline 2 SQL: ${p2.sql_query}`, 'info')
+          addProcessLog(`Pipeline 2 SQL: ${p2.sql_query}`, 'info')
         }
         if (p2.error) {
-          addProcessLog(`❌ Pipeline 2 Error: ${p2.error}`, 'error')
+          addProcessLog(`Pipeline 2 Error: ${p2.error}`, 'error')
         }
         if (p2.requires_colab) {
-          addProcessLog('🔗 Pipeline 2 requires Colab connection', 'error')
+          addProcessLog('Pipeline 2 requires Colab connection', 'error')
         }
       }
       
       // Handle Pipeline 3 (Vanna AI RAG) results
       if (results.pipeline3_result) {
         const p3 = results.pipeline3_result
-        addProcessLog(`🟣 Pipeline 3 (Vanna AI): ${p3.success ? 'SUCCESS' : 'FAILED'}`, p3.success ? 'success' : 'error')
-        addProcessLog(`⏱️ Pipeline 3 Total Time: ${(p3.execution_time * 1000).toFixed(2)}ms`, 'info')
+        addProcessLog(`Pipeline 3 (Vanna AI): ${p3.success ? 'SUCCESS' : 'FAILED'}`, p3.success ? 'success' : 'error')
+        addProcessLog(`Pipeline 3 Total Time: ${(p3.execution_time * 1000).toFixed(2)}ms`, 'info')
         if (p3.sql_query) {
-          addProcessLog(`📝 Pipeline 3 SQL: ${p3.sql_query}`, 'info')
-        }
-        if (p3.model_info) {
-          addProcessLog(`🤖 Model: ${p3.model_info}`, 'info')
-        }
-        if (p3.training_examples) {
-          addProcessLog(`📚 Training Examples: ${p3.training_examples}`, 'info')
+          addProcessLog(`Pipeline 3 SQL: ${p3.sql_query}`, 'info')
         }
         if (p3.error) {
-          addProcessLog(`❌ Pipeline 3 Error: ${p3.error}`, 'error')
+          addProcessLog(`Pipeline 3 Error: ${p3.error}`, 'error')
         }
         if (p3.requires_colab) {
-          addProcessLog('🔗 Pipeline 3 requires Colab connection', 'error')
+          addProcessLog('Pipeline 3 requires Colab connection', 'error')
         }
       }
       
       // Execute SQL queries against local database to get actual results
-      addProcessLog('💾 Executing queries against local database...', 'info')
+      addProcessLog('Executing queries against local database...', 'info')
       
       if (results.pipeline1_result?.sql_query) {
         try {
           const dbResponse = await dbApi.post('/api/database/query', { query: results.pipeline1_result.sql_query })
           results.pipeline1_result.results = dbResponse.data.results
           results.pipeline1_result.rowCount = dbResponse.data.results?.length || 0
-          addProcessLog(`✅ P1: Retrieved ${results.pipeline1_result.rowCount} rows`, 'success')
+          addProcessLog(`P1: Retrieved ${results.pipeline1_result.rowCount} rows`, 'success')
         } catch (err) {
-          addProcessLog(`❌ P1 DB execution failed: ${err.message}`, 'error')
+          addProcessLog(`P1 DB execution failed: ${err.message}`, 'error')
           results.pipeline1_result.rowCount = 0
         }
       }
@@ -232,9 +205,9 @@ export default function SearchPage() {
           const dbResponse = await dbApi.post('/api/database/query', { query: results.pipeline2_result.sql_query })
           results.pipeline2_result.results = dbResponse.data.results
           results.pipeline2_result.rowCount = dbResponse.data.results?.length || 0
-          addProcessLog(`✅ P2: Retrieved ${results.pipeline2_result.rowCount} rows`, 'success')
+          addProcessLog(`P2: Retrieved ${results.pipeline2_result.rowCount} rows`, 'success')
         } catch (err) {
-          addProcessLog(`❌ P2 DB execution failed: ${err.message}`, 'error')
+          addProcessLog(`P2 DB execution failed: ${err.message}`, 'error')
           results.pipeline2_result.rowCount = 0
         }
       }
@@ -244,9 +217,9 @@ export default function SearchPage() {
           const dbResponse = await dbApi.post('/api/database/query', { query: results.pipeline3_result.sql_query })
           results.pipeline3_result.results = dbResponse.data.results
           results.pipeline3_result.rowCount = dbResponse.data.results?.length || 0
-          addProcessLog(`✅ P3: Retrieved ${results.pipeline3_result.rowCount} rows`, 'success')
+          addProcessLog(`P3: Retrieved ${results.pipeline3_result.rowCount} rows`, 'success')
         } catch (err) {
-          addProcessLog(`❌ P3 DB execution failed: ${err.message}`, 'error')
+          addProcessLog(`P3 DB execution failed: ${err.message}`, 'error')
           results.pipeline3_result.rowCount = 0
         }
       }
@@ -254,19 +227,19 @@ export default function SearchPage() {
       setResults(results) // Update results with DB query results
       
       if (!hasColabError) {
-        addProcessLog('🎉 Search completed successfully!', 'success')
+        addProcessLog('Search completed successfully!', 'success')
       }
       
     } catch (error) {
       console.error('Search error:', error)
-      addProcessLog(`❌ API Error: ${error.message}`, 'error')
+      addProcessLog(`API Error: ${error.message}`, 'error')
       
       if (error.response?.data?.detail) {
-        addProcessLog(`📋 Error Details: ${error.response.data.detail}`, 'error')
+        addProcessLog(`Error Details: ${error.response.data.detail}`, 'error')
       }
       
       if (error.response?.status) {
-        addProcessLog(`🔢 HTTP Status: ${error.response.status}`, 'error')
+        addProcessLog(`HTTP Status: ${error.response.status}`, 'error')
       }
       
       setResults({
@@ -346,27 +319,32 @@ export default function SearchPage() {
             <p className="text-sm font-medium text-gray-700 mb-3">
               Results ({result.results.length} products):
             </p>
-            <div className="space-y-3 max-h-96 overflow-y-auto">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 max-h-[600px] overflow-y-auto">
               {result.results.map((product, idx) => (
-                <div key={idx} className="bg-white border border-gray-200 rounded-lg p-4">
-                  <div className="flex justify-between items-start">
-                    <div className="flex-1">
-                      <h4 className="font-medium text-gray-900 text-sm">
-                        {product.name}
-                      </h4>
-                      <p className="text-xs text-gray-600 mt-1">
-                        {product.description}
-                      </p>
-                      <div className="flex items-center space-x-4 mt-2">
-                        <span className="text-sm font-semibold text-primary-600">
+                <div key={idx} className="bg-white border border-gray-200 rounded-lg p-4 hover:shadow-lg transition-all duration-200 flex flex-col h-full">
+                  <div className="flex flex-col h-full">
+                    <h4 className="font-medium text-gray-900 text-sm line-clamp-2 mb-2 min-h-[2.5rem]">
+                      {product.name}
+                    </h4>
+                    <p className="text-xs text-gray-600 line-clamp-3 mb-3 flex-grow min-h-[3rem]">
+                      {product.description || 'No description available'}
+                    </p>
+                    <div className="space-y-2 mt-auto pt-3 border-t border-gray-100">
+                      {product.price && (
+                        <div className="text-lg font-bold text-blue-600">
                           {formatPrice(product.price)}
-                        </span>
-                        <span className="text-xs text-gray-500">
-                          {product.brand}
+                        </div>
+                      )}
+                      <div className="flex items-center justify-between text-xs">
+                        <span className="text-gray-600 truncate max-w-[60%]">
+                          {product.brand || 'Unknown Brand'}
                         </span>
                         {product.rating && (
-                          <span className="text-xs text-yellow-600">
-                            ⭐ {product.rating}
+                          <span className="text-yellow-600 flex items-center flex-shrink-0">
+                            ⭐ {product.rating.toFixed(1)}
+                            {product.review_count && (
+                              <span className="text-gray-500 ml-1">({product.review_count})</span>
+                            )}
                           </span>
                         )}
                       </div>
@@ -458,108 +436,6 @@ export default function SearchPage() {
           </pre>
         </div>
 
-        {/* Detailed Metrics Display */}
-        {result.metrics && (
-          <div className="bg-white border border-gray-200 rounded-lg p-3">
-            <p className="text-sm font-medium text-gray-700 mb-2">Performance Metrics:</p>
-            <div className="grid grid-cols-2 gap-3 text-xs">
-              <div>
-                <span className="text-gray-600">Method:</span>
-                <span className="ml-1 font-mono">{result.metrics.method || 'N/A'}</span>
-              </div>
-              <div>
-                <span className="text-gray-600">Version:</span>
-                <span className="ml-1 font-mono">{result.metrics.version || 'N/A'}</span>
-              </div>
-              {result.metrics.detailed_metrics && (
-                <>
-                  {result.metrics.detailed_metrics.tokenization_time && (
-                    <div>
-                      <span className="text-gray-600">Tokenization:</span>
-                      <span className="ml-1 font-mono text-blue-600">
-                        {(result.metrics.detailed_metrics.tokenization_time * 1000).toFixed(1)}ms
-                      </span>
-                    </div>
-                  )}
-                  {result.metrics.detailed_metrics.phobert_inference_time && (
-                    <div>
-                      <span className="text-gray-600">PhoBERT:</span>
-                      <span className="ml-1 font-mono text-green-600">
-                        {(result.metrics.detailed_metrics.phobert_inference_time * 1000).toFixed(1)}ms
-                      </span>
-                    </div>
-                  )}
-                  {result.metrics.detailed_metrics.sql_generation_time && (
-                    <div>
-                      <span className="text-gray-600">SQL Gen:</span>
-                      <span className="ml-1 font-mono text-purple-600">
-                        {(result.metrics.detailed_metrics.sql_generation_time * 1000).toFixed(1)}ms
-                      </span>
-                    </div>
-                  )}
-                </>
-              )}
-            </div>
-          </div>
-        )}
-
-        {/* Pipeline 2 Specific Metrics */}
-        {pipelineNumber === 2 && (result.translation_time || result.sql_generation_time) && (
-          <div className="bg-white border border-gray-200 rounded-lg p-3">
-            <p className="text-sm font-medium text-gray-700 mb-2">Pipeline 2 Breakdown:</p>
-            <div className="grid grid-cols-2 gap-3 text-xs">
-              {result.translation_time && (
-                <div>
-                  <span className="text-gray-600">Translation:</span>
-                  <span className="ml-1 font-mono text-blue-600">
-                    {(result.translation_time * 1000).toFixed(1)}ms
-                  </span>
-                </div>
-              )}
-              {result.sql_generation_time && (
-                <div>
-                  <span className="text-gray-600">SQL Generation:</span>
-                  <span className="ml-1 font-mono text-green-600">
-                    {(result.sql_generation_time * 1000).toFixed(1)}ms
-                  </span>
-                </div>
-              )}
-            </div>
-          </div>
-        )}
-
-        {/* Pipeline 3 Specific Metrics (Vanna AI RAG) */}
-        {pipelineNumber === 3 && (result.model_info || result.training_examples) && (
-          <div className="bg-white border border-gray-200 rounded-lg p-3">
-            <p className="text-sm font-medium text-gray-700 mb-2">Pipeline 3 (Vanna AI) Details:</p>
-            <div className="grid grid-cols-1 gap-3 text-xs">
-              {result.model_info && (
-                <div>
-                  <span className="text-gray-600">LLM Model:</span>
-                  <span className="ml-1 font-mono text-purple-600">
-                    {result.model_info}
-                  </span>
-                </div>
-              )}
-              {result.training_examples && (
-                <div>
-                  <span className="text-gray-600">Training Examples:</span>
-                  <span className="ml-1 font-mono text-purple-600">
-                    {result.training_examples}
-                  </span>
-                </div>
-              )}
-              {result.rag_method && (
-                <div>
-                  <span className="text-gray-600">RAG Method:</span>
-                  <span className="ml-1 font-mono text-purple-600">
-                    {result.rag_method}
-                  </span>
-                </div>
-              )}
-            </div>
-          </div>
-        )}
 
         {result.error && (
           <div className="bg-red-50 border border-red-200 rounded-lg p-3">
@@ -575,27 +451,32 @@ export default function SearchPage() {
             <p className="text-sm font-medium text-gray-700 mb-3">
               Results ({result.results.length} products):
             </p>
-            <div className="space-y-3 max-h-96 overflow-y-auto">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
               {result.results.map((product, idx) => (
-                <div key={idx} className="bg-white border border-gray-200 rounded-lg p-4">
-                  <div className="flex justify-between items-start">
-                    <div className="flex-1">
-                      <h4 className="font-medium text-gray-900 text-sm">
-                        {product.name}
-                      </h4>
-                      <p className="text-xs text-gray-600 mt-1">
-                        {product.description}
-                      </p>
-                      <div className="flex items-center space-x-4 mt-2">
-                        <span className="text-sm font-semibold text-primary-600">
+                <div key={idx} className="bg-white border border-gray-200 rounded-lg p-4 hover:shadow-lg transition-all duration-200 flex flex-col h-full">
+                  <div className="flex flex-col h-full">
+                    <h4 className="font-medium text-gray-900 text-sm line-clamp-2 mb-2 min-h-[2.5rem]">
+                      {product.name}
+                    </h4>
+                    <p className="text-xs text-gray-600 line-clamp-3 mb-3 flex-grow min-h-[3rem]">
+                      {product.description || 'No description available'}
+                    </p>
+                    <div className="space-y-2 mt-auto pt-3 border-t border-gray-100">
+                      {product.price && (
+                        <div className="text-lg font-bold text-blue-600">
                           {formatPrice(product.price)}
-                        </span>
-                        <span className="text-xs text-gray-500">
-                          {product.brand}
+                        </div>
+                      )}
+                      <div className="flex items-center justify-between text-xs">
+                        <span className="text-gray-600 truncate max-w-[60%]">
+                          {product.brand || 'Unknown Brand'}
                         </span>
                         {product.rating && (
-                          <span className="text-xs text-yellow-600">
-                            ⭐ {product.rating} ({product.review_count} reviews)
+                          <span className="text-yellow-600 flex items-center flex-shrink-0">
+                            ⭐ {product.rating.toFixed(1)}
+                            {product.review_count && (
+                              <span className="text-gray-500 ml-1">({product.review_count})</span>
+                            )}
                           </span>
                         )}
                       </div>
@@ -819,8 +700,8 @@ export default function SearchPage() {
               </div>
             </div>
 
-            {/* Pipeline Results Grid */}
-            <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
+            {/* Pipeline Results - Horizontal Layout */}
+            <div className="space-y-4">
               {results.pipeline1_result && (
                 <PipelineResult result={results.pipeline1_result} pipelineNumber={1} />
               )}

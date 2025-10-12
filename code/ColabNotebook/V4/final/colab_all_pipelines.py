@@ -2,7 +2,7 @@
 Vietnamese NL2SQL Pipeline - P1: mT5 Zero-Shot Prompting
 MSE Thesis 2025 - Vietnamese Natural Language to SQL Generation
 
-Author: Duong Dinh Dinh
+Author: Duong Dinh Tho
 Student ID: tho23mse23108
 Class: MSE14
 Copyright (c) 2025
@@ -675,7 +675,7 @@ print("=" * 60)
 Vietnamese NL2SQL Pipeline - P2: SQLCoder Zero-Shot
 MSE Thesis 2025 - Vietnamese Natural Language to SQL Generation
 
-Author: Duong Dinh Dinh
+Author: Duong Dinh Tho
 Student ID: tho23mse23108
 Class: MSE14
 Copyright (c) 2025
@@ -2074,7 +2074,7 @@ print("=" * 60)
 Vietnamese NL2SQL Pipeline - P3: Vanna AI RAG
 MSE Thesis 2025 - Vietnamese Natural Language to SQL Generation
 
-Author: Duong Dinh Dinh
+Author: Duong Dinh Tho
 Student ID: tho23mse23108
 Class: MSE14
 Copyright (c) 2025
@@ -3006,20 +3006,20 @@ class VannaPipeline:
             try:
                 synthetic_data = self.generate_synthetic_training_data(base_training_data, db_path)
                 print(f"Generated {len(synthetic_data)} synthetic training examples from base patterns")
-
+                
                 # Sanity check: Verify we generated enough examples
                 if len(synthetic_data) < 50:
-                    print(f"WARNING: Only generated {len(synthetic_data)} synthetic examples, expected 100+")
+                    print(f"[ERROR] WARNING: Only generated {len(synthetic_data)} synthetic examples, expected 100+")
                     print(f"   This suggests pattern extraction failed or base training lacks diversity")
-                    print(f"   Continuing anyway, but performance may be suboptimal")
+                    print(f"   This is a fatal error - synthetic generation is required for performance")
+                    raise RuntimeError(f"Insufficient synthetic data generated: {len(synthetic_data)} < 50")
             except Exception as e:
                 print(f"[ERROR] CRITICAL: Synthetic generation failed completely!")
                 print(f"   Error: {e}")
                 print(f"   This is a fatal error - synthetic generation is required for performance")
                 import traceback
                 traceback.print_exc()
-                print(f"\n   Using empty synthetic data - performance will be poor")
-                synthetic_data = []  # Fail loudly - don't use fallback
+                raise RuntimeError(f"Synthetic data generation failed: {e}") from e
 
             # Train with base training data first
             for item in base_training_data:
@@ -4227,7 +4227,7 @@ results_p3 = None
 # ============================================================================
 
 print("\n" + "=" * 60)
-print("Setting up Combined FastAPI for ALL Pipelines")
+print("MODULAR API SETUP - Importing Pipeline Classes")
 print("P1: mT5 Zero-Shot | P2: SQLCoder Zero-Shot | P3: Vanna AI RAG")
 print("=" * 60)
 
@@ -4265,319 +4265,210 @@ nest_asyncio.apply()
 ngrok.set_auth_token("32BqVAspvTl3PmS23seCfxTxW93_7p3vCzKHixcdNg936rpXv")
 
 # ============================================================================
-# ENSURE REQUIRED PIPELINE CLASSES ARE AVAILABLE
+# IMPORT PIPELINE CLASSES FROM INDIVIDUAL FILES (MODULAR APPROACH)
 # ============================================================================
-# Import necessary classes for pipeline initialization
-# These might not be defined if evaluation cells were skipped
+# This ensures we always use the complete, latest logic from each pipeline file
+# All methods (post-processing, validation, etc.) are automatically included
 
+print("\n" + "=" * 60)
+print("IMPORTING PIPELINE CLASSES")
+print("=" * 60)
+
+# Add current directory to Python path for imports
+import sys
+from pathlib import Path
+current_dir = Path.cwd()
+if str(current_dir) not in sys.path:
+    sys.path.insert(0, str(current_dir))
+
+# Import P1 Pipeline - Try file import first, then use built-in from evaluation
+P1Pipeline = None
 try:
-    # Check if classes are already defined
-    PromptingPipeline
-    SQLCoderZeroShotPipeline
-    VannaPipeline
-    print("[OK] Pipeline classes already defined")
-except NameError:
-    print("[INFO] Pipeline classes not found. Defining them for API use...")
-    
-    # Import required transformers components
-    from transformers import (
-        AutoTokenizer, 
-        AutoModelForSeq2SeqLM,
-        AutoModelForCausalLM, 
-        BitsAndBytesConfig
-    )
-    
-    # Define PromptingPipeline for P1 (simplified version for API)
-    class PromptingPipeline:
-        """mT5 based prompting pipeline for Vietnamese NL2SQL"""
-        def __init__(self, model_name: str = "google/mt5-base"):
-            self.model_name = model_name
-            self.device = device
-            print(f"Loading {model_name}...")
-            self.tokenizer = AutoTokenizer.from_pretrained(model_name)
-            self.model = AutoModelForSeq2SeqLM.from_pretrained(
-                model_name,
-                torch_dtype=torch.float16 if torch.cuda.is_available() else torch.float32,
-                device_map="auto" if torch.cuda.is_available() else None
-            ).to(self.device)
-            self.model.eval()
-            print(f"Model loaded on {self.device}")
-        
-        def generate_sql(self, vietnamese_text: str) -> str:
-            """Generate SQL from Vietnamese query"""
-            prompt = f"translate Vietnamese to SQL: {vietnamese_text}"
-            inputs = self.tokenizer(prompt, return_tensors="pt", max_length=512, truncation=True)
-            inputs = {k: v.to(self.device) for k, v in inputs.items()}
-            
-            with torch.no_grad():
-                outputs = self.model.generate(
-                    **inputs,
-                    max_length=256,
-                    num_beams=4,
-                    temperature=0.7,
-                    do_sample=False
-                )
-            
-            sql = self.tokenizer.decode(outputs[0], skip_special_tokens=True)
-            return sql
-    
-    # Helper function for SQLCoder prompt creation
-    def create_sqlcoder_prompt_inline(vietnamese_text: str) -> str:
-        """Create prompt for SQLCoder model"""
-        schema = """### Tiki E-Commerce Database Schema:
-CREATE TABLE products (product_id INT, name TEXT, brand_id INT, category_id INT);
-CREATE TABLE brands (brand_id INT, brand_name TEXT);
-CREATE TABLE categories (category_id INT, category_name TEXT);
-CREATE TABLE product_pricing (product_id INT, current_price INT, quantity_sold INT);
-CREATE TABLE product_reviews (product_id INT, rating_average REAL, review_count INT);
-"""
-        prompt = f"""{schema}
-### Vietnamese Query: {vietnamese_text}
+    from colab_p1_mt5_zero import PromptingPipeline as P1Pipeline
+    print("[✓] P1 (mT5) imported from colab_p1_mt5_zero.py")
+    print("    ✓ Full logic: generate_sql, create_prompt, post_process_sql, extract_sql, etc.")
+except ImportError as e:
+    print(f"[INFO] Could not import P1 from file: {e}")
+    print("      Checking if P1 class exists from evaluation...")
+    try:
+        # Check if PromptingPipeline was defined in Cell 4 (P1 evaluation)
+        P1Pipeline = PromptingPipeline
+        print("[✓] P1 using PromptingPipeline class from Cell 4 (evaluation)")
+        print("    ✓ Full logic available from evaluation run")
+    except NameError:
+        print("[✗] P1 not available - neither file import nor evaluation class found")
+        print("    Run Cell 4 (P1 evaluation) first, or upload colab_p1_mt5_zero.py")
+        P1Pipeline = None
 
-### SQL Query (SQLite):"""
-        return prompt
-    
-    # Define SQLCoderZeroShotPipeline for P2
-    class SQLCoderZeroShotPipeline:
-        """SQLCoder pipeline using zero-shot prompting"""
-        def __init__(self, model_name: str = "defog/sqlcoder-7b-2"):
-            self.model_name = model_name
-            self.device = device
-            
-            print(f"Loading SQLCoder model: {model_name}")
-            print("⏳ This may take several minutes for first-time download (~14GB)...")
-            
-            # Configure 8-bit quantization to reduce memory
-            quantization_config = BitsAndBytesConfig(
-                load_in_8bit=True,
-                llm_int8_threshold=6.0,
-                llm_int8_has_fp16_weight=False,
-            ) if torch.cuda.is_available() else None
-            
-            # Load tokenizer
-            self.tokenizer = AutoTokenizer.from_pretrained(model_name)
-            if self.tokenizer.pad_token is None:
-                self.tokenizer.pad_token = self.tokenizer.eos_token
-            
-            # Load model with quantization
-            try:
-                self.model = AutoModelForCausalLM.from_pretrained(
-                    model_name,
-                    quantization_config=quantization_config,
-                    device_map="auto" if torch.cuda.is_available() else None,
-                    torch_dtype=torch.float16 if torch.cuda.is_available() else torch.float32,
-                    trust_remote_code=True,
-                    low_cpu_mem_usage=True
-                )
-                print("✅ Model loaded with 8-bit quantization")
-            except Exception as e:
-                print(f"⚠️ Quantization failed: {e}")
-                print("Loading without quantization...")
-                self.model = AutoModelForCausalLM.from_pretrained(
-                    model_name,
-                    device_map="auto" if torch.cuda.is_available() else None,
-                    torch_dtype=torch.float16 if torch.cuda.is_available() else torch.float32,
-                    trust_remote_code=True,
-                    low_cpu_mem_usage=True
-                )
-                print("✅ Model loaded without quantization")
-            
-            self.model.eval()
-            
-            # Clear cache
-            if torch.cuda.is_available():
-                torch.cuda.empty_cache()
-            
-            print(f"✅ SQLCoder ready on {self.device}")
-        
-        def generate_sql(self, vietnamese_text: str) -> str:
-            """Generate SQL from Vietnamese query"""
-            # Simple prompt for Vietnamese query
-            prompt = f"""### Task
-Generate a SQL query to answer the following Vietnamese question: {vietnamese_text}
-
-### Database Schema
-CREATE TABLE products (
-    product_id INTEGER PRIMARY KEY,
-    name TEXT,
-    brand_id INTEGER,
-    category_id INTEGER
-);
-
-### Answer
-Given the database schema, here is the SQL query that answers the question:
-```sql
-"""
-            
-            inputs = self.tokenizer(prompt, return_tensors="pt", max_length=2048, truncation=True)
-            inputs = {k: v.to(self.device) for k, v in inputs.items()}
-            
-            with torch.no_grad():
-                outputs = self.model.generate(
-                    **inputs,
-                    max_new_tokens=256,
-                    num_beams=4,
-                    temperature=0.1,
-                    do_sample=False,
-                    pad_token_id=self.tokenizer.eos_token_id
-                )
-            
-            generated_text = self.tokenizer.decode(outputs[0], skip_special_tokens=True)
-            
-            # Extract SQL from response
-            if "```sql" in generated_text:
-                sql = generated_text.split("```sql")[1].split("```")[0].strip()
-            elif "SELECT" in generated_text.upper():
-                sql = generated_text[generated_text.upper().find("SELECT"):].strip()
-            else:
-                sql = generated_text.strip()
-            
-            return sql
-    
-    # VannaPipeline will be handled separately due to complex dependencies
-    VannaPipeline = None
-    
-    print("[OK] Pipeline classes defined for API use")
-
-# Initialize global pipeline variables (will be set when evaluation cells run)
-# IMPORTANT: Only initialize if not already loaded from evaluation cells
+# Import P2 Pipeline - Try file import first, then use built-in from evaluation
+P2Pipeline = None
 try:
-    if 'pipeline_p1' not in dir():
-        pipeline_p1 = None
+    # Import the FULL SQLCoderPipeline class (not SQLCoderZeroShotPipeline)
+    from colab_p2_sqlcoder_zero import SQLCoderPipeline as P2Pipeline
+    print("[✓] P2 (SQLCoder) imported from colab_p2_sqlcoder_zero.py")
+    print("    ✓ Full logic: generate_sql, create_prompt, detect_count_intent, extract_search_term, post_process_sql, etc.")
+except ImportError as e:
+    print(f"[INFO] Could not import P2 from file: {e}")
+    print("      Checking if P2 class exists from evaluation...")
+    try:
+        # Check if SQLCoderPipeline was defined in Cell 4 (P2 evaluation)
+        P2Pipeline = SQLCoderPipeline
+        print("[✓] P2 using SQLCoderPipeline class from Cell 4 (evaluation)")
+        print("    ✓ Full logic available from evaluation run")
+    except NameError:
+        # Try the alternative class name
+        try:
+            P2Pipeline = SQLCoderZeroShotPipeline
+            print("[⚠] P2 using SQLCoderZeroShotPipeline (simplified version)")
+            print("    ⚠ Some methods may be missing - prefer SQLCoderPipeline")
+        except NameError:
+            print("[✗] P2 not available - neither file import nor evaluation class found")
+            print("    Run Cell 4 (P2 evaluation) first, or upload colab_p2_sqlcoder_zero.py")
+            P2Pipeline = None
+
+# Import P3 Pipeline - Try file import first, then use built-in from evaluation
+P3Pipeline = None
+try:
+    from colab_p3_vanna_zero import VannaPipeline as P3Pipeline
+    print("[✓] P3 (Vanna AI) imported from colab_p3_vanna_zero.py")
+    print("    ✓ Full logic: generate_sql, setup_database_schema, generate_synthetic_training_data, etc.")
+except ImportError as e:
+    print(f"[INFO] Could not import P3 from file: {e}")
+    print("      Checking if P3 class exists from evaluation...")
+    try:
+        # Check if VannaPipeline was defined in Cell 4 (P3 evaluation)
+        P3Pipeline = VannaPipeline
+        print("[✓] P3 using VannaPipeline class from Cell 4 (evaluation)")
+        print("    ✓ Full logic available from evaluation run")
+    except NameError:
+        print("[✗] P3 not available - neither file import nor evaluation class found")
+        print("    Run Cell 4 (P3 evaluation) first, or upload colab_p3_vanna_zero.py")
+        P3Pipeline = None
+
+print("=" * 60)
+
+# ============================================================================
+# INITIALIZE PIPELINES FOR API
+# ============================================================================
+
+print("\n" + "=" * 60)
+print("INITIALIZING PIPELINES FOR API")
+print("=" * 60)
+
+# Check if pipelines were already loaded from evaluation (Cell 4)
+# If not, initialize them for API use
+try:
+    pipeline_p1
 except NameError:
     pipeline_p1 = None
 
 try:
-    if 'pipeline_p2' not in dir():
-        pipeline_p2 = None
+    pipeline_p2
 except NameError:
     pipeline_p2 = None
 
 try:
-    if 'pipeline_p3' not in dir():
-        pipeline_p3 = None
+    pipeline_p3
 except NameError:
     pipeline_p3 = None
 
-# ============================================================================
-# AUTO-INITIALIZE PIPELINES FOR API IF NOT ALREADY LOADED
-# ============================================================================
-print("\n" + "=" * 60)
-print("Checking and Initializing Pipelines for API...")
-print("=" * 60)
-
-# P1: Initialize mT5 pipeline if not already loaded
-if pipeline_p1 is None:
-    print("\n[INFO] P1 (mT5) not found in memory. Initializing for API...")
+# P1: Initialize mT5 pipeline
+if pipeline_p1 is None and P1Pipeline is not None:
+    print("\n[INFO] Initializing P1 (mT5 Zero-Shot)...")
     try:
-        pipeline_p1 = PromptingPipeline(model_name="google/mt5-base")
-        print("[✓] P1 (mT5 Zero-Shot) initialized successfully!")
+        pipeline_p1 = P1Pipeline(model_name="google/mt5-base")
+        print("[✓] P1 initialized successfully with FULL logic from colab_p1_mt5_zero.py!")
     except Exception as e:
         print(f"[✗] Failed to initialize P1: {e}")
-        print("    P1 will be unavailable via API")
         pipeline_p1 = None
+elif pipeline_p1 is not None:
+    print("[✓] P1 already loaded from evaluation")
 else:
-    print("[✓] P1 (mT5) already loaded from evaluation")
+    print("[✗] P1 not available - class not found")
 
-# P2: Initialize SQLCoder pipeline if not already loaded
-if pipeline_p2 is None:
-    print("\n[INFO] P2 (SQLCoder) not found in memory. Initializing for API...")
+# P2: Initialize SQLCoder pipeline
+if pipeline_p2 is None and P2Pipeline is not None:
+    print("\n[INFO] Initializing P2 (SQLCoder Zero-Shot)...")
     try:
-        # Use SQLCoderZeroShotPipeline class (defined in P2 section)
-        pipeline_p2 = SQLCoderZeroShotPipeline(model_name="defog/sqlcoder-7b-2")
-        print("[✓] P2 (SQLCoder Zero-Shot) initialized successfully!")
+        pipeline_p2 = P2Pipeline(model_name="defog/sqlcoder-7b-2")
+        print("[✓] P2 initialized successfully with FULL logic from colab_p2_sqlcoder_zero.py!")
     except Exception as e:
         print(f"[✗] Failed to initialize P2: {e}")
-        print("    P2 will be unavailable via API")
         print("    Common causes: GPU OOM, model download failure")
         pipeline_p2 = None
+elif pipeline_p2 is not None:
+    print("[✓] P2 already loaded from evaluation")
 else:
-    print("[✓] P2 (SQLCoder) already loaded from evaluation")
+    print("[✗] P2 not available - class not found")
 
-# P3: Initialize Vanna AI pipeline if not already loaded
-if pipeline_p3 is None:
-    print("\n[INFO] P3 (Vanna AI) not found in memory. Initializing for API...")
+# P3: Initialize Vanna AI pipeline
+if pipeline_p3 is None and P3Pipeline is not None:
+    print("\n[INFO] Initializing P3 (Vanna AI RAG)...")
     try:
-        # Get OpenAI API key from environment or Colab secrets
-        from google.colab import userdata
+        # Get OpenAI API key
         try:
+            from google.colab import userdata
             openai_key = userdata.get('OPENAI_API_KEY')
+            print("[INFO] Using OpenAI API key from Colab secrets")
         except:
-            openai_key = MANUAL_API_KEY if 'MANUAL_API_KEY' in dir() and MANUAL_API_KEY else None
+            openai_key = MANUAL_API_KEY if MANUAL_API_KEY else None
+            if openai_key:
+                print("[INFO] Using manual API key")
         
         if not openai_key:
             print("[✗] OpenAI API key not found. P3 requires OPENAI_API_KEY")
             print("    Set it in Colab Secrets or MANUAL_API_KEY variable")
             pipeline_p3 = None
         else:
-            # Initialize Vanna AI with API key (VannaPipeline creates its own instance)
-            pipeline_p3 = VannaPipeline(api_key=openai_key, model_name="gpt-4o-mini")
+            # Initialize P3 with API key
+            pipeline_p3 = P3Pipeline(api_key=openai_key, model_name="gpt-4o-mini")
             
-            # Setup database schema - REQUIRED for P3 to work properly
-            if 'PATHS' in dir() and 'db' in PATHS:
-                try:
-                    print("    Setting up database schema...")
-                    # Construct full path to database file (not just directory)
-                    db_path_str = str(PATHS['db'] / "tiki.sqlite")
-                    
-                    # Check if database file exists
-                    import os
-                    if os.path.exists(db_path_str):
-                        pipeline_p3.setup_database_schema(db_path=db_path_str)
-                        print("[✓] P3 (Vanna AI RAG) initialized with database!")
-                    else:
-                        print(f"    [✗] Database file not found: {db_path_str}")
-                        print(f"    [✗] P3 FAILED: Cannot operate without database")
-                        print(f"    Upload database to: {db_path_str}")
-                        pipeline_p3 = None
-                except Exception as db_error:
-                    print(f"    [✗] Database connection failed: {db_error}")
-                    print("    [✗] P3 FAILED: Cannot operate without database connection")
-                    pipeline_p3 = None
+            # Setup database schema
+            db_path = "/content/drive/MyDrive/vn2sql/db/tiki.sqlite"
+            if os.path.exists(db_path):
+                print(f"[INFO] Setting up P3 database schema from {db_path}...")
+                pipeline_p3.setup_database_schema(db_path)
+                print("[✓] P3 initialized successfully with FULL logic from colab_p3_vanna_zero.py!")
             else:
-                print("    [✗] No database path configured")
-                print("    [✗] P3 FAILED: Cannot operate without database")
+                print(f"[✗] Database not found at {db_path}")
+                print("    P3 requires database file to be uploaded")
                 pipeline_p3 = None
     except Exception as e:
         print(f"[✗] Failed to initialize P3: {e}")
-        print("    P3 will be unavailable via API")
         import traceback
         traceback.print_exc()
         pipeline_p3 = None
+elif pipeline_p3 is not None:
+    print("[✓] P3 already loaded from evaluation")
 else:
-    print("[✓] P3 (Vanna AI) already loaded from evaluation")
+    print("[✗] P3 not available - class not found")
 
 print("\n" + "=" * 60)
-print("Pipeline Initialization Summary:")
+print("PIPELINE INITIALIZATION SUMMARY")
 print("=" * 60)
-print(f"  P1 (mT5):       {'✅ READY' if pipeline_p1 else '❌ NOT LOADED'}")
-print(f"  P2 (SQLCoder):  {'✅ READY' if pipeline_p2 else '❌ NOT LOADED'}")
-print(f"  P3 (Vanna AI):  {'✅ READY' if pipeline_p3 else '❌ NOT LOADED'}")
+print(f"P1 (mT5):       {'✓ Ready' if pipeline_p1 else '✗ Not Available'}")
+print(f"P2 (SQLCoder):  {'✓ Ready' if pipeline_p2 else '✗ Not Available'}")
+print(f"P3 (Vanna AI):  {'✓ Ready' if pipeline_p3 else '✗ Not Available'}")
 print("=" * 60)
 
-try:
-    if 'metrics_p1' not in dir():
-        metrics_p1 = None
-except NameError:
-    metrics_p1 = None
+# ============================================================================
+# FASTAPI APP SETUP
+# ============================================================================
 
-try:
-    if 'metrics_p2' not in dir():
-        metrics_p2 = None
-except NameError:
-    metrics_p2 = None
+print("\n" + "=" * 60)
+print("SETTING UP FASTAPI APP")
+print("=" * 60)
 
-try:
-    if 'metrics_p3' not in dir():
-        metrics_p3 = None
-except NameError:
-    metrics_p3 = None
+# NOTE: We are now using the FULL pipeline logic from:
+#   - P1: colab_p1_mt5_zero.py (or Cell 4 evaluation)
+#   - P2: colab_p2_sqlcoder_zero.py (or Cell 4 evaluation)
+#   - P3: colab_p3_vanna_zero.py (or Cell 4 evaluation)
+# All post-processing, validation, and helper methods are included!
 
-# Create FastAPI app for all pipelines
 app_all = FastAPI(
     title="Vietnamese NL2SQL - All Pipelines API",
     description="Unified API for P1 (mT5), P2 (SQLCoder), and P3 (Vanna AI) Vietnamese NL2SQL pipelines",
-    version="1.0"
+    version="1.1"
 )
 
 # Enable CORS
@@ -4638,6 +4529,7 @@ class QueryRequest(BaseModel):
 
 class PipelineResponse(BaseModel):
     pipeline: str
+    vietnamese_query: str
     sql_query: str
     execution_time: float
     valid: bool
@@ -4770,12 +4662,13 @@ async def get_api_logs():
 @app_all.post("/p1/generate", response_model=PipelineResponse)
 async def generate_sql_p1(request: QueryRequest):
     """Generate SQL from Vietnamese query using P1 mT5 Zero-Shot"""
+    global pipeline_p1
     start_time = time.time()
     sql = ""
     error_msg = None
     
     try:
-        if 'pipeline_p1' not in globals() or pipeline_p1 is None:
+        if pipeline_p1 is None:
             error_msg = "P1 Pipeline not loaded. Please run P1 evaluation first."
             raise HTTPException(status_code=503, detail=error_msg)
         
@@ -4788,6 +4681,7 @@ async def generate_sql_p1(request: QueryRequest):
         
         return PipelineResponse(
             pipeline="P1_mT5_Zero_Shot",
+            vietnamese_query=request.query,
             sql_query=sql,
             execution_time=execution_time,
             valid=valid,
@@ -4811,6 +4705,7 @@ async def generate_sql_p1(request: QueryRequest):
         
         return PipelineResponse(
             pipeline="P1_mT5_Zero_Shot",
+            vietnamese_query=request.query,
             sql_query="",
             execution_time=execution_time,
             valid=False,
@@ -4822,7 +4717,13 @@ async def generate_sql_p1(request: QueryRequest):
 @app_all.get("/p1/metrics")
 async def get_p1_metrics():
     """Get evaluation metrics for P1"""
-    if 'metrics_p1' not in globals() or not metrics_p1:
+    global metrics_p1
+    try:
+        metrics_p1
+    except NameError:
+        metrics_p1 = None
+    
+    if not metrics_p1:
         raise HTTPException(status_code=404, detail="P1 metrics not available. Run evaluation first.")
     
     return {
@@ -4835,8 +4736,9 @@ async def get_p1_metrics():
 @app_all.post("/p2/generate", response_model=PipelineResponse)
 async def generate_sql_p2(request: QueryRequest):
     """Generate SQL from Vietnamese query using P2 SQLCoder Zero-Shot"""
+    global pipeline_p2
     try:
-        if 'pipeline_p2' not in globals() or pipeline_p2 is None:
+        if pipeline_p2 is None:
             raise HTTPException(
                 status_code=503, 
                 detail="P2 Pipeline not loaded. Please run P2 evaluation first."
@@ -4850,6 +4752,7 @@ async def generate_sql_p2(request: QueryRequest):
         
         return PipelineResponse(
             pipeline="P2_SQLCoder_Zero_Shot",
+            vietnamese_query=request.query,
             sql_query=sql,
             execution_time=execution_time,
             valid=valid,
@@ -4867,6 +4770,7 @@ async def generate_sql_p2(request: QueryRequest):
     except Exception as e:
         return PipelineResponse(
             pipeline="P2_SQLCoder_Zero_Shot",
+            vietnamese_query=request.query,
             sql_query="",
             execution_time=0,
             valid=False,
@@ -4878,7 +4782,13 @@ async def generate_sql_p2(request: QueryRequest):
 @app_all.get("/p2/metrics")
 async def get_p2_metrics():
     """Get evaluation metrics for P2"""
-    if 'metrics_p2' not in globals() or not metrics_p2:
+    global metrics_p2
+    try:
+        metrics_p2
+    except NameError:
+        metrics_p2 = None
+    
+    if not metrics_p2:
         raise HTTPException(status_code=404, detail="P2 metrics not available. Run evaluation first.")
     
     return {
@@ -4891,8 +4801,9 @@ async def get_p2_metrics():
 @app_all.post("/p3/generate", response_model=PipelineResponse)
 async def generate_sql_p3(request: QueryRequest):
     """Generate SQL from Vietnamese query using P3 Vanna AI RAG"""
+    global pipeline_p3
     try:
-        if 'pipeline_p3' not in globals() or pipeline_p3 is None:
+        if pipeline_p3 is None:
             raise HTTPException(
                 status_code=503, 
                 detail="P3 Pipeline not loaded. Please run P3 evaluation first."
@@ -4902,10 +4813,21 @@ async def generate_sql_p3(request: QueryRequest):
         sql = pipeline_p3.generate_sql(request.query)
         execution_time = time.time() - start_time
         
+        # Additional post-processing to ensure clean SQL
+        if sql:
+            # Remove literal \n characters and normalize whitespace
+            sql = sql.replace('\\n', ' ').replace('\n', ' ')
+            sql = re.sub(r'\s+', ' ', sql.strip())
+            
+            # Ensure ends with semicolon
+            if not sql.endswith(';'):
+                sql += ';'
+        
         valid = bool(sql and len(sql.strip()) > 5)
         
         return PipelineResponse(
             pipeline="P3_Vanna_AI_RAG",
+            vietnamese_query=request.query,
             sql_query=sql,
             execution_time=execution_time,
             valid=valid,
@@ -4923,6 +4845,7 @@ async def generate_sql_p3(request: QueryRequest):
     except Exception as e:
         return PipelineResponse(
             pipeline="P3_Vanna_AI_RAG",
+            vietnamese_query=request.query,
             sql_query="",
             execution_time=0,
             valid=False,
@@ -4934,7 +4857,13 @@ async def generate_sql_p3(request: QueryRequest):
 @app_all.get("/p3/metrics")
 async def get_p3_metrics():
     """Get evaluation metrics for P3"""
-    if 'metrics_p3' not in globals() or not metrics_p3:
+    global metrics_p3
+    try:
+        metrics_p3
+    except NameError:
+        metrics_p3 = None
+    
+    if not metrics_p3:
         raise HTTPException(status_code=404, detail="P3 metrics not available. Run evaluation first.")
     
     return {
@@ -5106,28 +5035,48 @@ print(f"\n{'='*60}")
 print("[OK] Server ready! Visit the API docs at: " + api_url + "/docs")
 print(f"{'='*60}\n")
 
-# Start server (Colab-compatible async approach)
-# nest_asyncio allows running asyncio in Jupyter/Colab's existing event loop
+# Start server with proper logging
 import asyncio
 from uvicorn import Config, Server
+import threading
 
-# Create async function to run server
+print("\n[OK] Starting server with request/response logging enabled...")
+print("     All API calls will be printed below in real-time")
+print("     Keep this cell running to maintain the API!")
+print(f"\n{'='*80}")
+print("WAITING FOR API REQUESTS...")
+print(f"{'='*80}\n")
+
+# Create async function to run server with logging
 async def run_server():
-    config = Config(app_all, host="0.0.0.0", port=8000, log_level="info")
+    config = Config(
+        app_all, 
+        host="0.0.0.0", 
+        port=8000, 
+        log_level="info",
+        access_log=True  # Enable access logging
+    )
     server = Server(config)
     await server.serve()
 
-# Run in background thread to keep cell responsive
-import threading
-
+# Run server in background thread
 def start_server_thread():
     loop = asyncio.new_event_loop()
     asyncio.set_event_loop(loop)
     loop.run_until_complete(run_server())
 
-server_thread = threading.Thread(target=start_server_thread, daemon=True)
+server_thread = threading.Thread(target=start_server_thread, daemon=False)  # Changed to daemon=False
 server_thread.start()
 
-print("\n[OK] Server started in background thread")
-print("     The server will keep running as long as this cell is active")
-print("     To stop: interrupt the kernel or restart runtime")
+# Keep the cell alive and responsive
+print("[OK] Server is running and logging all requests")
+print("     Press Ctrl+C or interrupt kernel to stop")
+print("\n" + "="*80)
+
+# Keep thread alive - this prevents the cell from finishing
+try:
+    server_thread.join()
+except KeyboardInterrupt:
+    print("\n[INFO] Server stopped by user")
+except Exception as e:
+    print(f"\n[ERROR] Server error: {e}")

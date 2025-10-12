@@ -1,0 +1,1288 @@
+query_id,text,gold_sql,pred_sql,complexity,EM,EX,valid,latency_ms,model_succeeded
+0,Tìm áo thun,SELECT * FROM products WHERE name LIKE '%áo thun%' LIMIT 10;,SELECT * FROM products WHERE name LIKE '%áo thun%' LIMIT 10;,simple,1,1,True,595.1259136199951,True
+1,Hiển thị giày,SELECT * FROM products WHERE name LIKE '%giày%' LIMIT 10;,"SELECT p.name, p.description, p.product_id \nFROM products p \nWHERE p.name LIKE '%giày%' \nLIMIT 10;",simple,0,0,True,729.0053367614746,True
+2,Xem túi xách,SELECT * FROM products WHERE name LIKE '%túi xách%' LIMIT 10;,SELECT * FROM products WHERE name LIKE '%túi xách%' LIMIT 10;,simple,1,1,True,1062.753677368164,True
+3,Liệt kê balo,SELECT name FROM products WHERE name LIKE '%balo%' LIMIT 10;,"SELECT p.product_id, p.name, p.description, p.brand_id, p.category_id, p.seller_id, p.date_created, p.number_of_images, p.has_video, p.source_file, p.created_at\nFROM products p \nWHERE p.name LIKE '%balo%'\nLIMIT 10;",simple,0,0,True,983.7362766265869,True
+4,Tìm kiếm vali,SELECT * FROM products WHERE name LIKE '%vali%' LIMIT 10;,SELECT * FROM products WHERE name LIKE '%vali%' LIMIT 10;,simple,1,1,True,624.5276927947998,True
+5,Tìm ví,SELECT * FROM products WHERE name LIKE '%ví%' LIMIT 10;,"SELECT p.product_id, p.name, p.description, p.brand_id, p.category_id, p.seller_id, p.date_created, p.number_of_images, p.has_video, p.source_file, p.created_at\nFROM products p \nWHERE p.name LIKE '%ví%'\nLIMIT 10;",simple,0,1,True,928.971529006958,True
+6,Hiển thị dép,SELECT * FROM products WHERE name LIKE '%dép%' LIMIT 10;,"SELECT p.product_id, p.name, p.description, p.brand_id, p.category_id, p.seller_id, p.date_created, p.number_of_images, p.has_video, p.source_file, p.created_at\nFROM products p \nWHERE p.name LIKE '%dép%'\nLIMIT 10;",simple,0,1,True,1426.5270233154297,True
+7,Xem nón,SELECT * FROM products WHERE name LIKE '%nón%' LIMIT 10;,"SELECT p.product_id, p.name, p.description, p.brand_id, p.category_id, p.seller_id, p.date_created, p.number_of_images, p.has_video, p.source_file, p.created_at\nFROM products p \nWHERE p.name LIKE '%nón%'\nLIMIT 10;",simple,0,1,True,1032.9487323760986,True
+8,Liệt kê thắt lưng,SELECT name FROM products WHERE name LIKE '%thắt lưng%' LIMIT 10;,SELECT * FROM products WHERE name LIKE '%thắt lưng%' LIMIT 10;,simple,0,0,True,714.7810459136963,True
+9,Tìm kiếm kính,SELECT * FROM products WHERE name LIKE '%kính%' LIMIT 10;,"SELECT p.product_id, p.name, p.description, p.brand_id, p.category_id, p.seller_id, p.date_created, p.number_of_images, p.has_video, p.source_file, p.created_at\nFROM products p \nWHERE p.name LIKE '%kính%'\nLIMIT 10;",simple,0,1,True,932.9462051391602,True
+10,Tìm đồng hồ,SELECT * FROM products WHERE name LIKE '%đồng hồ%' LIMIT 10;,SELECT * FROM products WHERE name LIKE '%đồng hồ%' LIMIT 10;,simple,1,1,True,760.1921558380127,True
+11,Hiển thị vớ,SELECT * FROM products WHERE name LIKE '%vớ%' LIMIT 10;,"SELECT p.product_id, p.name, p.description, p.brand_id, p.category_id, p.seller_id, p.date_created, p.number_of_images, p.has_video, p.source_file, p.created_at\nFROM products p \nWHERE p.name LIKE '%vớ%'\nLIMIT 10;",simple,0,1,True,1383.129596710205,True
+12,Xem khăn,SELECT * FROM products WHERE name LIKE '%khăn%' LIMIT 10;,"SELECT p.product_id, p.name, p.description, p.brand_id, p.category_id, p.seller_id, p.date_created, p.number_of_images, p.has_video, p.source_file, p.created_at\nFROM products p \nWHERE p.name LIKE '%khăn%'\nLIMIT 10;",simple,0,1,True,1060.5473518371582,True
+13,Liệt kê găng tay,SELECT name FROM products WHERE name LIKE '%găng tay%' LIMIT 10;,SELECT * FROM products WHERE name LIKE '%găng tay%' LIMIT 10;,simple,0,0,True,533.3175659179688,True
+14,Tìm kiếm áo khoác,SELECT * FROM products WHERE name LIKE '%áo khoác%' LIMIT 10;,SELECT * FROM products WHERE name LIKE '%áo khoác%' LIMIT 10;,simple,1,1,True,903.8801193237305,True
+15,Tìm quần,SELECT * FROM products WHERE name LIKE '%quần%' LIMIT 10;,SELECT * FROM products WHERE name LIKE '%quần%' LIMIT 10;,simple,1,1,True,616.9304847717285,True
+16,Hiển thị váy,SELECT * FROM products WHERE name LIKE '%váy%' LIMIT 10;,"SELECT p.product_id, p.name, p.description, p.brand_id, p.category_id, p.seller_id, p.date_created, p.number_of_images, p.has_video, p.source_file, p.created_at\nFROM products p \nWHERE p.name LIKE '%váy%'\nLIMIT 10;",simple,0,1,True,1133.415937423706,True
+17,Xem áo sơ mi,SELECT * FROM products WHERE name LIKE '%áo sơ mi%' LIMIT 10;,SELECT * FROM products WHERE name LIKE '%áo sơ mi%' LIMIT 10;,simple,1,1,True,710.2587223052979,True
+18,Liệt kê giày thể thao,SELECT name FROM products WHERE name LIKE '%giày thể thao%' LIMIT 10;,SELECT name FROM products WHERE name LIKE '%giày thể thao%' LIMIT 10;,simple,1,1,True,5420.096635818481,True
+19,Tìm kiếm giày cao gót,SELECT * FROM products WHERE name LIKE '%giày cao gót%' LIMIT 10;,SELECT * FROM products WHERE name LIKE '%giày cao gót%' LIMIT 10;,simple,1,1,True,675.5199432373047,True
+20,Tìm boot,SELECT * FROM products WHERE name LIKE '%boot%' LIMIT 10;,"SELECT p.product_id, p.name, p.description, p.brand_id, p.category_id, p.seller_id, p.date_created, p.number_of_images, p.has_video, p.source_file, p.created_at\nFROM products p \nWHERE p.name LIKE '%boot%'\nLIMIT 10;",simple,0,1,True,885.3745460510254,True
+21,Hiển thị túi đeo chéo,SELECT * FROM products WHERE name LIKE '%túi đeo chéo%' LIMIT 10;,SELECT * FROM products WHERE name LIKE '%túi đeo chéo%' LIMIT 10;,simple,1,1,True,639.9340629577637,True
+22,Xem cặp sách,SELECT * FROM products WHERE name LIKE '%cặp sách%' LIMIT 10;,"SELECT p.product_id, p.name, p.description, p.brand_id, p.category_id, p.seller_id, p.date_created, p.number_of_images, p.has_video, p.source_file, p.created_at\nFROM products p \nWHERE p.name LIKE '%cặp sách%'\nLIMIT 10;",simple,0,1,True,1086.7037773132324,True
+23,Liệt kê túi laptop,SELECT name FROM products WHERE name LIKE '%túi laptop%' LIMIT 10;,SELECT * FROM products WHERE name LIKE '%túi laptop%' LIMIT 10;,simple,0,0,True,1110.4047298431396,True
+24,Tìm kiếm phụ kiện,SELECT * FROM products WHERE name LIKE '%phụ kiện%' LIMIT 10;,"SELECT p.product_id, p.name, p.description, p.brand_id, p.category_id, p.seller_id, p.date_created, p.number_of_images, p.has_video, p.source_file, p.created_at\nFROM products p \nWHERE p.name LIKE '%phụ kiện%'\nLIMIT 10;",simple,0,1,True,1165.6560897827148,True
+25,Tìm trang sức,SELECT * FROM products WHERE name LIKE '%trang sức%' LIMIT 10;,SELECT * FROM products WHERE name LIKE '%trang sức%' LIMIT 10;,simple,1,1,True,532.9079627990723,True
+26,Hiển thị mũ lưỡi trai,SELECT * FROM products WHERE name LIKE '%mũ lưỡi trai%' LIMIT 10;,"SELECT p.product_id, p.name, p.description, p.brand_id, p.category_id, p.seller_id, p.date_created, p.number_of_images, p.has_video, p.source_file, p.created_at\nFROM products p \nWHERE p.name LIKE '%mũ lưỡi trai%'\nLIMIT 10;",simple,0,1,True,1235.696792602539,True
+27,Xem mũ beret,SELECT * FROM products WHERE name LIKE '%mũ beret%' LIMIT 10;,"SELECT p.product_id, p.name, p.description, p.brand_id, p.category_id, p.seller_id, p.date_created, p.number_of_images, p.has_video, p.source_file, p.created_at\nFROM products p \nWHERE p.name LIKE '%mũ beret%'\nLIMIT 10;",simple,0,1,True,1321.8374252319336,True
+28,Liệt kê áo len,SELECT name FROM products WHERE name LIKE '%áo len%' LIMIT 10;,SELECT * FROM products WHERE name LIKE '%áo len%' LIMIT 10;,simple,0,1,True,624.2964267730713,True
+29,Tìm kiếm hoodie,SELECT * FROM products WHERE name LIKE '%hoodie%' LIMIT 10;,SELECT * FROM products WHERE name LIKE '%hoodie%' LIMIT 10;,simple,1,1,True,713.381290435791,True
+30,Tìm quần jean,SELECT * FROM products WHERE name LIKE '%quần jean%' LIMIT 10;,"SELECT p.product_id, p.name, p.description, p.brand_id, p.category_id, p.seller_id, p.date_created, p.number_of_images, p.has_video, p.source_file, p.created_at\nFROM products p \nWHERE p.name LIKE '%quần jean%'\nLIMIT 10;",simple,0,1,True,1018.653154373169,True
+31,Hiển thị quần short,SELECT * FROM products WHERE name LIKE '%quần short%' LIMIT 10;,"SELECT p.product_id, p.name, p.description, p.brand_id, p.category_id, p.seller_id, p.date_created, p.number_of_images, p.has_video, p.source_file, p.created_at\nFROM products p \nWHERE p.name LIKE '%quần short%'\nLIMIT 10;",simple,0,1,True,1064.3150806427002,True
+32,Xem áo polo,SELECT * FROM products WHERE name LIKE '%áo polo%' LIMIT 10;,SELECT * FROM products WHERE name LIKE '%áo polo%' LIMIT 10;,simple,1,1,True,1197.298288345337,True
+33,Liệt kê tank top,SELECT name FROM products WHERE name LIKE '%tank top%' LIMIT 10;,"SELECT product_id, name, description\nFROM products\nWHERE name LIKE '%tank top%'\nLIMIT 10;",simple,0,1,True,744.8985576629639,True
+34,Tìm kiếm đầm,SELECT * FROM products WHERE name LIKE '%đầm%' LIMIT 10;,"SELECT p.product_id, p.name, p.description, p.brand_id, p.category_id, p.seller_id, p.date_created, p.number_of_images, p.has_video, p.source_file, p.created_at\nFROM products p \nWHERE p.name LIKE '%đầm%'\nLIMIT 10;",simple,0,1,True,917.494535446167,True
+35,Tìm chân váy,SELECT * FROM products WHERE name LIKE '%chân váy%' LIMIT 10;,"SELECT p.product_id, p.name, p.description, p.brand_id, p.category_id, p.seller_id, p.date_created, p.number_of_images, p.has_video, p.source_file, p.created_at\nFROM products p \nWHERE p.name LIKE '%chân váy%'\nLIMIT 10;",simple,0,1,True,1130.889892578125,True
+36,Hiển thị blazer,SELECT * FROM products WHERE name LIKE '%blazer%' LIMIT 10;,"SELECT p.product_id, p.name, p.description, p.brand_id, p.category_id, p.seller_id, p.date_created, p.number_of_images, p.has_video, p.source_file, p.created_at\nFROM products p \nWHERE p.name LIKE '%blazer%'\nLIMIT 10;",simple,0,1,True,2778.8538932800293,True
+37,Xem vest,SELECT * FROM products WHERE name LIKE '%vest%' LIMIT 10;,SELECT * FROM products WHERE name LIKE '%vest%' LIMIT 10;,simple,1,1,True,542.9661273956299,True
+38,Liệt kê đồ lót,SELECT name FROM products WHERE name LIKE '%đồ lót%' LIMIT 10;,"SELECT p.product_id, p.name, p.description, p.brand_id, p.category_id, p.seller_id, p.date_created, p.number_of_images, p.has_video, p.source_file, p.created_at\nFROM products p \nWHERE p.name LIKE '%đồ lót%'\nLIMIT 10;",simple,0,0,True,1945.943832397461,True
+39,Tìm kiếm đồ ngủ,SELECT * FROM products WHERE name LIKE '%đồ ngủ%' LIMIT 10;,"SELECT p.product_id, p.name, p.description, p.brand_id, p.category_id, p.seller_id, p.date_created, p.number_of_images, p.has_video, p.source_file, p.created_at\nFROM products p \nWHERE p.name LIKE '%đồ ngủ%'\nLIMIT 10;",simple,0,1,True,983.478307723999,True
+40,Tìm đồ bơi,SELECT * FROM products WHERE name LIKE '%đồ bơi%' LIMIT 10;,SELECT * FROM products WHERE name LIKE '%đồ bơi%' LIMIT 10;,simple,1,1,True,564.77952003479,True
+41,Hiển thị áo cardigan,SELECT * FROM products WHERE name LIKE '%áo cardigan%' LIMIT 10;,"SELECT p.product_id, p.name, p.description, p.brand_id, p.category_id, p.seller_id, p.date_created, p.number_of_images, p.has_video, p.source_file, p.created_at\nFROM products p \nWHERE p.name LIKE '%áo cardigan%'\nLIMIT 10;",simple,0,1,True,1088.3338451385498,True
+42,Xem áo croptop,SELECT * FROM products WHERE name LIKE '%áo croptop%' LIMIT 10;,SELECT * FROM products WHERE name LIKE '%áo croptop%' LIMIT 10;,simple,1,1,True,724.9338626861572,True
+43,Liệt kê áo bomber,SELECT name FROM products WHERE name LIKE '%áo bomber%' LIMIT 10;,"SELECT p.product_id, p.name, p.description, p.brand_id, p.category_id, p.seller_id, p.date_created, p.number_of_images, p.has_video, p.source_file, p.created_at\nFROM products p \nWHERE p.name LIKE '%áo bomber%'\nLIMIT 10;",simple,0,1,True,931.3137531280518,True
+44,Tìm kiếm áo denim,SELECT * FROM products WHERE name LIKE '%áo denim%' LIMIT 10;,SELECT * FROM products WHERE name LIKE '%áo denim%' LIMIT 10;,simple,1,1,True,602.9279232025146,True
+45,Tìm áo flannel,SELECT * FROM products WHERE name LIKE '%áo flannel%' LIMIT 10;,SELECT * FROM products WHERE name LIKE '%áo flannel%' LIMIT 10;,simple,1,1,True,787.8563404083252,True
+46,Hiển thị áo kimono,SELECT * FROM products WHERE name LIKE '%áo kimono%' LIMIT 10;,"SELECT p.product_id, p.name, p.description, p.brand_id, p.category_id, p.seller_id, p.date_created, p.number_of_images, p.has_video, p.source_file, p.created_at\nFROM products p \nWHERE p.name LIKE '%áo kimono%'\nLIMIT 10;",simple,0,1,True,1439.141035079956,True
+47,Xem quần tây,SELECT * FROM products WHERE name LIKE '%quần tây%' LIMIT 10;,SELECT * FROM products WHERE name LIKE '%quần tây%' LIMIT 10;,simple,1,1,True,641.4117813110352,True
+48,Liệt kê quần baggy,SELECT name FROM products WHERE name LIKE '%quần baggy%' LIMIT 10;,SELECT * FROM products WHERE name LIKE '%quần baggy%' LIMIT 10;,simple,0,1,True,822.472095489502,True
+49,Tìm kiếm quần cargo,SELECT * FROM products WHERE name LIKE '%quần cargo%' LIMIT 10;,SELECT * FROM products WHERE name LIKE '%quần cargo%' LIMIT 10;,simple,1,1,True,775.6836414337158,True
+50,Tìm quần legging,SELECT * FROM products WHERE name LIKE '%quần legging%' LIMIT 10;,SELECT * FROM products WHERE name LIKE '%quần legging%' LIMIT 10;,simple,1,1,True,658.637285232544,True
+51,Hiển thị quần culottes,SELECT * FROM products WHERE name LIKE '%quần culottes%' LIMIT 10;,"SELECT p.product_id, p.name, p.description, p.brand_id, p.category_id, p.seller_id, p.date_created, p.number_of_images, p.has_video, p.source_file, p.created_at\nFROM products p \nWHERE p.name LIKE '%quần culottes%'\nLIMIT 10;",simple,0,1,True,996.9334602355957,True
+52,Xem quần palazzo,SELECT * FROM products WHERE name LIKE '%quần palazzo%' LIMIT 10;,SELECT * FROM products WHERE name LIKE '%quần palazzo%' LIMIT 10;,simple,1,1,True,1090.0371074676514,True
+53,Liệt kê váy midi,SELECT name FROM products WHERE name LIKE '%váy midi%' LIMIT 10;,"SELECT p.product_id, p.name, p.description, p.brand_id, p.category_id, p.seller_id, p.date_created, p.number_of_images, p.has_video, p.source_file, p.created_at\nFROM products p \nWHERE p.name LIKE '%váy midi%'\nLIMIT 10;",simple,0,1,True,1102.0405292510986,True
+54,Tìm kiếm váy mini,SELECT * FROM products WHERE name LIKE '%váy mini%' LIMIT 10;,SELECT * FROM products WHERE name LIKE '%váy mini%' LIMIT 10;,simple,1,1,True,698.8041400909424,True
+55,Tìm váy maxi,SELECT * FROM products WHERE name LIKE '%váy maxi%' LIMIT 10;,SELECT * FROM products WHERE name LIKE '%váy maxi%' LIMIT 10;,simple,1,1,True,584.2874050140381,True
+56,Hiển thị váy bodycon,SELECT * FROM products WHERE name LIKE '%váy bodycon%' LIMIT 10;,"SELECT p.product_id, p.name, p.description, p.brand_id, p.category_id, p.seller_id, p.date_created, p.number_of_images, p.has_video, p.source_file, p.created_at\nFROM products p \nWHERE p.name LIKE '%váy bodycon%'\nLIMIT 10;",simple,0,1,True,1088.5496139526367,True
+57,Xem váy swing,SELECT * FROM products WHERE name LIKE '%váy swing%' LIMIT 10;,"SELECT p.product_id, p.name, p.description, p.brand_id, p.category_id, p.seller_id, p.date_created, p.number_of_images, p.has_video, p.source_file, p.created_at\nFROM products p \nWHERE p.name LIKE '%váy swing%'\nLIMIT 10;",simple,0,1,True,2042.5403118133545,True
+58,Liệt kê váy wrap,SELECT name FROM products WHERE name LIKE '%váy wrap%' LIMIT 10;,SELECT * FROM products WHERE name LIKE '%váy wrap%' LIMIT 10;,simple,0,1,True,581.6650390625,True
+59,Tìm kiếm giày oxford,SELECT * FROM products WHERE name LIKE '%giày oxford%' LIMIT 10;,"SELECT p.product_id, p.name, p.description\nFROM products p \nWHERE p.name LIKE '%giày oxford%'\nLIMIT 10;",simple,0,0,True,999.7305870056152,True
+60,Tìm giày loafer,SELECT * FROM products WHERE name LIKE '%giày loafer%' LIMIT 10;,SELECT * FROM products WHERE name LIKE '%giày loafer%' LIMIT 10;,simple,1,1,True,999.0229606628418,True
+61,Hiển thị giày moccasin,SELECT * FROM products WHERE name LIKE '%giày moccasin%' LIMIT 10;,"SELECT p.product_id, p.name, p.description, p.brand_id, p.category_id, p.seller_id, p.date_created, p.number_of_images, p.has_video, p.source_file, p.created_at\nFROM products p \nWHERE p.name LIKE '%giày moccasin%'\nLIMIT 10;",simple,0,1,True,1629.305362701416,True
+62,Xem giày slip-on,SELECT * FROM products WHERE name LIKE '%giày slip-on%' LIMIT 10;,SELECT * FROM products WHERE name LIKE '%giày slip-on%' LIMIT 10;,simple,1,1,True,670.5877780914307,True
+63,Liệt kê giày combat,SELECT name FROM products WHERE name LIKE '%giày combat%' LIMIT 10;,"SELECT p.name, p.description, p.product_id\nFROM products p \nWHERE p.name LIKE '%giày combat%'\nLIMIT 10;",simple,0,0,True,1104.6440601348877,True
+64,Tìm kiếm giày chelsea,SELECT * FROM products WHERE name LIKE '%giày chelsea%' LIMIT 10;,SELECT * FROM products WHERE name LIKE '%giày chelsea%' LIMIT 10;,simple,1,1,True,628.3648014068604,True
+65,Tìm túi clutch,SELECT * FROM products WHERE name LIKE '%túi clutch%' LIMIT 10;,SELECT * FROM products WHERE name LIKE '%túi clutch%' LIMIT 10;,simple,1,1,True,977.3473739624023,True
+66,Hiển thị túi tote,SELECT * FROM products WHERE name LIKE '%túi tote%' LIMIT 10;,SELECT * FROM products WHERE name LIKE '%túi tote%' LIMIT 10;,simple,1,1,True,559.3924522399902,True
+67,Xem túi bucket,SELECT * FROM products WHERE name LIKE '%túi bucket%' LIMIT 10;,SELECT * FROM products WHERE name LIKE '%túi bucket%' LIMIT 10;,simple,1,1,True,490.68474769592285,True
+68,Liệt kê túi saddle,SELECT name FROM products WHERE name LIKE '%túi saddle%' LIMIT 10;,SELECT * FROM products WHERE name LIKE '%túi saddle%' LIMIT 10;,simple,0,1,True,639.2173767089844,True
+69,Tìm kiếm túi hobo,SELECT * FROM products WHERE name LIKE '%túi hobo%' LIMIT 10;,SELECT * FROM products WHERE name LIKE '%túi hobo%' LIMIT 10;,simple,1,1,True,575.2871036529541,True
+70,Tìm túi messenger,SELECT * FROM products WHERE name LIKE '%túi messenger%' LIMIT 10;,SELECT * FROM products WHERE name LIKE '%túi messenger%' LIMIT 10;,simple,1,1,True,537.6899242401123,True
+71,Hiển thị mũ fedora,SELECT * FROM products WHERE name LIKE '%mũ fedora%' LIMIT 10;,"SELECT p.product_id, p.name, p.description, p.brand_id, p.category_id, p.seller_id, p.date_created, p.number_of_images, p.has_video, p.source_file, p.created_at\nFROM products p \nWHERE p.name LIKE '%mũ fedora%'\nLIMIT 10;",simple,0,1,True,1677.7353286743164,True
+72,Xem mũ bucket,SELECT * FROM products WHERE name LIKE '%mũ bucket%' LIMIT 10;,SELECT * FROM products WHERE name LIKE '%mũ bucket%' LIMIT 10;,simple,1,1,True,511.46674156188965,True
+73,Liệt kê mũ panama,SELECT name FROM products WHERE name LIKE '%mũ panama%' LIMIT 10;,SELECT * FROM products WHERE name LIKE '%mũ panama%' LIMIT 10;,simple,0,1,True,937.6072883605957,True
+74,Tìm kiếm mũ newsboy,SELECT * FROM products WHERE name LIKE '%mũ newsboy%' LIMIT 10;,"SELECT p.product_id, p.name, p.description, p.brand_id, p.category_id, p.seller_id, p.date_created, p.number_of_images, p.has_video, p.source_file, p.created_at\nFROM products p \nWHERE p.name LIKE '%mũ newsboy%'\nLIMIT 10;",simple,0,1,True,1020.1892852783203,True
+75,Tìm mũ trucker,SELECT * FROM products WHERE name LIKE '%mũ trucker%' LIMIT 10;,"SELECT p.product_id, p.name, p.description, p.brand_id, p.category_id, p.seller_id, p.date_created, p.number_of_images, p.has_video, p.source_file, p.created_at\nFROM products p \nWHERE p.name LIKE '%mũ trucker%'\nLIMIT 10;",simple,0,1,True,1008.8331699371338,True
+76,Hiển thị mũ beanie,SELECT * FROM products WHERE name LIKE '%mũ beanie%' LIMIT 10;,"SELECT p.product_id, p.name, p.description, p.brand_id, p.category_id, p.seller_id, p.date_created, p.number_of_images, p.has_video, p.source_file, p.created_at\nFROM products p \nWHERE p.name LIKE '%mũ beanie%'\nLIMIT 10;",simple,0,1,True,1463.4425640106201,True
+77,Xem kính cận,SELECT * FROM products WHERE name LIKE '%kính cận%' LIMIT 10;,"SELECT p.product_id, p.name, p.description, p.brand_id, p.category_id, p.seller_id, p.date_created, p.number_of_images, p.has_video, p.source_file, p.created_at\nFROM products p \nWHERE p.name LIKE '%kính cận%'\nLIMIT 10;",simple,0,1,True,1044.445276260376,True
+78,Liệt kê kính mát,SELECT name FROM products WHERE name LIKE '%kính mát%' LIMIT 10;,"SELECT p.product_id, p.name, p.description, p.brand_id, p.category_id, p.seller_id, p.date_created, p.number_of_images, p.has_video, p.source_file, p.created_at\nFROM products p \nWHERE p.name LIKE '%kính mát%'\nLIMIT 10;",simple,0,0,True,946.8173980712891,True
+79,Tìm kiếm kính gọng tròn,SELECT * FROM products WHERE name LIKE '%kính gọng tròn%' LIMIT 10;,SELECT * FROM products WHERE name LIKE '%kính gọng tròn%' LIMIT 10;,simple,1,1,True,593.5239791870117,True
+80,Tìm tất cả sản phẩm,SELECT * FROM products LIMIT 10;,SELECT * FROM products LIMIT 10;,simple,1,1,True,914.7183895111084,True
+81,Hiển thị tên sản phẩm,SELECT name FROM products LIMIT 10;,SELECT p.name \nFROM products p \nLIMIT 10;,simple,0,1,True,475.100040435791,True
+82,Đếm số sản phẩm,SELECT COUNT(*) as total_products FROM products;,SELECT COUNT(*) FROM products;,simple,0,1,True,595.7949161529541,True
+83,Xem danh sách thương hiệu,SELECT DISTINCT brand_name FROM brands;,SELECT DISTINCT brand_id FROM products LIMIT 10;,simple,0,0,True,988.649845123291,True
+84,Hiển thị danh mục,SELECT category_name FROM categories;,SELECT DISTINCT category_id FROM products LIMIT 10;,simple,0,0,True,932.7182769775391,True
+85,Tìm sản phẩm đầu tiên,SELECT * FROM products ORDER BY product_id LIMIT 1;,SELECT * FROM products ORDER BY product_id ASC LIMIT 1;,simple,0,1,True,495.50890922546387,True
+86,Xem 5 sản phẩm,SELECT * FROM products LIMIT 5;,SELECT * FROM products\nLIMIT 5;,simple,1,1,True,777.9674530029297,True
+87,Hiển thị tên và giá,"SELECT p.name, pr.current_price FROM products p JOIN product_pricing pr ON p.product_id = pr.product_id LIMIT 10;",,simple,0,0,False,905.9011936187744,False
+88,Đếm thương hiệu,SELECT COUNT(*) as total_brands FROM brands;,SELECT COUNT(DISTINCT brand_id) AS total_brands\nFROM products;,simple,0,1,True,670.9764003753662,True
+89,Xem người bán,SELECT seller_name FROM sellers LIMIT 10;,SELECT seller_id FROM products GROUP BY seller_id LIMIT 10;,simple,0,0,True,1248.7080097198486,True
+90,Xem 10 sản phẩm,SELECT * FROM products LIMIT 10;,SELECT * FROM products LIMIT 10;,simple,1,1,True,443.7246322631836,True
+91,Xem 20 sản phẩm,SELECT * FROM products LIMIT 20;,SELECT * FROM products LIMIT 20;,simple,1,1,True,454.72240447998047,True
+92,Sản phẩm mới nhất,SELECT * FROM products ORDER BY product_id DESC LIMIT 10;,"SELECT p.product_id, p.name, p.description, p.brand_id, p.category_id, p.seller_id, p.date_created, p.number_of_images, p.has_video, p.source_file, p.created_at\nFROM products p \nORDER BY p.date_created DESC \nLIMIT 10;",simple,0,0,True,2056.4424991607666,True
+93,Sản phẩm cũ nhất,SELECT * FROM products ORDER BY product_id ASC LIMIT 10;,SELECT * FROM products ORDER BY date_created ASC LIMIT 1;,simple,0,0,True,491.9435977935791,True
+94,Danh sách tất cả danh mục,SELECT * FROM categories;,SELECT DISTINCT category_id FROM products LIMIT 10;,simple,0,0,True,860.3787422180176,True
+95,Danh sách tất cả thương hiệu,SELECT * FROM brands;,SELECT DISTINCT brand_id FROM products LIMIT 10;,simple,0,0,True,985.1605892181396,True
+96,Danh sách người bán,SELECT * FROM sellers LIMIT 10;,SELECT DISTINCT seller_id \nFROM products LIMIT 10;,simple,0,0,True,891.9475078582764,True
+97,Tổng số danh mục,SELECT COUNT(*) as total FROM categories;,SELECT COUNT(DISTINCT category_id) FROM products;,simple,0,1,True,1371.490478515625,True
+98,Tổng số người bán,SELECT COUNT(*) as total FROM sellers;,SELECT COUNT(DISTINCT seller_id) as total_sellers \nFROM products;,simple,0,1,True,941.5664672851562,True
+99,Sản phẩm có hình ảnh,SELECT * FROM products WHERE number_of_images > 0 LIMIT 10;,SELECT * FROM products WHERE number_of_images > 0 LIMIT 15;,simple,0,0,True,780.2355289459229,True
+100,Sản phẩm theo thương hiệu,"SELECT b.brand_name, COUNT(p.product_id) as product_count FROM brands b JOIN products p ON b.brand_id = p.brand_id GROUP BY b.brand_name ORDER BY product_count DESC;",,medium,0,0,False,1074.047327041626,False
+101,Giá trung bình theo danh mục,"SELECT c.category_name, AVG(pr.current_price) as avg_price FROM categories c JOIN products p ON c.category_id = p.category_id JOIN product_pricing pr ON p.product_id = pr.product_id GROUP BY c.category_name;","SELECT \np.category_id,\nAVG(pr.current_price) as avg_price\nFROM products p\nJOIN product_pricing pr ON p.product_id = pr.product_id \nGROUP BY p.category_id \nORDER BY avg_price;",medium,0,0,True,1368.1378364562988,True
+102,Sản phẩm có đánh giá cao,"SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average >= 4.0 ORDER BY rv.rating_average DESC LIMIT 20;",,medium,0,0,False,1995.6607818603516,False
+103,Thương hiệu Nike,"SELECT p.name, pr.current_price FROM products p JOIN brands b ON p.brand_id = b.brand_id JOIN product_pricing pr ON p.product_id = pr.product_id WHERE b.brand_name LIKE '%Nike%' LIMIT 10;","SELECT p.name, pr.current_price FROM products p JOIN brands b ON p.brand_id = b.brand_id JOIN product_pricing pr ON p.product_id = pr.product_id WHERE b.brand_name LIKE '%Nike%' LIMIT 10;",medium,1,1,True,932.0394992828369,True
+104,Sản phẩm giá dưới 500k,"SELECT p.name, pr.current_price FROM products p JOIN product_pricing pr ON p.product_id = pr.product_id WHERE pr.current_price < 500000 ORDER BY pr.current_price LIMIT 20;","SELECT p.product_id, p.name, p.description, pr.current_price \nFROM products p \nJOIN product_pricing pr ON p.product_id = pr.product_id \nWHERE pr.current_price < 500000 LIMIT 10;",medium,0,0,True,1081.6547870635986,True
+105,Sản phẩm giá dưới 100k,"SELECT p.name, pr.current_price FROM products p JOIN product_pricing pr ON p.product_id = pr.product_id WHERE pr.current_price < 100000 ORDER BY pr.current_price LIMIT 20;","SELECT p.product_id, p.name, p.description, pr.current_price \nFROM products p \nJOIN product_pricing pr ON p.product_id = pr.product_id \nWHERE pr.current_price < 100000 LIMIT 10;",medium,0,0,True,1308.152675628662,True
+106,Sản phẩm giá trên 100k,"SELECT p.name, pr.current_price FROM products p JOIN product_pricing pr ON p.product_id = pr.product_id WHERE pr.current_price > 100000 ORDER BY pr.current_price DESC LIMIT 20;",SELECT *\nFROM products p\nJOIN product_pricing pr ON p.product_id = pr.product_id\nWHERE pr.current_price > 100000 LIMIT 10;,medium,0,0,True,1135.6251239776611,True
+107,Sản phẩm giá dưới 200k,"SELECT p.name, pr.current_price FROM products p JOIN product_pricing pr ON p.product_id = pr.product_id WHERE pr.current_price < 200000 ORDER BY pr.current_price LIMIT 20;","SELECT \np.product_id,\np.name,\np.description,\npr.current_price\nFROM products p\nJOIN product_pricing pr ON p.product_id = pr.product_id \nWHERE pr.current_price < 200000 LIMIT 10;",medium,0,0,True,1086.338996887207,True
+108,Sản phẩm giá trên 200k,"SELECT p.name, pr.current_price FROM products p JOIN product_pricing pr ON p.product_id = pr.product_id WHERE pr.current_price > 200000 ORDER BY pr.current_price DESC LIMIT 20;","SELECT \np.product_id, \np.name, \np.description, \npr.current_price \nFROM products p \nJOIN product_pricing pr ON p.product_id = pr.product_id \nWHERE pr.current_price > 200000 LIMIT 10;",medium,0,0,True,943.4070587158203,True
+109,Sản phẩm giá dưới 300k,"SELECT p.name, pr.current_price FROM products p JOIN product_pricing pr ON p.product_id = pr.product_id WHERE pr.current_price < 300000 ORDER BY pr.current_price LIMIT 20;","SELECT p.product_id, p.name, p.description, pr.current_price\nFROM products p\nJOIN product_pricing pr ON p.product_id = pr.product_id\nWHERE pr.current_price < 300000 LIMIT 10;",medium,0,0,True,968.7104225158691,True
+110,Sản phẩm giá trên 300k,"SELECT p.name, pr.current_price FROM products p JOIN product_pricing pr ON p.product_id = pr.product_id WHERE pr.current_price > 300000 ORDER BY pr.current_price DESC LIMIT 20;","SELECT p.product_id, p.name, p.description, pr.current_price \nFROM products p \nJOIN product_pricing pr ON p.product_id = pr.product_id \nWHERE pr.current_price > 300000 LIMIT 10;",medium,0,0,True,895.296573638916,True
+111,Sản phẩm giá dưới 500k,"SELECT p.name, pr.current_price FROM products p JOIN product_pricing pr ON p.product_id = pr.product_id WHERE pr.current_price < 500000 ORDER BY pr.current_price LIMIT 20;","SELECT \np.product_id, \np.name, \np.description, \npr.current_price \nFROM products p \nJOIN product_pricing pr ON p.product_id = pr.product_id \nWHERE pr.current_price < 500000 LIMIT 10;",medium,0,0,True,1037.7702713012695,True
+112,Sản phẩm giá trên 500k,"SELECT p.name, pr.current_price FROM products p JOIN product_pricing pr ON p.product_id = pr.product_id WHERE pr.current_price > 500000 ORDER BY pr.current_price DESC LIMIT 20;",SELECT * \nFROM products p \nJOIN product_pricing pr ON p.product_id = pr.product_id \nWHERE pr.current_price > 500000 LIMIT 10;,medium,0,0,True,1376.5387535095215,True
+113,Sản phẩm giá dưới 1000k,"SELECT p.name, pr.current_price FROM products p JOIN product_pricing pr ON p.product_id = pr.product_id WHERE pr.current_price < 1000000 ORDER BY pr.current_price LIMIT 20;","SELECT \np.product_id, \np.name, \np.description, \npr.current_price \nFROM products p \nJOIN product_pricing pr ON p.product_id = pr.product_id \nWHERE pr.current_price < 1000000 LIMIT 10;",medium,0,0,True,1104.7604084014893,True
+114,Sản phẩm giá trên 1000k,"SELECT p.name, pr.current_price FROM products p JOIN product_pricing pr ON p.product_id = pr.product_id WHERE pr.current_price > 1000000 ORDER BY pr.current_price DESC LIMIT 20;","SELECT \np.product_id, \np.name, \np.description, \npr.current_price \nFROM products p \nJOIN product_pricing pr ON p.product_id = pr.product_id \nWHERE pr.current_price > 1000000 LIMIT 10;",medium,0,0,True,1676.762580871582,True
+115,Sản phẩm giá dưới 2000k,"SELECT p.name, pr.current_price FROM products p JOIN product_pricing pr ON p.product_id = pr.product_id WHERE pr.current_price < 2000000 ORDER BY pr.current_price LIMIT 20;","SELECT \np.product_id, \np.name, \np.description, \npr.current_price \nFROM products p \nJOIN product_pricing pr ON p.product_id = pr.product_id \nWHERE pr.current_price < 2000000 LIMIT 10;",medium,0,0,True,1217.630386352539,True
+116,Sản phẩm giá trên 2000k,"SELECT p.name, pr.current_price FROM products p JOIN product_pricing pr ON p.product_id = pr.product_id WHERE pr.current_price > 2000000 ORDER BY pr.current_price DESC LIMIT 20;","SELECT p.product_id, p.name, pr.current_price\nFROM products p \nJOIN product_pricing pr ON p.product_id = pr.product_id \nWHERE pr.current_price > 2000000 LIMIT 10;",medium,0,0,True,849.2588996887207,True
+117,Sản phẩm thương hiệu Nike,"SELECT p.name, pr.current_price FROM products p JOIN brands b ON p.brand_id = b.brand_id JOIN product_pricing pr ON p.product_id = pr.product_id WHERE b.brand_name LIKE '%Nike%' LIMIT 10;","SELECT p.name, pr.current_price FROM products p JOIN brands b ON p.brand_id = b.brand_id JOIN product_pricing pr ON p.product_id = pr.product_id WHERE b.brand_name LIKE '%Nike%' LIMIT 10;",medium,1,1,True,1341.592788696289,True
+118,Sản phẩm thương hiệu Adidas,"SELECT p.name, pr.current_price FROM products p JOIN brands b ON p.brand_id = b.brand_id JOIN product_pricing pr ON p.product_id = pr.product_id WHERE b.brand_name LIKE '%Adidas%' LIMIT 10;","SELECT p.name, b.brand_name, c.category_name, pr.current_price\nFROM products p \nJOIN brands b ON p.brand_id = b.brand_id \nJOIN categories c ON p.category_id = c.category_id \nJOIN product_pricing pr ON p.product_id = pr.product_id \nWHERE b.brand_name LIKE '%Adidas%'\nLIMIT 15;",medium,0,1,True,1525.2764225006104,True
+119,Sản phẩm thương hiệu Samsung,"SELECT p.name, pr.current_price FROM products p JOIN brands b ON p.brand_id = b.brand_id JOIN product_pricing pr ON p.product_id = pr.product_id WHERE b.brand_name LIKE '%Samsung%' LIMIT 10;","SELECT p.name, pr.current_price FROM products p JOIN brands b ON p.brand_id = b.brand_id JOIN product_pricing pr ON p.product_id = pr.product_id WHERE b.brand_name LIKE '%Samsung%' LIMIT 10;",medium,1,1,True,1903.773546218872,True
+120,Sản phẩm thương hiệu Apple,"SELECT p.name, pr.current_price FROM products p JOIN brands b ON p.brand_id = b.brand_id JOIN product_pricing pr ON p.product_id = pr.product_id WHERE b.brand_name LIKE '%Apple%' LIMIT 10;","SELECT p.name, pr.current_price \nFROM products p \nJOIN brands b ON p.brand_id = b.brand_id \nJOIN product_pricing pr ON p.product_id = pr.product_id \nWHERE b.brand_name LIKE '%Apple%' \nLIMIT 10;",medium,1,1,True,1685.0669384002686,True
+121,Sản phẩm thương hiệu Louis Vuitton,"SELECT p.name, pr.current_price FROM products p JOIN brands b ON p.brand_id = b.brand_id JOIN product_pricing pr ON p.product_id = pr.product_id WHERE b.brand_name LIKE '%Louis Vuitton%' LIMIT 10;",SELECT * FROM products WHERE brand_id IN (SELECT brand_id FROM brands WHERE brand_name LIKE '%Louis Vuitton%') LIMIT 10;,medium,0,1,True,1852.975606918335,True
+122,Sản phẩm thương hiệu Gucci,"SELECT p.name, pr.current_price FROM products p JOIN brands b ON p.brand_id = b.brand_id JOIN product_pricing pr ON p.product_id = pr.product_id WHERE b.brand_name LIKE '%Gucci%' LIMIT 10;","SELECT p.name, b.brand_name, c.category_name, pr.current_price\nFROM products p \nJOIN brands b ON p.brand_id = b.brand_id \nJOIN categories c ON p.category_id = c.category_id \nJOIN product_pricing pr ON p.product_id = pr.product_id \nWHERE b.brand_name LIKE '%Gucci%'\nORDER BY pr.current_price \nLIMIT 10;",medium,0,1,True,1403.8190841674805,True
+123,Sản phẩm thương hiệu Uniqlo,"SELECT p.name, pr.current_price FROM products p JOIN brands b ON p.brand_id = b.brand_id JOIN product_pricing pr ON p.product_id = pr.product_id WHERE b.brand_name LIKE '%Uniqlo%' LIMIT 10;","SELECT p.name, b.brand_name, c.category_name, pr.current_price\nFROM products p \nJOIN brands b ON p.brand_id = b.brand_id \nJOIN categories c ON p.category_id = c.category_id \nJOIN product_pricing pr ON p.product_id = pr.product_id \nWHERE b.brand_name LIKE '%Uniqlo%'\nORDER BY p.name \nLIMIT 20;",medium,0,1,True,1671.7751026153564,True
+124,Sản phẩm thương hiệu Zara,"SELECT p.name, pr.current_price FROM products p JOIN brands b ON p.brand_id = b.brand_id JOIN product_pricing pr ON p.product_id = pr.product_id WHERE b.brand_name LIKE '%Zara%' LIMIT 10;","SELECT p.name, pr.current_price FROM products p JOIN brands b ON p.brand_id = b.brand_id JOIN product_pricing pr ON p.product_id = pr.product_id WHERE b.brand_name LIKE '%Zara%' LIMIT 10;",medium,1,1,True,1305.6800365447998,True
+125,Sản phẩm có đánh giá trên 4.1 sao,"SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average >= 4.1 ORDER BY rv.rating_average DESC LIMIT 15;","SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average >= 4.1 ORDER BY rv.rating_average DESC LIMIT 15;",medium,1,1,True,1240.0164604187012,True
+126,Sản phẩm có đánh giá trên 4.2 sao,"SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average >= 4.2 ORDER BY rv.rating_average DESC LIMIT 15;","SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average >= 4.2 ORDER BY rv.rating_average DESC LIMIT 15;",medium,1,1,True,1560.6317520141602,True
+127,Sản phẩm có đánh giá trên 4.3 sao,"SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average >= 4.3 ORDER BY rv.rating_average DESC LIMIT 15;","SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average >= 4.3 ORDER BY rv.rating_average DESC LIMIT 15;",medium,1,1,True,1416.8400764465332,True
+128,Sản phẩm có đánh giá trên 4.4 sao,"SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average >= 4.4 ORDER BY rv.rating_average DESC LIMIT 15;","SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average > 4.4 ORDER BY rv.rating_average DESC LIMIT 15;",medium,0,1,True,971.1332321166992,True
+129,Sản phẩm có đánh giá trên 3.5 sao,"SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average >= 3.5 ORDER BY rv.rating_average DESC LIMIT 15;","SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average >= 3.5 ORDER BY rv.rating_average DESC LIMIT 15;",medium,1,1,True,1566.6303634643555,True
+130,Sản phẩm có đánh giá trên 3.6 sao,"SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average >= 3.6 ORDER BY rv.rating_average DESC LIMIT 15;","SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average > 3.6 ORDER BY rv.rating_average DESC LIMIT 15;",medium,0,1,True,1068.0932998657227,True
+131,Sản phẩm có đánh giá trên 3.7 sao,"SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average >= 3.7 ORDER BY rv.rating_average DESC LIMIT 15;","SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average > 3.7 ORDER BY rv.rating_average DESC LIMIT 15;",medium,0,1,True,1220.046043395996,True
+132,Sản phẩm có đánh giá trên 3.8 sao,"SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average >= 3.8 ORDER BY rv.rating_average DESC LIMIT 15;","SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average > 3.8 ORDER BY rv.rating_average DESC LIMIT 15;",medium,0,1,True,2561.485767364502,True
+133,Sản phẩm có đánh giá trên 3.9 sao,"SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average >= 3.9 ORDER BY rv.rating_average DESC LIMIT 15;","SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average > 3.9 ORDER BY rv.rating_average DESC LIMIT 15;",medium,0,1,True,1516.8626308441162,True
+134,Sản phẩm có đánh giá trên 4.0 sao,"SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average >= 4.0 ORDER BY rv.rating_average DESC LIMIT 15;","SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average >= 4.0 ORDER BY rv.rating_average DESC LIMIT 15;",medium,1,1,True,921.0567474365234,True
+135,Sản phẩm có đánh giá trên 4.1 sao,"SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average >= 4.1 ORDER BY rv.rating_average DESC LIMIT 15;","SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average > 4.1 ORDER BY rv.rating_average DESC LIMIT 15;",medium,0,1,True,1480.2236557006836,True
+136,Sản phẩm có đánh giá trên 4.2 sao,"SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average >= 4.2 ORDER BY rv.rating_average DESC LIMIT 15;","SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average >= 4.2 ORDER BY rv.rating_average DESC LIMIT 15;",medium,1,1,True,910.137414932251,True
+137,Sản phẩm có đánh giá trên 4.3 sao,"SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average >= 4.3 ORDER BY rv.rating_average DESC LIMIT 15;","SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average >= 4.3 ORDER BY rv.rating_average DESC LIMIT 15;",medium,1,1,True,3691.6720867156982,True
+138,Sản phẩm có đánh giá trên 4.4 sao,"SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average >= 4.4 ORDER BY rv.rating_average DESC LIMIT 15;","SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average > 4.4 ORDER BY rv.rating_average DESC LIMIT 15;",medium,0,1,True,976.9799709320068,True
+139,Sản phẩm có đánh giá trên 3.5 sao,"SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average >= 3.5 ORDER BY rv.rating_average DESC LIMIT 15;","SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average > 3.5 ORDER BY rv.rating_average DESC LIMIT 15;",medium,0,1,True,1157.9194068908691,True
+140,Sản phẩm có đánh giá trên 3.6 sao,"SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average >= 3.6 ORDER BY rv.rating_average DESC LIMIT 15;","SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average > 3.6 ORDER BY rv.rating_average DESC LIMIT 15;",medium,0,1,True,756.7756175994873,True
+141,Sản phẩm có đánh giá trên 3.7 sao,"SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average >= 3.7 ORDER BY rv.rating_average DESC LIMIT 15;","SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average > 3.7 ORDER BY rv.rating_average DESC LIMIT 15;",medium,0,1,True,728.7559509277344,True
+142,Sản phẩm có đánh giá trên 3.8 sao,"SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average >= 3.8 ORDER BY rv.rating_average DESC LIMIT 15;","SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average > 3.8 ORDER BY rv.rating_average DESC LIMIT 15;",medium,0,1,True,1042.4094200134277,True
+143,Sản phẩm có đánh giá trên 3.9 sao,"SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average >= 3.9 ORDER BY rv.rating_average DESC LIMIT 15;","SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average > 3.9 ORDER BY rv.rating_average DESC LIMIT 15;",medium,0,1,True,808.2692623138428,True
+144,Sản phẩm có đánh giá trên 4.0 sao,"SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average >= 4.0 ORDER BY rv.rating_average DESC LIMIT 15;","SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average >= 4.0 ORDER BY rv.rating_average DESC LIMIT 15;",medium,1,1,True,1420.020580291748,True
+145,Sản phẩm có đánh giá trên 4.1 sao,"SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average >= 4.1 ORDER BY rv.rating_average DESC LIMIT 15;","SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average > 4.1 ORDER BY rv.rating_average DESC LIMIT 15;",medium,0,1,True,808.5455894470215,True
+146,Sản phẩm có đánh giá trên 4.2 sao,"SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average >= 4.2 ORDER BY rv.rating_average DESC LIMIT 15;","SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average >= 4.2 ORDER BY rv.rating_average DESC LIMIT 15;",medium,1,1,True,831.0120105743408,True
+147,Sản phẩm có đánh giá trên 4.3 sao,"SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average >= 4.3 ORDER BY rv.rating_average DESC LIMIT 15;","SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average >= 4.3 ORDER BY rv.rating_average DESC LIMIT 15;",medium,1,1,True,1802.539348602295,True
+148,Sản phẩm có đánh giá trên 4.4 sao,"SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average >= 4.4 ORDER BY rv.rating_average DESC LIMIT 15;","SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average > 4.4 ORDER BY rv.rating_average DESC LIMIT 15;",medium,0,1,True,714.622974395752,True
+149,Sản phẩm có đánh giá trên 3.5 sao,"SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average >= 3.5 ORDER BY rv.rating_average DESC LIMIT 15;","SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average > 3.5 ORDER BY rv.rating_average DESC LIMIT 15;",medium,0,1,True,3556.6368103027344,True
+150,Sản phẩm có đánh giá trên 3.6 sao,"SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average >= 3.6 ORDER BY rv.rating_average DESC LIMIT 15;","SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average > 3.6 ORDER BY rv.rating_average DESC LIMIT 15;",medium,0,1,True,925.2598285675049,True
+151,Sản phẩm có đánh giá trên 3.7 sao,"SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average >= 3.7 ORDER BY rv.rating_average DESC LIMIT 15;","SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average > 3.7 ORDER BY rv.rating_average DESC LIMIT 15;",medium,0,1,True,923.4919548034668,True
+152,Sản phẩm có đánh giá trên 3.8 sao,"SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average >= 3.8 ORDER BY rv.rating_average DESC LIMIT 15;","SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average > 3.8 ORDER BY rv.rating_average DESC LIMIT 15;",medium,0,1,True,1107.628345489502,True
+153,Sản phẩm có đánh giá trên 3.9 sao,"SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average >= 3.9 ORDER BY rv.rating_average DESC LIMIT 15;","SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average > 3.9 ORDER BY rv.rating_average DESC LIMIT 15;",medium,0,1,True,3592.4954414367676,True
+154,Sản phẩm có đánh giá trên 4.0 sao,"SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average >= 4.0 ORDER BY rv.rating_average DESC LIMIT 15;","SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average >= 4.0 ORDER BY rv.rating_average DESC LIMIT 15;",medium,1,1,True,788.2080078125,True
+155,Sản phẩm có đánh giá trên 4.1 sao,"SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average >= 4.1 ORDER BY rv.rating_average DESC LIMIT 15;","SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average > 4.1 ORDER BY rv.rating_average DESC LIMIT 15;",medium,0,1,True,995.3815937042236,True
+156,Sản phẩm có đánh giá trên 4.2 sao,"SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average >= 4.2 ORDER BY rv.rating_average DESC LIMIT 15;","SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average >= 4.2 ORDER BY rv.rating_average DESC LIMIT 15;",medium,1,1,True,954.1890621185303,True
+157,Sản phẩm có đánh giá trên 4.3 sao,"SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average >= 4.3 ORDER BY rv.rating_average DESC LIMIT 15;","SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average > 4.3 ORDER BY rv.rating_average DESC LIMIT 15;",medium,0,1,True,3295.8364486694336,True
+158,Sản phẩm có đánh giá trên 4.4 sao,"SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average >= 4.4 ORDER BY rv.rating_average DESC LIMIT 15;","SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average > 4.4 ORDER BY rv.rating_average DESC LIMIT 15;",medium,0,1,True,871.2403774261475,True
+159,Sản phẩm có đánh giá trên 3.5 sao,"SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average >= 3.5 ORDER BY rv.rating_average DESC LIMIT 15;","SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average >= 3.5 ORDER BY rv.rating_average DESC LIMIT 15;",medium,1,1,True,1857.5878143310547,True
+160,Sản phẩm có đánh giá trên 3.6 sao,"SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average >= 3.6 ORDER BY rv.rating_average DESC LIMIT 15;","SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average > 3.6 ORDER BY rv.rating_average DESC LIMIT 15;",medium,0,1,True,756.4706802368164,True
+161,Sản phẩm có đánh giá trên 3.7 sao,"SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average >= 3.7 ORDER BY rv.rating_average DESC LIMIT 15;","SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average > 3.7 ORDER BY rv.rating_average DESC LIMIT 15;",medium,0,1,True,1179.5880794525146,True
+162,Sản phẩm có đánh giá trên 3.8 sao,"SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average >= 3.8 ORDER BY rv.rating_average DESC LIMIT 15;","SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average > 3.8 ORDER BY rv.rating_average DESC LIMIT 15;",medium,0,1,True,1184.1459274291992,True
+163,Sản phẩm có đánh giá trên 3.9 sao,"SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average >= 3.9 ORDER BY rv.rating_average DESC LIMIT 15;","SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average > 3.9 ORDER BY rv.rating_average DESC LIMIT 15;",medium,0,1,True,805.539608001709,True
+164,Sản phẩm có đánh giá trên 4.0 sao,"SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average >= 4.0 ORDER BY rv.rating_average DESC LIMIT 15;","SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average >= 4.0 ORDER BY rv.rating_average DESC LIMIT 15;",medium,1,1,True,3731.5242290496826,True
+165,Sản phẩm có đánh giá trên 4.1 sao,"SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average >= 4.1 ORDER BY rv.rating_average DESC LIMIT 15;","SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average > 4.1 ORDER BY rv.rating_average DESC LIMIT 15;",medium,0,1,True,835.1027965545654,True
+166,Sản phẩm có đánh giá trên 4.2 sao,"SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average >= 4.2 ORDER BY rv.rating_average DESC LIMIT 15;","SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average >= 4.2 ORDER BY rv.rating_average DESC LIMIT 15;",medium,1,1,True,885.3945732116699,True
+167,Sản phẩm có đánh giá trên 4.3 sao,"SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average >= 4.3 ORDER BY rv.rating_average DESC LIMIT 15;","SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average > 4.3 ORDER BY rv.rating_average DESC LIMIT 15;",medium,0,1,True,821.4495182037354,True
+168,Sản phẩm có đánh giá trên 4.4 sao,"SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average >= 4.4 ORDER BY rv.rating_average DESC LIMIT 15;","SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average > 4.4 ORDER BY rv.rating_average DESC LIMIT 15;",medium,0,1,True,3346.440315246582,True
+169,Sản phẩm có đánh giá trên 3.5 sao,"SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average >= 3.5 ORDER BY rv.rating_average DESC LIMIT 15;","SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average >= 3.5 ORDER BY rv.rating_average DESC LIMIT 15;",medium,1,1,True,711.5600109100342,True
+170,Sản phẩm có đánh giá trên 3.6 sao,"SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average >= 3.6 ORDER BY rv.rating_average DESC LIMIT 15;","SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average > 3.6 ORDER BY rv.rating_average DESC LIMIT 15;",medium,0,1,True,1159.6465110778809,True
+171,Sản phẩm có đánh giá trên 3.7 sao,"SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average >= 3.7 ORDER BY rv.rating_average DESC LIMIT 15;","SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average > 3.7 ORDER BY rv.rating_average DESC LIMIT 15;",medium,0,1,True,827.4445533752441,True
+172,Sản phẩm có đánh giá trên 3.8 sao,"SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average >= 3.8 ORDER BY rv.rating_average DESC LIMIT 15;","SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average > 3.8 ORDER BY rv.rating_average DESC LIMIT 15;",medium,0,1,True,1158.0514907836914,True
+173,Sản phẩm có đánh giá trên 3.9 sao,"SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average >= 3.9 ORDER BY rv.rating_average DESC LIMIT 15;","SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average > 3.9 ORDER BY rv.rating_average DESC LIMIT 15;",medium,0,1,True,1002.8500556945801,True
+174,Sản phẩm có đánh giá trên 4.0 sao,"SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average >= 4.0 ORDER BY rv.rating_average DESC LIMIT 15;","SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average >= 4.0 ORDER BY rv.rating_average DESC LIMIT 15;",medium,1,1,True,885.3952884674072,True
+175,Sản phẩm có đánh giá trên 4.1 sao,"SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average >= 4.1 ORDER BY rv.rating_average DESC LIMIT 15;","SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average > 4.1 ORDER BY rv.rating_average DESC LIMIT 15;",medium,0,1,True,2620.1727390289307,True
+176,Sản phẩm có đánh giá trên 4.2 sao,"SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average >= 4.2 ORDER BY rv.rating_average DESC LIMIT 15;","SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average >= 4.2 ORDER BY rv.rating_average DESC LIMIT 15;",medium,1,1,True,826.4176845550537,True
+177,Sản phẩm có đánh giá trên 4.3 sao,"SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average >= 4.3 ORDER BY rv.rating_average DESC LIMIT 15;","SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average >= 4.3 ORDER BY rv.rating_average DESC LIMIT 15;",medium,1,1,True,749.0425109863281,True
+178,Sản phẩm có đánh giá trên 4.4 sao,"SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average >= 4.4 ORDER BY rv.rating_average DESC LIMIT 15;","SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average > 4.4 ORDER BY rv.rating_average DESC LIMIT 15;",medium,0,1,True,1639.8093700408936,True
+179,Sản phẩm có đánh giá trên 3.5 sao,"SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average >= 3.5 ORDER BY rv.rating_average DESC LIMIT 15;","SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average > 3.5 ORDER BY rv.rating_average DESC LIMIT 15;",medium,0,1,True,839.4749164581299,True
+180,Sản phẩm có đánh giá trên 3.6 sao,"SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average >= 3.6 ORDER BY rv.rating_average DESC LIMIT 15;","SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average > 3.6 ORDER BY rv.rating_average DESC LIMIT 15;",medium,0,1,True,855.879545211792,True
+181,Sản phẩm có đánh giá trên 3.7 sao,"SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average >= 3.7 ORDER BY rv.rating_average DESC LIMIT 15;","SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average > 3.7 ORDER BY rv.rating_average DESC LIMIT 15;",medium,0,1,True,750.7033348083496,True
+182,Sản phẩm có đánh giá trên 3.8 sao,"SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average >= 3.8 ORDER BY rv.rating_average DESC LIMIT 15;","SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average > 3.8 ORDER BY rv.rating_average DESC LIMIT 15;",medium,0,1,True,984.9357604980469,True
+183,Sản phẩm có đánh giá trên 3.9 sao,"SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average >= 3.9 ORDER BY rv.rating_average DESC LIMIT 15;","SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average > 3.9 ORDER BY rv.rating_average DESC LIMIT 15;",medium,0,1,True,743.9789772033691,True
+184,Sản phẩm có đánh giá trên 4.0 sao,"SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average >= 4.0 ORDER BY rv.rating_average DESC LIMIT 15;","SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average >= 4.0 ORDER BY rv.rating_average DESC LIMIT 15;",medium,1,1,True,932.6472282409668,True
+185,Sản phẩm có đánh giá trên 4.1 sao,"SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average >= 4.1 ORDER BY rv.rating_average DESC LIMIT 15;","SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average > 4.1 ORDER BY rv.rating_average DESC LIMIT 15;",medium,0,1,True,810.2321624755859,True
+186,Sản phẩm có đánh giá trên 4.2 sao,"SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average >= 4.2 ORDER BY rv.rating_average DESC LIMIT 15;","SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average >= 4.2 ORDER BY rv.rating_average DESC LIMIT 15;",medium,1,1,True,782.0572853088379,True
+187,Sản phẩm có đánh giá trên 4.3 sao,"SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average >= 4.3 ORDER BY rv.rating_average DESC LIMIT 15;","SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average >= 4.3 ORDER BY rv.rating_average DESC LIMIT 15;",medium,1,1,True,857.0654392242432,True
+188,Sản phẩm có đánh giá trên 4.4 sao,"SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average >= 4.4 ORDER BY rv.rating_average DESC LIMIT 15;","SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average > 4.4 ORDER BY rv.rating_average DESC LIMIT 15;",medium,0,1,True,1186.8219375610352,True
+189,Sản phẩm có đánh giá trên 3.5 sao,"SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average >= 3.5 ORDER BY rv.rating_average DESC LIMIT 15;","SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average > 3.5 ORDER BY rv.rating_average DESC LIMIT 15;",medium,0,1,True,749.8447895050049,True
+190,Sản phẩm có đánh giá trên 3.6 sao,"SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average >= 3.6 ORDER BY rv.rating_average DESC LIMIT 15;","SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average > 3.6 ORDER BY rv.rating_average DESC LIMIT 15;",medium,0,1,True,848.6452102661133,True
+191,Sản phẩm có đánh giá trên 3.7 sao,"SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average >= 3.7 ORDER BY rv.rating_average DESC LIMIT 15;","SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average > 3.7 ORDER BY rv.rating_average DESC LIMIT 15;",medium,0,1,True,924.159049987793,True
+192,Sản phẩm có đánh giá trên 3.8 sao,"SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average >= 3.8 ORDER BY rv.rating_average DESC LIMIT 15;","SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average > 3.8 ORDER BY rv.rating_average DESC LIMIT 15;",medium,0,1,True,838.7086391448975,True
+193,Sản phẩm có đánh giá trên 3.9 sao,"SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average >= 3.9 ORDER BY rv.rating_average DESC LIMIT 15;","SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average > 3.9 ORDER BY rv.rating_average DESC LIMIT 15;",medium,0,1,True,975.0750064849854,True
+194,Sản phẩm có đánh giá trên 4.0 sao,"SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average >= 4.0 ORDER BY rv.rating_average DESC LIMIT 15;","SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average >= 4.0 ORDER BY rv.rating_average DESC LIMIT 15;",medium,1,1,True,743.7119483947754,True
+195,Sản phẩm có đánh giá trên 4.1 sao,"SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average >= 4.1 ORDER BY rv.rating_average DESC LIMIT 15;","SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average > 4.1 ORDER BY rv.rating_average DESC LIMIT 15;",medium,0,1,True,695.0523853302002,True
+196,Sản phẩm có đánh giá trên 4.2 sao,"SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average >= 4.2 ORDER BY rv.rating_average DESC LIMIT 15;","SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average >= 4.2 ORDER BY rv.rating_average DESC LIMIT 15;",medium,1,1,True,1147.2713947296143,True
+197,Sản phẩm có đánh giá trên 4.3 sao,"SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average >= 4.3 ORDER BY rv.rating_average DESC LIMIT 15;","SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average > 4.3 ORDER BY rv.rating_average DESC LIMIT 15;",medium,0,1,True,1012.8414630889893,True
+198,Sản phẩm có đánh giá trên 4.4 sao,"SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average >= 4.4 ORDER BY rv.rating_average DESC LIMIT 15;","SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average > 4.4 ORDER BY rv.rating_average DESC LIMIT 15;",medium,0,1,True,883.8295936584473,True
+199,Sản phẩm có đánh giá trên 3.5 sao,"SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average >= 3.5 ORDER BY rv.rating_average DESC LIMIT 15;","SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average > 3.5 ORDER BY rv.rating_average DESC LIMIT 15;",medium,0,1,True,830.6469917297363,True
+200,Top 10 sản phẩm đánh giá cao nhất có giá dưới 1 triệu,"SELECT p.name, b.brand_name, c.category_name, pr.current_price, rv.rating_average, rv.review_count 
+FROM products p 
+JOIN brands b ON p.brand_id = b.brand_id 
+JOIN categories c ON p.category_id = c.category_id 
+JOIN product_pricing pr ON p.product_id = pr.product_id 
+JOIN product_reviews rv ON p.product_id = rv.product_id 
+WHERE pr.current_price < 1000000 AND rv.rating_average >= 4.0 
+ORDER BY rv.rating_average DESC, rv.review_count DESC 
+LIMIT 10;","SELECT p.name, b.brand_name, c.category_name, pr.current_price, rv.rating_average, rv.review_count \nFROM products p \nJOIN brands b ON p.brand_id = b.brand_id \nJOIN categories c ON p.category_id = c.category_id \nJOIN product_pricing pr ON p.product_id = pr.product_id \nJOIN product_reviews rv ON p.product_id = rv.product_id \nWHERE pr.current_price < 1000000 AND rv.rating_average >= 4.0 \nORDER BY rv.rating_average DESC, rv.review_count DESC \nLIMIT 10;",complex,1,1,True,1794.8296070098877,True
+201,Phân tích thị phần thương hiệu,"SELECT b.brand_name, 
+COUNT(p.product_id) as product_count,
+ROUND(COUNT(p.product_id) * 100.0 / (SELECT COUNT(*) FROM products), 2) as market_share_percent,
+AVG(pr.current_price) as avg_price,
+AVG(rv.rating_average) as avg_rating
+FROM brands b 
+JOIN products p ON b.brand_id = p.brand_id 
+JOIN product_pricing pr ON p.product_id = pr.product_id 
+JOIN product_reviews rv ON p.product_id = rv.product_id 
+GROUP BY b.brand_id, b.brand_name 
+HAVING COUNT(p.product_id) >= 10
+ORDER BY market_share_percent DESC 
+LIMIT 20;","SELECT b.brand_name, \nCOUNT(p.product_id) as product_count,\nROUND(COUNT(p.product_id) * 100.0 / (SELECT COUNT(*) FROM products), 2) as market_share_percent,\nAVG(pr.current_price) as avg_price,\nAVG(rv.rating_average) as avg_rating\nFROM brands b \nJOIN products p ON b.brand_id = p.brand_id \nJOIN product_pricing pr ON p.product_id = pr.product_id \nJOIN product_reviews rv ON p.product_id = rv.product_id \nGROUP BY b.brand_id, b.brand_name \nHAVING COUNT(p.product_id) >= 10\nORDER BY market_share_percent DESC \nLIMIT 20;",complex,1,1,True,2962.1243476867676,True
+202,Top 5 sản phẩm bán chạy nhất trong danh mục Phụ kiện thời trang,"SELECT p.name, b.brand_name, pr.current_price, rv.rating_average, pr.quantity_sold
+FROM products p 
+JOIN brands b ON p.brand_id = b.brand_id 
+JOIN categories c ON p.category_id = c.category_id 
+JOIN product_pricing pr ON p.product_id = pr.product_id 
+JOIN product_reviews rv ON p.product_id = rv.product_id 
+WHERE c.category_name = 'Phụ kiện thời trang'
+ORDER BY pr.quantity_sold DESC, rv.rating_average DESC 
+LIMIT 5;","SELECT p.name, b.brand_name, pr.current_price, rv.rating_average, pr.quantity_sold\nFROM products p \nJOIN brands b ON p.brand_id = b.brand_id \nJOIN categories c ON p.category_id = c.category_id \nJOIN product_pricing pr ON p.product_id = pr.product_id \nJOIN product_reviews rv ON p.product_id = rv.product_id \nWHERE c.category_name = 'Phụ kiện thời trang'\nORDER BY pr.quantity_sold DESC, rv.rating_average DESC \nLIMIT 5;",complex,1,1,True,1669.3971157073975,True
+203,Top 6 sản phẩm bán chạy nhất trong danh mục Giày dép nam,"SELECT p.name, b.brand_name, pr.current_price, rv.rating_average, pr.quantity_sold
+FROM products p 
+JOIN brands b ON p.brand_id = b.brand_id 
+JOIN categories c ON p.category_id = c.category_id 
+JOIN product_pricing pr ON p.product_id = pr.product_id 
+JOIN product_reviews rv ON p.product_id = rv.product_id 
+WHERE c.category_name = 'Giày dép nam'
+ORDER BY pr.quantity_sold DESC, rv.rating_average DESC 
+LIMIT 6;","SELECT p.name, b.brand_name, pr.current_price, rv.rating_average, pr.quantity_sold\nFROM products p \nJOIN brands b ON p.brand_id = b.brand_id \nJOIN categories c ON p.category_id = c.category_id \nJOIN product_pricing pr ON p.product_id = pr.product_id \nJOIN product_reviews rv ON p.product_id = rv.product_id \nWHERE c.category_name = 'Giày dép nam'\nORDER BY pr.quantity_sold DESC, rv.rating_average DESC \nLIMIT 6;",complex,1,1,True,1507.0915222167969,True
+204,Top 7 sản phẩm bán chạy nhất trong danh mục Túi nam,"SELECT p.name, b.brand_name, pr.current_price, rv.rating_average, pr.quantity_sold
+FROM products p 
+JOIN brands b ON p.brand_id = b.brand_id 
+JOIN categories c ON p.category_id = c.category_id 
+JOIN product_pricing pr ON p.product_id = pr.product_id 
+JOIN product_reviews rv ON p.product_id = rv.product_id 
+WHERE c.category_name = 'Túi nam'
+ORDER BY pr.quantity_sold DESC, rv.rating_average DESC 
+LIMIT 7;","SELECT p.name, b.brand_name, pr.current_price, rv.rating_average, pr.quantity_sold\nFROM products p \nJOIN brands b ON p.brand_id = b.brand_id \nJOIN categories c ON p.category_id = c.category_id \nJOIN product_pricing pr ON p.product_id = pr.product_id \nJOIN product_reviews rv ON p.product_id = rv.product_id \nWHERE c.category_name = 'Túi nam'\nORDER BY pr.quantity_sold DESC, rv.rating_average DESC \nLIMIT 7;",complex,1,1,True,1586.59029006958,True
+205,Top 8 sản phẩm bán chạy nhất trong danh mục Balo & Vali,"SELECT p.name, b.brand_name, pr.current_price, rv.rating_average, pr.quantity_sold
+FROM products p 
+JOIN brands b ON p.brand_id = b.brand_id 
+JOIN categories c ON p.category_id = c.category_id 
+JOIN product_pricing pr ON p.product_id = pr.product_id 
+JOIN product_reviews rv ON p.product_id = rv.product_id 
+WHERE c.category_name = 'Balo & Vali'
+ORDER BY pr.quantity_sold DESC, rv.rating_average DESC 
+LIMIT 8;","SELECT p.name, b.brand_name, pr.current_price, rv.rating_average, pr.quantity_sold\nFROM products p \nJOIN brands b ON p.brand_id = b.brand_id \nJOIN categories c ON p.category_id = c.category_id \nJOIN product_pricing pr ON p.product_id = pr.product_id \nJOIN product_reviews rv ON p.product_id = rv.product_id \nWHERE c.category_name = 'Balo & Vali'\nORDER BY pr.quantity_sold DESC, rv.rating_average DESC \nLIMIT 8;",complex,1,1,True,1480.9930324554443,True
+206,Top 9 sản phẩm bán chạy nhất trong danh mục Phụ kiện thời trang,"SELECT p.name, b.brand_name, pr.current_price, rv.rating_average, pr.quantity_sold
+FROM products p 
+JOIN brands b ON p.brand_id = b.brand_id 
+JOIN categories c ON p.category_id = c.category_id 
+JOIN product_pricing pr ON p.product_id = pr.product_id 
+JOIN product_reviews rv ON p.product_id = rv.product_id 
+WHERE c.category_name = 'Phụ kiện thời trang'
+ORDER BY pr.quantity_sold DESC, rv.rating_average DESC 
+LIMIT 9;","SELECT p.name, b.brand_name, pr.current_price, rv.rating_average, pr.quantity_sold\nFROM products p \nJOIN brands b ON p.brand_id = b.brand_id \nJOIN categories c ON p.category_id = c.category_id \nJOIN product_pricing pr ON p.product_id = pr.product_id \nJOIN product_reviews rv ON p.product_id = rv.product_id \nWHERE c.category_name = 'Phụ kiện thời trang'\nORDER BY pr.quantity_sold DESC, rv.rating_average DESC \nLIMIT 9;",complex,1,1,True,2849.806785583496,True
+207,Top 10 sản phẩm bán chạy nhất trong danh mục Giày dép nam,"SELECT p.name, b.brand_name, pr.current_price, rv.rating_average, pr.quantity_sold
+FROM products p 
+JOIN brands b ON p.brand_id = b.brand_id 
+JOIN categories c ON p.category_id = c.category_id 
+JOIN product_pricing pr ON p.product_id = pr.product_id 
+JOIN product_reviews rv ON p.product_id = rv.product_id 
+WHERE c.category_name = 'Giày dép nam'
+ORDER BY pr.quantity_sold DESC, rv.rating_average DESC 
+LIMIT 10;","SELECT p.name, b.brand_name, pr.current_price, rv.rating_average, pr.quantity_sold\nFROM products p \nJOIN brands b ON p.brand_id = b.brand_id \nJOIN categories c ON p.category_id = c.category_id \nJOIN product_pricing pr ON p.product_id = pr.product_id \nJOIN product_reviews rv ON p.product_id = rv.product_id \nWHERE c.category_name = 'Giày dép nam'\nORDER BY pr.quantity_sold DESC, rv.rating_average DESC \nLIMIT 10;",complex,1,1,True,2589.1060829162598,True
+208,Top 11 sản phẩm bán chạy nhất trong danh mục Túi nam,"SELECT p.name, b.brand_name, pr.current_price, rv.rating_average, pr.quantity_sold
+FROM products p 
+JOIN brands b ON p.brand_id = b.brand_id 
+JOIN categories c ON p.category_id = c.category_id 
+JOIN product_pricing pr ON p.product_id = pr.product_id 
+JOIN product_reviews rv ON p.product_id = rv.product_id 
+WHERE c.category_name = 'Túi nam'
+ORDER BY pr.quantity_sold DESC, rv.rating_average DESC 
+LIMIT 11;","SELECT p.name, b.brand_name, pr.current_price, rv.rating_average, pr.quantity_sold\nFROM products p \nJOIN brands b ON p.brand_id = b.brand_id \nJOIN categories c ON p.category_id = c.category_id \nJOIN product_pricing pr ON p.product_id = pr.product_id \nJOIN product_reviews rv ON p.product_id = rv.product_id \nWHERE c.category_name = 'Túi nam'\nORDER BY pr.quantity_sold DESC, rv.rating_average DESC \nLIMIT 11;",complex,1,1,True,2435.7388019561768,True
+209,Top 12 sản phẩm bán chạy nhất trong danh mục Balo & Vali,"SELECT p.name, b.brand_name, pr.current_price, rv.rating_average, pr.quantity_sold
+FROM products p 
+JOIN brands b ON p.brand_id = b.brand_id 
+JOIN categories c ON p.category_id = c.category_id 
+JOIN product_pricing pr ON p.product_id = pr.product_id 
+JOIN product_reviews rv ON p.product_id = rv.product_id 
+WHERE c.category_name = 'Balo & Vali'
+ORDER BY pr.quantity_sold DESC, rv.rating_average DESC 
+LIMIT 12;","SELECT p.name, b.brand_name, pr.current_price, rv.rating_average, pr.quantity_sold\nFROM products p \nJOIN brands b ON p.brand_id = b.brand_id \nJOIN categories c ON p.category_id = c.category_id \nJOIN product_pricing pr ON p.product_id = pr.product_id \nJOIN product_reviews rv ON p.product_id = rv.product_id \nWHERE c.category_name = 'Balo & Vali'\nORDER BY pr.quantity_sold DESC, rv.rating_average DESC \nLIMIT 12;",complex,1,1,True,2028.4488201141357,True
+210,Top 13 sản phẩm bán chạy nhất trong danh mục Phụ kiện thời trang,"SELECT p.name, b.brand_name, pr.current_price, rv.rating_average, pr.quantity_sold
+FROM products p 
+JOIN brands b ON p.brand_id = b.brand_id 
+JOIN categories c ON p.category_id = c.category_id 
+JOIN product_pricing pr ON p.product_id = pr.product_id 
+JOIN product_reviews rv ON p.product_id = rv.product_id 
+WHERE c.category_name = 'Phụ kiện thời trang'
+ORDER BY pr.quantity_sold DESC, rv.rating_average DESC 
+LIMIT 13;","SELECT p.name, b.brand_name, pr.current_price, rv.rating_average, pr.quantity_sold\nFROM products p \nJOIN brands b ON p.brand_id = b.brand_id \nJOIN categories c ON p.category_id = c.category_id \nJOIN product_pricing pr ON p.product_id = pr.product_id \nJOIN product_reviews rv ON p.product_id = rv.product_id \nWHERE c.category_name = 'Phụ kiện thời trang'\nORDER BY pr.quantity_sold DESC, rv.rating_average DESC \nLIMIT 13;",complex,1,1,True,2268.2244777679443,True
+211,Top 14 sản phẩm bán chạy nhất trong danh mục Giày dép nam,"SELECT p.name, b.brand_name, pr.current_price, rv.rating_average, pr.quantity_sold
+FROM products p 
+JOIN brands b ON p.brand_id = b.brand_id 
+JOIN categories c ON p.category_id = c.category_id 
+JOIN product_pricing pr ON p.product_id = pr.product_id 
+JOIN product_reviews rv ON p.product_id = rv.product_id 
+WHERE c.category_name = 'Giày dép nam'
+ORDER BY pr.quantity_sold DESC, rv.rating_average DESC 
+LIMIT 14;","SELECT p.name, b.brand_name, pr.current_price, rv.rating_average, pr.quantity_sold\nFROM products p \nJOIN brands b ON p.brand_id = b.brand_id \nJOIN categories c ON p.category_id = c.category_id \nJOIN product_pricing pr ON p.product_id = pr.product_id \nJOIN product_reviews rv ON p.product_id = rv.product_id \nWHERE c.category_name = 'Giày dép nam'\nORDER BY pr.quantity_sold DESC, rv.rating_average DESC \nLIMIT 14;",complex,1,1,True,1415.0004386901855,True
+212,Top 5 sản phẩm bán chạy nhất trong danh mục Túi nam,"SELECT p.name, b.brand_name, pr.current_price, rv.rating_average, pr.quantity_sold
+FROM products p 
+JOIN brands b ON p.brand_id = b.brand_id 
+JOIN categories c ON p.category_id = c.category_id 
+JOIN product_pricing pr ON p.product_id = pr.product_id 
+JOIN product_reviews rv ON p.product_id = rv.product_id 
+WHERE c.category_name = 'Túi nam'
+ORDER BY pr.quantity_sold DESC, rv.rating_average DESC 
+LIMIT 5;","SELECT p.name, b.brand_name, pr.current_price, rv.rating_average, pr.quantity_sold\nFROM products p \nJOIN brands b ON p.brand_id = b.brand_id \nJOIN categories c ON p.category_id = c.category_id \nJOIN product_pricing pr ON p.product_id = pr.product_id \nJOIN product_reviews rv ON p.product_id = rv.product_id \nWHERE c.category_name = 'Túi nam'\nORDER BY pr.quantity_sold DESC, rv.rating_average DESC \nLIMIT 5;",complex,1,1,True,1660.5181694030762,True
+213,Top 6 sản phẩm bán chạy nhất trong danh mục Balo & Vali,"SELECT p.name, b.brand_name, pr.current_price, rv.rating_average, pr.quantity_sold
+FROM products p 
+JOIN brands b ON p.brand_id = b.brand_id 
+JOIN categories c ON p.category_id = c.category_id 
+JOIN product_pricing pr ON p.product_id = pr.product_id 
+JOIN product_reviews rv ON p.product_id = rv.product_id 
+WHERE c.category_name = 'Balo & Vali'
+ORDER BY pr.quantity_sold DESC, rv.rating_average DESC 
+LIMIT 6;","SELECT p.name, b.brand_name, pr.current_price, rv.rating_average, pr.quantity_sold\nFROM products p \nJOIN brands b ON p.brand_id = b.brand_id \nJOIN categories c ON p.category_id = c.category_id \nJOIN product_pricing pr ON p.product_id = pr.product_id \nJOIN product_reviews rv ON p.product_id = rv.product_id \nWHERE c.category_name = 'Balo & Vali'\nORDER BY pr.quantity_sold DESC, rv.rating_average DESC \nLIMIT 6;",complex,1,1,True,1631.9615840911865,True
+214,Top 7 sản phẩm bán chạy nhất trong danh mục Phụ kiện thời trang,"SELECT p.name, b.brand_name, pr.current_price, rv.rating_average, pr.quantity_sold
+FROM products p 
+JOIN brands b ON p.brand_id = b.brand_id 
+JOIN categories c ON p.category_id = c.category_id 
+JOIN product_pricing pr ON p.product_id = pr.product_id 
+JOIN product_reviews rv ON p.product_id = rv.product_id 
+WHERE c.category_name = 'Phụ kiện thời trang'
+ORDER BY pr.quantity_sold DESC, rv.rating_average DESC 
+LIMIT 7;","SELECT p.name, b.brand_name, pr.current_price, rv.rating_average, pr.quantity_sold\nFROM products p \nJOIN brands b ON p.brand_id = b.brand_id \nJOIN categories c ON p.category_id = c.category_id \nJOIN product_pricing pr ON p.product_id = pr.product_id \nJOIN product_reviews rv ON p.product_id = rv.product_id \nWHERE c.category_name = 'Phụ kiện thời trang'\nORDER BY pr.quantity_sold DESC, rv.rating_average DESC \nLIMIT 7;",complex,1,1,True,1510.8811855316162,True
+215,Top 8 sản phẩm bán chạy nhất trong danh mục Giày dép nam,"SELECT p.name, b.brand_name, pr.current_price, rv.rating_average, pr.quantity_sold
+FROM products p 
+JOIN brands b ON p.brand_id = b.brand_id 
+JOIN categories c ON p.category_id = c.category_id 
+JOIN product_pricing pr ON p.product_id = pr.product_id 
+JOIN product_reviews rv ON p.product_id = rv.product_id 
+WHERE c.category_name = 'Giày dép nam'
+ORDER BY pr.quantity_sold DESC, rv.rating_average DESC 
+LIMIT 8;","SELECT p.name, b.brand_name, pr.current_price, rv.rating_average, pr.quantity_sold\nFROM products p \nJOIN brands b ON p.brand_id = b.brand_id \nJOIN categories c ON p.category_id = c.category_id \nJOIN product_pricing pr ON p.product_id = pr.product_id \nJOIN product_reviews rv ON p.product_id = rv.product_id \nWHERE c.category_name = 'Giày dép nam'\nORDER BY pr.quantity_sold DESC, rv.rating_average DESC \nLIMIT 8;",complex,1,1,True,3343.898057937622,True
+216,Top 9 sản phẩm bán chạy nhất trong danh mục Túi nam,"SELECT p.name, b.brand_name, pr.current_price, rv.rating_average, pr.quantity_sold
+FROM products p 
+JOIN brands b ON p.brand_id = b.brand_id 
+JOIN categories c ON p.category_id = c.category_id 
+JOIN product_pricing pr ON p.product_id = pr.product_id 
+JOIN product_reviews rv ON p.product_id = rv.product_id 
+WHERE c.category_name = 'Túi nam'
+ORDER BY pr.quantity_sold DESC, rv.rating_average DESC 
+LIMIT 9;","SELECT p.name, b.brand_name, pr.current_price, rv.rating_average, pr.quantity_sold\nFROM products p \nJOIN brands b ON p.brand_id = b.brand_id \nJOIN categories c ON p.category_id = c.category_id \nJOIN product_pricing pr ON p.product_id = pr.product_id \nJOIN product_reviews rv ON p.product_id = rv.product_id \nWHERE c.category_name = 'Túi nam'\nORDER BY pr.quantity_sold DESC, rv.rating_average DESC \nLIMIT 9;",complex,1,1,True,1535.3097915649414,True
+217,Top 10 sản phẩm bán chạy nhất trong danh mục Balo & Vali,"SELECT p.name, b.brand_name, pr.current_price, rv.rating_average, pr.quantity_sold
+FROM products p 
+JOIN brands b ON p.brand_id = b.brand_id 
+JOIN categories c ON p.category_id = c.category_id 
+JOIN product_pricing pr ON p.product_id = pr.product_id 
+JOIN product_reviews rv ON p.product_id = rv.product_id 
+WHERE c.category_name = 'Balo & Vali'
+ORDER BY pr.quantity_sold DESC, rv.rating_average DESC 
+LIMIT 10;","SELECT p.name, b.brand_name, pr.current_price, rv.rating_average, pr.quantity_sold\nFROM products p \nJOIN brands b ON p.brand_id = b.brand_id \nJOIN categories c ON p.category_id = c.category_id \nJOIN product_pricing pr ON p.product_id = pr.product_id \nJOIN product_reviews rv ON p.product_id = rv.product_id \nWHERE c.category_name = 'Balo & Vali'\nORDER BY pr.quantity_sold DESC, rv.rating_average DESC \nLIMIT 10;",complex,1,1,True,1850.1296043395996,True
+218,Top 11 sản phẩm bán chạy nhất trong danh mục Phụ kiện thời trang,"SELECT p.name, b.brand_name, pr.current_price, rv.rating_average, pr.quantity_sold
+FROM products p 
+JOIN brands b ON p.brand_id = b.brand_id 
+JOIN categories c ON p.category_id = c.category_id 
+JOIN product_pricing pr ON p.product_id = pr.product_id 
+JOIN product_reviews rv ON p.product_id = rv.product_id 
+WHERE c.category_name = 'Phụ kiện thời trang'
+ORDER BY pr.quantity_sold DESC, rv.rating_average DESC 
+LIMIT 11;","SELECT p.name, b.brand_name, pr.current_price, rv.rating_average, pr.quantity_sold\nFROM products p \nJOIN brands b ON p.brand_id = b.brand_id \nJOIN categories c ON p.category_id = c.category_id \nJOIN product_pricing pr ON p.product_id = pr.product_id \nJOIN product_reviews rv ON p.product_id = rv.product_id \nWHERE c.category_name = 'Phụ kiện thời trang'\nORDER BY pr.quantity_sold DESC, rv.rating_average DESC \nLIMIT 11;",complex,1,1,True,2556.989908218384,True
+219,Top 12 sản phẩm bán chạy nhất trong danh mục Giày dép nam,"SELECT p.name, b.brand_name, pr.current_price, rv.rating_average, pr.quantity_sold
+FROM products p 
+JOIN brands b ON p.brand_id = b.brand_id 
+JOIN categories c ON p.category_id = c.category_id 
+JOIN product_pricing pr ON p.product_id = pr.product_id 
+JOIN product_reviews rv ON p.product_id = rv.product_id 
+WHERE c.category_name = 'Giày dép nam'
+ORDER BY pr.quantity_sold DESC, rv.rating_average DESC 
+LIMIT 12;","SELECT p.name, b.brand_name, pr.current_price, rv.rating_average, pr.quantity_sold\nFROM products p \nJOIN brands b ON p.brand_id = b.brand_id \nJOIN categories c ON p.category_id = c.category_id \nJOIN product_pricing pr ON p.product_id = pr.product_id \nJOIN product_reviews rv ON p.product_id = rv.product_id \nWHERE c.category_name = 'Giày dép nam'\nORDER BY pr.quantity_sold DESC, rv.rating_average DESC \nLIMIT 12;",complex,1,1,True,1463.8750553131104,True
+220,Top 13 sản phẩm bán chạy nhất trong danh mục Túi nam,"SELECT p.name, b.brand_name, pr.current_price, rv.rating_average, pr.quantity_sold
+FROM products p 
+JOIN brands b ON p.brand_id = b.brand_id 
+JOIN categories c ON p.category_id = c.category_id 
+JOIN product_pricing pr ON p.product_id = pr.product_id 
+JOIN product_reviews rv ON p.product_id = rv.product_id 
+WHERE c.category_name = 'Túi nam'
+ORDER BY pr.quantity_sold DESC, rv.rating_average DESC 
+LIMIT 13;","SELECT p.name, b.brand_name, pr.current_price, rv.rating_average, pr.quantity_sold\nFROM products p \nJOIN brands b ON p.brand_id = b.brand_id \nJOIN categories c ON p.category_id = c.category_id \nJOIN product_pricing pr ON p.product_id = pr.product_id \nJOIN product_reviews rv ON p.product_id = rv.product_id \nWHERE c.category_name = 'Túi nam'\nORDER BY pr.quantity_sold DESC, rv.rating_average DESC \nLIMIT 13;",complex,1,1,True,1348.6294746398926,True
+221,Top 14 sản phẩm bán chạy nhất trong danh mục Balo & Vali,"SELECT p.name, b.brand_name, pr.current_price, rv.rating_average, pr.quantity_sold
+FROM products p 
+JOIN brands b ON p.brand_id = b.brand_id 
+JOIN categories c ON p.category_id = c.category_id 
+JOIN product_pricing pr ON p.product_id = pr.product_id 
+JOIN product_reviews rv ON p.product_id = rv.product_id 
+WHERE c.category_name = 'Balo & Vali'
+ORDER BY pr.quantity_sold DESC, rv.rating_average DESC 
+LIMIT 14;","SELECT p.name, b.brand_name, pr.current_price, rv.rating_average, pr.quantity_sold\nFROM products p \nJOIN brands b ON p.brand_id = b.brand_id \nJOIN categories c ON p.category_id = c.category_id \nJOIN product_pricing pr ON p.product_id = pr.product_id \nJOIN product_reviews rv ON p.product_id = rv.product_id \nWHERE c.category_name = 'Balo & Vali'\nORDER BY pr.quantity_sold DESC, rv.rating_average DESC \nLIMIT 14;",complex,1,1,True,1422.7662086486816,True
+222,Top 5 sản phẩm bán chạy nhất trong danh mục Phụ kiện thời trang,"SELECT p.name, b.brand_name, pr.current_price, rv.rating_average, pr.quantity_sold
+FROM products p 
+JOIN brands b ON p.brand_id = b.brand_id 
+JOIN categories c ON p.category_id = c.category_id 
+JOIN product_pricing pr ON p.product_id = pr.product_id 
+JOIN product_reviews rv ON p.product_id = rv.product_id 
+WHERE c.category_name = 'Phụ kiện thời trang'
+ORDER BY pr.quantity_sold DESC, rv.rating_average DESC 
+LIMIT 5;","SELECT p.name, b.brand_name, pr.current_price, rv.rating_average, pr.quantity_sold\nFROM products p \nJOIN brands b ON p.brand_id = b.brand_id \nJOIN categories c ON p.category_id = c.category_id \nJOIN product_pricing pr ON p.product_id = pr.product_id \nJOIN product_reviews rv ON p.product_id = rv.product_id \nWHERE c.category_name = 'Phụ kiện thời trang'\nORDER BY pr.quantity_sold DESC, rv.rating_average DESC \nLIMIT 5;",complex,1,1,True,1640.510082244873,True
+223,Top 6 sản phẩm bán chạy nhất trong danh mục Giày dép nam,"SELECT p.name, b.brand_name, pr.current_price, rv.rating_average, pr.quantity_sold
+FROM products p 
+JOIN brands b ON p.brand_id = b.brand_id 
+JOIN categories c ON p.category_id = c.category_id 
+JOIN product_pricing pr ON p.product_id = pr.product_id 
+JOIN product_reviews rv ON p.product_id = rv.product_id 
+WHERE c.category_name = 'Giày dép nam'
+ORDER BY pr.quantity_sold DESC, rv.rating_average DESC 
+LIMIT 6;","SELECT p.name, b.brand_name, pr.current_price, rv.rating_average, pr.quantity_sold\nFROM products p \nJOIN brands b ON p.brand_id = b.brand_id \nJOIN categories c ON p.category_id = c.category_id \nJOIN product_pricing pr ON p.product_id = pr.product_id \nJOIN product_reviews rv ON p.product_id = rv.product_id \nWHERE c.category_name = 'Giày dép nam'\nORDER BY pr.quantity_sold DESC, rv.rating_average DESC \nLIMIT 6;",complex,1,1,True,1542.5233840942383,True
+224,Top 7 sản phẩm bán chạy nhất trong danh mục Túi nam,"SELECT p.name, b.brand_name, pr.current_price, rv.rating_average, pr.quantity_sold
+FROM products p 
+JOIN brands b ON p.brand_id = b.brand_id 
+JOIN categories c ON p.category_id = c.category_id 
+JOIN product_pricing pr ON p.product_id = pr.product_id 
+JOIN product_reviews rv ON p.product_id = rv.product_id 
+WHERE c.category_name = 'Túi nam'
+ORDER BY pr.quantity_sold DESC, rv.rating_average DESC 
+LIMIT 7;","SELECT p.name, b.brand_name, pr.current_price, rv.rating_average, pr.quantity_sold\nFROM products p \nJOIN brands b ON p.brand_id = b.brand_id \nJOIN categories c ON p.category_id = c.category_id \nJOIN product_pricing pr ON p.product_id = pr.product_id \nJOIN product_reviews rv ON p.product_id = rv.product_id \nWHERE c.category_name = 'Túi nam'\nORDER BY pr.quantity_sold DESC, rv.rating_average DESC \nLIMIT 7;",complex,1,1,True,4255.37896156311,True
+225,Top 8 sản phẩm bán chạy nhất trong danh mục Balo & Vali,"SELECT p.name, b.brand_name, pr.current_price, rv.rating_average, pr.quantity_sold
+FROM products p 
+JOIN brands b ON p.brand_id = b.brand_id 
+JOIN categories c ON p.category_id = c.category_id 
+JOIN product_pricing pr ON p.product_id = pr.product_id 
+JOIN product_reviews rv ON p.product_id = rv.product_id 
+WHERE c.category_name = 'Balo & Vali'
+ORDER BY pr.quantity_sold DESC, rv.rating_average DESC 
+LIMIT 8;","SELECT p.name, b.brand_name, pr.current_price, rv.rating_average, pr.quantity_sold\nFROM products p \nJOIN brands b ON p.brand_id = b.brand_id \nJOIN categories c ON p.category_id = c.category_id \nJOIN product_pricing pr ON p.product_id = pr.product_id \nJOIN product_reviews rv ON p.product_id = rv.product_id \nWHERE c.category_name = 'Balo & Vali'\nORDER BY pr.quantity_sold DESC, rv.rating_average DESC \nLIMIT 8;",complex,1,1,True,1462.4536037445068,True
+226,Top 9 sản phẩm bán chạy nhất trong danh mục Phụ kiện thời trang,"SELECT p.name, b.brand_name, pr.current_price, rv.rating_average, pr.quantity_sold
+FROM products p 
+JOIN brands b ON p.brand_id = b.brand_id 
+JOIN categories c ON p.category_id = c.category_id 
+JOIN product_pricing pr ON p.product_id = pr.product_id 
+JOIN product_reviews rv ON p.product_id = rv.product_id 
+WHERE c.category_name = 'Phụ kiện thời trang'
+ORDER BY pr.quantity_sold DESC, rv.rating_average DESC 
+LIMIT 9;","SELECT p.name, b.brand_name, pr.current_price, rv.rating_average, pr.quantity_sold\nFROM products p \nJOIN brands b ON p.brand_id = b.brand_id \nJOIN categories c ON p.category_id = c.category_id \nJOIN product_pricing pr ON p.product_id = pr.product_id \nJOIN product_reviews rv ON p.product_id = rv.product_id \nWHERE c.category_name = 'Phụ kiện thời trang'\nORDER BY pr.quantity_sold DESC, rv.rating_average DESC \nLIMIT 9;",complex,1,1,True,2441.7333602905273,True
+227,Top 10 sản phẩm bán chạy nhất trong danh mục Giày dép nam,"SELECT p.name, b.brand_name, pr.current_price, rv.rating_average, pr.quantity_sold
+FROM products p 
+JOIN brands b ON p.brand_id = b.brand_id 
+JOIN categories c ON p.category_id = c.category_id 
+JOIN product_pricing pr ON p.product_id = pr.product_id 
+JOIN product_reviews rv ON p.product_id = rv.product_id 
+WHERE c.category_name = 'Giày dép nam'
+ORDER BY pr.quantity_sold DESC, rv.rating_average DESC 
+LIMIT 10;","SELECT p.name, b.brand_name, pr.current_price, rv.rating_average, pr.quantity_sold\nFROM products p \nJOIN brands b ON p.brand_id = b.brand_id \nJOIN categories c ON p.category_id = c.category_id \nJOIN product_pricing pr ON p.product_id = pr.product_id \nJOIN product_reviews rv ON p.product_id = rv.product_id \nWHERE c.category_name = 'Giày dép nam'\nORDER BY pr.quantity_sold DESC, rv.rating_average DESC \nLIMIT 10;",complex,1,1,True,1602.0658016204834,True
+228,Top 11 sản phẩm bán chạy nhất trong danh mục Túi nam,"SELECT p.name, b.brand_name, pr.current_price, rv.rating_average, pr.quantity_sold
+FROM products p 
+JOIN brands b ON p.brand_id = b.brand_id 
+JOIN categories c ON p.category_id = c.category_id 
+JOIN product_pricing pr ON p.product_id = pr.product_id 
+JOIN product_reviews rv ON p.product_id = rv.product_id 
+WHERE c.category_name = 'Túi nam'
+ORDER BY pr.quantity_sold DESC, rv.rating_average DESC 
+LIMIT 11;","SELECT p.name, b.brand_name, pr.current_price, rv.rating_average, pr.quantity_sold\nFROM products p \nJOIN brands b ON p.brand_id = b.brand_id \nJOIN categories c ON p.category_id = c.category_id \nJOIN product_pricing pr ON p.product_id = pr.product_id \nJOIN product_reviews rv ON p.product_id = rv.product_id \nWHERE c.category_name = 'Túi nam'\nORDER BY pr.quantity_sold DESC, rv.rating_average DESC \nLIMIT 11;",complex,1,1,True,1618.3617115020752,True
+229,Top 12 sản phẩm bán chạy nhất trong danh mục Balo & Vali,"SELECT p.name, b.brand_name, pr.current_price, rv.rating_average, pr.quantity_sold
+FROM products p 
+JOIN brands b ON p.brand_id = b.brand_id 
+JOIN categories c ON p.category_id = c.category_id 
+JOIN product_pricing pr ON p.product_id = pr.product_id 
+JOIN product_reviews rv ON p.product_id = rv.product_id 
+WHERE c.category_name = 'Balo & Vali'
+ORDER BY pr.quantity_sold DESC, rv.rating_average DESC 
+LIMIT 12;","SELECT p.name, b.brand_name, pr.current_price, rv.rating_average, pr.quantity_sold\nFROM products p \nJOIN brands b ON p.brand_id = b.brand_id \nJOIN categories c ON p.category_id = c.category_id \nJOIN product_pricing pr ON p.product_id = pr.product_id \nJOIN product_reviews rv ON p.product_id = rv.product_id \nWHERE c.category_name = 'Balo & Vali'\nORDER BY pr.quantity_sold DESC, rv.rating_average DESC \nLIMIT 12;",complex,1,1,True,1884.3979835510254,True
+230,Top 13 sản phẩm bán chạy nhất trong danh mục Phụ kiện thời trang,"SELECT p.name, b.brand_name, pr.current_price, rv.rating_average, pr.quantity_sold
+FROM products p 
+JOIN brands b ON p.brand_id = b.brand_id 
+JOIN categories c ON p.category_id = c.category_id 
+JOIN product_pricing pr ON p.product_id = pr.product_id 
+JOIN product_reviews rv ON p.product_id = rv.product_id 
+WHERE c.category_name = 'Phụ kiện thời trang'
+ORDER BY pr.quantity_sold DESC, rv.rating_average DESC 
+LIMIT 13;","SELECT p.name, b.brand_name, pr.current_price, rv.rating_average, pr.quantity_sold\nFROM products p \nJOIN brands b ON p.brand_id = b.brand_id \nJOIN categories c ON p.category_id = c.category_id \nJOIN product_pricing pr ON p.product_id = pr.product_id \nJOIN product_reviews rv ON p.product_id = rv.product_id \nWHERE c.category_name = 'Phụ kiện thời trang'\nORDER BY pr.quantity_sold DESC, rv.rating_average DESC \nLIMIT 13;",complex,1,1,True,1600.9562015533447,True
+231,Top 14 sản phẩm bán chạy nhất trong danh mục Giày dép nam,"SELECT p.name, b.brand_name, pr.current_price, rv.rating_average, pr.quantity_sold
+FROM products p 
+JOIN brands b ON p.brand_id = b.brand_id 
+JOIN categories c ON p.category_id = c.category_id 
+JOIN product_pricing pr ON p.product_id = pr.product_id 
+JOIN product_reviews rv ON p.product_id = rv.product_id 
+WHERE c.category_name = 'Giày dép nam'
+ORDER BY pr.quantity_sold DESC, rv.rating_average DESC 
+LIMIT 14;","SELECT p.name, b.brand_name, pr.current_price, rv.rating_average, pr.quantity_sold\nFROM products p \nJOIN brands b ON p.brand_id = b.brand_id \nJOIN categories c ON p.category_id = c.category_id \nJOIN product_pricing pr ON p.product_id = pr.product_id \nJOIN product_reviews rv ON p.product_id = rv.product_id \nWHERE c.category_name = 'Giày dép nam'\nORDER BY pr.quantity_sold DESC, rv.rating_average DESC \nLIMIT 14;",complex,1,1,True,3091.823101043701,True
+232,Sản phẩm Nike hoặc Adidas có đánh giá trên 4.0 sao,"SELECT p.name, b.brand_name, c.category_name, pr.current_price, rv.rating_average
+FROM products p 
+JOIN brands b ON p.brand_id = b.brand_id 
+JOIN categories c ON p.category_id = c.category_id 
+JOIN product_pricing pr ON p.product_id = pr.product_id 
+JOIN product_reviews rv ON p.product_id = rv.product_id 
+WHERE (b.brand_name LIKE '%Nike%' OR b.brand_name LIKE '%Adidas%') 
+AND rv.rating_average >= 4.0
+ORDER BY rv.rating_average DESC, pr.current_price ASC 
+LIMIT 15;","SELECT p.name, b.brand_name, c.category_name, pr.current_price, rv.rating_average\nFROM products p \nJOIN brands b ON p.brand_id = b.brand_id \nJOIN categories c ON p.category_id = c.category_id \nJOIN product_pricing pr ON p.product_id = pr.product_id \nJOIN product_reviews rv ON p.product_id = rv.product_id \nWHERE (b.brand_name LIKE '%Nike%' OR b.brand_name LIKE '%Adidas%') \nAND rv.rating_average >= 4.0\nORDER BY rv.rating_average DESC, pr.current_price ASC \nLIMIT 15;",complex,1,1,True,1649.8799324035645,True
+233,Sản phẩm Samsung hoặc Apple có đánh giá trên 4.1 sao,"SELECT p.name, b.brand_name, c.category_name, pr.current_price, rv.rating_average
+FROM products p 
+JOIN brands b ON p.brand_id = b.brand_id 
+JOIN categories c ON p.category_id = c.category_id 
+JOIN product_pricing pr ON p.product_id = pr.product_id 
+JOIN product_reviews rv ON p.product_id = rv.product_id 
+WHERE (b.brand_name LIKE '%Samsung%' OR b.brand_name LIKE '%Apple%') 
+AND rv.rating_average >= 4.1
+ORDER BY rv.rating_average DESC, pr.current_price ASC 
+LIMIT 15;","SELECT p.name, b.brand_name, c.category_name, pr.current_price, rv.rating_average\nFROM products p \nJOIN brands b ON p.brand_id = b.brand_id \nJOIN categories c ON p.category_id = c.category_id \nJOIN product_pricing pr ON p.product_id = pr.product_id \nJOIN product_reviews rv ON p.product_id = rv.product_id \nWHERE (b.brand_name LIKE '%Samsung%' OR b.brand_name LIKE '%Apple%') \nAND rv.rating_average >= 4.1\nORDER BY rv.rating_average DESC, pr.current_price ASC \nLIMIT 15;",complex,1,1,True,3078.1688690185547,True
+234,Sản phẩm Louis Vuitton hoặc Gucci có đánh giá trên 4.2 sao,"SELECT p.name, b.brand_name, c.category_name, pr.current_price, rv.rating_average
+FROM products p 
+JOIN brands b ON p.brand_id = b.brand_id 
+JOIN categories c ON p.category_id = c.category_id 
+JOIN product_pricing pr ON p.product_id = pr.product_id 
+JOIN product_reviews rv ON p.product_id = rv.product_id 
+WHERE (b.brand_name LIKE '%Louis Vuitton%' OR b.brand_name LIKE '%Gucci%') 
+AND rv.rating_average >= 4.2
+ORDER BY rv.rating_average DESC, pr.current_price ASC 
+LIMIT 15;","SELECT p.name, b.brand_name, c.category_name, pr.current_price, rv.rating_average\nFROM products p \nJOIN brands b ON p.brand_id = b.brand_id \nJOIN categories c ON p.category_id = c.category_id \nJOIN product_pricing pr ON p.product_id = pr.product_id \nJOIN product_reviews rv ON p.product_id = rv.product_id \nWHERE (b.brand_name LIKE '%Louis Vuitton%' OR b.brand_name LIKE '%Gucci%') \nAND rv.rating_average >= 4.2\nORDER BY rv.rating_average DESC, pr.current_price ASC \nLIMIT 15;",complex,1,1,True,2877.7263164520264,True
+235,Sản phẩm Nike hoặc Adidas có đánh giá trên 4.3 sao,"SELECT p.name, b.brand_name, c.category_name, pr.current_price, rv.rating_average
+FROM products p 
+JOIN brands b ON p.brand_id = b.brand_id 
+JOIN categories c ON p.category_id = c.category_id 
+JOIN product_pricing pr ON p.product_id = pr.product_id 
+JOIN product_reviews rv ON p.product_id = rv.product_id 
+WHERE (b.brand_name LIKE '%Nike%' OR b.brand_name LIKE '%Adidas%') 
+AND rv.rating_average >= 4.3
+ORDER BY rv.rating_average DESC, pr.current_price ASC 
+LIMIT 15;","SELECT p.name, b.brand_name, c.category_name, pr.current_price, rv.rating_average\nFROM products p \nJOIN brands b ON p.brand_id = b.brand_id \nJOIN categories c ON p.category_id = c.category_id \nJOIN product_pricing pr ON p.product_id = pr.product_id \nJOIN product_reviews rv ON p.product_id = rv.product_id \nWHERE (b.brand_name LIKE '%Nike%' OR b.brand_name LIKE '%Adidas%') \nAND rv.rating_average >= 4.3\nORDER BY rv.rating_average DESC, pr.current_price ASC \nLIMIT 15;",complex,1,1,True,1578.3717632293701,True
+236,Sản phẩm Samsung hoặc Apple có đánh giá trên 4.4 sao,"SELECT p.name, b.brand_name, c.category_name, pr.current_price, rv.rating_average
+FROM products p 
+JOIN brands b ON p.brand_id = b.brand_id 
+JOIN categories c ON p.category_id = c.category_id 
+JOIN product_pricing pr ON p.product_id = pr.product_id 
+JOIN product_reviews rv ON p.product_id = rv.product_id 
+WHERE (b.brand_name LIKE '%Samsung%' OR b.brand_name LIKE '%Apple%') 
+AND rv.rating_average >= 4.4
+ORDER BY rv.rating_average DESC, pr.current_price ASC 
+LIMIT 15;","SELECT p.name, b.brand_name, c.category_name, pr.current_price, rv.rating_average\nFROM products p \nJOIN brands b ON p.brand_id = b.brand_id \nJOIN categories c ON p.category_id = c.category_id \nJOIN product_pricing pr ON p.product_id = pr.product_id \nJOIN product_reviews rv ON p.product_id = rv.product_id \nWHERE (b.brand_name LIKE '%Samsung%' OR b.brand_name LIKE '%Apple%') \nAND rv.rating_average >= 4.4\nORDER BY rv.rating_average DESC, pr.current_price ASC \nLIMIT 15;",complex,1,1,True,1616.9230937957764,True
+237,Sản phẩm Louis Vuitton hoặc Gucci có đánh giá trên 4.0 sao,"SELECT p.name, b.brand_name, c.category_name, pr.current_price, rv.rating_average
+FROM products p 
+JOIN brands b ON p.brand_id = b.brand_id 
+JOIN categories c ON p.category_id = c.category_id 
+JOIN product_pricing pr ON p.product_id = pr.product_id 
+JOIN product_reviews rv ON p.product_id = rv.product_id 
+WHERE (b.brand_name LIKE '%Louis Vuitton%' OR b.brand_name LIKE '%Gucci%') 
+AND rv.rating_average >= 4.0
+ORDER BY rv.rating_average DESC, pr.current_price ASC 
+LIMIT 15;","SELECT p.name, b.brand_name, c.category_name, pr.current_price, rv.rating_average\nFROM products p \nJOIN brands b ON p.brand_id = b.brand_id \nJOIN categories c ON p.category_id = c.category_id \nJOIN product_pricing pr ON p.product_id = pr.product_id \nJOIN product_reviews rv ON p.product_id = rv.product_id \nWHERE (b.brand_name LIKE '%Louis Vuitton%' OR b.brand_name LIKE '%Gucci%') \nAND rv.rating_average >= 4.0\nORDER BY rv.rating_average DESC, pr.current_price ASC \nLIMIT 15;",complex,1,1,True,1444.4184303283691,True
+238,Sản phẩm Nike hoặc Adidas có đánh giá trên 4.1 sao,"SELECT p.name, b.brand_name, c.category_name, pr.current_price, rv.rating_average
+FROM products p 
+JOIN brands b ON p.brand_id = b.brand_id 
+JOIN categories c ON p.category_id = c.category_id 
+JOIN product_pricing pr ON p.product_id = pr.product_id 
+JOIN product_reviews rv ON p.product_id = rv.product_id 
+WHERE (b.brand_name LIKE '%Nike%' OR b.brand_name LIKE '%Adidas%') 
+AND rv.rating_average >= 4.1
+ORDER BY rv.rating_average DESC, pr.current_price ASC 
+LIMIT 15;","SELECT p.name, b.brand_name, c.category_name, pr.current_price, rv.rating_average\nFROM products p \nJOIN brands b ON p.brand_id = b.brand_id \nJOIN categories c ON p.category_id = c.category_id \nJOIN product_pricing pr ON p.product_id = pr.product_id \nJOIN product_reviews rv ON p.product_id = rv.product_id \nWHERE (b.brand_name LIKE '%Nike%' OR b.brand_name LIKE '%Adidas%') \nAND rv.rating_average >= 4.1\nORDER BY rv.rating_average DESC, pr.current_price ASC \nLIMIT 15;",complex,1,1,True,1594.8152542114258,True
+239,Sản phẩm Samsung hoặc Apple có đánh giá trên 4.2 sao,"SELECT p.name, b.brand_name, c.category_name, pr.current_price, rv.rating_average
+FROM products p 
+JOIN brands b ON p.brand_id = b.brand_id 
+JOIN categories c ON p.category_id = c.category_id 
+JOIN product_pricing pr ON p.product_id = pr.product_id 
+JOIN product_reviews rv ON p.product_id = rv.product_id 
+WHERE (b.brand_name LIKE '%Samsung%' OR b.brand_name LIKE '%Apple%') 
+AND rv.rating_average >= 4.2
+ORDER BY rv.rating_average DESC, pr.current_price ASC 
+LIMIT 15;","SELECT p.name, b.brand_name, c.category_name, pr.current_price, rv.rating_average\nFROM products p \nJOIN brands b ON p.brand_id = b.brand_id \nJOIN categories c ON p.category_id = c.category_id \nJOIN product_pricing pr ON p.product_id = pr.product_id \nJOIN product_reviews rv ON p.product_id = rv.product_id \nWHERE (b.brand_name LIKE '%Samsung%' OR b.brand_name LIKE '%Apple%') \nAND rv.rating_average >= 4.2\nORDER BY rv.rating_average DESC, pr.current_price ASC \nLIMIT 15;",complex,1,1,True,1814.4972324371338,True
+240,Sản phẩm Louis Vuitton hoặc Gucci có đánh giá trên 4.3 sao,"SELECT p.name, b.brand_name, c.category_name, pr.current_price, rv.rating_average
+FROM products p 
+JOIN brands b ON p.brand_id = b.brand_id 
+JOIN categories c ON p.category_id = c.category_id 
+JOIN product_pricing pr ON p.product_id = pr.product_id 
+JOIN product_reviews rv ON p.product_id = rv.product_id 
+WHERE (b.brand_name LIKE '%Louis Vuitton%' OR b.brand_name LIKE '%Gucci%') 
+AND rv.rating_average >= 4.3
+ORDER BY rv.rating_average DESC, pr.current_price ASC 
+LIMIT 15;","SELECT p.name, b.brand_name, c.category_name, pr.current_price, rv.rating_average\nFROM products p \nJOIN brands b ON p.brand_id = b.brand_id \nJOIN categories c ON p.category_id = c.category_id \nJOIN product_pricing pr ON p.product_id = pr.product_id \nJOIN product_reviews rv ON p.product_id = rv.product_id \nWHERE (b.brand_name LIKE '%Louis Vuitton%' OR b.brand_name LIKE '%Gucci%') \nAND rv.rating_average >= 4.3\nORDER BY rv.rating_average DESC, pr.current_price ASC \nLIMIT 15;",complex,1,1,True,1725.1276969909668,True
+241,Sản phẩm Nike hoặc Adidas có đánh giá trên 4.4 sao,"SELECT p.name, b.brand_name, c.category_name, pr.current_price, rv.rating_average
+FROM products p 
+JOIN brands b ON p.brand_id = b.brand_id 
+JOIN categories c ON p.category_id = c.category_id 
+JOIN product_pricing pr ON p.product_id = pr.product_id 
+JOIN product_reviews rv ON p.product_id = rv.product_id 
+WHERE (b.brand_name LIKE '%Nike%' OR b.brand_name LIKE '%Adidas%') 
+AND rv.rating_average >= 4.4
+ORDER BY rv.rating_average DESC, pr.current_price ASC 
+LIMIT 15;","SELECT p.name, b.brand_name, c.category_name, pr.current_price, rv.rating_average\nFROM products p \nJOIN brands b ON p.brand_id = b.brand_id \nJOIN categories c ON p.category_id = c.category_id \nJOIN product_pricing pr ON p.product_id = pr.product_id \nJOIN product_reviews rv ON p.product_id = rv.product_id \nWHERE (b.brand_name LIKE '%Nike%' OR b.brand_name LIKE '%Adidas%') \nAND rv.rating_average >= 4.4\nORDER BY rv.rating_average DESC, pr.current_price ASC \nLIMIT 15;",complex,1,1,True,1588.0792140960693,True
+242,Sản phẩm Samsung hoặc Apple có đánh giá trên 4.0 sao,"SELECT p.name, b.brand_name, c.category_name, pr.current_price, rv.rating_average
+FROM products p 
+JOIN brands b ON p.brand_id = b.brand_id 
+JOIN categories c ON p.category_id = c.category_id 
+JOIN product_pricing pr ON p.product_id = pr.product_id 
+JOIN product_reviews rv ON p.product_id = rv.product_id 
+WHERE (b.brand_name LIKE '%Samsung%' OR b.brand_name LIKE '%Apple%') 
+AND rv.rating_average >= 4.0
+ORDER BY rv.rating_average DESC, pr.current_price ASC 
+LIMIT 15;","SELECT p.name, b.brand_name, c.category_name, pr.current_price, rv.rating_average\nFROM products p \nJOIN brands b ON p.brand_id = b.brand_id \nJOIN categories c ON p.category_id = c.category_id \nJOIN product_pricing pr ON p.product_id = pr.product_id \nJOIN product_reviews rv ON p.product_id = rv.product_id \nWHERE (b.brand_name LIKE '%Samsung%' OR b.brand_name LIKE '%Apple%') \nAND rv.rating_average >= 4.0\nORDER BY rv.rating_average DESC, pr.current_price ASC \nLIMIT 15;",complex,1,1,True,1507.1446895599365,True
+243,Sản phẩm Louis Vuitton hoặc Gucci có đánh giá trên 4.1 sao,"SELECT p.name, b.brand_name, c.category_name, pr.current_price, rv.rating_average
+FROM products p 
+JOIN brands b ON p.brand_id = b.brand_id 
+JOIN categories c ON p.category_id = c.category_id 
+JOIN product_pricing pr ON p.product_id = pr.product_id 
+JOIN product_reviews rv ON p.product_id = rv.product_id 
+WHERE (b.brand_name LIKE '%Louis Vuitton%' OR b.brand_name LIKE '%Gucci%') 
+AND rv.rating_average >= 4.1
+ORDER BY rv.rating_average DESC, pr.current_price ASC 
+LIMIT 15;","SELECT p.name, b.brand_name, c.category_name, pr.current_price, rv.rating_average\nFROM products p \nJOIN brands b ON p.brand_id = b.brand_id \nJOIN categories c ON p.category_id = c.category_id \nJOIN product_pricing pr ON p.product_id = pr.product_id \nJOIN product_reviews rv ON p.product_id = rv.product_id \nWHERE (b.brand_name LIKE '%Louis Vuitton%' OR b.brand_name LIKE '%Gucci%') \nAND rv.rating_average >= 4.1\nORDER BY rv.rating_average DESC, pr.current_price ASC \nLIMIT 15;",complex,1,1,True,1611.8383407592773,True
+244,Sản phẩm Nike hoặc Adidas có đánh giá trên 4.2 sao,"SELECT p.name, b.brand_name, c.category_name, pr.current_price, rv.rating_average
+FROM products p 
+JOIN brands b ON p.brand_id = b.brand_id 
+JOIN categories c ON p.category_id = c.category_id 
+JOIN product_pricing pr ON p.product_id = pr.product_id 
+JOIN product_reviews rv ON p.product_id = rv.product_id 
+WHERE (b.brand_name LIKE '%Nike%' OR b.brand_name LIKE '%Adidas%') 
+AND rv.rating_average >= 4.2
+ORDER BY rv.rating_average DESC, pr.current_price ASC 
+LIMIT 15;","SELECT p.name, b.brand_name, c.category_name, pr.current_price, rv.rating_average\nFROM products p \nJOIN brands b ON p.brand_id = b.brand_id \nJOIN categories c ON p.category_id = c.category_id \nJOIN product_pricing pr ON p.product_id = pr.product_id \nJOIN product_reviews rv ON p.product_id = rv.product_id \nWHERE (b.brand_name LIKE '%Nike%' OR b.brand_name LIKE '%Adidas%') \nAND rv.rating_average >= 4.2\nORDER BY rv.rating_average DESC, pr.current_price ASC \nLIMIT 15;",complex,1,1,True,1762.6333236694336,True
+245,Sản phẩm Samsung hoặc Apple có đánh giá trên 4.3 sao,"SELECT p.name, b.brand_name, c.category_name, pr.current_price, rv.rating_average
+FROM products p 
+JOIN brands b ON p.brand_id = b.brand_id 
+JOIN categories c ON p.category_id = c.category_id 
+JOIN product_pricing pr ON p.product_id = pr.product_id 
+JOIN product_reviews rv ON p.product_id = rv.product_id 
+WHERE (b.brand_name LIKE '%Samsung%' OR b.brand_name LIKE '%Apple%') 
+AND rv.rating_average >= 4.3
+ORDER BY rv.rating_average DESC, pr.current_price ASC 
+LIMIT 15;","SELECT p.name, b.brand_name, c.category_name, pr.current_price, rv.rating_average\nFROM products p \nJOIN brands b ON p.brand_id = b.brand_id \nJOIN categories c ON p.category_id = c.category_id \nJOIN product_pricing pr ON p.product_id = pr.product_id \nJOIN product_reviews rv ON p.product_id = rv.product_id \nWHERE (b.brand_name LIKE '%Samsung%' OR b.brand_name LIKE '%Apple%') \nAND rv.rating_average >= 4.3\nORDER BY rv.rating_average DESC, pr.current_price ASC \nLIMIT 15;",complex,1,1,True,1461.73095703125,True
+246,Sản phẩm Louis Vuitton hoặc Gucci có đánh giá trên 4.4 sao,"SELECT p.name, b.brand_name, c.category_name, pr.current_price, rv.rating_average
+FROM products p 
+JOIN brands b ON p.brand_id = b.brand_id 
+JOIN categories c ON p.category_id = c.category_id 
+JOIN product_pricing pr ON p.product_id = pr.product_id 
+JOIN product_reviews rv ON p.product_id = rv.product_id 
+WHERE (b.brand_name LIKE '%Louis Vuitton%' OR b.brand_name LIKE '%Gucci%') 
+AND rv.rating_average >= 4.4
+ORDER BY rv.rating_average DESC, pr.current_price ASC 
+LIMIT 15;","SELECT p.name, b.brand_name, c.category_name, pr.current_price, rv.rating_average\nFROM products p \nJOIN brands b ON p.brand_id = b.brand_id \nJOIN categories c ON p.category_id = c.category_id \nJOIN product_pricing pr ON p.product_id = pr.product_id \nJOIN product_reviews rv ON p.product_id = rv.product_id \nWHERE (b.brand_name LIKE '%Louis Vuitton%' OR b.brand_name LIKE '%Gucci%') \nAND rv.rating_average >= 4.4\nORDER BY rv.rating_average DESC, pr.current_price ASC \nLIMIT 15;",complex,1,1,True,1933.009147644043,True
+247,Sản phẩm Nike hoặc Adidas có đánh giá trên 4.0 sao,"SELECT p.name, b.brand_name, c.category_name, pr.current_price, rv.rating_average
+FROM products p 
+JOIN brands b ON p.brand_id = b.brand_id 
+JOIN categories c ON p.category_id = c.category_id 
+JOIN product_pricing pr ON p.product_id = pr.product_id 
+JOIN product_reviews rv ON p.product_id = rv.product_id 
+WHERE (b.brand_name LIKE '%Nike%' OR b.brand_name LIKE '%Adidas%') 
+AND rv.rating_average >= 4.0
+ORDER BY rv.rating_average DESC, pr.current_price ASC 
+LIMIT 15;","SELECT p.name, b.brand_name, c.category_name, pr.current_price, rv.rating_average\nFROM products p \nJOIN brands b ON p.brand_id = b.brand_id \nJOIN categories c ON p.category_id = c.category_id \nJOIN product_pricing pr ON p.product_id = pr.product_id \nJOIN product_reviews rv ON p.product_id = rv.product_id \nWHERE (b.brand_name LIKE '%Nike%' OR b.brand_name LIKE '%Adidas%') \nAND rv.rating_average > 4.0\nORDER BY rv.rating_average DESC, pr.current_price ASC \nLIMIT 15;",complex,0,1,True,1673.5429763793945,True
+248,Sản phẩm Samsung hoặc Apple có đánh giá trên 4.1 sao,"SELECT p.name, b.brand_name, c.category_name, pr.current_price, rv.rating_average
+FROM products p 
+JOIN brands b ON p.brand_id = b.brand_id 
+JOIN categories c ON p.category_id = c.category_id 
+JOIN product_pricing pr ON p.product_id = pr.product_id 
+JOIN product_reviews rv ON p.product_id = rv.product_id 
+WHERE (b.brand_name LIKE '%Samsung%' OR b.brand_name LIKE '%Apple%') 
+AND rv.rating_average >= 4.1
+ORDER BY rv.rating_average DESC, pr.current_price ASC 
+LIMIT 15;","SELECT p.name, b.brand_name, c.category_name, pr.current_price, rv.rating_average\nFROM products p \nJOIN brands b ON p.brand_id = b.brand_id \nJOIN categories c ON p.category_id = c.category_id \nJOIN product_pricing pr ON p.product_id = pr.product_id \nJOIN product_reviews rv ON p.product_id = rv.product_id \nWHERE (b.brand_name LIKE '%Samsung%' OR b.brand_name LIKE '%Apple%') \nAND rv.rating_average >= 4.1\nORDER BY rv.rating_average DESC, pr.current_price ASC \nLIMIT 15;",complex,1,1,True,2585.503339767456,True
+249,Sản phẩm Louis Vuitton hoặc Gucci có đánh giá trên 4.2 sao,"SELECT p.name, b.brand_name, c.category_name, pr.current_price, rv.rating_average
+FROM products p 
+JOIN brands b ON p.brand_id = b.brand_id 
+JOIN categories c ON p.category_id = c.category_id 
+JOIN product_pricing pr ON p.product_id = pr.product_id 
+JOIN product_reviews rv ON p.product_id = rv.product_id 
+WHERE (b.brand_name LIKE '%Louis Vuitton%' OR b.brand_name LIKE '%Gucci%') 
+AND rv.rating_average >= 4.2
+ORDER BY rv.rating_average DESC, pr.current_price ASC 
+LIMIT 15;","SELECT p.name, b.brand_name, c.category_name, pr.current_price, rv.rating_average\nFROM products p \nJOIN brands b ON p.brand_id = b.brand_id \nJOIN categories c ON p.category_id = c.category_id \nJOIN product_pricing pr ON p.product_id = pr.product_id \nJOIN product_reviews rv ON p.product_id = rv.product_id \nWHERE (b.brand_name LIKE '%Louis Vuitton%' OR b.brand_name LIKE '%Gucci%') \nAND rv.rating_average >= 4.2\nORDER BY rv.rating_average DESC, pr.current_price ASC \nLIMIT 15;",complex,1,1,True,1720.5042839050293,True
+250,Sản phẩm Nike hoặc Adidas có đánh giá trên 4.3 sao,"SELECT p.name, b.brand_name, c.category_name, pr.current_price, rv.rating_average
+FROM products p 
+JOIN brands b ON p.brand_id = b.brand_id 
+JOIN categories c ON p.category_id = c.category_id 
+JOIN product_pricing pr ON p.product_id = pr.product_id 
+JOIN product_reviews rv ON p.product_id = rv.product_id 
+WHERE (b.brand_name LIKE '%Nike%' OR b.brand_name LIKE '%Adidas%') 
+AND rv.rating_average >= 4.3
+ORDER BY rv.rating_average DESC, pr.current_price ASC 
+LIMIT 15;","SELECT p.name, b.brand_name, c.category_name, pr.current_price, rv.rating_average\nFROM products p \nJOIN brands b ON p.brand_id = b.brand_id \nJOIN categories c ON p.category_id = c.category_id \nJOIN product_pricing pr ON p.product_id = pr.product_id \nJOIN product_reviews rv ON p.product_id = rv.product_id \nWHERE (b.brand_name LIKE '%Nike%' OR b.brand_name LIKE '%Adidas%') \nAND rv.rating_average >= 4.3\nORDER BY rv.rating_average DESC, pr.current_price ASC \nLIMIT 15;",complex,1,1,True,1625.3623962402344,True
+251,Sản phẩm Samsung hoặc Apple có đánh giá trên 4.4 sao,"SELECT p.name, b.brand_name, c.category_name, pr.current_price, rv.rating_average
+FROM products p 
+JOIN brands b ON p.brand_id = b.brand_id 
+JOIN categories c ON p.category_id = c.category_id 
+JOIN product_pricing pr ON p.product_id = pr.product_id 
+JOIN product_reviews rv ON p.product_id = rv.product_id 
+WHERE (b.brand_name LIKE '%Samsung%' OR b.brand_name LIKE '%Apple%') 
+AND rv.rating_average >= 4.4
+ORDER BY rv.rating_average DESC, pr.current_price ASC 
+LIMIT 15;","SELECT p.name, b.brand_name, c.category_name, pr.current_price, rv.rating_average\nFROM products p \nJOIN brands b ON p.brand_id = b.brand_id \nJOIN categories c ON p.category_id = c.category_id \nJOIN product_pricing pr ON p.product_id = pr.product_id \nJOIN product_reviews rv ON p.product_id = rv.product_id \nWHERE (b.brand_name LIKE '%Samsung%' OR b.brand_name LIKE '%Apple%') \nAND rv.rating_average >= 4.4\nORDER BY rv.rating_average DESC, pr.current_price ASC \nLIMIT 15;",complex,1,1,True,1596.8213081359863,True
+252,Sản phẩm Louis Vuitton hoặc Gucci có đánh giá trên 4.0 sao,"SELECT p.name, b.brand_name, c.category_name, pr.current_price, rv.rating_average
+FROM products p 
+JOIN brands b ON p.brand_id = b.brand_id 
+JOIN categories c ON p.category_id = c.category_id 
+JOIN product_pricing pr ON p.product_id = pr.product_id 
+JOIN product_reviews rv ON p.product_id = rv.product_id 
+WHERE (b.brand_name LIKE '%Louis Vuitton%' OR b.brand_name LIKE '%Gucci%') 
+AND rv.rating_average >= 4.0
+ORDER BY rv.rating_average DESC, pr.current_price ASC 
+LIMIT 15;","SELECT p.name, b.brand_name, c.category_name, pr.current_price, rv.rating_average\nFROM products p \nJOIN brands b ON p.brand_id = b.brand_id \nJOIN categories c ON p.category_id = c.category_id \nJOIN product_pricing pr ON p.product_id = pr.product_id \nJOIN product_reviews rv ON p.product_id = rv.product_id \nWHERE (b.brand_name LIKE '%Louis Vuitton%' OR b.brand_name LIKE '%Gucci%') \nAND rv.rating_average >= 4.0\nORDER BY rv.rating_average DESC, pr.current_price ASC \nLIMIT 15;",complex,1,1,True,1739.614725112915,True
+253,Sản phẩm Nike hoặc Adidas có đánh giá trên 4.1 sao,"SELECT p.name, b.brand_name, c.category_name, pr.current_price, rv.rating_average
+FROM products p 
+JOIN brands b ON p.brand_id = b.brand_id 
+JOIN categories c ON p.category_id = c.category_id 
+JOIN product_pricing pr ON p.product_id = pr.product_id 
+JOIN product_reviews rv ON p.product_id = rv.product_id 
+WHERE (b.brand_name LIKE '%Nike%' OR b.brand_name LIKE '%Adidas%') 
+AND rv.rating_average >= 4.1
+ORDER BY rv.rating_average DESC, pr.current_price ASC 
+LIMIT 15;","SELECT p.name, b.brand_name, c.category_name, pr.current_price, rv.rating_average\nFROM products p \nJOIN brands b ON p.brand_id = b.brand_id \nJOIN categories c ON p.category_id = c.category_id \nJOIN product_pricing pr ON p.product_id = pr.product_id \nJOIN product_reviews rv ON p.product_id = rv.product_id \nWHERE (b.brand_name LIKE '%Nike%' OR b.brand_name LIKE '%Adidas%') \nAND rv.rating_average >= 4.1\nORDER BY rv.rating_average DESC, pr.current_price ASC \nLIMIT 15;",complex,1,1,True,1484.5967292785645,True
+254,Sản phẩm Samsung hoặc Apple có đánh giá trên 4.2 sao,"SELECT p.name, b.brand_name, c.category_name, pr.current_price, rv.rating_average
+FROM products p 
+JOIN brands b ON p.brand_id = b.brand_id 
+JOIN categories c ON p.category_id = c.category_id 
+JOIN product_pricing pr ON p.product_id = pr.product_id 
+JOIN product_reviews rv ON p.product_id = rv.product_id 
+WHERE (b.brand_name LIKE '%Samsung%' OR b.brand_name LIKE '%Apple%') 
+AND rv.rating_average >= 4.2
+ORDER BY rv.rating_average DESC, pr.current_price ASC 
+LIMIT 15;","SELECT p.name, b.brand_name, c.category_name, pr.current_price, rv.rating_average\nFROM products p \nJOIN brands b ON p.brand_id = b.brand_id \nJOIN categories c ON p.category_id = c.category_id \nJOIN product_pricing pr ON p.product_id = pr.product_id \nJOIN product_reviews rv ON p.product_id = rv.product_id \nWHERE (b.brand_name LIKE '%Samsung%' OR b.brand_name LIKE '%Apple%') \nAND rv.rating_average >= 4.2\nORDER BY rv.rating_average DESC, pr.current_price ASC \nLIMIT 15;",complex,1,1,True,1561.58447265625,True
+255,Sản phẩm Louis Vuitton hoặc Gucci có đánh giá trên 4.3 sao,"SELECT p.name, b.brand_name, c.category_name, pr.current_price, rv.rating_average
+FROM products p 
+JOIN brands b ON p.brand_id = b.brand_id 
+JOIN categories c ON p.category_id = c.category_id 
+JOIN product_pricing pr ON p.product_id = pr.product_id 
+JOIN product_reviews rv ON p.product_id = rv.product_id 
+WHERE (b.brand_name LIKE '%Louis Vuitton%' OR b.brand_name LIKE '%Gucci%') 
+AND rv.rating_average >= 4.3
+ORDER BY rv.rating_average DESC, pr.current_price ASC 
+LIMIT 15;","SELECT p.name, b.brand_name, c.category_name, pr.current_price, rv.rating_average\nFROM products p \nJOIN brands b ON p.brand_id = b.brand_id \nJOIN categories c ON p.category_id = c.category_id \nJOIN product_pricing pr ON p.product_id = pr.product_id \nJOIN product_reviews rv ON p.product_id = rv.product_id \nWHERE (b.brand_name LIKE '%Louis Vuitton%' OR b.brand_name LIKE '%Gucci%') \nAND rv.rating_average > 4.3\nORDER BY rv.rating_average DESC, pr.current_price ASC \nLIMIT 15;",complex,0,1,True,1660.9086990356445,True
+256,Sản phẩm Nike hoặc Adidas có đánh giá trên 4.4 sao,"SELECT p.name, b.brand_name, c.category_name, pr.current_price, rv.rating_average
+FROM products p 
+JOIN brands b ON p.brand_id = b.brand_id 
+JOIN categories c ON p.category_id = c.category_id 
+JOIN product_pricing pr ON p.product_id = pr.product_id 
+JOIN product_reviews rv ON p.product_id = rv.product_id 
+WHERE (b.brand_name LIKE '%Nike%' OR b.brand_name LIKE '%Adidas%') 
+AND rv.rating_average >= 4.4
+ORDER BY rv.rating_average DESC, pr.current_price ASC 
+LIMIT 15;","SELECT p.name, b.brand_name, c.category_name, pr.current_price, rv.rating_average\nFROM products p \nJOIN brands b ON p.brand_id = b.brand_id \nJOIN categories c ON p.category_id = c.category_id \nJOIN product_pricing pr ON p.product_id = pr.product_id \nJOIN product_reviews rv ON p.product_id = rv.product_id \nWHERE (b.brand_name LIKE '%Nike%' OR b.brand_name LIKE '%Adidas%') \nAND rv.rating_average >= 4.4\nORDER BY rv.rating_average DESC, pr.current_price ASC \nLIMIT 15;",complex,1,1,True,1897.1889019012451,True
+257,Sản phẩm Samsung hoặc Apple có đánh giá trên 4.0 sao,"SELECT p.name, b.brand_name, c.category_name, pr.current_price, rv.rating_average
+FROM products p 
+JOIN brands b ON p.brand_id = b.brand_id 
+JOIN categories c ON p.category_id = c.category_id 
+JOIN product_pricing pr ON p.product_id = pr.product_id 
+JOIN product_reviews rv ON p.product_id = rv.product_id 
+WHERE (b.brand_name LIKE '%Samsung%' OR b.brand_name LIKE '%Apple%') 
+AND rv.rating_average >= 4.0
+ORDER BY rv.rating_average DESC, pr.current_price ASC 
+LIMIT 15;","SELECT p.name, b.brand_name, c.category_name, pr.current_price, rv.rating_average\nFROM products p \nJOIN brands b ON p.brand_id = b.brand_id \nJOIN categories c ON p.category_id = c.category_id \nJOIN product_pricing pr ON p.product_id = pr.product_id \nJOIN product_reviews rv ON p.product_id = rv.product_id \nWHERE (b.brand_name LIKE '%Samsung%' OR b.brand_name LIKE '%Apple%') \nAND rv.rating_average >= 4.0\nORDER BY rv.rating_average DESC, pr.current_price ASC \nLIMIT 15;",complex,1,1,True,1805.7570457458496,True
+258,Sản phẩm Louis Vuitton hoặc Gucci có đánh giá trên 4.1 sao,"SELECT p.name, b.brand_name, c.category_name, pr.current_price, rv.rating_average
+FROM products p 
+JOIN brands b ON p.brand_id = b.brand_id 
+JOIN categories c ON p.category_id = c.category_id 
+JOIN product_pricing pr ON p.product_id = pr.product_id 
+JOIN product_reviews rv ON p.product_id = rv.product_id 
+WHERE (b.brand_name LIKE '%Louis Vuitton%' OR b.brand_name LIKE '%Gucci%') 
+AND rv.rating_average >= 4.1
+ORDER BY rv.rating_average DESC, pr.current_price ASC 
+LIMIT 15;","SELECT p.name, b.brand_name, c.category_name, pr.current_price, rv.rating_average\nFROM products p \nJOIN brands b ON p.brand_id = b.brand_id \nJOIN categories c ON p.category_id = c.category_id \nJOIN product_pricing pr ON p.product_id = pr.product_id \nJOIN product_reviews rv ON p.product_id = rv.product_id \nWHERE (b.brand_name LIKE '%Louis Vuitton%' OR b.brand_name LIKE '%Gucci%') \nAND rv.rating_average >= 4.1\nORDER BY rv.rating_average DESC, pr.current_price ASC \nLIMIT 15;",complex,1,1,True,1877.99072265625,True
+259,Sản phẩm Nike hoặc Adidas có đánh giá trên 4.2 sao,"SELECT p.name, b.brand_name, c.category_name, pr.current_price, rv.rating_average
+FROM products p 
+JOIN brands b ON p.brand_id = b.brand_id 
+JOIN categories c ON p.category_id = c.category_id 
+JOIN product_pricing pr ON p.product_id = pr.product_id 
+JOIN product_reviews rv ON p.product_id = rv.product_id 
+WHERE (b.brand_name LIKE '%Nike%' OR b.brand_name LIKE '%Adidas%') 
+AND rv.rating_average >= 4.2
+ORDER BY rv.rating_average DESC, pr.current_price ASC 
+LIMIT 15;","SELECT p.name, b.brand_name, c.category_name, pr.current_price, rv.rating_average\nFROM products p \nJOIN brands b ON p.brand_id = b.brand_id \nJOIN categories c ON p.category_id = c.category_id \nJOIN product_pricing pr ON p.product_id = pr.product_id \nJOIN product_reviews rv ON p.product_id = rv.product_id \nWHERE (b.brand_name LIKE '%Nike%' OR b.brand_name LIKE '%Adidas%') \nAND rv.rating_average >= 4.2\nORDER BY rv.rating_average DESC, pr.current_price ASC \nLIMIT 15;",complex,1,1,True,1616.6720390319824,True
+260,Sản phẩm Samsung hoặc Apple có đánh giá trên 4.3 sao,"SELECT p.name, b.brand_name, c.category_name, pr.current_price, rv.rating_average
+FROM products p 
+JOIN brands b ON p.brand_id = b.brand_id 
+JOIN categories c ON p.category_id = c.category_id 
+JOIN product_pricing pr ON p.product_id = pr.product_id 
+JOIN product_reviews rv ON p.product_id = rv.product_id 
+WHERE (b.brand_name LIKE '%Samsung%' OR b.brand_name LIKE '%Apple%') 
+AND rv.rating_average >= 4.3
+ORDER BY rv.rating_average DESC, pr.current_price ASC 
+LIMIT 15;","SELECT p.name, b.brand_name, c.category_name, pr.current_price, rv.rating_average\nFROM products p \nJOIN brands b ON p.brand_id = b.brand_id \nJOIN categories c ON p.category_id = c.category_id \nJOIN product_pricing pr ON p.product_id = pr.product_id \nJOIN product_reviews rv ON p.product_id = rv.product_id \nWHERE (b.brand_name LIKE '%Samsung%' OR b.brand_name LIKE '%Apple%') \nAND rv.rating_average >= 4.3\nORDER BY rv.rating_average DESC, pr.current_price ASC \nLIMIT 15;",complex,1,1,True,1792.4952507019043,True
+261,Sản phẩm Louis Vuitton hoặc Gucci có đánh giá trên 4.4 sao,"SELECT p.name, b.brand_name, c.category_name, pr.current_price, rv.rating_average
+FROM products p 
+JOIN brands b ON p.brand_id = b.brand_id 
+JOIN categories c ON p.category_id = c.category_id 
+JOIN product_pricing pr ON p.product_id = pr.product_id 
+JOIN product_reviews rv ON p.product_id = rv.product_id 
+WHERE (b.brand_name LIKE '%Louis Vuitton%' OR b.brand_name LIKE '%Gucci%') 
+AND rv.rating_average >= 4.4
+ORDER BY rv.rating_average DESC, pr.current_price ASC 
+LIMIT 15;","SELECT p.name, b.brand_name, c.category_name, pr.current_price, rv.rating_average\nFROM products p \nJOIN brands b ON p.brand_id = b.brand_id \nJOIN categories c ON p.category_id = c.category_id \nJOIN product_pricing pr ON p.product_id = pr.product_id \nJOIN product_reviews rv ON p.product_id = rv.product_id \nWHERE (b.brand_name LIKE '%Louis Vuitton%' OR b.brand_name LIKE '%Gucci%') \nAND rv.rating_average >= 4.4\nORDER BY rv.rating_average DESC, pr.current_price ASC \nLIMIT 15;",complex,1,1,True,1919.4855690002441,True
+262,Phân tích giá theo khoảng từ 100k đến 600k,"SELECT 
+CASE 
+    WHEN pr.current_price < 100000 THEN 'Under 100K'
+    WHEN pr.current_price BETWEEN 100000 AND 600000 THEN '100K-600K'
+    ELSE 'Over 600K'
+END as price_range,
+COUNT(*) as product_count,
+AVG(rv.rating_average) as avg_rating,
+AVG(pr.current_price) as avg_price
+FROM product_pricing pr 
+JOIN product_reviews rv ON pr.product_id = rv.product_id 
+GROUP BY price_range 
+ORDER BY avg_price;",,complex,0,0,False,5255.599021911621,False
+263,Phân tích giá theo khoảng từ 200k đến 700k,"SELECT 
+CASE 
+    WHEN pr.current_price < 200000 THEN 'Under 200K'
+    WHEN pr.current_price BETWEEN 200000 AND 700000 THEN '200K-700K'
+    ELSE 'Over 700K'
+END as price_range,
+COUNT(*) as product_count,
+AVG(rv.rating_average) as avg_rating,
+AVG(pr.current_price) as avg_price
+FROM product_pricing pr 
+JOIN product_reviews rv ON pr.product_id = rv.product_id 
+GROUP BY price_range 
+ORDER BY avg_price;",,complex,0,0,False,4224.791765213013,False
+264,Phân tích giá theo khoảng từ 300k đến 800k,"SELECT 
+CASE 
+    WHEN pr.current_price < 300000 THEN 'Under 300K'
+    WHEN pr.current_price BETWEEN 300000 AND 800000 THEN '300K-800K'
+    ELSE 'Over 800K'
+END as price_range,
+COUNT(*) as product_count,
+AVG(rv.rating_average) as avg_rating,
+AVG(pr.current_price) as avg_price
+FROM product_pricing pr 
+JOIN product_reviews rv ON pr.product_id = rv.product_id 
+GROUP BY price_range 
+ORDER BY avg_price;",,complex,0,0,False,3860.3336811065674,False
+265,Phân tích giá theo khoảng từ 400k đến 900k,"SELECT 
+CASE 
+    WHEN pr.current_price < 400000 THEN 'Under 400K'
+    WHEN pr.current_price BETWEEN 400000 AND 900000 THEN '400K-900K'
+    ELSE 'Over 900K'
+END as price_range,
+COUNT(*) as product_count,
+AVG(rv.rating_average) as avg_rating,
+AVG(pr.current_price) as avg_price
+FROM product_pricing pr 
+JOIN product_reviews rv ON pr.product_id = rv.product_id 
+GROUP BY price_range 
+ORDER BY avg_price;",,complex,0,0,False,4790.793418884277,False
+266,Phân tích giá theo khoảng từ 500k đến 1000k,"SELECT 
+CASE 
+    WHEN pr.current_price < 500000 THEN 'Under 500K'
+    WHEN pr.current_price BETWEEN 500000 AND 1000000 THEN '500K-1000K'
+    ELSE 'Over 1000K'
+END as price_range,
+COUNT(*) as product_count,
+AVG(rv.rating_average) as avg_rating,
+AVG(pr.current_price) as avg_price
+FROM product_pricing pr 
+JOIN product_reviews rv ON pr.product_id = rv.product_id 
+GROUP BY price_range 
+ORDER BY avg_price;",,complex,0,0,False,3836.596965789795,False
+267,Phân tích giá theo khoảng từ 600k đến 1100k,"SELECT 
+CASE 
+    WHEN pr.current_price < 600000 THEN 'Under 600K'
+    WHEN pr.current_price BETWEEN 600000 AND 1100000 THEN '600K-1100K'
+    ELSE 'Over 1100K'
+END as price_range,
+COUNT(*) as product_count,
+AVG(rv.rating_average) as avg_rating,
+AVG(pr.current_price) as avg_price
+FROM product_pricing pr 
+JOIN product_reviews rv ON pr.product_id = rv.product_id 
+GROUP BY price_range 
+ORDER BY avg_price;",,complex,0,0,False,3783.1695079803467,False
+268,Phân tích giá theo khoảng từ 700k đến 1200k,"SELECT 
+CASE 
+    WHEN pr.current_price < 700000 THEN 'Under 700K'
+    WHEN pr.current_price BETWEEN 700000 AND 1200000 THEN '700K-1200K'
+    ELSE 'Over 1200K'
+END as price_range,
+COUNT(*) as product_count,
+AVG(rv.rating_average) as avg_rating,
+AVG(pr.current_price) as avg_price
+FROM product_pricing pr 
+JOIN product_reviews rv ON pr.product_id = rv.product_id 
+GROUP BY price_range 
+ORDER BY avg_price;",,complex,0,0,False,3697.8394985198975,False
+269,Phân tích giá theo khoảng từ 800k đến 1300k,"SELECT 
+CASE 
+    WHEN pr.current_price < 800000 THEN 'Under 800K'
+    WHEN pr.current_price BETWEEN 800000 AND 1300000 THEN '800K-1300K'
+    ELSE 'Over 1300K'
+END as price_range,
+COUNT(*) as product_count,
+AVG(rv.rating_average) as avg_rating,
+AVG(pr.current_price) as avg_price
+FROM product_pricing pr 
+JOIN product_reviews rv ON pr.product_id = rv.product_id 
+GROUP BY price_range 
+ORDER BY avg_price;",,complex,0,0,False,6561.495780944824,False
+270,Phân tích giá theo khoảng từ 900k đến 1400k,"SELECT 
+CASE 
+    WHEN pr.current_price < 900000 THEN 'Under 900K'
+    WHEN pr.current_price BETWEEN 900000 AND 1400000 THEN '900K-1400K'
+    ELSE 'Over 1400K'
+END as price_range,
+COUNT(*) as product_count,
+AVG(rv.rating_average) as avg_rating,
+AVG(pr.current_price) as avg_price
+FROM product_pricing pr 
+JOIN product_reviews rv ON pr.product_id = rv.product_id 
+GROUP BY price_range 
+ORDER BY avg_price;",,complex,0,0,False,3797.5757122039795,False
+271,Phân tích giá theo khoảng từ 1000k đến 1500k,"SELECT 
+CASE 
+    WHEN pr.current_price < 1000000 THEN 'Under 1000K'
+    WHEN pr.current_price BETWEEN 1000000 AND 1500000 THEN '1000K-1500K'
+    ELSE 'Over 1500K'
+END as price_range,
+COUNT(*) as product_count,
+AVG(rv.rating_average) as avg_rating,
+AVG(pr.current_price) as avg_price
+FROM product_pricing pr 
+JOIN product_reviews rv ON pr.product_id = rv.product_id 
+GROUP BY price_range 
+ORDER BY avg_price;",,complex,0,0,False,3955.6469917297363,False
+272,Phân tích giá theo khoảng từ 100k đến 600k,"SELECT 
+CASE 
+    WHEN pr.current_price < 100000 THEN 'Under 100K'
+    WHEN pr.current_price BETWEEN 100000 AND 600000 THEN '100K-600K'
+    ELSE 'Over 600K'
+END as price_range,
+COUNT(*) as product_count,
+AVG(rv.rating_average) as avg_rating,
+AVG(pr.current_price) as avg_price
+FROM product_pricing pr 
+JOIN product_reviews rv ON pr.product_id = rv.product_id 
+GROUP BY price_range 
+ORDER BY avg_price;",,complex,0,0,False,5042.539834976196,False
+273,Phân tích giá theo khoảng từ 200k đến 700k,"SELECT 
+CASE 
+    WHEN pr.current_price < 200000 THEN 'Under 200K'
+    WHEN pr.current_price BETWEEN 200000 AND 700000 THEN '200K-700K'
+    ELSE 'Over 700K'
+END as price_range,
+COUNT(*) as product_count,
+AVG(rv.rating_average) as avg_rating,
+AVG(pr.current_price) as avg_price
+FROM product_pricing pr 
+JOIN product_reviews rv ON pr.product_id = rv.product_id 
+GROUP BY price_range 
+ORDER BY avg_price;",,complex,0,0,False,4476.601839065552,False
+274,Phân tích giá theo khoảng từ 300k đến 800k,"SELECT 
+CASE 
+    WHEN pr.current_price < 300000 THEN 'Under 300K'
+    WHEN pr.current_price BETWEEN 300000 AND 800000 THEN '300K-800K'
+    ELSE 'Over 800K'
+END as price_range,
+COUNT(*) as product_count,
+AVG(rv.rating_average) as avg_rating,
+AVG(pr.current_price) as avg_price
+FROM product_pricing pr 
+JOIN product_reviews rv ON pr.product_id = rv.product_id 
+GROUP BY price_range 
+ORDER BY avg_price;",,complex,0,0,False,4774.202108383179,False
+275,Phân tích giá theo khoảng từ 400k đến 900k,"SELECT 
+CASE 
+    WHEN pr.current_price < 400000 THEN 'Under 400K'
+    WHEN pr.current_price BETWEEN 400000 AND 900000 THEN '400K-900K'
+    ELSE 'Over 900K'
+END as price_range,
+COUNT(*) as product_count,
+AVG(rv.rating_average) as avg_rating,
+AVG(pr.current_price) as avg_price
+FROM product_pricing pr 
+JOIN product_reviews rv ON pr.product_id = rv.product_id 
+GROUP BY price_range 
+ORDER BY avg_price;",,complex,0,0,False,3739.292860031128,False
+276,Phân tích giá theo khoảng từ 500k đến 1000k,"SELECT 
+CASE 
+    WHEN pr.current_price < 500000 THEN 'Under 500K'
+    WHEN pr.current_price BETWEEN 500000 AND 1000000 THEN '500K-1000K'
+    ELSE 'Over 1000K'
+END as price_range,
+COUNT(*) as product_count,
+AVG(rv.rating_average) as avg_rating,
+AVG(pr.current_price) as avg_price
+FROM product_pricing pr 
+JOIN product_reviews rv ON pr.product_id = rv.product_id 
+GROUP BY price_range 
+ORDER BY avg_price;",,complex,0,0,False,4086.134672164917,False
+277,Phân tích giá theo khoảng từ 600k đến 1100k,"SELECT 
+CASE 
+    WHEN pr.current_price < 600000 THEN 'Under 600K'
+    WHEN pr.current_price BETWEEN 600000 AND 1100000 THEN '600K-1100K'
+    ELSE 'Over 1100K'
+END as price_range,
+COUNT(*) as product_count,
+AVG(rv.rating_average) as avg_rating,
+AVG(pr.current_price) as avg_price
+FROM product_pricing pr 
+JOIN product_reviews rv ON pr.product_id = rv.product_id 
+GROUP BY price_range 
+ORDER BY avg_price;",,complex,0,0,False,6470.272779464722,False
+278,Phân tích giá theo khoảng từ 700k đến 1200k,"SELECT 
+CASE 
+    WHEN pr.current_price < 700000 THEN 'Under 700K'
+    WHEN pr.current_price BETWEEN 700000 AND 1200000 THEN '700K-1200K'
+    ELSE 'Over 1200K'
+END as price_range,
+COUNT(*) as product_count,
+AVG(rv.rating_average) as avg_rating,
+AVG(pr.current_price) as avg_price
+FROM product_pricing pr 
+JOIN product_reviews rv ON pr.product_id = rv.product_id 
+GROUP BY price_range 
+ORDER BY avg_price;",,complex,0,0,False,5156.3215255737305,False
+279,Phân tích giá theo khoảng từ 800k đến 1300k,"SELECT 
+CASE 
+    WHEN pr.current_price < 800000 THEN 'Under 800K'
+    WHEN pr.current_price BETWEEN 800000 AND 1300000 THEN '800K-1300K'
+    ELSE 'Over 1300K'
+END as price_range,
+COUNT(*) as product_count,
+AVG(rv.rating_average) as avg_rating,
+AVG(pr.current_price) as avg_price
+FROM product_pricing pr 
+JOIN product_reviews rv ON pr.product_id = rv.product_id 
+GROUP BY price_range 
+ORDER BY avg_price;",,complex,0,0,False,5962.8894329071045,False
+280,Phân tích giá theo khoảng từ 900k đến 1400k,"SELECT 
+CASE 
+    WHEN pr.current_price < 900000 THEN 'Under 900K'
+    WHEN pr.current_price BETWEEN 900000 AND 1400000 THEN '900K-1400K'
+    ELSE 'Over 1400K'
+END as price_range,
+COUNT(*) as product_count,
+AVG(rv.rating_average) as avg_rating,
+AVG(pr.current_price) as avg_price
+FROM product_pricing pr 
+JOIN product_reviews rv ON pr.product_id = rv.product_id 
+GROUP BY price_range 
+ORDER BY avg_price;",,complex,0,0,False,4023.0681896209717,False
+281,Phân tích giá theo khoảng từ 1000k đến 1500k,"SELECT 
+CASE 
+    WHEN pr.current_price < 1000000 THEN 'Under 1000K'
+    WHEN pr.current_price BETWEEN 1000000 AND 1500000 THEN '1000K-1500K'
+    ELSE 'Over 1500K'
+END as price_range,
+COUNT(*) as product_count,
+AVG(rv.rating_average) as avg_rating,
+AVG(pr.current_price) as avg_price
+FROM product_pricing pr 
+JOIN product_reviews rv ON pr.product_id = rv.product_id 
+GROUP BY price_range 
+ORDER BY avg_price;",,complex,0,0,False,10084.11693572998,False
+282,Phân tích giá theo khoảng từ 100k đến 600k,"SELECT 
+CASE 
+    WHEN pr.current_price < 100000 THEN 'Under 100K'
+    WHEN pr.current_price BETWEEN 100000 AND 600000 THEN '100K-600K'
+    ELSE 'Over 600K'
+END as price_range,
+COUNT(*) as product_count,
+AVG(rv.rating_average) as avg_rating,
+AVG(pr.current_price) as avg_price
+FROM product_pricing pr 
+JOIN product_reviews rv ON pr.product_id = rv.product_id 
+GROUP BY price_range 
+ORDER BY avg_price;",,complex,0,0,False,8807.339668273926,False
+283,Phân tích giá theo khoảng từ 200k đến 700k,"SELECT 
+CASE 
+    WHEN pr.current_price < 200000 THEN 'Under 200K'
+    WHEN pr.current_price BETWEEN 200000 AND 700000 THEN '200K-700K'
+    ELSE 'Over 700K'
+END as price_range,
+COUNT(*) as product_count,
+AVG(rv.rating_average) as avg_rating,
+AVG(pr.current_price) as avg_price
+FROM product_pricing pr 
+JOIN product_reviews rv ON pr.product_id = rv.product_id 
+GROUP BY price_range 
+ORDER BY avg_price;",,complex,0,0,False,5728.5261154174805,False
+284,Phân tích giá theo khoảng từ 300k đến 800k,"SELECT 
+CASE 
+    WHEN pr.current_price < 300000 THEN 'Under 300K'
+    WHEN pr.current_price BETWEEN 300000 AND 800000 THEN '300K-800K'
+    ELSE 'Over 800K'
+END as price_range,
+COUNT(*) as product_count,
+AVG(rv.rating_average) as avg_rating,
+AVG(pr.current_price) as avg_price
+FROM product_pricing pr 
+JOIN product_reviews rv ON pr.product_id = rv.product_id 
+GROUP BY price_range 
+ORDER BY avg_price;",,complex,0,0,False,4316.1516189575195,False
+285,Phân tích giá theo khoảng từ 400k đến 900k,"SELECT 
+CASE 
+    WHEN pr.current_price < 400000 THEN 'Under 400K'
+    WHEN pr.current_price BETWEEN 400000 AND 900000 THEN '400K-900K'
+    ELSE 'Over 900K'
+END as price_range,
+COUNT(*) as product_count,
+AVG(rv.rating_average) as avg_rating,
+AVG(pr.current_price) as avg_price
+FROM product_pricing pr 
+JOIN product_reviews rv ON pr.product_id = rv.product_id 
+GROUP BY price_range 
+ORDER BY avg_price;",,complex,0,0,False,5025.241374969482,False
+286,Phân tích giá theo khoảng từ 500k đến 1000k,"SELECT 
+CASE 
+    WHEN pr.current_price < 500000 THEN 'Under 500K'
+    WHEN pr.current_price BETWEEN 500000 AND 1000000 THEN '500K-1000K'
+    ELSE 'Over 1000K'
+END as price_range,
+COUNT(*) as product_count,
+AVG(rv.rating_average) as avg_rating,
+AVG(pr.current_price) as avg_price
+FROM product_pricing pr 
+JOIN product_reviews rv ON pr.product_id = rv.product_id 
+GROUP BY price_range 
+ORDER BY avg_price;",,complex,0,0,False,4038.7940406799316,False
+287,Phân tích giá theo khoảng từ 600k đến 1100k,"SELECT 
+CASE 
+    WHEN pr.current_price < 600000 THEN 'Under 600K'
+    WHEN pr.current_price BETWEEN 600000 AND 1100000 THEN '600K-1100K'
+    ELSE 'Over 1100K'
+END as price_range,
+COUNT(*) as product_count,
+AVG(rv.rating_average) as avg_rating,
+AVG(pr.current_price) as avg_price
+FROM product_pricing pr 
+JOIN product_reviews rv ON pr.product_id = rv.product_id 
+GROUP BY price_range 
+ORDER BY avg_price;",,complex,0,0,False,5646.533250808716,False
+288,Phân tích giá theo khoảng từ 700k đến 1200k,"SELECT 
+CASE 
+    WHEN pr.current_price < 700000 THEN 'Under 700K'
+    WHEN pr.current_price BETWEEN 700000 AND 1200000 THEN '700K-1200K'
+    ELSE 'Over 1200K'
+END as price_range,
+COUNT(*) as product_count,
+AVG(rv.rating_average) as avg_rating,
+AVG(pr.current_price) as avg_price
+FROM product_pricing pr 
+JOIN product_reviews rv ON pr.product_id = rv.product_id 
+GROUP BY price_range 
+ORDER BY avg_price;",,complex,0,0,False,4434.422492980957,False
+289,Phân tích giá theo khoảng từ 800k đến 1300k,"SELECT 
+CASE 
+    WHEN pr.current_price < 800000 THEN 'Under 800K'
+    WHEN pr.current_price BETWEEN 800000 AND 1300000 THEN '800K-1300K'
+    ELSE 'Over 1300K'
+END as price_range,
+COUNT(*) as product_count,
+AVG(rv.rating_average) as avg_rating,
+AVG(pr.current_price) as avg_price
+FROM product_pricing pr 
+JOIN product_reviews rv ON pr.product_id = rv.product_id 
+GROUP BY price_range 
+ORDER BY avg_price;",,complex,0,0,False,4885.872364044189,False
+290,Phân tích giá theo khoảng từ 900k đến 1400k,"SELECT 
+CASE 
+    WHEN pr.current_price < 900000 THEN 'Under 900K'
+    WHEN pr.current_price BETWEEN 900000 AND 1400000 THEN '900K-1400K'
+    ELSE 'Over 1400K'
+END as price_range,
+COUNT(*) as product_count,
+AVG(rv.rating_average) as avg_rating,
+AVG(pr.current_price) as avg_price
+FROM product_pricing pr 
+JOIN product_reviews rv ON pr.product_id = rv.product_id 
+GROUP BY price_range 
+ORDER BY avg_price;",,complex,0,0,False,6504.616498947144,False
+291,Phân tích giá theo khoảng từ 1000k đến 1500k,"SELECT 
+CASE 
+    WHEN pr.current_price < 1000000 THEN 'Under 1000K'
+    WHEN pr.current_price BETWEEN 1000000 AND 1500000 THEN '1000K-1500K'
+    ELSE 'Over 1500K'
+END as price_range,
+COUNT(*) as product_count,
+AVG(rv.rating_average) as avg_rating,
+AVG(pr.current_price) as avg_price
+FROM product_pricing pr 
+JOIN product_reviews rv ON pr.product_id = rv.product_id 
+GROUP BY price_range 
+ORDER BY avg_price;",,complex,0,0,False,6888.561725616455,False
+292,Phân tích giá theo khoảng từ 100k đến 600k,"SELECT 
+CASE 
+    WHEN pr.current_price < 100000 THEN 'Under 100K'
+    WHEN pr.current_price BETWEEN 100000 AND 600000 THEN '100K-600K'
+    ELSE 'Over 600K'
+END as price_range,
+COUNT(*) as product_count,
+AVG(rv.rating_average) as avg_rating,
+AVG(pr.current_price) as avg_price
+FROM product_pricing pr 
+JOIN product_reviews rv ON pr.product_id = rv.product_id 
+GROUP BY price_range 
+ORDER BY avg_price;",,complex,0,0,False,6096.478700637817,False
+293,Phân tích giá theo khoảng từ 200k đến 700k,"SELECT 
+CASE 
+    WHEN pr.current_price < 200000 THEN 'Under 200K'
+    WHEN pr.current_price BETWEEN 200000 AND 700000 THEN '200K-700K'
+    ELSE 'Over 700K'
+END as price_range,
+COUNT(*) as product_count,
+AVG(rv.rating_average) as avg_rating,
+AVG(pr.current_price) as avg_price
+FROM product_pricing pr 
+JOIN product_reviews rv ON pr.product_id = rv.product_id 
+GROUP BY price_range 
+ORDER BY avg_price;",,complex,0,0,False,4448.198318481445,False
+294,Phân tích giá theo khoảng từ 300k đến 800k,"SELECT 
+CASE 
+    WHEN pr.current_price < 300000 THEN 'Under 300K'
+    WHEN pr.current_price BETWEEN 300000 AND 800000 THEN '300K-800K'
+    ELSE 'Over 800K'
+END as price_range,
+COUNT(*) as product_count,
+AVG(rv.rating_average) as avg_rating,
+AVG(pr.current_price) as avg_price
+FROM product_pricing pr 
+JOIN product_reviews rv ON pr.product_id = rv.product_id 
+GROUP BY price_range 
+ORDER BY avg_price;",,complex,0,0,False,4038.2630825042725,False
+295,Phân tích giá theo khoảng từ 400k đến 900k,"SELECT 
+CASE 
+    WHEN pr.current_price < 400000 THEN 'Under 400K'
+    WHEN pr.current_price BETWEEN 400000 AND 900000 THEN '400K-900K'
+    ELSE 'Over 900K'
+END as price_range,
+COUNT(*) as product_count,
+AVG(rv.rating_average) as avg_rating,
+AVG(pr.current_price) as avg_price
+FROM product_pricing pr 
+JOIN product_reviews rv ON pr.product_id = rv.product_id 
+GROUP BY price_range 
+ORDER BY avg_price;",,complex,0,0,False,5451.177358627319,False
+296,Phân tích giá theo khoảng từ 500k đến 1000k,"SELECT 
+CASE 
+    WHEN pr.current_price < 500000 THEN 'Under 500K'
+    WHEN pr.current_price BETWEEN 500000 AND 1000000 THEN '500K-1000K'
+    ELSE 'Over 1000K'
+END as price_range,
+COUNT(*) as product_count,
+AVG(rv.rating_average) as avg_rating,
+AVG(pr.current_price) as avg_price
+FROM product_pricing pr 
+JOIN product_reviews rv ON pr.product_id = rv.product_id 
+GROUP BY price_range 
+ORDER BY avg_price;",,complex,0,0,False,4311.141490936279,False
+297,Phân tích giá theo khoảng từ 600k đến 1100k,"SELECT 
+CASE 
+    WHEN pr.current_price < 600000 THEN 'Under 600K'
+    WHEN pr.current_price BETWEEN 600000 AND 1100000 THEN '600K-1100K'
+    ELSE 'Over 1100K'
+END as price_range,
+COUNT(*) as product_count,
+AVG(rv.rating_average) as avg_rating,
+AVG(pr.current_price) as avg_price
+FROM product_pricing pr 
+JOIN product_reviews rv ON pr.product_id = rv.product_id 
+GROUP BY price_range 
+ORDER BY avg_price;",,complex,0,0,False,5977.213144302368,False
+298,Top 15 sản phẩm có tỷ lệ đánh giá 5 sao cao nhất theo danh mục,"SELECT p.name, c.category_name, b.brand_name, pr.current_price, rv.rating_average, rv.review_count,
+ROUND((rv.favourite_count * 100.0 / NULLIF(rv.review_count, 0)), 2) as five_star_percentage
+FROM products p 
+JOIN categories c ON p.category_id = c.category_id 
+JOIN brands b ON p.brand_id = b.brand_id 
+JOIN product_pricing pr ON p.product_id = pr.product_id 
+JOIN product_reviews rv ON p.product_id = rv.product_id 
+WHERE rv.review_count >= 50 AND rv.rating_average >= 4.5
+ORDER BY five_star_percentage DESC, rv.rating_average DESC 
+LIMIT 15;","SELECT p.name, c.category_name, b.brand_name, pr.current_price, rv.rating_average, rv.review_count,\nROUND((rv.favourite_count * 100.0 / NULLIF(rv.review_count, 0)), 2) as five_star_percentage\nFROM products p \nJOIN categories c ON p.category_id = c.category_id \nJOIN brands b ON p.brand_id = b.brand_id \nJOIN product_pricing pr ON p.product_id = pr.product_id \nJOIN product_reviews rv ON p.product_id = rv.product_id \nWHERE rv.review_count >= 50 AND rv.rating_average >= 4.5\nORDER BY five_star_percentage DESC, rv.rating_average DESC \nLIMIT 15;",complex,1,1,True,4598.323106765747,True
+299,Phân tích hiệu suất bán hàng theo thương hiệu và danh mục với thống kê chi tiết,"SELECT b.brand_name, c.category_name,
+COUNT(p.product_id) as total_products,
+SUM(pr.quantity_sold) as total_sales,
+AVG(pr.current_price) as avg_price,
+AVG(rv.rating_average) as avg_rating,
+SUM(pr.vnd_cashback) as total_cashback,
+ROUND(AVG(pr.current_price) * SUM(pr.quantity_sold), 0) as estimated_revenue,
+ROUND(SUM(pr.quantity_sold) * 100.0 / (SELECT SUM(quantity_sold) FROM product_pricing), 2) as market_share_percent
+FROM brands b 
+JOIN products p ON b.brand_id = p.brand_id 
+JOIN categories c ON p.category_id = c.category_id 
+JOIN product_pricing pr ON p.product_id = pr.product_id 
+JOIN product_reviews rv ON p.product_id = rv.product_id 
+GROUP BY b.brand_id, b.brand_name, c.category_id, c.category_name 
+HAVING COUNT(p.product_id) >= 5 AND SUM(pr.quantity_sold) > 0
+ORDER BY estimated_revenue DESC, market_share_percent DESC 
+LIMIT 20;","SELECT b.brand_name, c.category_name,\nCOUNT(p.product_id) as total_products,\nSUM(pr.quantity_sold) as total_sales,\nAVG(pr.current_price) as avg_price,\nAVG(rv.rating_average) as avg_rating,\nSUM(pr.vnd_cashback) as total_cashback,\nROUND(AVG(pr.current_price) * SUM(pr.quantity_sold), 0) as estimated_revenue,\nROUND(SUM(pr.quantity_sold) * 100.0 / (SELECT SUM(quantity_sold) FROM product_pricing), 2) as market_share_percent\nFROM brands b \nJOIN products p ON b.brand_id = p.brand_id \nJOIN categories c ON p.category_id = c.category_id \nJOIN product_pricing pr ON p.product_id = pr.product_id \nJOIN product_reviews rv ON p.product_id = rv.product_id \nGROUP BY b.brand_id, b.brand_name, c.category_id, c.category_name \nHAVING COUNT(p.product_id) >= 5 AND SUM(pr.quantity_sold) > 0\nORDER BY estimated_revenue DESC, market_share_percent DESC \nLIMIT 20;",complex,1,1,True,3309.6275329589844,True

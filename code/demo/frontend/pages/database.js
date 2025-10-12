@@ -605,22 +605,22 @@ ORDER BY avg_price_in_range;`
                       {sampleData.map((product, idx) => (
                         <tr key={idx} className="hover:bg-gray-50">
                           <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                            {product.tiki_id || product.id}
+                            {product.product_id || product.tiki_id || product.id}
                           </td>
                           <td className="px-6 py-4 text-sm text-gray-900 max-w-xs truncate">
                             {product.name}
                           </td>
                           <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                            {product.price?.toLocaleString()} ₫
+                            {product.current_price ? `${product.current_price.toLocaleString()} ₫` : 'N/A'}
                           </td>
                           <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                            {product.brand}
+                            {product.brand_name || product.brand || 'Unknown'}
                           </td>
                           <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                            {product.category}
+                            {product.category_name || product.category || 'Unknown'}
                           </td>
                           <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                            {product.rating_average || 'N/A'}
+                            {product.rating_average ? product.rating_average.toFixed(1) : 'N/A'}
                           </td>
                         </tr>
                       ))}

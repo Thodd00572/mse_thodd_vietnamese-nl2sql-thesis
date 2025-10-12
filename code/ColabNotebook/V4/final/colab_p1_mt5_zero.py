@@ -681,7 +681,7 @@ try:
     import uvicorn
     import nest_asyncio
     from pyngrok import ngrok
-    print("All API packages already installed")
+    print("[OK] All API packages already installed")
 except ImportError:
     print("Installing FastAPI dependencies...")
     import subprocess
@@ -692,7 +692,7 @@ except ImportError:
             subprocess.check_call([sys.executable, "-m", "pip", "install", package, "-q"])
         except Exception as e:
             print(f"Warning: Failed to install {package}: {e}")
-    print("API packages installed")
+    print("[OK] API packages installed")
 
 # Now import all API dependencies
 from fastapi import FastAPI, HTTPException
@@ -701,11 +701,40 @@ import uvicorn
 from pydantic import BaseModel
 import nest_asyncio
 from pyngrok import ngrok
+from typing import Optional, Dict, Any
 
 nest_asyncio.apply()
 
 # Set up ngrok with token
 ngrok.set_auth_token("32BqVAspvTl3PmS23seCfxTxW93_7p3vCzKHixcdNg936rpXv")
+
+# ============================================================================
+# INITIALIZE P1 PIPELINE FOR API
+# ============================================================================
+
+print("\n" + "=" * 60)
+print("INITIALIZING P1 PIPELINE FOR API")
+print("=" * 60)
+
+# Check if pipeline was already loaded from evaluation
+if 'pipeline' not in dir() or pipeline is None:
+    print("\n[INFO] P1 (mT5) not found in memory. Initializing for API...")
+    try:
+        pipeline = PromptingPipeline(model_name="google/mt5-base")
+        print("[✓] P1 initialized successfully!")
+    except Exception as e:
+        print(f"[✗] Failed to initialize P1: {e}")
+        import traceback
+        traceback.print_exc()
+        pipeline = None
+else:
+    print("[✓] P1 (mT5) already loaded from evaluation")
+
+print("\n" + "=" * 60)
+print("PIPELINE STATUS")
+print("=" * 60)
+print(f"P1 (mT5):  {'✓ Ready' if pipeline else '✗ Not Available'}")
+print("=" * 60)
 
 # Create FastAPI app
 app = FastAPI(
@@ -727,14 +756,15 @@ app.add_middleware(
 class QueryRequest(BaseModel):
     query: str
 
-class P1Response(BaseModel):
+class PipelineResponse(BaseModel):
     pipeline: str
+    vietnamese_query: str
     sql_query: str
     execution_time: float
     valid: bool
     success: bool
     error: Optional[str] = None
-    metrics: dict
+    metrics: Dict[str, Any] = {}
 
 # API Endpoints
 @app.get("/")
@@ -753,122 +783,94 @@ async def root():
 
 @app.get("/health")
 async def health_check():
+    """Check API and P1 pipeline status"""
     return {
         "status": "healthy",
         "version": "1.0",
-        "pipeline": "P1",
-        "model_loaded": pipeline is not None,
+        "pipeline": "P1_mT5_Zero_Shot",
+        "available": pipeline is not None,
+        "model": "google/mt5-base",
         "device": str(device)
     }
 
-@app.post("/p1/generate", response_model=P1Response)
-async def generate_sql_p1(request: QueryRequest):
-    """Generate SQL from Vietnamese query using P1 mT5 Zero-Shot"""
+@app.post("/p1/generate", response_model=PipelineResponse)
+async def generate_p1(request: QueryRequest):
+    """Generate SQL using P1 (mT5 Zero-Shot)"""
+    if not pipeline:
+        raise HTTPException(status_code=503, detail="P1 pipeline not available")
+    
     try:
-        if not pipeline:
-            raise HTTPException(
-                status_code=503, 
-                detail="Pipeline not loaded. Please run evaluation first."
-            )
-        
         start_time = time.time()
         sql = pipeline.generate_sql(request.query)
         execution_time = time.time() - start_time
         
-        # Validate SQL
-        valid = bool(sql and len(sql.strip()) > 5)
-        
-        return P1Response(
+        return PipelineResponse(
             pipeline="P1_mT5_Zero_Shot",
+            vietnamese_query=request.query,
             sql_query=sql,
             execution_time=execution_time,
-            valid=valid,
-            success=valid,
-            error=None if valid else "Generated SQL is empty or too short",
+            valid=bool(sql and len(sql) > 0),
+            success=True,
             metrics={
                 "latency_ms": execution_time * 1000,
                 "model": "google/mt5-base",
                 "method": "zero_shot_prompting"
             }
         )
-        
-    except HTTPException:
-        raise
     except Exception as e:
-        error_msg = f"P1 generation failed: {str(e)}"
-        return P1Response(
-            pipeline="P1_mT5_Zero_Shot",
-            sql_query="",
-            execution_time=0,
-            valid=False,
-            success=False,
-            error=error_msg,
-            metrics={}
-        )
+        import logging
+        logging.error(f"P1 generation error: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
 
 @app.get("/p1/metrics")
 async def get_p1_metrics():
-    """Get evaluation metrics for P1"""
-    if not metrics:
-        raise HTTPException(status_code=404, detail="Metrics not available. Run evaluation first.")
+    """Get P1 metrics"""
+    if not pipeline:
+        raise HTTPException(status_code=503, detail="P1 not available")
     
-    return {
-        "pipeline": "P1_mT5_Zero_Shot",
-        "metrics": metrics,
-        "description": "Zero-shot prompting with mT5 multilingual model"
-    }
+    # Return evaluation metrics if available
+    if 'metrics' in dir() and metrics:
+        return {
+            "pipeline": "P1_mT5_Zero_Shot",
+            "status": "ready",
+            "evaluation_metrics": metrics
+        }
+    else:
+        return {
+            "pipeline": "P1_mT5_Zero_Shot",
+            "status": "ready",
+            "evaluation_metrics": None
+        }
 
-print("FastAPI app configured for P1")
+print("[✓] FastAPI app configured for P1 (mT5)")
 
 # ============================================================================
 # CELL 8: Start ngrok Tunnel and FastAPI Server for P1
 # ============================================================================
 
-print("\nStarting ngrok tunnel for P1: mT5 Zero-Shot...")
-try:
-    # Use custom domain - all pipelines share this domain with different paths
-    public_url = ngrok.connect(8000, domain="abnormally-direct-rhino.ngrok-free.app")
-    print(f"P1 API URL: {public_url}")
-    print(f"P1 Generate Endpoint: {public_url}/p1/generate")
-    
-    api_url = f"{public_url}"
-    print(f"\nP1 mT5 Zero-Shot API is available at:")
-    print(f"  Base URL: {api_url}")
-    print(f"  Health Check: {api_url}/health")
-    print(f"  API Docs: {api_url}/docs")
-    print(f"  Generate SQL: {api_url}/p1/generate (POST)")
-    print(f"  View Metrics: {api_url}/p1/metrics (GET)")
-    
-    # Test health endpoint
-    print(f"\nTesting P1 server health...")
-    import requests
-    try:
-        health_response = requests.get(f"{api_url}/health", timeout=10)
-        if health_response.status_code == 200:
-            health_data = health_response.json()
-            print(f"P1 Health check passed: {health_data['status']}")
-            print(f"Model loaded: {'Yes' if health_data['model_loaded'] else 'No'}")
-        else:
-            print(f"Health check returned: HTTP {health_response.status_code}")
-    except Exception as health_e:
-        print(f"Health check error: {health_e}")
-    
-except Exception as e:
-    print(f"Custom domain failed: {e}")
-    print("Falling back to random domain...")
-    public_url = ngrok.connect(8000)
-    print(f"Fallback URL: {public_url}")
-    api_url = f"{public_url}"
-
-print(f"\nStarting P1 FastAPI server on port 8000...")
-print("Keep this cell running to maintain the API!")
-print(f"Configure this URL in your local system: {api_url}")
 print("\n" + "=" * 60)
-print("EXAMPLE CURL REQUEST:")
-print(f'curl -X POST "{api_url}/p1/generate" \\')
-print('     -H "Content-Type: application/json" \\')
-print('     -d \'{"query": "Hiển thị tất cả sản phẩm"}\'')
+print("STARTING P1 API SERVER")
 print("=" * 60)
 
-# Start server
-uvicorn.run(app, host="0.0.0.0", port=8000, log_level="info")
+# Kill any existing ngrok tunnels
+ngrok.kill()
+
+# Start new tunnel
+public_url = ngrok.connect(8000)
+print(f"\n✓ Public URL: {public_url}")
+print(f"  Use this URL in your frontend configuration")
+print(f"\n✓ API Endpoints:")
+print(f"  - Health: {public_url}/health")
+print(f"  - P1: {public_url}/p1/generate")
+print(f"  - Metrics: {public_url}/p1/metrics")
+print(f"\n✓ Test with curl:")
+print(f'  curl -X POST {public_url}/p1/generate \\')
+print(f'    -H "Content-Type: application/json" \\')
+print(f'    -d \'{{"query":"Tìm áo thun"}}\'')
+print("\n" + "=" * 60)
+
+# Start FastAPI server
+print("\nStarting FastAPI server on port 8000...")
+print("Press Ctrl+C to stop the server\n")
+
+uvicorn.run(app, host="0.0.0.0", port=8000)

@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const DB_API_BASE_URL = process.env.NEXT_PUBLIC_DB_API_URL || 'http://localhost:8001'
+const DB_API_BASE_URL = process.env.NEXT_PUBLIC_DB_API_URL || 'http://localhost:8000'
 
 const dbApi = axios.create({
   baseURL: DB_API_BASE_URL,
