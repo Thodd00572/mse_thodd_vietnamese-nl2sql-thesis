@@ -3,27 +3,17 @@ Colab Proxy Routes - Forward requests to Colab API and execute SQL on local DB
 Handles P1 (mT5), P2 (SQLCoder), and P3 (Vanna AI) endpoints
 """
 
-from fastapi import APIRouter, HTTPException
-from pydantic import BaseModel
+from typing import Optional, List, Dict, Any
 import httpx
 import logging
+from fastapi import APIRouter, HTTPException
+from pydantic import BaseModel
 import time
-from typing import Optional, Dict, Any, List
-import sys
-import os
 
-# Add backend root to path
-current_dir = os.path.dirname(os.path.abspath(__file__))
-backend_root = os.path.dirname(current_dir)
-sys.path.append(backend_root)
-
-from database.db_manager_normalized import DatabaseManager
+from core.shared_models import db_manager, enrich_products_with_details
 
 logger = logging.getLogger(__name__)
 router = APIRouter()
-
-# Initialize database manager
-db_manager = DatabaseManager()
 
 # Colab API base URL - will be configured from config file
 COLAB_BASE_URL = "https://abnormally-direct-rhino.ngrok-free.app"
@@ -95,66 +85,7 @@ def execute_sql_on_local_db(sql: str) -> Dict[str, Any]:
             "row_count": 0
         }
 
-def enrich_products_with_pricing(products: List[Dict]) -> List[Dict]:
-    """Enrich product data with pricing, brand, and rating information"""
-    enriched = []
-    
-    for product in products:
-        product_id = product.get('product_id')
-        enriched_product = {**product}
-        
-        try:
-            # Get pricing data
-            pricing_sql = f"SELECT current_price, quantity_sold FROM product_pricing WHERE product_id = {product_id}"
-            pricing_result = db_manager.execute_query(pricing_sql)
-            
-            if pricing_result and isinstance(pricing_result, list) and len(pricing_result) > 0:
-                enriched_product['price'] = int(pricing_result[0]['current_price'])
-                enriched_product['quantity_sold'] = int(pricing_result[0]['quantity_sold'])
-            else:
-                enriched_product['price'] = None
-                enriched_product['quantity_sold'] = None
-        except Exception as e:
-            logger.warning(f"Failed to get pricing for product {product_id}: {e}")
-            enriched_product['price'] = None
-            enriched_product['quantity_sold'] = None
-        
-        try:
-            # Get brand data
-            brand_id = product.get('brand_id')
-            if brand_id:
-                brand_sql = f"SELECT brand_name FROM brands WHERE brand_id = {brand_id}"
-                brand_result = db_manager.execute_query(brand_sql)
-                
-                if brand_result and isinstance(brand_result, list) and len(brand_result) > 0:
-                    enriched_product['brand'] = str(brand_result[0]['brand_name'])
-                else:
-                    enriched_product['brand'] = 'Unknown'
-            else:
-                enriched_product['brand'] = 'Unknown'
-        except Exception as e:
-            logger.warning(f"Failed to get brand for product {product_id}: {e}")
-            enriched_product['brand'] = 'Unknown'
-        
-        try:
-            # Get rating data
-            rating_sql = f"SELECT rating_average, review_count FROM product_reviews WHERE product_id = {product_id}"
-            rating_result = db_manager.execute_query(rating_sql)
-            
-            if rating_result and isinstance(rating_result, list) and len(rating_result) > 0:
-                enriched_product['rating'] = float(rating_result[0]['rating_average'])
-                enriched_product['review_count'] = int(rating_result[0]['review_count'])
-            else:
-                enriched_product['rating'] = None
-                enriched_product['review_count'] = None
-        except Exception as e:
-            logger.warning(f"Failed to get rating for product {product_id}: {e}")
-            enriched_product['rating'] = None
-            enriched_product['review_count'] = None
-        
-        enriched.append(enriched_product)
-    
-    return enriched
+# Note: enrich_products_with_details is now imported from shared_models
 
 async def call_colab_pipeline(endpoint: str, query: str, pipeline_name: str) -> PipelineResponse:
     """Call Colab API endpoint and execute SQL on local database"""
@@ -185,10 +116,10 @@ async def call_colab_pipeline(endpoint: str, query: str, pipeline_name: str) -> 
         if sql_query and sql_query.strip():
             db_results = execute_sql_on_local_db(sql_query)
             
-            # Enrich results with pricing/brand/rating data if we have products
+            # Enrich results with pricing/brand/category/rating data if we have products
             if db_results and db_results.get("success") and db_results.get("rows"):
                 try:
-                    enriched_results = enrich_products_with_pricing(db_results["rows"])
+                    enriched_results = enrich_products_with_details(db_results["rows"])
                 except Exception as e:
                     logger.warning(f"Failed to enrich products: {e}")
                     enriched_results = db_results["rows"]

@@ -1,6 +1,6 @@
 {
   "base_url": "https://abnormally-direct-rhino.ngrok-free.app",
-  "pipeline1_url": "https://abnormally-direct-rhino.ngrok-free.app/p1",
-  "pipeline2_url": "https://abnormally-direct-rhino.ngrok-free.app/p2",
-  "pipeline3_url": "https://abnormally-direct-rhino.ngrok-free.app/p3"
+  "pipeline1_url": "https://abnormally-direct-rhino.ngrok-free.app/p1/generate",
+  "pipeline2_url": "https://abnormally-direct-rhino.ngrok-free.app/p2/generate",
+  "pipeline3_url": "https://abnormally-direct-rhino.ngrok-free.app/p3/generate"
 }

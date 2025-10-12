@@ -47,7 +47,7 @@ class VietnameseSQLPipeline:
         try:
             async with httpx.AsyncClient(timeout=30.0) as client:
                 response = await client.post(
-                    f"{self.colab_url}/pipeline1",
+                    self.colab_url,  # Use URL directly, don't append /pipeline1
                     json={"query": vietnamese_query},
                     headers={"ngrok-skip-browser-warning": "true"}
                 )
@@ -64,15 +64,17 @@ class VietnameseSQLPipeline:
         
         try:
             async with httpx.AsyncClient(timeout=120.0) as client:  # Longer timeout for batch
+                # For batch, append /batch to the pipeline URL
+                batch_url = f"{self.colab_url}/batch" if not self.colab_url.endswith('/batch') else self.colab_url
                 response = await client.post(
-                    f"{self.colab_url}/batch/pipeline1",
+                    batch_url,
                     json={"queries": queries, "batch_size": len(queries)},
                     headers={"ngrok-skip-browser-warning": "true"}
                 )
                 response.raise_for_status()
                 return response.json()
         except Exception as e:
-            logger.error(f"Colab batch API call failed: {e}")
+            logger.error(f"Batch API call failed: {e}")
             raise
     
     async def vietnamese_to_sql(self, vietnamese_query: str, schema_context: str = "") -> Dict[str, Any]:
@@ -255,7 +257,7 @@ class VietnameseEnglishSQLPipeline:
         try:
             async with httpx.AsyncClient(timeout=30.0) as client:
                 response = await client.post(
-                    f"{self.colab_url}/pipeline2",
+                    self.colab_url,  # Use URL directly, don't append /pipeline2
                     json={"query": vietnamese_query},
                     headers={"ngrok-skip-browser-warning": "true"}
                 )
@@ -272,8 +274,10 @@ class VietnameseEnglishSQLPipeline:
         
         try:
             async with httpx.AsyncClient(timeout=120.0) as client:  # Longer timeout for batch
+                # For batch, append /batch to the pipeline URL
+                batch_url = f"{self.colab_url}/batch" if not self.colab_url.endswith('/batch') else self.colab_url
                 response = await client.post(
-                    f"{self.colab_url}/batch/pipeline2",
+                    batch_url,
                     json={"queries": queries, "batch_size": len(queries)},
                     headers={"ngrok-skip-browser-warning": "true"}
                 )

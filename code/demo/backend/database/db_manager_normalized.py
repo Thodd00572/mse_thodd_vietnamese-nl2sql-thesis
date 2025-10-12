@@ -13,22 +13,24 @@ class DatabaseManager:
     def __init__(self, db_path: str = None):
         # Use absolute path to database if not provided
         if db_path is None:
-            # Try multiple possible locations
+            # Try multiple possible locations (prioritize testing database)
             possible_paths = [
-                "/Users/thoduong/CascadeProjects/MSE_Thesis_2025/data/tiki_products_normalized.db",
+                "/Users/thoduong/CascadeProjects/MSE_Thesis_2025/data/tiki_products_normalized.db",  # TESTING DATABASE (priority 1)
                 "data/tiki_products_normalized.db",
                 "../../../data/tiki_products_normalized.db",
-                "core/data/tiki_products_normalized.db"
+                "/Users/thoduong/CascadeProjects/MSE_Thesis_2025/code/ColabNotebook/db/tiki.sqlite",  # Colab database (fallback)
+                "core/data/tiki_products_normalized.db",
+                "../../../code/ColabNotebook/db/tiki.sqlite"
             ]
             for path in possible_paths:
                 if os.path.exists(path):
                     self.db_path = path
-                    logger.info(f"Found database at: {self.db_path}")
+                    logger.info(f"✅ Using database: {self.db_path}")
                     break
             else:
-                # Default to absolute path
+                # Default to testing database location
                 self.db_path = "/Users/thoduong/CascadeProjects/MSE_Thesis_2025/data/tiki_products_normalized.db"
-                logger.warning(f"Database not found, using default path: {self.db_path}")
+                logger.warning(f"⚠️ Database not found, using default: {self.db_path}")
         else:
             self.db_path = db_path
         

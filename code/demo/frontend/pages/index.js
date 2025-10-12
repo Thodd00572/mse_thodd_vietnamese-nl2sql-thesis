@@ -314,47 +314,118 @@ export default function SearchPage() {
           </div>
         )}
 
-        {result.results && result.results.length > 0 && (
-          <div>
-            <p className="text-sm font-medium text-gray-700 mb-3">
-              Results ({result.results.length} products):
-            </p>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 max-h-[600px] overflow-y-auto">
-              {result.results.map((product, idx) => (
-                <div key={idx} className="bg-white border border-gray-200 rounded-lg p-4 hover:shadow-lg transition-all duration-200 flex flex-col h-full">
-                  <div className="flex flex-col h-full">
-                    <h4 className="font-medium text-gray-900 text-sm line-clamp-2 mb-2 min-h-[2.5rem]">
-                      {product.name}
-                    </h4>
-                    <p className="text-xs text-gray-600 line-clamp-3 mb-3 flex-grow min-h-[3rem]">
-                      {product.description || 'No description available'}
-                    </p>
-                    <div className="space-y-2 mt-auto pt-3 border-t border-gray-100">
-                      {product.price && (
-                        <div className="text-lg font-bold text-blue-600">
-                          {formatPrice(product.price)}
-                        </div>
-                      )}
-                      <div className="flex items-center justify-between text-xs">
-                        <span className="text-gray-600 truncate max-w-[60%]">
-                          {product.brand || 'Unknown Brand'}
-                        </span>
-                        {product.rating && (
-                          <span className="text-yellow-600 flex items-center flex-shrink-0">
-                            ⭐ {product.rating.toFixed(1)}
-                            {product.review_count && (
-                              <span className="text-gray-500 ml-1">({product.review_count})</span>
-                            )}
-                          </span>
-                        )}
-                      </div>
-                    </div>
+        {result.results && result.results.length > 0 && (() => {
+          // Detect if results are products or aggregated data
+          const firstRow = result.results[0];
+          const isProductData = firstRow && (firstRow.product_id || firstRow.name);
+          const isAggregatedData = !isProductData && firstRow && Object.keys(firstRow).length > 0;
+
+          if (isAggregatedData) {
+            // Display aggregated results as a table
+            const columns = Object.keys(firstRow);
+            return (
+              <div className="mt-4">
+                <p className="text-sm font-medium text-gray-700 mb-3">
+                  Results ({result.results.length} rows):
+                </p>
+                <div className="bg-white border border-gray-200 rounded-lg overflow-hidden">
+                  <div className="overflow-x-auto max-h-[600px] overflow-y-auto">
+                    <table className="min-w-full divide-y divide-gray-200">
+                      <thead className="bg-gray-50 sticky top-0">
+                        <tr>
+                          {columns.map((col) => (
+                            <th key={col} className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
+                              {col.replace(/_/g, ' ')}
+                            </th>
+                          ))}
+                        </tr>
+                      </thead>
+                      <tbody className="bg-white divide-y divide-gray-200">
+                        {result.results.map((row, idx) => (
+                          <tr key={idx} className="hover:bg-gray-50">
+                            {columns.map((col) => (
+                              <td key={col} className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                                {typeof row[col] === 'number' 
+                                  ? (col.includes('price') || col.includes('avg') 
+                                      ? formatPrice(row[col]) 
+                                      : row[col].toLocaleString())
+                                  : row[col] || '-'}
+                              </td>
+                            ))}
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
                   </div>
                 </div>
-              ))}
-            </div>
-          </div>
-        )}
+              </div>
+            );
+          } else {
+            // Display product results as cards
+            return (
+              <div>
+                <p className="text-sm font-medium text-gray-700 mb-3">
+                  Results ({result.results.length} products):
+                </p>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 max-h-[600px] overflow-y-auto">
+                  {result.results.map((product, idx) => (
+                    <div key={idx} className="bg-white border border-gray-200 rounded-lg p-4 hover:shadow-lg transition-all duration-200 flex flex-col h-full">
+                      <div className="flex flex-col h-full">
+                        {/* Product Name */}
+                        <h4 className="font-semibold text-gray-900 text-sm line-clamp-2 mb-2">
+                          {product.name}
+                        </h4>
+                        
+                        {/* Brand Name */}
+                        {product.brand && product.brand !== 'Unknown' && (
+                          <div className="mb-2">
+                            <span className="text-xs font-medium text-blue-600">🏷️ {product.brand}</span>
+                          </div>
+                        )}
+                        
+                        {/* Price - Prominent */}
+                        {product.price ? (
+                          <div className="text-lg font-bold text-green-600 mb-2">
+                            {formatPrice(product.price)}
+                          </div>
+                        ) : (
+                          <div className="text-sm text-gray-400 mb-2">Price not available</div>
+                        )}
+                        
+                        {/* Category */}
+                        <div className="mb-2">
+                          <span className="inline-block px-2 py-1 text-xs font-medium bg-purple-100 text-purple-700 rounded">
+                            📂 {product.category || 'Uncategorized'}
+                          </span>
+                        </div>
+                        
+                        {/* Description */}
+                        <p className="text-xs text-gray-600 line-clamp-2 mb-3 flex-grow">
+                          {product.description || 'No description available'}
+                        </p>
+                        
+                        {/* Rating */}
+                        <div className="mt-auto pt-2 border-t border-gray-100">
+                          {product.rating ? (
+                            <div className="flex items-center gap-1">
+                              <span className="text-yellow-500">⭐</span>
+                              <span className="text-sm font-medium">{product.rating.toFixed(1)}</span>
+                              {product.review_count && (
+                                <span className="text-xs text-gray-500">({product.review_count})</span>
+                              )}
+                            </div>
+                          ) : (
+                            <span className="text-xs text-gray-400">No ratings</span>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            );
+          }
+        })()}
 
         {/* Debug Information */}
         {result.debug_info && (
@@ -446,47 +517,118 @@ export default function SearchPage() {
           </div>
         )}
 
-        {result.results && result.results.length > 0 && (
-          <div>
-            <p className="text-sm font-medium text-gray-700 mb-3">
-              Results ({result.results.length} products):
-            </p>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-              {result.results.map((product, idx) => (
-                <div key={idx} className="bg-white border border-gray-200 rounded-lg p-4 hover:shadow-lg transition-all duration-200 flex flex-col h-full">
-                  <div className="flex flex-col h-full">
-                    <h4 className="font-medium text-gray-900 text-sm line-clamp-2 mb-2 min-h-[2.5rem]">
-                      {product.name}
-                    </h4>
-                    <p className="text-xs text-gray-600 line-clamp-3 mb-3 flex-grow min-h-[3rem]">
-                      {product.description || 'No description available'}
-                    </p>
-                    <div className="space-y-2 mt-auto pt-3 border-t border-gray-100">
-                      {product.price && (
-                        <div className="text-lg font-bold text-blue-600">
-                          {formatPrice(product.price)}
-                        </div>
-                      )}
-                      <div className="flex items-center justify-between text-xs">
-                        <span className="text-gray-600 truncate max-w-[60%]">
-                          {product.brand || 'Unknown Brand'}
-                        </span>
-                        {product.rating && (
-                          <span className="text-yellow-600 flex items-center flex-shrink-0">
-                            ⭐ {product.rating.toFixed(1)}
-                            {product.review_count && (
-                              <span className="text-gray-500 ml-1">({product.review_count})</span>
-                            )}
-                          </span>
-                        )}
-                      </div>
-                    </div>
+        {result.results && result.results.length > 0 && (() => {
+          // Detect if results are products or aggregated data
+          const firstRow = result.results[0];
+          const isProductData = firstRow && (firstRow.product_id || firstRow.name);
+          const isAggregatedData = !isProductData && firstRow && Object.keys(firstRow).length > 0;
+
+          if (isAggregatedData) {
+            // Display aggregated results as a table
+            const columns = Object.keys(firstRow);
+            return (
+              <div className="mt-4">
+                <p className="text-sm font-medium text-gray-700 mb-3">
+                  Results ({result.results.length} rows):
+                </p>
+                <div className="bg-white border border-gray-200 rounded-lg overflow-hidden">
+                  <div className="overflow-x-auto max-h-[600px] overflow-y-auto">
+                    <table className="min-w-full divide-y divide-gray-200">
+                      <thead className="bg-gray-50 sticky top-0">
+                        <tr>
+                          {columns.map((col) => (
+                            <th key={col} className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
+                              {col.replace(/_/g, ' ')}
+                            </th>
+                          ))}
+                        </tr>
+                      </thead>
+                      <tbody className="bg-white divide-y divide-gray-200">
+                        {result.results.map((row, idx) => (
+                          <tr key={idx} className="hover:bg-gray-50">
+                            {columns.map((col) => (
+                              <td key={col} className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                                {typeof row[col] === 'number' 
+                                  ? (col.includes('price') || col.includes('avg') 
+                                      ? formatPrice(row[col]) 
+                                      : row[col].toLocaleString())
+                                  : row[col] || '-'}
+                              </td>
+                            ))}
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
                   </div>
                 </div>
-              ))}
-            </div>
-          </div>
-        )}
+              </div>
+            );
+          } else {
+            // Display product results as cards
+            return (
+              <div>
+                <p className="text-sm font-medium text-gray-700 mb-3">
+                  Results ({result.results.length} products):
+                </p>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                  {result.results.map((product, idx) => (
+                    <div key={idx} className="bg-white border border-gray-200 rounded-lg p-4 hover:shadow-lg transition-all duration-200 flex flex-col h-full">
+                      <div className="flex flex-col h-full">
+                        {/* Product Name */}
+                        <h4 className="font-semibold text-gray-900 text-sm line-clamp-2 mb-2">
+                          {product.name}
+                        </h4>
+                        
+                        {/* Brand Name */}
+                        {product.brand && product.brand !== 'Unknown' && (
+                          <div className="mb-2">
+                            <span className="text-xs font-medium text-blue-600">🏷️ {product.brand}</span>
+                          </div>
+                        )}
+                        
+                        {/* Price - Prominent */}
+                        {product.price ? (
+                          <div className="text-lg font-bold text-green-600 mb-2">
+                            {formatPrice(product.price)}
+                          </div>
+                        ) : (
+                          <div className="text-sm text-gray-400 mb-2">Price not available</div>
+                        )}
+                        
+                        {/* Category */}
+                        <div className="mb-2">
+                          <span className="inline-block px-2 py-1 text-xs font-medium bg-purple-100 text-purple-700 rounded">
+                            📂 {product.category || 'Uncategorized'}
+                          </span>
+                        </div>
+                        
+                        {/* Description */}
+                        <p className="text-xs text-gray-600 line-clamp-2 mb-3 flex-grow">
+                          {product.description || 'No description available'}
+                        </p>
+                        
+                        {/* Rating */}
+                        <div className="mt-auto pt-2 border-t border-gray-100">
+                          {product.rating ? (
+                            <div className="flex items-center gap-1">
+                              <span className="text-yellow-500">⭐</span>
+                              <span className="text-sm font-medium">{product.rating.toFixed(1)}</span>
+                              {product.review_count && (
+                                <span className="text-xs text-gray-500">({product.review_count})</span>
+                              )}
+                            </div>
+                          ) : (
+                            <span className="text-xs text-gray-400">No ratings</span>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            );
+          }
+        })()}
 
         {result.results && result.results.length === 0 && !result.error && (
           <div className="text-center py-8 text-gray-500">
@@ -811,19 +953,19 @@ export default function SearchPage() {
             <div className="flex items-center mb-4">
               <div className="w-3 h-3 bg-green-500 rounded-full mr-3"></div>
               <h4 className="font-medium text-green-700 text-lg">Simple Queries</h4>
-              <span className="ml-2 text-xs bg-green-100 text-green-700 px-2 py-1 rounded-full">From eval_data.jsonl (index 0-99)</span>
+              <span className="ml-2 text-xs bg-green-100 text-green-700 px-2 py-1 rounded-full">From eval_data.jsonl (index 0-99) - High Success Rate</span>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
               {[
                 "Tìm áo thun",
                 "Hiển thị giày",
                 "Xem túi xách",
-                "Liệt kê balo",
-                "Tìm kiếm vali",
+                "Tìm ví",
                 "Hiển thị dép",
                 "Xem nón",
-                "Tìm kiếm kính",
-                "Liệt kê giày thể thao"
+                "Tìm đồng hồ",
+                "Tìm quần",
+                "Hiển thị váy"
               ].map((sampleQuery, idx) => (
                 <button
                   key={`simple-${idx}`}
@@ -842,7 +984,7 @@ export default function SearchPage() {
             <div className="flex items-center mb-4">
               <div className="w-3 h-3 bg-yellow-500 rounded-full mr-3"></div>
               <h4 className="font-medium text-yellow-700 text-lg">Medium Queries</h4>
-              <span className="ml-2 text-xs bg-yellow-100 text-yellow-700 px-2 py-1 rounded-full">From eval_data.jsonl (index 100-199)</span>
+              <span className="ml-2 text-xs bg-yellow-100 text-yellow-700 px-2 py-1 rounded-full">From eval_data.jsonl (index 100-199) - Requires JOINs</span>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
               {[
@@ -851,8 +993,6 @@ export default function SearchPage() {
                 "Sản phẩm có đánh giá cao",
                 "Thương hiệu Nike",
                 "Sản phẩm giá dưới 500k",
-                "Sản phẩm giá dưới 200k",
-                "Sản phẩm giá trên 1000k",
                 "Sản phẩm thương hiệu Adidas"
               ].map((sampleQuery, idx) => (
                 <button
@@ -872,17 +1012,14 @@ export default function SearchPage() {
             <div className="flex items-center mb-4">
               <div className="w-3 h-3 bg-red-500 rounded-full mr-3"></div>
               <h4 className="font-medium text-red-700 text-lg">Complex Queries</h4>
-              <span className="ml-2 text-xs bg-red-100 text-red-700 px-2 py-1 rounded-full">From eval_data.jsonl (index 200-299)</span>
+              <span className="ml-2 text-xs bg-red-100 text-red-700 px-2 py-1 rounded-full">From eval_data.jsonl (index 200-299) - Multi-table JOINs</span>
             </div>
             <div className="grid grid-cols-1 gap-3">
               {[
                 "Top 10 sản phẩm đánh giá cao nhất có giá dưới 1 triệu",
                 "Phân tích thị phần thương hiệu",
                 "Top 5 sản phẩm bán chạy nhất trong danh mục Phụ kiện thời trang",
-                "Top 6 sản phẩm bán chạy nhất trong danh mục Giày dép nam",
-                "Top 8 sản phẩm bán chạy nhất trong danh mục Balo & Vali",
-                "Top 10 sản phẩm bán chạy nhất trong danh mục Giày dép nam",
-                "Top 13 sản phẩm bán chạy nhất trong danh mục Phụ kiện thời trang"
+                "Top 10 sản phẩm bán chạy nhất trong danh mục Giày dép nam"
               ].map((sampleQuery, idx) => (
                 <button
                   key={`complex-${idx}`}

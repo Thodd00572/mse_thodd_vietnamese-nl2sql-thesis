@@ -9,7 +9,7 @@ import os
 # Import shared components
 from shared_models import (
     SearchRequest, SearchResponse, PipelineResult, Pipeline2Result, LocalModelResult, MetricsResponse,
-    experiment_data, db_manager, get_system_metrics, generate_query_id, execute_sql_query
+    experiment_data, db_manager, get_system_metrics, generate_query_id, execute_sql_query, enrich_products_with_details
 )
 from models.pipelines import pipeline1, pipeline2
 
@@ -1029,3 +1029,51 @@ async def reset_experiment():
     }
     
     return {"message": "Experiment data reset successfully"}
+
+@router.get("/debug/enrichment-test")
+async def test_enrichment():
+    """Test enrichment functionality and database connectivity"""
+    try:
+        # Test 1: Check database path
+        db_path = db_manager.db_path if hasattr(db_manager, 'db_path') else "Unknown"
+        
+        # Test 2: Get a sample product
+        test_sql = "SELECT * FROM products WHERE name LIKE '%ví%' LIMIT 1"
+        raw_products = db_manager.execute_query(test_sql)
+        
+        if not raw_products:
+            return {
+                "error": "No products found in database",
+                "database_path": db_path,
+                "test_sql": test_sql
+            }
+        
+        raw_product = raw_products[0]
+        
+        # Test 3: Manual enrichment test
+        enriched_products = enrich_products_with_details([raw_product])
+        enriched_product = enriched_products[0] if enriched_products else {}
+        
+        # Test 4: Check what fields are available
+        return {
+            "status": "success",
+            "database_path": db_path,
+            "raw_product": raw_product,
+            "enriched_product": enriched_product,
+            "enrichment_fields": {
+                "brand": enriched_product.get('brand', 'MISSING'),
+                "category": enriched_product.get('category', 'MISSING'),
+                "price": enriched_product.get('price', 'MISSING'),
+                "rating": enriched_product.get('rating', 'MISSING')
+            },
+            "raw_fields": list(raw_product.keys()),
+            "enriched_fields": list(enriched_product.keys())
+        }
+        
+    except Exception as e:
+        logger.error(f"Enrichment test error: {e}", exc_info=True)
+        return {
+            "error": str(e),
+            "error_type": type(e).__name__,
+            "database_path": db_path if 'db_path' in locals() else "Unknown"
+        }
