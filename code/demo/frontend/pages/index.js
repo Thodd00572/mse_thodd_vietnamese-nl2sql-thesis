@@ -991,9 +991,9 @@ export default function SearchPage() {
                 "Sản phẩm theo thương hiệu",
                 "Giá trung bình theo danh mục",
                 "Sản phẩm có đánh giá cao",
-                "Thương hiệu Nike",
+                "Thương hiệu Sakos",
                 "Sản phẩm giá dưới 500k",
-                "Sản phẩm thương hiệu Adidas"
+                "Sản phẩm thương hiệu Goldcare"
               ].map((sampleQuery, idx) => (
                 <button
                   key={`medium-${idx}`}

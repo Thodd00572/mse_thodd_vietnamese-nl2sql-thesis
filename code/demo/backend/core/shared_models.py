@@ -127,93 +127,86 @@ def generate_query_id() -> str:
     """Generate unique query ID"""
     return f"q_{int(time.time() * 1000)}"
 
-def enrich_products_with_details(products: List[Dict]) -> List[Dict]:
-    """Enrich product data with brand, category, price, and rating information"""
-    enriched = []
+def enrich_products_with_details(products: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
+    """
+    Enrich product data with brand, category, price, and rating information
     
-    logger.info(f"Starting enrichment for {len(products)} products")
+    Args:
+        products: List of product dictionaries (must have product_id field)
+        
+    Returns:
+        List of enriched product dictionaries
+    """
+    logger.info(f"🎨 Starting enrichment for {len(products)} products...")
+    enriched_products = []
     
     for product in products:
+        enriched = {**product}  # Copy all existing fields
+        
+        # Get product_id for lookups
         product_id = product.get('product_id')
-        enriched_product = {**product}
         
-        logger.debug(f"Enriching product_id={product_id}, brand_id={product.get('brand_id')}, category_id={product.get('category_id')}")
+        if not product_id:
+            logger.warning(f"⚠️ Product missing product_id, skipping enrichment: {product.get('name', 'unknown')[:50]}")
+            enriched_products.append(enriched)
+            continue
         
-        # Get price data
         try:
-            pricing_sql = f"SELECT current_price, quantity_sold FROM product_pricing WHERE product_id = {product_id}"
-            pricing_result = db_manager.execute_query(pricing_sql)
-            
-            if pricing_result and isinstance(pricing_result, list) and len(pricing_result) > 0:
-                enriched_product['price'] = int(pricing_result[0]['current_price'])
-                enriched_product['quantity_sold'] = int(pricing_result[0]['quantity_sold'])
-            else:
-                enriched_product['price'] = None
-                enriched_product['quantity_sold'] = None
-        except Exception as e:
-            logger.warning(f"Failed to get pricing for product {product_id}: {e}")
-            enriched_product['price'] = None
-            enriched_product['quantity_sold'] = None
-        
-        # Get brand data
-        try:
-            brand_id = product.get('brand_id')
-            if brand_id:
-                brand_sql = f"SELECT brand_name FROM brands WHERE brand_id = {brand_id}"
-                brand_result = db_manager.execute_query(brand_sql)
-                
-                if brand_result and isinstance(brand_result, list) and len(brand_result) > 0:
-                    enriched_product['brand'] = str(brand_result[0]['brand_name'])
+            # Enrich with pricing data
+            if 'price' not in enriched or enriched.get('price') is None:
+                pricing_query = "SELECT current_price, quantity_sold FROM product_pricing WHERE product_id = ?"
+                pricing_results = db_manager.execute_query(pricing_query, (product_id,))
+                if pricing_results:
+                    enriched['price'] = pricing_results[0].get('current_price')
+                    enriched['quantity_sold'] = pricing_results[0].get('quantity_sold', 0)
                 else:
-                    enriched_product['brand'] = 'Unknown'
-            else:
-                enriched_product['brand'] = 'Unknown'
-        except Exception as e:
-            logger.warning(f"Failed to get brand for product {product_id}: {e}")
-            enriched_product['brand'] = 'Unknown'
-        
-        # Get category data
-        try:
-            category_id = product.get('category_id')
-            logger.debug(f"  🏷️ Looking up category_id={category_id}")
-            if category_id:
-                category_sql = f"SELECT category_name FROM categories WHERE category_id = {category_id}"
-                logger.debug(f"  📝 Category SQL: {category_sql}")
-                category_result = db_manager.execute_query(category_sql)
-                logger.debug(f"  📊 Category result: {category_result}")
-                
-                if category_result and isinstance(category_result, list) and len(category_result) > 0:
-                    enriched_product['category'] = str(category_result[0]['category_name'])
-                    logger.info(f"  ✅ Category enriched: {enriched_product['category']}")
-                else:
-                    enriched_product['category'] = 'Unknown'
-                    logger.warning(f"  ⚠️ No category found for category_id={category_id}")
-            else:
-                enriched_product['category'] = 'Unknown'
-                logger.warning(f"  ⚠️ Product {product_id} has no category_id")
-        except Exception as e:
-            logger.error(f"  ❌ Failed to get category for product {product_id}: {e}", exc_info=True)
-            enriched_product['category'] = 'Unknown'
-        
-        # Get rating data
-        try:
-            rating_sql = f"SELECT rating_average, review_count FROM product_reviews WHERE product_id = {product_id}"
-            rating_result = db_manager.execute_query(rating_sql)
+                    enriched['price'] = None
             
-            if rating_result and isinstance(rating_result, list) and len(rating_result) > 0:
-                enriched_product['rating'] = float(rating_result[0]['rating_average'])
-                enriched_product['review_count'] = int(rating_result[0]['review_count'])
-            else:
-                enriched_product['rating'] = None
-                enriched_product['review_count'] = None
+            # Enrich with brand name
+            if 'brand' not in enriched or enriched.get('brand') is None:
+                brand_id = product.get('brand_id')
+                if brand_id:
+                    brand_query = "SELECT brand_name FROM brands WHERE brand_id = ?"
+                    brand_results = db_manager.execute_query(brand_query, (brand_id,))
+                    if brand_results:
+                        brand_name = brand_results[0].get('brand_name', 'Unknown Brand')
+                        enriched['brand'] = 'No Brand' if brand_name == 'Generic Brand' else brand_name
+                else:
+                    enriched['brand'] = 'No Brand'
+            
+            # Enrich with category name
+            if 'category' not in enriched or enriched.get('category') is None:
+                category_id = product.get('category_id')
+                if category_id:
+                    category_query = "SELECT category_name FROM categories WHERE category_id = ?"
+                    category_results = db_manager.execute_query(category_query, (category_id,))
+                    if category_results:
+                        enriched['category'] = category_results[0].get('category_name', 'Uncategorized')
+                else:
+                    enriched['category'] = 'Uncategorized'
+            
+            # Enrich with rating (handle NULL properly)
+            if 'rating' not in enriched or enriched.get('rating') is None:
+                rating_query = "SELECT rating_average, review_count FROM product_reviews WHERE product_id = ?"
+                rating_results = db_manager.execute_query(rating_query, (product_id,))
+                if rating_results and rating_results[0].get('rating_average') is not None:
+                    enriched['rating'] = rating_results[0].get('rating_average')
+                    enriched['review_count'] = rating_results[0].get('review_count', 0)
+                else:
+                    enriched['rating'] = None
+                    enriched['review_count'] = 0
+            
+            # Add description if missing
+            if 'description' not in enriched or not enriched.get('description'):
+                enriched['description'] = product.get('description', 'No description available')
+                
         except Exception as e:
-            logger.warning(f"Failed to get rating for product {product_id}: {e}")
-            enriched_product['rating'] = None
-            enriched_product['review_count'] = None
+            logger.error(f"❌ Enrichment error for product {product_id}: {e}")
         
-        enriched.append(enriched_product)
+        enriched_products.append(enriched)
     
-    return enriched
+    logger.info(f"✅ Enrichment complete. Enriched {len(enriched_products)} products")
+    return enriched_products
 
 def execute_sql_query(sql_query: str, enrich: bool = True) -> tuple[List[Dict[str, Any]], Optional[str]]:
     """
@@ -231,10 +224,31 @@ def execute_sql_query(sql_query: str, enrich: bool = True) -> tuple[List[Dict[st
         results = db_manager.execute_query(sql_query)
         logger.info(f"📊 Got {len(results) if results else 0} raw results")
         
-        # Auto-enrich if results contain product_id field
+        # Normalize field names to match frontend expectations
+        if results and isinstance(results, list) and len(results) > 0:
+            normalized_results = []
+            for row in results:
+                normalized_row = {**row}  # Copy original
+                
+                # Map SQL column names to frontend field names
+                if 'brand_name' in row and 'brand' not in row:
+                    normalized_row['brand'] = row['brand_name']
+                if 'current_price' in row and 'price' not in row:
+                    normalized_row['price'] = row['current_price']
+                if 'rating_average' in row and 'rating' not in row:
+                    normalized_row['rating'] = row['rating_average']
+                if 'category_name' in row and 'category' not in row:
+                    normalized_row['category'] = row['category_name']
+                
+                normalized_results.append(normalized_row)
+            
+            results = normalized_results
+            logger.info(f"✅ Normalized field names. Sample: {list(results[0].keys())[:10]}")
+        
+        # Auto-enrich if results contain product_id field but missing enrichment data
         if enrich and results and isinstance(results, list) and len(results) > 0:
             logger.info(f"🔎 Checking if enrichment needed. First row keys: {list(results[0].keys())}")
-            if 'product_id' in results[0]:
+            if 'product_id' in results[0] and 'brand' not in results[0]:
                 logger.info(f"✅ product_id found! Starting enrichment for {len(results)} products...")
                 try:
                     results = enrich_products_with_details(results)
@@ -244,7 +258,7 @@ def execute_sql_query(sql_query: str, enrich: bool = True) -> tuple[List[Dict[st
                     logger.error(f"❌ Enrichment failed: {e}", exc_info=True)
                     logger.warning(f"Returning raw results without enrichment")
             else:
-                logger.info(f"⏭️ Skipping enrichment - no product_id in results")
+                logger.info(f"⏭️ Skipping enrichment - already has enrichment data or no product_id")
         else:
             logger.info(f"⏭️ Skipping enrichment - enrich={enrich}, results={len(results) if results else 0}")
         

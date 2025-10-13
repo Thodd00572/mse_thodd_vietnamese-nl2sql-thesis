@@ -753,9 +753,9 @@
     },
     {
       "id": "medium_004",
-      "vietnamese": "Thương hiệu Nike",
-      "english": "Nike brand products",
-      "sql": "SELECT p.name, pr.current_price FROM products p JOIN brands b ON p.brand_id = b.brand_id JOIN product_pricing pr ON p.product_id = pr.product_id WHERE b.brand_name LIKE '%Nike%' LIMIT 10;",
+      "vietnamese": "Thương hiệu Sakos",
+      "english": "Sakos brand products",
+      "sql": "SELECT p.name, b.brand_name, c.category_name, pr.current_price, rv.rating_average FROM products p JOIN brands b ON p.brand_id = b.brand_id JOIN categories c ON p.category_id = c.category_id JOIN product_pricing pr ON p.product_id = pr.product_id JOIN product_reviews rv ON p.product_id = rv.product_id WHERE b.brand_name LIKE '%Sakos%' LIMIT 10;",
       "complexity": "medium"
     },
     {
@@ -858,9 +858,9 @@
     },
     {
       "id": "medium_019",
-      "vietnamese": "Sản phẩm thương hiệu Adidas",
-      "english": "Adidas brand products",
-      "sql": "SELECT p.name, pr.current_price FROM products p JOIN brands b ON p.brand_id = b.brand_id JOIN product_pricing pr ON p.product_id = pr.product_id WHERE b.brand_name LIKE '%Adidas%' LIMIT 10;",
+      "vietnamese": "Sản phẩm thương hiệu Goldcare",
+      "english": "Goldcare brand products",
+      "sql": "SELECT p.name, b.brand_name, c.category_name, pr.current_price, rv.rating_average FROM products p JOIN brands b ON p.brand_id = b.brand_id JOIN categories c ON p.category_id = c.category_id JOIN product_pricing pr ON p.product_id = pr.product_id JOIN product_reviews rv ON p.product_id = rv.product_id WHERE b.brand_name LIKE '%Goldcare%' LIMIT 10;",
       "complexity": "medium"
     },
     {

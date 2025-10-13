@@ -236,98 +236,79 @@ async def search_products(request: SearchRequest):
                 )
                 experiment_data["pipeline2_stats"]["errors"] += 1
         
-        # Handle Pipeline 3 (Local LLM)
+        # Handle Pipeline 3 (Vanna AI RAG via Colab)
         if request.pipeline in ["pipeline3", "both", "all"]:
             try:
-                # For now, use local model processor as Pipeline 3
-                available_models = local_processor.list_available_models()
+                # Call Colab's /p3/generate endpoint
+                import httpx
+                import json
                 
-                if not available_models:
-                    response.pipeline3_result = PipelineResult(
-                        pipeline_name="Pipeline 3 (Local LLM)",
-                        sql_query="",
-                        results=[],
-                        execution_time=0,
-                        success=False,
-                        error="No local LLM models found - requires BLOOMZ-7B or similar",
-                        metrics={}
+                colab_url = "https://abnormally-direct-rhino.ngrok-free.app/p3/generate"
+                start_time = time.time()
+                
+                async with httpx.AsyncClient(timeout=30.0) as client:
+                    colab_response = await client.post(
+                        colab_url,
+                        json={"query": request.query},
+                        headers={"ngrok-skip-browser-warning": "true"}
                     )
-                else:
-                    # Load and use the first available model
-                    model_name = available_models[0]['name']
+                    colab_response.raise_for_status()
+                    colab_data = colab_response.json()
+                
+                execution_time = time.time() - start_time
+                
+                # Extract SQL from Colab response
+                sql_query = colab_data.get('sql_query', '')
+                
+                if sql_query:
+                    # Execute SQL with enrichment
+                    results, sql_error = execute_sql_query(sql_query)
                     
-                    if not local_processor.is_loaded:
-                        model_loaded = local_processor.load_model(model_name)
-                        if not model_loaded:
-                            response.pipeline3_result = PipelineResult(
-                                pipeline_name="Pipeline 3 (Local LLM)",
-                                sql_query="",
-                                results=[],
-                                execution_time=0,
-                                success=False,
-                                error=f"Failed to load local LLM model: {model_name}",
-                                metrics={}
-                            )
-                        else:
-                            # Process query with local LLM
-                            db_path = os.path.join(os.path.dirname(__file__), '..', '..', 'data', 'tiki_products_normalized.db')
-                            local_result = local_processor.process_query_complete(
-                                request.query, 
-                                db_path=db_path, 
-                                debug=True
-                            )
-                            
-                            # Convert to PipelineResult
-                            sql_gen = local_result['sql_generation']
-                            sql_exec = local_result['sql_execution']
-                            
-                            response.pipeline3_result = PipelineResult(
-                                pipeline_name="Pipeline 3 (Local LLM)",
-                                sql_query=sql_gen.get('sql', ''),
-                                results=sql_exec.get('data', []),
-                                execution_time=local_result.get('total_time', 0),
-                                success=sql_gen.get('success', False) and sql_exec.get('success', False),
-                                error=sql_gen.get('error') or sql_exec.get('error'),
-                                metrics={
-                                    "method": "Local LLM (BLOOMZ-7B)",
-                                    "version": "3.0",
-                                    "pipeline": "Pipeline3",
-                                    "source": "local_llm",
-                                    "model_used": sql_gen.get('model_used', model_name)
-                                }
-                            )
-                    else:
-                        # Model already loaded
-                        db_path = os.path.join(os.path.dirname(__file__), '..', '..', 'data', 'tiki_products_normalized.db')
-                        local_result = local_processor.process_query_complete(
-                            request.query, 
-                            db_path=db_path, 
-                            debug=True
-                        )
-                        
-                        sql_gen = local_result['sql_generation']
-                        sql_exec = local_result['sql_execution']
-                        
+                    if sql_error:
                         response.pipeline3_result = PipelineResult(
-                            pipeline_name="Pipeline 3 (Local LLM)",
-                            sql_query=sql_gen.get('sql', ''),
-                            results=sql_exec.get('data', []),
-                            execution_time=local_result.get('total_time', 0),
-                            success=sql_gen.get('success', False) and sql_exec.get('success', False),
-                            error=sql_gen.get('error') or sql_exec.get('error'),
+                            pipeline_name="Pipeline 3 (Vanna AI RAG)",
+                            sql_query=sql_query,
+                            results=[],
+                            execution_time=execution_time,
+                            success=False,
+                            error=f"SQL execution error: {sql_error}",
                             metrics={
-                                "method": "Local LLM (BLOOMZ-7B)",
+                                "method": "Vanna AI RAG",
                                 "version": "3.0",
                                 "pipeline": "Pipeline3",
-                                "source": "local_llm",
-                                "model_used": sql_gen.get('model_used', model_name)
+                                "source": "colab_vanna_ai"
                             }
                         )
+                    else:
+                        response.pipeline3_result = PipelineResult(
+                            pipeline_name="Pipeline 3 (Vanna AI RAG)",
+                            sql_query=sql_query,
+                            results=results,
+                            execution_time=execution_time,
+                            success=True,
+                            error=None,
+                            metrics={
+                                "method": "Vanna AI RAG",
+                                "version": "3.0",
+                                "pipeline": "Pipeline3",
+                                "source": "colab_vanna_ai"
+                            }
+                        )
+                else:
+                    response.pipeline3_result = PipelineResult(
+                        pipeline_name="Pipeline 3 (Vanna AI RAG)",
+                        sql_query="",
+                        results=[],
+                        execution_time=execution_time,
+                        success=False,
+                        error="No SQL query generated by Vanna AI",
+                        metrics={}
+                    )
                         
             except Exception as e:
                 logger.error(f"Pipeline 3 error: {str(e)}")
                 response.pipeline3_result = PipelineResult(
-                    pipeline_name="Pipeline 3 (Local LLM)",
+                    pipeline_name="Pipeline 3 (Vanna AI RAG)",
                     sql_query="",
                     results=[],
                     execution_time=0,

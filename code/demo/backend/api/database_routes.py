@@ -96,42 +96,24 @@ async def get_database_stats():
 
 @router.post("/database/query")
 async def execute_database_query(request: QueryRequest):
-    """Execute custom SQL query"""
+    """Execute custom SQL query with automatic enrichment"""
     try:
-        # Find database path
-        import os
-        possible_paths = [
-            "/Users/thoduong/CascadeProjects/MSE_Thesis_2025/data/tiki_products_normalized.db",
-            "data/tiki_products_normalized.db",
-            "../../../data/tiki_products_normalized.db"
-        ]
-        
-        db_path = None
-        for path in possible_paths:
-            if os.path.exists(path):
-                db_path = path
-                break
-        
-        if not db_path:
-            raise HTTPException(status_code=500, detail="Database file not found")
-        
-        # Database connection with timeout
-        conn = sqlite3.connect(db_path, timeout=5)
-        conn.row_factory = sqlite3.Row
-        cursor = conn.cursor()
-        
         # Basic security check
         if any(dangerous in request.query.upper() for dangerous in ['DROP', 'DELETE', 'UPDATE', 'INSERT', 'ALTER']):
             if not request.query.upper().strip().startswith('SELECT'):
                 raise HTTPException(status_code=400, detail="Only SELECT queries are allowed")
         
-        cursor.execute(request.query)
-        rows = cursor.fetchall()
-        results = [dict(row) for row in rows]
-        conn.close()
+        # Use execute_sql_query from shared_models which has enrichment
+        from core.shared_models import execute_sql_query
+        results, error = execute_sql_query(request.query, enrich=True)
+        
+        if error:
+            raise HTTPException(status_code=500, detail=error)
         
         return {"results": results, "query": request.query}
         
+    except HTTPException:
+        raise
     except Exception as e:
         logger.error(f"Query execution error: {e}")
         raise HTTPException(status_code=500, detail=str(e))

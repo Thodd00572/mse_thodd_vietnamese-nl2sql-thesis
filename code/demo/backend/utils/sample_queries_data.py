@@ -109,7 +109,7 @@ def get_sample_queries_data():
         {'vietnamese': 'Sản phẩm theo thương hiệu', 'english': 'Products by brand', 'sql': 'SELECT b.brand_name, COUNT(p.product_id) as product_count FROM brands b JOIN products p ON b.brand_id = p.brand_id GROUP BY b.brand_name ORDER BY product_count DESC;', 'complexity': 'medium'},
         {'vietnamese': 'Giá trung bình theo danh mục', 'english': 'Average price by category', 'sql': 'SELECT c.category_name, AVG(pr.current_price) as avg_price FROM categories c JOIN products p ON c.category_id = p.category_id JOIN product_pricing pr ON p.product_id = pr.product_id GROUP BY c.category_name;', 'complexity': 'medium'},
         {'vietnamese': 'Sản phẩm có đánh giá cao', 'english': 'High rated products', 'sql': 'SELECT p.name, rv.rating_average FROM products p JOIN product_reviews rv ON p.product_id = rv.product_id WHERE rv.rating_average >= 4.0 ORDER BY rv.rating_average DESC LIMIT 20;', 'complexity': 'medium'},
-        {'vietnamese': 'Thương hiệu Nike', 'english': 'Nike brand products', 'sql': "SELECT p.name, pr.current_price FROM products p JOIN brands b ON p.brand_id = b.brand_id JOIN product_pricing pr ON p.product_id = pr.product_id WHERE b.brand_name LIKE '%Nike%' LIMIT 10;", 'complexity': 'medium'},
+        {'vietnamese': 'Thương hiệu Sakos', 'english': 'Sakos brand products', 'sql': "SELECT p.name, b.brand_name, c.category_name, pr.current_price, rv.rating_average FROM products p JOIN brands b ON p.brand_id = b.brand_id JOIN categories c ON p.category_id = c.category_id JOIN product_pricing pr ON p.product_id = pr.product_id JOIN product_reviews rv ON p.product_id = rv.product_id WHERE b.brand_name LIKE '%Sakos%' LIMIT 10;", 'complexity': 'medium'},
         {'vietnamese': 'Sản phẩm giá dưới 500k', 'english': 'Products under 500k', 'sql': 'SELECT p.name, pr.current_price FROM products p JOIN product_pricing pr ON p.product_id = pr.product_id WHERE pr.current_price < 500000 ORDER BY pr.current_price LIMIT 20;', 'complexity': 'medium'},
     ]
     
@@ -122,12 +122,12 @@ def get_sample_queries_data():
         ])
     
     # Add brand variations
-    brands = ['Nike', 'Adidas', 'Samsung', 'Apple', 'Louis Vuitton', 'Gucci', 'Uniqlo', 'Zara']
+    brands = ['Sakos', 'Goldcare', 'Samsung', 'Apple', 'Louis Vuitton', 'Gucci', 'Uniqlo', 'Zara']
     for brand in brands:
         medium_queries.append({
             'vietnamese': f'Sản phẩm thương hiệu {brand}',
             'english': f'{brand} brand products',
-            'sql': f"SELECT p.name, pr.current_price FROM products p JOIN brands b ON p.brand_id = b.brand_id JOIN product_pricing pr ON p.product_id = pr.product_id WHERE b.brand_name LIKE '%{brand}%' LIMIT 10;",
+            'sql': f"SELECT p.name, b.brand_name, c.category_name, pr.current_price, rv.rating_average FROM products p JOIN brands b ON p.brand_id = b.brand_id JOIN categories c ON p.category_id = c.category_id JOIN product_pricing pr ON p.product_id = pr.product_id JOIN product_reviews rv ON p.product_id = rv.product_id WHERE b.brand_name LIKE '%{brand}%' LIMIT 10;",
             'complexity': 'medium'
         })
     
